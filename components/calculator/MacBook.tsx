@@ -7,7 +7,16 @@ import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "mo
  * Устройство как витрина продукта: ноутбук раскрывается по мере скролла,
  * внутри — живой интерфейс, а не картинка.
  */
-export function MacBook({ children, label }: { children: ReactNode; label?: string }) {
+export function MacBook({
+  children,
+  label,
+  height = "h-[560px] md:h-[600px]",
+}: {
+  children: ReactNode;
+  label?: string;
+  /** высота «экрана»: компактная сводка ниже полноразмерного дашборда */
+  height?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
@@ -24,7 +33,7 @@ export function MacBook({ children, label }: { children: ReactNode; label?: stri
   return (
     <div ref={ref} className="relative" style={{ perspective: 1600 }}>
       <motion.div
-        className="pointer-events-none absolute inset-x-[8%] top-[12%] -z-10 h-[70%] rounded-full bg-lime/35 blur-[120px]"
+        className="pointer-events-none absolute inset-x-[8%] top-[12%] -z-10 h-[70%] rounded-full bg-brand/25 blur-[120px]"
         style={{ opacity: reduced ? 0.6 : glow }}
       />
 
@@ -52,14 +61,14 @@ export function MacBook({ children, label }: { children: ReactNode; label?: stri
                   />
                   <rect x="2.2" y="5" width="7.6" height="5.4" rx="1.4" fill="currentColor" />
                 </svg>
-                <span className="font-mono text-[10px] tracking-wide text-graphite">
-                  {label ?? "diton.ru/calculator"}
+                <span className="text-[10px] tracking-wide text-graphite">
+                  {label ?? "kultura.dev/calculator"}
                 </span>
               </div>
               <div className="w-12" />
             </div>
 
-            <div className="h-[560px] max-h-[74vh] overflow-hidden md:h-[600px]">{children}</div>
+            <div className={`max-h-[74vh] overflow-hidden ${height}`}>{children}</div>
           </div>
         </div>
 
@@ -68,6 +77,10 @@ export function MacBook({ children, label }: { children: ReactNode; label?: stri
           <div className="absolute top-0 left-1/2 h-1.5 w-24 -translate-x-1/2 rounded-b-lg bg-[#7b8185]" />
         </div>
         <div className="mx-auto h-2 w-[86%] rounded-b-[40px] bg-gradient-to-b from-[#7b8185]/40 to-transparent blur-[2px]" />
+
+        {/* стеклянный постамент */}
+        <div className="relative mx-auto mt-3 h-6 w-[78%] rounded-[10px] border border-white/70 bg-gradient-to-b from-white/70 to-[#dbe7dd]/70 backdrop-blur-sm md:h-8" />
+        <div className="mx-auto h-4 w-[70%] rounded-b-[30px] bg-gradient-to-b from-[#b9c9bd]/35 to-transparent blur-[3px]" />
       </motion.div>
     </div>
   );

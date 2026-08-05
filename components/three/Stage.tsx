@@ -40,7 +40,7 @@ export function Stage({
           {/* светлая «комната»: без неё хром отражает пустоту и выглядит чёрным */}
           <mesh scale={80}>
             <sphereGeometry args={[1, 24, 24]} />
-            <meshBasicMaterial color="#c9cfc6" side={THREE.BackSide} />
+            <meshBasicMaterial color="#ced6cf" side={THREE.BackSide} />
           </mesh>
           {/* верхний софтбокс — «студийный» блик Apple */}
           <Lightformer
@@ -51,14 +51,14 @@ export function Stage({
             scale={[12, 8, 1]}
             color="#ffffff"
           />
-          {/* салатовый рефлекс — фирменный цвет живёт в отражениях */}
+          {/* зелёный рефлекс — фирменный цвет живёт в отражениях */}
           <Lightformer
             form="rect"
             intensity={5}
             position={[-5, 1, 2]}
             rotation={[0, Math.PI / 2, 0]}
             scale={[8, 6, 1]}
-            color="#c8ff3d"
+            color="#8ff0ab"
           />
           {/* холодный контровой */}
           <Lightformer

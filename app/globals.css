@@ -1,27 +1,26 @@
 @import "tailwindcss";
 
 /* ============================================================
-   КУЛЬТУРА ДИТОН — design system
-   Палитра: белый / туман / салатовый / чёрный / стекло
+   КУЛЬТУРА ДЕВЕЛОПМЕНТА — design system
+   Палитра: белый / светлый холодный фон / изумрудный / чёрный / стекло
    ============================================================ */
 
 @theme {
   --color-paper: #ffffff;
-  --color-mist: #f4f5f1;
-  --color-mist-2: #eceee6;
-  --color-ink: #0a0b0a;
-  --color-ink-2: #16181a;
-  --color-graphite: #5b6069;
-  --color-silver: #a6acb4;
-  --color-line: #e4e6e0;
+  --color-mist: #f3f6f3;
+  --color-mist-2: #e9efe9;
+  --color-ink: #0b0f0c;
+  --color-ink-2: #171d18;
+  --color-graphite: #5a635c;
+  --color-silver: #a3aca5;
+  --color-line: #e3e9e3;
 
-  --color-lime: #c8ff3d;
-  --color-lime-2: #b6f11f;
-  --color-lime-dim: #e9ffb0;
+  --color-brand: #22a24b;
+  --color-brand-2: #1b8c3f;
+  --color-brand-soft: #e8f6ec;
 
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-unbounded), var(--font-manrope), ui-sans-serif, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, sans-serif;
 
   --radius-xl2: 28px;
   --radius-xl3: 36px;
@@ -30,7 +29,6 @@
 :root {
   --shell: 1440px;
   --gutter: 24px;
-  --nav-h: 76px;
 }
 
 * {
@@ -52,14 +50,14 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--color-brand);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 ::selection {
-  background: var(--color-lime);
-  color: var(--color-ink);
+  background: var(--color-brand);
+  color: #fff;
 }
 
 /* ---------- скроллбар ---------- */
@@ -70,12 +68,12 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d8dbd2;
+  background: #d3dcd4;
   border-radius: 99px;
   border: 3px solid #fff;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-lime-2);
+  background: var(--color-brand);
 }
 
 /* ============================================================
@@ -91,43 +89,47 @@ body {
 
 /* Стекло — основной материал бренда */
 @utility glass {
-  background: color-mix(in srgb, #ffffff 62%, transparent);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid color-mix(in srgb, #ffffff 70%, transparent);
+  background: color-mix(in srgb, #ffffff 72%, transparent);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid color-mix(in srgb, #ffffff 80%, transparent);
   box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.8) inset,
-    0 24px 60px -28px rgba(15, 20, 15, 0.22);
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 22px 50px -26px rgba(12, 30, 18, 0.2);
 }
 
 @utility glass-dark {
-  background: color-mix(in srgb, #0a0b0a 58%, transparent);
-  backdrop-filter: blur(24px) saturate(140%);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  background: color-mix(in srgb, #0b0f0c 62%, transparent);
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-@utility card-soft {
-  background: #fff;
+/* Карточка макета: почти белая, с мягкой зелёной подсветкой снизу */
+@utility card-glass {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdfb 60%, #f2f8f3 100%);
   border: 1px solid var(--color-line);
-  box-shadow: 0 30px 60px -40px rgba(10, 20, 10, 0.35);
+  box-shadow: 0 30px 60px -44px rgba(12, 40, 20, 0.35);
 }
 
-/* Крупный дисплейный шрифт */
 @utility display {
   font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 0.92;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
 @utility label-xs {
-  font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.16em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-graphite);
+}
+
+@utility nums {
+  font-variant-numeric: tabular-nums;
 }
 
 @utility no-scrollbar {
@@ -138,33 +140,22 @@ body {
    Фоновые эффекты
    ============================================================ */
 
-.grain::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 .aurora {
   position: absolute;
   inset: -20% -10% auto -10%;
   height: 120%;
   pointer-events: none;
   background:
-    radial-gradient(48% 42% at 18% 22%, rgba(200, 255, 61, 0.5) 0%, transparent 62%),
-    radial-gradient(42% 38% at 82% 14%, rgba(186, 205, 255, 0.5) 0%, transparent 60%),
-    radial-gradient(52% 50% at 50% 92%, rgba(230, 235, 226, 0.9) 0%, transparent 70%);
-  filter: blur(20px);
+    radial-gradient(46% 40% at 78% 16%, rgba(34, 162, 75, 0.16) 0%, transparent 62%),
+    radial-gradient(40% 36% at 16% 24%, rgba(210, 240, 218, 0.7) 0%, transparent 60%),
+    radial-gradient(60% 55% at 50% 96%, rgba(238, 245, 239, 0.95) 0%, transparent 72%);
+  filter: blur(18px);
 }
 
 .grid-lines {
   background-image:
-    linear-gradient(to right, rgba(10, 11, 10, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(10, 11, 10, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(11, 15, 12, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 15, 12, 0.045) 1px, transparent 1px);
   background-size: 88px 88px;
   mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 100%);
 }
@@ -183,7 +174,7 @@ body {
 }
 
 .marquee-track {
-  animation: marquee-x var(--dur, 38s) linear infinite;
+  animation: marquee-x var(--dur, 42s) linear infinite;
   will-change: transform;
 }
 
@@ -193,7 +184,7 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-14px);
+    transform: translateY(-12px);
   }
 }
 
@@ -207,7 +198,7 @@ body {
     opacity: 0.7;
   }
   70% {
-    transform: scale(1.5);
+    transform: scale(1.6);
     opacity: 0;
   }
   100% {
@@ -220,23 +211,8 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  border: 1px solid var(--color-lime-2);
+  border: 1px solid var(--color-brand);
   animation: pulse-ring 2.6s ease-out infinite;
-}
-
-@keyframes shimmer {
-  to {
-    background-position: 200% center;
-  }
-}
-
-.shimmer-text {
-  background: linear-gradient(100deg, #0a0b0a 20%, #9aa0a6 38%, #0a0b0a 56%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: shimmer 6s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,47 +1,39 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, IBM_Plex_Mono, Unbounded } from "next/font/google";
+import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { brand } from "@/content/site";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-/** Дисплейный шрифт — техничная геометрия, кириллица как первый класс. */
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin", "cyrillic"],
   weight: ["600", "700", "800"],
   display: "swap",
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  metadataBase: new URL("https://diton.ru"),
+  metadataBase: new URL("https://kultura-development.ru"),
   title: {
-    default: `${brand.fullName} — ${brand.tagline}`,
-    template: `%s — ${brand.fullName}`,
+    default: `${brand.name} — ${brand.tagline}`,
+    template: `%s — ${brand.name}`,
   },
   description:
-    "Полиграфический комбинат полного цикла: календари, книги, каталоги, упаковка. Расчёт тиража онлайн за 12 секунд.",
+    "Бюро земельных возможностей. Калькулятор девелопера показывает потенциал участка, экономику проекта и риски до старта.",
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    siteName: brand.fullName,
-    title: `${brand.fullName} — ${brand.tagline}`,
-    description: "Производство и цифровая платформа расчёта тиража.",
+    siteName: brand.name,
+    title: `${brand.name} — ${brand.tagline}`,
+    description: "Земля — это ещё не актив. Активом её делает правильный девелопмент.",
   },
 };
 
@@ -52,11 +44,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="ru"
-      className={`${manrope.variable} ${unbounded.variable} ${plexMono.variable} h-full antialiased`}
-    >
-      <body className="grain flex min-h-full flex-col bg-paper">
+    <html lang="ru" className={`${inter.variable} ${interTight.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col bg-paper">
         <SmoothScroll />
         <Header />
         <main className="flex-1">{children}</main>
