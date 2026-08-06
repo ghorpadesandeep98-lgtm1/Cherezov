@@ -1,0 +1,122 @@
+.section {
+  padding: 0 24px 88px;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+  gap: 32px;
+  align-items: stretch;
+}
+
+.copy {
+  border-radius: 32px;
+  background: var(--kd-mint-veil);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.overline {
+  font: 600 12px var(--font-core);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kd-stone);
+}
+
+.title {
+  margin: 0;
+  font: 800 clamp(28px, 2.8vw, 40px) / 1.1 var(--font-core);
+  letter-spacing: -0.03em;
+}
+
+.titleAccent {
+  color: var(--kd-green-dark);
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  border-radius: 999px;
+  background: var(--kd-white);
+  padding: 8px 16px;
+  font: 500 14px var(--font-core);
+}
+
+.tagAccent {
+  border-radius: 999px;
+  background: var(--kd-salad);
+  padding: 8px 16px;
+  font: 600 14px var(--font-core);
+}
+
+.quote {
+  margin-top: auto;
+  border-radius: 24px;
+  background: var(--kd-white);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quoteMark {
+  font: 800 26px var(--font-core);
+  color: var(--kd-salad);
+}
+
+.quoteText {
+  font: 400 16px/1.7 var(--font-core);
+  color: var(--kd-slate);
+}
+
+.quoteName {
+  font: 600 15px var(--font-core);
+}
+
+.quoteRole {
+  font: 400 13px var(--font-core);
+  color: var(--kd-stone);
+}
+
+.photo {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--kd-forest);
+  min-height: 420px;
+}
+
+.photoImg {
+  object-fit: cover;
+}
+
+.caption {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 999px;
+  padding: 12px 20px;
+  font: 600 14px var(--font-core);
+  z-index: 1;
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding: 0 16px 64px;
+  }
+
+  .copy {
+    padding: 28px 24px;
+  }
+}

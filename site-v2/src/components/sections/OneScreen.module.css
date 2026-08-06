@@ -1,0 +1,661 @@
+.section {
+  padding: 0 24px 88px;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: var(--kd-forest);
+  border-radius: 36px;
+  padding: 56px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glow {
+  position: absolute;
+  inset: auto -10% -30% 20%;
+  height: 70%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(63, 203, 132, 0.26), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.headCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font: 800 clamp(46px, 7.4vw, 116px) / 0.92 var(--font-core);
+  letter-spacing: -0.045em;
+  color: var(--kd-glass);
+}
+
+.titleAccent {
+  color: var(--kd-salad);
+}
+
+.lead {
+  margin: 0;
+  font: 400 clamp(16px, 1.5vw, 22px) / 1.4 var(--font-core);
+  color: rgba(234, 246, 240, 0.5);
+}
+
+.headTag {
+  margin-top: 14px;
+  border-radius: 999px;
+  padding: 16px 34px;
+  font: 600 16px var(--font-core);
+  color: var(--kd-glass);
+  background: rgba(234, 246, 240, 0.1);
+  border: 1px solid rgba(234, 246, 240, 0.16);
+}
+
+/* --------------------------------------------------------------------------
+   Реалистичный ноутбук: крышка, экран, петля, основание, контактная тень
+   -------------------------------------------------------------------------- */
+
+.laptop {
+  position: relative;
+  perspective: 2400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 20px;
+}
+
+.lid {
+  width: 100%;
+  background: linear-gradient(155deg, #525a56 0%, #3a423e 24%, #252b28 60%, #171c1a 100%);
+  border-radius: 22px 22px 8px 8px;
+  padding: 16px 16px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 70px 110px -50px rgba(0, 0, 0, 0.8),
+    0 2px 0 rgba(255, 255, 255, 0.22) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.6) inset;
+  position: relative;
+  z-index: 2;
+}
+
+.notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 7px;
+  border-radius: 0 0 9px 9px;
+  background: linear-gradient(180deg, #0d100f, #1c211f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2b3a33;
+  box-shadow: 0 0 3px rgba(120, 220, 170, 0.5);
+}
+
+.screen {
+  border-radius: 12px;
+  background: var(--kd-forest-deep, #0f1f18);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.09) inset,
+    0 30px 60px -30px rgba(0, 0, 0, 0.9) inset;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.hinge {
+  width: 104%;
+  height: 14px;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(180deg, #202623, #3d443f 40%, #2a302d 100%);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.14) inset;
+  position: relative;
+  z-index: 3;
+}
+
+.base {
+  width: 104%;
+  height: 20px;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(180deg, #b9c1bc 0%, #8e9793 30%, #59615e 70%, #2e3432 100%);
+  box-shadow:
+    0 44px 70px -26px rgba(0, 0, 0, 0.8),
+    0 1px 0 rgba(255, 255, 255, 0.55) inset;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.notchBase {
+  width: 120px;
+  height: 8px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.12));
+}
+
+.contactShadow {
+  width: 78%;
+  height: 60px;
+  margin-top: -8px;
+  background: radial-gradient(60% 100% at 50% 0, rgba(0, 0, 0, 0.55), transparent 70%);
+  filter: blur(10px);
+}
+
+/* --------------------------------------------------------------------------
+   Дашборд внутри экрана
+   -------------------------------------------------------------------------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(234, 246, 240, 0.1);
+  flex-wrap: wrap;
+}
+
+.appName {
+  font: 800 14px var(--font-core);
+  color: var(--kd-salad);
+}
+
+.project {
+  font: 500 13px var(--font-core);
+  color: rgba(234, 246, 240, 0.55);
+}
+
+.status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 12px var(--font-core);
+  color: rgba(234, 246, 240, 0.5);
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--kd-salad);
+  box-shadow: 0 0 10px rgba(165, 232, 92, 0.8);
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font: 600 14px var(--font-core);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(234, 246, 240, 0.75);
+  transition:
+    background var(--dur-fast) var(--ease-standard),
+    color var(--dur-fast) var(--ease-standard);
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--kd-glass);
+}
+
+.tabActive {
+  composes: tab;
+  background: var(--kd-salad);
+  color: var(--kd-ink);
+}
+
+.tabActive:hover {
+  background: var(--kd-salad);
+  color: var(--kd-ink);
+}
+
+.export {
+  margin-left: auto;
+  font: 500 14px var(--font-core);
+  color: rgba(234, 246, 240, 0.55);
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 16px;
+}
+
+.panelsWide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px;
+}
+
+.card {
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(234, 246, 240, 0.12);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  font: 700 16px var(--font-core);
+  color: var(--kd-glass);
+}
+
+.chip {
+  border-radius: 999px;
+  background: rgba(165, 232, 92, 0.18);
+  color: var(--kd-salad);
+  font: 600 11px var(--font-core);
+  padding: 5px 10px;
+}
+
+.shot {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.specs {
+  font: 400 13px/1.9 var(--font-core);
+  color: rgba(234, 246, 240, 0.75);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Квартирография */
+.tableHead {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.8fr 1fr;
+  gap: 8px;
+  font: 600 11px var(--font-core);
+  letter-spacing: 0.1em;
+  color: rgba(234, 246, 240, 0.45);
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.8fr 1fr;
+  gap: 8px;
+  padding: 9px 0;
+  border-top: 1px solid rgba(234, 246, 240, 0.09);
+  font: 500 13px var(--font-core);
+  color: rgba(234, 246, 240, 0.85);
+  font-variant-numeric: tabular-nums;
+}
+
+.tableRowKey {
+  font-weight: 700;
+  color: var(--kd-glass);
+}
+
+.note {
+  font: 500 13px var(--font-core);
+  color: var(--kd-salad);
+}
+
+/* Финансовый результат */
+.result {
+  border-radius: 22px;
+  background: var(--kd-salad);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resultTitle {
+  font: 700 16px var(--font-core);
+  color: var(--kd-ink);
+}
+
+.resultScen {
+  font: 500 13px var(--font-core);
+  color: rgba(15, 31, 25, 0.62);
+}
+
+.resultValue {
+  font: 800 46px/1 var(--font-core);
+  color: var(--kd-green-deep);
+  font-variant-numeric: tabular-nums;
+}
+
+.resultSpecs {
+  font: 500 13px/2 var(--font-core);
+  color: rgba(15, 31, 25, 0.78);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Экономика */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+  gap: 10px;
+}
+
+.kpi {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(234, 246, 240, 0.1);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kpiLabel {
+  font: 500 12px var(--font-core);
+  color: rgba(234, 246, 240, 0.55);
+}
+
+.kpiValue {
+  font: 700 18px var(--font-core);
+  color: var(--kd-glass);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Полосы: структура затрат и чувствительность */
+.meter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meterHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.meterLabel {
+  flex: 1;
+  font: 500 14px var(--font-core);
+  color: rgba(234, 246, 240, 0.85);
+}
+
+.meterLabelLg {
+  composes: meterLabel;
+  font-size: 15px;
+}
+
+.meterValue {
+  font: 700 14px var(--font-core);
+  color: var(--kd-salad);
+  font-variant-numeric: tabular-nums;
+}
+
+.meterValueLg {
+  composes: meterValue;
+  font-size: 15px;
+}
+
+.track {
+  height: 8px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--kd-salad);
+  box-shadow: 0 0 18px rgba(165, 232, 92, 0.5);
+}
+
+/* Сценарии */
+.scenScroll {
+  overflow-x: auto;
+}
+
+.scenTable {
+  min-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scenHead {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 0.7fr 0.9fr;
+  gap: 8px;
+  font: 600 11px var(--font-core);
+  letter-spacing: 0.1em;
+  color: rgba(234, 246, 240, 0.45);
+}
+
+.scenRow {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 0.7fr 0.9fr;
+  gap: 8px;
+  padding: 12px 10px;
+  border-radius: 16px;
+  cursor: pointer;
+  font: 500 13px var(--font-core);
+  color: rgba(234, 246, 240, 0.85);
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  border: none;
+  text-align: left;
+  transition: background var(--dur-fast) var(--ease-standard);
+}
+
+.scenRow:hover {
+  background: rgba(165, 232, 92, 0.12);
+}
+
+.scenRowActive {
+  composes: scenRow;
+  background: rgba(165, 232, 92, 0.18);
+}
+
+.scenName {
+  font-weight: 700;
+  color: rgba(234, 246, 240, 0.9);
+}
+
+.scenNameActive {
+  composes: scenName;
+  color: var(--kd-salad);
+}
+
+/* Решение */
+.decision {
+  border-radius: 22px;
+  background: rgba(165, 232, 92, 0.1);
+  border: 1px solid rgba(165, 232, 92, 0.35);
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.decisionCopy {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.decisionKicker {
+  font: 600 12px var(--font-core);
+  letter-spacing: 0.14em;
+  color: var(--kd-salad);
+}
+
+.decisionTitle {
+  font: 800 28px/1.2 var(--font-core);
+  color: var(--kd-glass);
+}
+
+.decisionText {
+  font: 400 15px/1.6 var(--font-core);
+  color: rgba(234, 246, 240, 0.7);
+}
+
+.decisionKpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min(110px, 100%), 1fr));
+  gap: 10px;
+  flex: 1 1 340px;
+}
+
+.decisionKpi {
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.decisionKpiValueAccent {
+  composes: kpiValue;
+  color: var(--kd-salad);
+}
+
+/* Вывод под дашбордом */
+.insight {
+  border-radius: 20px;
+  border: 1px solid rgba(165, 232, 92, 0.28);
+  background: linear-gradient(180deg, rgba(165, 232, 92, 0.12), rgba(165, 232, 92, 0.04));
+  padding: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.insightCopy {
+  flex: 1 1 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.insightTitle {
+  font: 700 15px var(--font-core);
+  color: var(--kd-salad);
+}
+
+.insightText {
+  font: 400 14px/1.6 var(--font-core);
+  color: rgba(234, 246, 240, 0.8);
+}
+
+.insightKpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min(100px, 100%), 1fr));
+  gap: 10px;
+  flex: 1 1 320px;
+}
+
+.insightKpi {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(234, 246, 240, 0.1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.insightKpiLabel {
+  font: 500 11px var(--font-core);
+  color: rgba(234, 246, 240, 0.5);
+}
+
+.insightKpiValue {
+  font: 700 15px var(--font-core);
+  color: var(--kd-glass);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    padding: 40px 24px;
+  }
+
+  .lid {
+    padding: 12px 12px 16px;
+  }
+
+  .screen {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 620px) {
+  .section {
+    padding: 0 16px 64px;
+  }
+
+  .inner {
+    padding: 32px 16px;
+    border-radius: 28px;
+  }
+
+  .export {
+    display: none;
+  }
+
+  .tab,
+  .tabActive {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* Жёсткие трёхколоночные сетки не помещаются в экран ноутбука на телефоне */
+  .insightKpis,
+  .decisionKpis {
+    grid-template-columns: repeat(auto-fit, minmax(min(96px, 100%), 1fr));
+  }
+}

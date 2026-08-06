@@ -1,0 +1,129 @@
+.section {
+  padding: 0 24px 88px;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 820px;
+}
+
+.title {
+  margin: 0;
+  font: 800 clamp(32px, 3.4vw, 48px) / 1.06 var(--font-core);
+  letter-spacing: -0.035em;
+}
+
+.titleAccent {
+  color: var(--kd-green-dark);
+}
+
+.lead {
+  margin: 0;
+  font: 400 17px/1.6 var(--font-core);
+  color: var(--kd-slate);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 16px;
+}
+
+.card {
+  border-radius: 28px;
+  background: var(--kd-white);
+  border: 1px solid var(--kd-line);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step {
+  font: 600 14px var(--font-core);
+  color: var(--kd-green-dark);
+}
+
+.shot {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  mix-blend-mode: multiply;
+}
+
+.text {
+  font: 400 14px/1.6 var(--font-core);
+  color: var(--kd-slate);
+}
+
+.chartCard {
+  composes: card;
+  grid-column: span 2;
+  min-width: 0;
+}
+
+.chartTitle {
+  font: 800 20px var(--font-core);
+  color: var(--kd-green-deep);
+}
+
+/* Пять подписей не сжимаются ниже своей ширины — на узких экранах
+   график скроллится внутри карточки, а не распирает её */
+.chartScroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.chartInner {
+  min-width: 300px;
+}
+
+.chartNote {
+  font: 500 14px/1.6 var(--font-core);
+  color: var(--kd-slate);
+}
+
+.banner {
+  border-radius: 28px;
+  background: var(--kd-forest);
+  padding: 26px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.bannerText {
+  font: 600 18px var(--font-core);
+  color: var(--kd-glass);
+}
+
+.bannerPill {
+  border-radius: 999px;
+  background: var(--kd-salad);
+  color: var(--kd-ink);
+  font: 700 17px var(--font-core);
+  padding: 12px 22px;
+}
+
+@media (max-width: 720px) {
+  .chartCard {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding: 0 16px 64px;
+  }
+}

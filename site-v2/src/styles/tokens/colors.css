@@ -1,0 +1,129 @@
+:root{
+/* ============================================================
+   БАЗОВАЯ ПАЛИТРА
+   Ядро свежее: зелёный и салатовый + стеклянный белый.
+   Тёплые цвета логобука (горчичный, терракотовый, молочный)
+   сохранены как имиджевый слой, но больше не ведут макет.
+   ============================================================ */
+
+/* Салатовая ось — ведущая. Салатовый + свежий белый = основа бренда. */
+--kd-salad:#A5E85C;          /* фирменный салатовый: главные плоскости, герои, CTA */
+--kd-salad-bright:#C2F187;   /* светлее: подсветка, ховер на салатовом */
+--kd-salad-deep:#7ACB2E;     /* глубже: кромки, ховер кнопки, графики */
+--kd-salad-veil:#EFFBDF;     /* самая тихая салатовая заливка */
+
+--kd-green:#3FCB84;          /* свежий изумрудно-весенний — ведущий акцент */
+--kd-green-bright:#7BE0A8;   /* мятный: подсветка, hover на тёмном */
+--kd-green-mid:#22AE6B;      /* насыщённый: кнопки, активные состояния */
+--kd-green-dark:#178552;     /* текст по светлому, ссылки */
+--kd-green-deep:#0F5F3C;     /* второстепенные заголовки на светлом */
+--kd-forest:#0B3325;         /* тёмные секции вместо чёрного */
+--kd-forest-soft:#12432F;    /* карточки на тёмном */
+--kd-mint:#C7EED8;           /* плотный светлый тон */
+--kd-mint-soft:#E3F6EA;      /* заливки блоков */
+--kd-mint-veil:#F2FBF6;      /* «утопленный» фон секции */
+
+/* Стеклянный белый — основа страницы */
+--kd-white:#FFFFFF;
+--kd-glass:#FAFDFB;          /* свежий белый — основной фон */
+--kd-glass-pane:rgba(255,255,255,.68); /* стеклянная плоскость */
+--kd-glass-edge:rgba(255,255,255,.72); /* светлая кромка стекла */
+--kd-glass-tint:rgba(63,203,132,.10); /* зелёная дымка под стеклом */
+
+/* Нейтрали с зелёным подтоном */
+--kd-ink:#0F1F19;            /* основной текст */
+--kd-slate:#3F544B;          /* второстепенный текст */
+--kd-stone:#879A92;          /* подписи, третий уровень */
+--kd-line:#DCE8E1;           /* волосяная линия */
+--kd-line-soft:#EBF3EE;      /* самая тихая линия и заливка */
+
+/* Логобук: тёплый имиджевый слой */
+--kd-black:#111111;
+--kd-graphite:#4E4A46;
+--kd-milk:#F7F3EB;
+--kd-milk-deep:#F0EADF;
+--kd-mustard:#C6A15B;
+--kd-mustard-dark:#A9873F;
+--kd-mustard-tint:#F1E6CE;
+--kd-terracotta:#C96F53;
+--kd-terracotta-dark:#A9553B;
+--kd-terracotta-tint:#F5E1D9;
+--kd-grey:#B8B1A8;
+--kd-grey-20:#EDE8E0;
+--kd-grey-40:#DCD7CF;
+--kd-salad-legacy:#9FCC45;   /* салатовый логобука — печать и имиджевые носители */
+
+/* --- Семантика: текст --- */
+--text-primary:var(--kd-ink);
+--text-secondary:var(--kd-slate);
+--text-muted:var(--kd-stone);
+--text-inverse:var(--kd-glass);
+--text-on-brand:var(--kd-ink);
+--text-accent:var(--kd-green-dark);
+--text-link:var(--kd-ink);
+--text-link-hover:var(--kd-green-dark);
+
+/* --- Семантика: поверхности --- */
+--surface-page:var(--kd-glass);
+--surface-brand:var(--kd-salad);
+--surface-brand-soft:var(--kd-salad-veil);
+--surface-card:var(--kd-white);
+--surface-glass:var(--kd-glass-pane);
+--surface-sunken:var(--kd-mint-veil);
+--surface-inverse:var(--kd-forest);
+--surface-inverse-soft:var(--kd-forest-soft);
+--surface-accent-soft:var(--kd-salad-veil);
+--surface-growth-soft:var(--kd-mint);
+--surface-warm-soft:var(--kd-mustard-tint);
+
+/* --- Семантика: линии --- */
+--line-hairline:var(--kd-line);
+--line-soft:var(--kd-line-soft);
+--line-strong:var(--kd-slate);
+--line-inverse:#215240;
+--line-glass:var(--kd-glass-edge);
+--line-focus:var(--kd-green-mid);
+
+/* --- Семантика: акценты и статусы --- */
+--accent-primary:var(--kd-salad);
+--accent-strong:var(--kd-green-mid);
+--accent-growth:var(--kd-salad-bright);
+--accent-warm:var(--kd-mustard);
+--status-ok:var(--kd-green-dark);
+--status-attention:var(--kd-mustard-dark);
+--status-risk:var(--kd-terracotta-dark);
+--status-neutral:var(--kd-stone);
+
+/* --- Серии графиков: порядок фиксированный, цвета не переставляем --- */
+--chart-1:var(--kd-salad);
+--chart-2:var(--kd-green);
+--chart-3:var(--kd-green-mid);
+--chart-4:var(--kd-green-deep);
+--chart-5:var(--kd-mustard);
+--chart-6:var(--kd-terracotta);
+--chart-grid:var(--kd-line);
+--chart-track:var(--kd-line-soft);
+--chart-ink:var(--kd-ink);
+
+/* --- Точка логотипа --- */
+--logo-dot-primary:var(--kd-salad);
+--logo-dot-business:var(--kd-ink);
+--logo-dot-image:var(--kd-mustard);
+--logo-dot-neutral:var(--kd-stone);
+}
+[data-theme="dark"],.kd-dark{
+--text-primary:#EAF6F0;
+--text-secondary:#9FBCAF;
+--text-muted:#75917F;
+--text-inverse:var(--kd-forest);
+--text-link:#EFF6EA;
+--text-link-hover:var(--kd-green);
+--surface-page:var(--kd-forest);
+--surface-card:var(--kd-forest-soft);
+--surface-glass:rgba(18,67,47,.62);
+--surface-sunken:#08281D;
+--surface-inverse:var(--kd-glass);
+--line-hairline:#215240;
+--line-soft:#19402F;
+--line-strong:#4F7A67;
+}

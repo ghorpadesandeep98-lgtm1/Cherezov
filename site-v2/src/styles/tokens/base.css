@@ -1,0 +1,22 @@
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-core);font-size:var(--text-body-size);line-height:var(--text-body-lh);font-weight:var(--text-body-weight);font-feature-settings:"ss01","cv01";-webkit-font-smoothing:antialiased;text-wrap:pretty}
+h1,h2,h3,h4,h5,h6{margin:0;font-family:var(--font-core);text-wrap:balance}
+p{margin:0}
+a{color:var(--text-link);text-decoration:none;border-bottom:1px solid var(--line-hairline);transition:color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard)}
+a:hover{color:var(--text-link-hover);border-bottom-color:var(--accent-strong)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-xs)}
+img,svg{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+::selection{background:var(--kd-mint);color:var(--kd-ink)}
+.kd-display{font-size:var(--text-display-size);line-height:var(--text-display-lh);letter-spacing:var(--text-display-ls);font-weight:var(--text-display-weight)}
+.kd-h1{font-size:var(--text-h1-size);line-height:var(--text-h1-lh);letter-spacing:var(--text-h1-ls);font-weight:var(--text-h1-weight)}
+.kd-h2{font-size:var(--text-h2-size);line-height:var(--text-h2-lh);letter-spacing:var(--text-h2-ls);font-weight:var(--text-h2-weight)}
+.kd-h3{font-size:var(--text-h3-size);line-height:var(--text-h3-lh);letter-spacing:var(--text-h3-ls);font-weight:var(--text-h3-weight)}
+.kd-h4{font-size:var(--text-h4-size);line-height:var(--text-h4-lh);letter-spacing:var(--text-h4-ls);font-weight:var(--text-h4-weight)}
+.kd-lead{font-size:var(--text-lead-size);line-height:var(--text-lead-lh);letter-spacing:var(--text-lead-ls);color:var(--text-secondary)}
+.kd-small{font-size:var(--text-small-size);line-height:var(--text-small-lh)}
+.kd-caption{font-size:var(--text-caption-size);line-height:var(--text-caption-lh);font-weight:var(--text-caption-weight);color:var(--text-secondary)}
+.kd-overline{font-size:var(--text-overline-size);line-height:var(--text-overline-lh);letter-spacing:var(--text-overline-ls);font-weight:var(--text-overline-weight);text-transform:uppercase;color:var(--text-secondary)}
+.kd-numeric{font-size:var(--text-numeric-size);line-height:var(--text-numeric-lh);letter-spacing:var(--text-numeric-ls);font-weight:var(--text-numeric-weight);font-variant-numeric:tabular-nums}
+.kd-glass{background:var(--surface-glass);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);border:1px solid var(--line-glass);box-shadow:var(--shadow-glass)}

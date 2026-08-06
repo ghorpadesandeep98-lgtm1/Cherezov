@@ -1,0 +1,72 @@
+:root{
+/* ============================================================
+   LIQUID GLASS — трендовое «жидкое стекло» нативными средствами.
+   Четыре слоя в одном элементе:
+   1) матовое преломление — сильный blur, низкая насыщенность + SVG feDisplacementMap;
+   2) размытие и подсветка фона — blur + saturate + brightness;
+   3) тонировка — очень слабый градиент белого;
+   4) оптика кромки — направленные inset-блики + мягкая тень.
+   Стекло работает ТОЛЬКО поверх слоя (фото, салатовая плоскость,
+   forest, цветной блок). На ровном белом стекла не видно.
+   ============================================================ */
+--glass-backdrop:blur(30px) saturate(124%) brightness(1.03); /* @kind other */
+--glass-backdrop-soft:blur(20px) saturate(120%) brightness(1.04); /* @kind other */
+--glass-backdrop-deep:blur(44px) saturate(128%) brightness(1.02); /* @kind other */
+
+/* Исходный экспорт ссылался на assets/liquid-glass.svg — этого файла в бандле нет.
+   Указываем на фильтры, которые LiquidGlass внедряет в документ (см. ds/Input.tsx). */
+--glass-refract:url(#kd-glass); /* @kind other */
+--glass-refract-soft:url(#kd-glass-soft); /* @kind other */
+--glass-refract-strong:url(#kd-glass-deep); /* @kind other */
+
+--glass-tint:linear-gradient(160deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.17) 58%,rgba(255,255,255,.21) 100%);
+--glass-tint-strong:linear-gradient(160deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.23) 58%,rgba(255,255,255,.27) 100%);
+--glass-tint-dark:linear-gradient(160deg,rgba(11,51,37,.30) 0%,rgba(11,51,37,.22) 58%,rgba(18,67,47,.26) 100%);
+--glass-tint-brand:linear-gradient(160deg,rgba(194,241,135,.38) 0%,rgba(165,232,92,.28) 58%,rgba(194,241,135,.32) 100%);
+
+/* Оптика кромки: свет слева-сверху, отражение справа-снизу, внутреннее свечение */
+--glass-optics:inset 0 1px 0 rgba(255,255,255,.40),inset 0 -1px 0 rgba(255,255,255,.10); /* @kind shadow */
+--glass-optics-dark:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(255,255,255,.05); /* @kind shadow */
+--glass-cast:0 26px 60px -32px rgba(6,20,14,.42),0 2px 6px -4px rgba(6,20,14,.16);
+--glass-cast-lifted:0 38px 78px -34px rgba(6,20,14,.48),0 3px 8px -4px rgba(6,20,14,.20);
+--glass-hairline:1px solid rgba(255,255,255,.30); /* @kind other */
+--glass-hairline-dark:1px solid rgba(255,255,255,.12); /* @kind other */
+--glass-sheen:linear-gradient(102deg,transparent 38%,rgba(255,255,255,.16) 50%,transparent 64%); /* @kind other */
+
+/* Совместимость со старыми именами */
+--glass-blur:var(--glass-backdrop); /* @kind other */
+--glass-blur-soft:var(--glass-backdrop-soft); /* @kind other */
+--glass-blur-deep:var(--glass-backdrop-deep); /* @kind other */
+--glass-fill:var(--glass-tint);
+--glass-fill-strong:var(--glass-tint-strong);
+--glass-fill-dark:var(--glass-tint-dark);
+--glass-fill-brand:var(--glass-tint-brand);
+--glass-rim:var(--glass-hairline); /* @kind other */
+--glass-rim-dark:var(--glass-hairline-dark); /* @kind other */
+--glass-inner:var(--glass-optics); /* @kind shadow */
+--glass-inner-dark:var(--glass-optics-dark); /* @kind shadow */
+--glass-drop:var(--glass-cast);
+--glass-drop-lifted:var(--glass-cast-lifted);
+}
+
+/* Базовая плашка «жидкое стекло» */
+.kd-liquid{position:relative;overflow:hidden;border-radius:26px;color:var(--text-primary);background-image:var(--glass-tint);border:var(--glass-hairline);box-shadow:var(--glass-optics),var(--glass-cast);transition:box-shadow var(--dur-base) var(--ease-glass),transform var(--dur-base) var(--ease-spring),background-image var(--dur-base) var(--ease-glass)}
+/* слой преломления: размывает и «плавит» фон под плашкой */
+.kd-liquid::before{content:"";position:absolute;inset:0;z-index:0;border-radius:inherit;backdrop-filter:var(--glass-backdrop);-webkit-backdrop-filter:var(--glass-backdrop)}
+/* преломление кромки — опционально: дороже по отрисовке */
+.kd-liquid--refract::before{filter:var(--glass-refract)}
+/* слой блика: проводка света при наведении */
+.kd-liquid::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;background:var(--glass-sheen);background-size:230% 100%;background-position:-70% 0;opacity:0;pointer-events:none;mix-blend-mode:screen;transition:background-position var(--dur-slow) var(--ease-out),opacity var(--dur-fast) var(--ease-standard)}
+.kd-liquid:hover{transform:translateY(var(--motion-lift-glass));background-image:var(--glass-tint-strong);box-shadow:var(--glass-optics),var(--glass-cast-lifted)}
+.kd-liquid:hover::after{opacity:1;background-position:170% 0}
+.kd-liquid:active{transform:scale(var(--motion-press))}
+.kd-liquid--pill{border-radius:var(--radius-pill)}
+.kd-liquid--dark{background-image:var(--glass-tint-dark);border:var(--glass-hairline-dark);box-shadow:var(--glass-optics-dark),var(--glass-cast);color:var(--kd-glass)}
+.kd-liquid--brand{background-image:var(--glass-tint-brand);color:var(--kd-ink)}
+.kd-liquid--soft::before{backdrop-filter:var(--glass-backdrop-soft);-webkit-backdrop-filter:var(--glass-backdrop-soft)}
+.kd-liquid--soft.kd-liquid--refract::before{filter:var(--glass-refract-soft)}
+.kd-liquid--deep::before{backdrop-filter:var(--glass-backdrop-deep);-webkit-backdrop-filter:var(--glass-backdrop-deep)}
+.kd-liquid--deep.kd-liquid--refract::before{filter:var(--glass-refract-strong)}
+.kd-liquid--flat{border-radius:var(--radius-card)}
+@supports not (backdrop-filter:blur(1px)){.kd-liquid{background-color:rgba(255,255,255,.86)}.kd-liquid--dark{background-color:rgba(11,51,37,.90)}}
+.kd-liquid>*{position:relative;z-index:2}

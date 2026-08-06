@@ -1,0 +1,122 @@
+.section {
+  padding: 0 24px 88px;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font: 800 clamp(32px, 3.4vw, 48px) / 1.06 var(--font-core);
+  letter-spacing: -0.035em;
+}
+
+.titleAccent {
+  color: var(--kd-green-dark);
+}
+
+.lead {
+  margin: 0;
+  font: 400 17px/1.6 var(--font-core);
+  color: var(--kd-slate);
+  max-width: 44ch;
+}
+
+.item {
+  border-radius: 24px;
+  background: var(--kd-white);
+  border: 1px solid var(--kd-line);
+  padding: 20px 24px;
+}
+
+.itemLabel {
+  font: 600 11px var(--font-core);
+  letter-spacing: 0.14em;
+  color: var(--kd-stone);
+}
+
+.itemValue {
+  font: 500 16px/1.5 var(--font-core);
+}
+
+.map {
+  border-radius: 32px;
+  background: var(--kd-white);
+  border: 1px solid var(--kd-line);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mapHead {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mapLabel {
+  font: 600 11px var(--font-core);
+  letter-spacing: 0.14em;
+  color: var(--kd-stone);
+}
+
+.mapAddress {
+  font: 800 24px var(--font-core);
+}
+
+.route {
+  margin-left: auto;
+  border-radius: 999px;
+  background: var(--kd-salad);
+  color: var(--kd-ink);
+  font: 600 15px var(--font-core);
+  padding: 14px 24px;
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+.route:hover {
+  color: var(--kd-ink);
+  transform: translateY(-2px);
+}
+
+/* Плейсхолдер под интеграцию Яндекс.Карт */
+.canvas {
+  height: 360px;
+  border-radius: 24px;
+  background: var(--kd-mint-veil);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 15px var(--font-core);
+  color: var(--kd-stone);
+  text-align: center;
+  padding: 0 20px;
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding: 0 16px 64px;
+  }
+
+  .map {
+    padding: 20px;
+  }
+
+  .route {
+    margin-left: 0;
+  }
+}

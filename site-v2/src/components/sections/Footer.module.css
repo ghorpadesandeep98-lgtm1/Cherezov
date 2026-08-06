@@ -1,0 +1,85 @@
+.footer {
+  padding: 0 24px 24px;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: var(--kd-forest);
+  border-radius: 36px;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.top {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.cols {
+  display: flex;
+  gap: 48px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font: 500 15px var(--font-core);
+  color: var(--kd-glass);
+}
+
+.colLabel {
+  color: rgba(234, 246, 240, 0.45);
+  font: 600 11px var(--font-core);
+  letter-spacing: 0.14em;
+}
+
+.link {
+  color: var(--kd-glass);
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.link:hover {
+  color: var(--kd-salad);
+}
+
+.legal {
+  padding-top: 24px;
+  border-top: 1px solid var(--line-inverse);
+  font: 400 13px var(--font-core);
+  color: rgba(234, 246, 240, 0.45);
+}
+
+@media (max-width: 620px) {
+  .footer {
+    padding: 0 16px 16px;
+  }
+
+  .inner {
+    padding: 36px 24px;
+    border-radius: 28px;
+  }
+
+  .cols {
+    margin-left: 0;
+    gap: 28px;
+  }
+
+  /* Ссылки в футере — комфортная зона нажатия на тач-экране */
+  .col {
+    gap: 4px;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+  }
+}

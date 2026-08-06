@@ -1,0 +1,57 @@
+@import url('./tokens/colors.css');
+@import url('./tokens/typography.css');
+@import url('./tokens/spacing.css');
+@import url('./tokens/radii.css');
+@import url('./tokens/elevation.css');
+@import url('./tokens/motion.css');
+@import url('./tokens/glass.css');
+@import url('./tokens/base.css');
+
+/* --------------------------------------------------------------------------
+   Страница: базовый слой поверх токенов дизайн-системы.
+   -------------------------------------------------------------------------- */
+
+/* next/font отдаёт самохостящийся Manrope в --font-manrope;
+   фирменный токен --font-core из typography.css указывает на него. */
+:root {
+  --font-core: var(--font-manrope), 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--kd-glass);
+  font-family: var(--font-core), system-ui, sans-serif;
+  color: var(--kd-ink);
+}
+
+a {
+  color: var(--kd-green-dark);
+  text-decoration: none;
+}
+
+/* base.css вешает подчёркивание-границу на ссылки — в макете её нет */
+body a[href] {
+  border-bottom: 0 none;
+}
+
+a:hover {
+  color: var(--kd-green-deep);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+nav a,
+footer a {
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+}

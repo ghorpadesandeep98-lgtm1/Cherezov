@@ -1,0 +1,245 @@
+.wrap {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  padding: 16px 24px 0;
+}
+
+.bar {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  background: rgba(11, 51, 37, 0.88);
+  backdrop-filter: blur(22px) saturate(130%);
+  -webkit-backdrop-filter: blur(22px) saturate(130%);
+  border: 1px solid rgba(165, 232, 92, 0.18);
+  border-radius: 999px;
+  padding: 12px 12px 12px 28px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  box-shadow: 0 18px 50px rgba(11, 51, 37, 0.28);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: 12px;
+  flex-wrap: wrap;
+  text-decoration: none;
+}
+
+.link {
+  font: 500 15px/1 var(--font-core);
+  color: rgba(234, 246, 240, 0.7);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+
+.link:hover {
+  color: var(--kd-glass);
+}
+
+.linkLead {
+  composes: link;
+  font-weight: 600;
+  color: var(--kd-glass);
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  flex: none;
+  background: var(--kd-salad);
+  color: var(--kd-ink);
+  font: 600 15px var(--font-core);
+  padding: 12px 22px;
+  border-radius: 999px;
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+.cta:hover {
+  color: var(--kd-ink);
+  transform: translateY(-1px);
+}
+
+.ctaArrow {
+  font-size: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Мобильное меню
+   -------------------------------------------------------------------------- */
+
+.burger {
+  display: none;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(165, 232, 92, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.burgerBar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--kd-glass);
+  transition: transform var(--dur-fast) var(--ease-standard), opacity var(--dur-fast) linear;
+}
+
+.burgerBarTop {
+  composes: burgerBar;
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burgerBarHidden {
+  composes: burgerBar;
+  opacity: 0;
+}
+
+.burgerBarBottom {
+  composes: burgerBar;
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu {
+  display: none;
+}
+
+.menuOpen {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 10px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 28px;
+  background: rgba(11, 51, 37, 0.96);
+  backdrop-filter: blur(22px) saturate(130%);
+  -webkit-backdrop-filter: blur(22px) saturate(130%);
+  border: 1px solid rgba(165, 232, 92, 0.18);
+  box-shadow: 0 26px 60px rgba(11, 51, 37, 0.42);
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 0 18px;
+  border-radius: 18px;
+  font: 600 17px var(--font-core);
+  color: var(--kd-glass);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.menuLink:hover,
+.menuLink:active {
+  color: var(--kd-salad);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menuCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  margin-top: 4px;
+  border-radius: 999px;
+  background: var(--kd-salad);
+  color: var(--kd-ink);
+  font: 700 17px var(--font-core);
+}
+
+.menuCta:hover {
+  color: var(--kd-ink);
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  border: none;
+  padding: 0;
+  background: rgba(4, 26, 18, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  cursor: default;
+}
+
+/* --------------------------------------------------------------------------
+   Контрольные точки
+   -------------------------------------------------------------------------- */
+
+/* Пункты меню уезжают в бургер */
+@media (max-width: 980px) {
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .bar {
+    padding: 10px 10px 10px 20px;
+    gap: 16px;
+  }
+}
+
+/* Кнопка «Запросить демо» тоже уезжает в меню — в пилюле остаются логотип и бургер */
+@media (max-width: 560px) {
+  .wrap {
+    padding: 12px 16px 0;
+  }
+
+  .cta {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .bar {
+    padding: 8px 8px 8px 14px;
+    gap: 10px;
+  }
+
+  .logo svg {
+    width: 118px;
+    height: auto;
+  }
+
+  .burger {
+    width: 42px;
+    height: 42px;
+  }
+}
