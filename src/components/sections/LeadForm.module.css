@@ -140,3 +140,17 @@
     padding: 26px 22px;
   }
 }
+
+.failed {
+  border-radius: 16px;
+  background: rgba(201, 111, 83, 0.1);
+  border: 1px solid rgba(201, 111, 83, 0.35);
+  padding: 12px 16px;
+  font: 500 14px var(--font-core);
+  color: var(--text-primary);
+}
+
+.failed a {
+  color: inherit;
+  text-underline-offset: 3px;
+}

@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { Input } from '@/components/ds/Input';
+import type { LeadFields } from '@/lib/lead';
 import styles from './LeadForm.module.css';
 
 const PERKS = [
@@ -10,13 +11,44 @@ const PERKS = [
   { title: 'Защита решения', text: 'цифры, которые легко объяснить партнёру и инвестору' },
 ];
 
-export function LeadForm() {
-  const [sent, setSent] = useState(false);
+type Status = 'idle' | 'sending' | 'sent' | 'failed';
 
-  // Отправка пока не подключена к бэкенду — валидируем и показываем подтверждение.
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+export function LeadForm() {
+  const [status, setStatus] = useState<Status>('idle');
+  const [errors, setErrors] = useState<Partial<Record<keyof LeadFields, string>>>({});
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+
+    setStatus('sending');
+    setErrors({});
+
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ ...data, source: 'Форма «Второе мнение»' }),
+      });
+
+      if (response.status === 422) {
+        const body = (await response.json()) as { errors?: Partial<Record<keyof LeadFields, string>> };
+        setErrors(body.errors ?? {});
+        setStatus('idle');
+        return;
+      }
+
+      if (!response.ok) {
+        setStatus('failed');
+        return;
+      }
+
+      form.reset();
+      setStatus('sent');
+    } catch {
+      setStatus('failed');
+    }
   };
 
   return (
@@ -40,12 +72,12 @@ export function LeadForm() {
           </div>
         </div>
 
-        <form className={styles.form} onSubmit={onSubmit} noValidate={false}>
+        <form className={styles.form} onSubmit={onSubmit}>
           <div className={styles.formTitle}>
             Получите второе <span className={styles.formTitleAccent}>мнение по проекту</span>
           </div>
 
-          {sent ? (
+          {status === 'sent' ? (
             <div className={styles.done}>
               <span className={styles.doneTitle}>Заявка принята</span>
               <span className={styles.doneText}>
@@ -62,6 +94,7 @@ export function LeadForm() {
                 placeholder="name@company.ru"
                 required
                 requiredMark={false}
+                error={errors.email}
               />
               <Input
                 label="Имя"
@@ -70,6 +103,7 @@ export function LeadForm() {
                 placeholder="Как к вам обращаться"
                 required
                 requiredMark={false}
+                error={errors.name}
               />
               <Input
                 label="Телефон"
@@ -79,10 +113,29 @@ export function LeadForm() {
                 placeholder="+7 (000) 000-00-00"
                 required
                 requiredMark={false}
+                error={errors.phone}
               />
-              <button type="submit" className={styles.submit}>
-                Запросить демо ↗
+
+              {/* Ловушка для ботов: скрыта от людей и от скринридеров */}
+              <input
+                type="text"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+              />
+
+              <button type="submit" className={styles.submit} disabled={status === 'sending'}>
+                {status === 'sending' ? 'Отправляем…' : 'Запросить демо ↗'}
               </button>
+
+              {status === 'failed' && (
+                <span className={styles.failed} role="alert">
+                  Заявка не ушла. Попробуйте ещё раз или напишите на{' '}
+                  <a href="mailto:468070@mail.ru">468070@mail.ru</a>.
+                </span>
+              )}
             </>
           )}
 
