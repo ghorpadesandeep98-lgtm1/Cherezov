@@ -7,6 +7,17 @@ import { appendLeadToSheet, readSheetsConfig } from '@/lib/sheets';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
+/**
+ * Диагностика настройки: показывает, какие каналы доставки видит сервер.
+ * Только флаги — ни адресов, ни ключей наружу не отдаём. Нужна, чтобы после
+ * деплоя за секунду понять, доехали ли переменные окружения.
+ */
+export function GET() {
+  return NextResponse.json({
+    channels: { email: Boolean(readSmtpConfig()), sheets: Boolean(readSheetsConfig()) },
+  });
+}
+
 export async function POST(request: Request) {
   let payload: unknown;
   try {
