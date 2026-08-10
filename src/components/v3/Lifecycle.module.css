@@ -279,6 +279,11 @@
 }
 
 @media (max-width: 719px) {
+  /* На 320 px строка в одну линию не помещается и распирает страницу. */
+  .title {
+    white-space: normal;
+  }
+
   .arrow {
     display: block;
   }

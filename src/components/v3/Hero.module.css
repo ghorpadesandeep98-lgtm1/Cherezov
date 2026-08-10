@@ -182,16 +182,21 @@
   color: var(--kd-glass);
 }
 
+/* minmax(0,1fr) и min-width: 0 обязательны: иначе на 320 px длинные значения
+   («8 млн м²») не дают колонкам сжаться и распирают страницу. */
 .stats {
   flex: 0 1 420px;
+  min-width: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   animation: kdHeroRise 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) 0.3s both;
 }
 
 .stat,
 .statAccent {
+  min-width: 0;
+  overflow-wrap: break-word;
   padding: 22px 24px;
   border-radius: 26px;
   transition:
@@ -252,8 +257,15 @@
 
 @media (max-width: 719px) {
   .watermark,
-  .buttons {
+  /* На мобильном оставляем только главную кнопку: в макете первый экран уходил
+     совсем без CTA, и путь к форме оставался только через бургер. */
+  .secondary {
     display: none;
+  }
+
+  .primary {
+    width: 100%;
+    justify-content: center;
   }
 }
 
