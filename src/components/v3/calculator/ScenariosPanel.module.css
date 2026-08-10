@@ -1,0 +1,172 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.scroller {
+  overflow-x: auto;
+}
+
+.table {
+  min-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tableHead,
+.tableRow,
+.tableRowActive {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 0.7fr 0.9fr;
+  gap: 8px;
+  text-align: left;
+}
+
+.tableHead {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(234, 246, 240, 0.45);
+}
+
+.tableRow,
+.tableRowActive {
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  color: rgba(234, 246, 240, 0.85);
+  font-variant-numeric: tabular-nums;
+  transition: background 0.25s var(--ease-standard);
+}
+
+.tableRow {
+  background: transparent;
+}
+
+.tableRowActive {
+  background: rgba(165, 232, 92, 0.18);
+}
+
+.tableRow:hover {
+  background: rgba(165, 232, 92, 0.12);
+}
+
+.name,
+.nameActive {
+  font-weight: 700;
+}
+
+.name {
+  color: rgba(234, 246, 240, 0.9);
+}
+
+.nameActive {
+  color: var(--kd-salad);
+}
+
+.assumeHead,
+.assumeRow {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.assumeHead {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(234, 246, 240, 0.45);
+}
+
+.assumeRow {
+  padding: 8px 0;
+  border-top: 1px solid rgba(234, 246, 240, 0.09);
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(234, 246, 240, 0.8);
+  font-variant-numeric: tabular-nums;
+}
+
+.assumeKey {
+  color: var(--kd-glass);
+}
+
+.assumeBase {
+  font-weight: 700;
+  color: var(--kd-salad);
+}
+
+.irrChart {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 104px;
+  padding-top: 2px;
+}
+
+.threshold {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34%;
+  border-top: 1px dashed rgba(234, 246, 240, 0.4);
+  pointer-events: none;
+}
+
+.thresholdLabel {
+  position: absolute;
+  right: 0;
+  top: -16px;
+  font-weight: 600;
+  font-size: 10px;
+  color: rgba(234, 246, 240, 0.55);
+}
+
+.irrColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  height: 100%;
+}
+
+.irrValue {
+  font-weight: 700;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.irrBar {
+  width: 100%;
+  border-radius: 8px 8px 3px 3px;
+}
+
+.irrKey {
+  font-weight: 500;
+  font-size: 11px;
+  color: rgba(234, 246, 240, 0.6);
+}
+
+.guards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.guard {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(234, 246, 240, 0.1);
+  padding: 11px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

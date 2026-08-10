@@ -14,7 +14,8 @@
 --glass-backdrop-deep:blur(44px) saturate(128%) brightness(1.02); /* @kind other */
 
 /* Исходный экспорт ссылался на assets/liquid-glass.svg — этого файла в бандле нет.
-   Указываем на фильтры, которые LiquidGlass внедряет в документ (см. ds/Input.tsx). */
+   Текущий макет преломление кромки не использует: переменные оставлены как контракт
+   дизайн-системы и ждут SVG-фильтров, если стекло с рефракцией понадобится. */
 --glass-refract:url(#kd-glass); /* @kind other */
 --glass-refract-soft:url(#kd-glass-soft); /* @kind other */
 --glass-refract-strong:url(#kd-glass-deep); /* @kind other */

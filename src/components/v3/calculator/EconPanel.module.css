@@ -1,0 +1,121 @@
+.summary {
+  border-radius: 22px;
+  background: var(--kd-salad);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  max-width: 560px;
+}
+
+.summaryMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: none;
+}
+
+.summaryOverline {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(15, 31, 25, 0.6);
+}
+
+.summaryValue {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--kd-green-deep);
+  font-variant-numeric: tabular-nums;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(15, 31, 25, 0.78);
+  font-variant-numeric: tabular-nums;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.splitBar {
+  display: flex;
+  height: 14px;
+  border-radius: 99px;
+  overflow: hidden;
+  gap: 2px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 11px;
+  color: rgba(234, 246, 240, 0.72);
+  font-variant-numeric: tabular-nums;
+}
+
+.legendDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 99px;
+}
+
+.cashflow {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 92px;
+  padding-top: 2px;
+}
+
+.cashColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  height: 100%;
+}
+
+.cashValue {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--kd-salad);
+  font-variant-numeric: tabular-nums;
+}
+
+.cashBar {
+  width: 100%;
+  border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(180deg, var(--kd-salad), rgba(165, 232, 92, 0.45));
+  box-shadow: 0 0 24px rgba(165, 232, 92, 0.35);
+}
+
+.cashYear {
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(234, 246, 240, 0.55);
+}
+
+.cashNote {
+  font-size: 13px;
+  color: rgba(234, 246, 240, 0.6);
+}

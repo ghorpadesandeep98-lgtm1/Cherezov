@@ -1,0 +1,179 @@
+.orb {
+  position: relative;
+  flex: none;
+  display: block;
+  border-radius: 999px;
+  animation: kdOrbSpin 9s linear infinite;
+}
+
+.gloss {
+  position: absolute;
+  left: 19%;
+  top: 13%;
+  width: 27%;
+  height: 20%;
+  border-radius: 999px;
+  filter: blur(3px);
+}
+
+.rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  transform: rotate(-16deg);
+}
+
+/* --- Салатовый: самый светлый шар линейки --- */
+.salad {
+  background: radial-gradient(
+    circle at 33% 25%,
+    #ffffff 0%,
+    #eefadf 14%,
+    #c2f187 44%,
+    #a5e85c 70%,
+    #79b833 88%,
+    #4d7d1e 100%
+  );
+  box-shadow:
+    0 26px 30px -18px rgba(15, 95, 60, 0.55),
+    0 10px 14px -8px rgba(15, 95, 60, 0.32),
+    inset -9px -13px 22px rgba(20, 80, 40, 0.42),
+    inset 8px 10px 18px rgba(255, 255, 255, 0.6),
+    inset -2px -3px 8px rgba(255, 255, 255, 0.3);
+}
+
+.salad .gloss {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.salad .rim {
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(20, 80, 40, 0.2);
+}
+
+/* --- Мятный --- */
+.mint {
+  background: radial-gradient(
+    circle at 33% 25%,
+    #ffffff 0%,
+    #d7f8e4 16%,
+    #7be0a8 48%,
+    #3fcb84 74%,
+    #209a5f 90%,
+    #0d5b38 100%
+  );
+  box-shadow:
+    0 26px 30px -18px rgba(15, 95, 60, 0.55),
+    0 10px 14px -8px rgba(15, 95, 60, 0.32),
+    inset -9px -13px 22px rgba(10, 70, 45, 0.42),
+    inset 8px 10px 18px rgba(255, 255, 255, 0.6),
+    inset -2px -3px 8px rgba(255, 255, 255, 0.28);
+}
+
+.mint .gloss {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mint .rim {
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(15, 90, 55, 0.2);
+}
+
+/* --- Изумрудный --- */
+.green {
+  background: radial-gradient(
+    circle at 33% 25%,
+    #ffffff 0%,
+    #c9f0dc 17%,
+    #3fcb84 52%,
+    #22ae6b 76%,
+    #12784c 90%,
+    #083c26 100%
+  );
+  box-shadow:
+    0 26px 30px -18px rgba(15, 95, 60, 0.55),
+    0 10px 14px -8px rgba(15, 95, 60, 0.32),
+    inset -9px -13px 22px rgba(6, 55, 35, 0.45),
+    inset 8px 10px 18px rgba(255, 255, 255, 0.55),
+    inset -2px -3px 8px rgba(255, 255, 255, 0.26);
+}
+
+.green .gloss {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.green .rim {
+  border-top: 2px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 2px solid rgba(10, 70, 45, 0.22);
+}
+
+/* --- Глубокий зелёный --- */
+.deep {
+  background: radial-gradient(
+    circle at 33% 25%,
+    #bfe0d0 0%,
+    #4f9c78 18%,
+    #178552 56%,
+    #0f5f3c 80%,
+    #0a4229 92%,
+    #05200f 100%
+  );
+  box-shadow:
+    0 26px 30px -18px rgba(11, 51, 37, 0.6),
+    0 10px 14px -8px rgba(11, 51, 37, 0.35),
+    inset -9px -13px 22px rgba(0, 0, 0, 0.45),
+    inset 8px 10px 18px rgba(255, 255, 255, 0.3),
+    inset -2px -3px 8px rgba(255, 255, 255, 0.2);
+}
+
+.deep .gloss {
+  width: 26%;
+  height: 19%;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.deep .rim {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+/* --- Тёмно-хвойный: финальный шар «Решение» --- */
+.forest {
+  background: radial-gradient(
+    circle at 33% 25%,
+    #9dc7b2 0%,
+    #3d8163 20%,
+    #1c6647 52%,
+    #0b3325 82%,
+    #04180f 100%
+  );
+  box-shadow:
+    0 26px 30px -18px rgba(11, 51, 37, 0.65),
+    0 10px 14px -8px rgba(11, 51, 37, 0.4),
+    inset -9px -13px 22px rgba(0, 0, 0, 0.55),
+    inset 8px 10px 18px rgba(255, 255, 255, 0.26),
+    inset -2px -3px 8px rgba(255, 255, 255, 0.18);
+}
+
+.forest .gloss {
+  width: 26%;
+  height: 19%;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.forest .rim {
+  border-top: 2px solid rgba(255, 255, 255, 0.28);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+/* css-modules локализует и @keyframes, и ссылку на него в animation,
+   поэтому кадры живут рядом с использующими их правилами. */
+/* Фирменный шар: медленное вращение бликов */
+@keyframes kdOrbSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

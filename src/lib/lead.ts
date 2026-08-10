@@ -1,6 +1,7 @@
 /** Заявка с формы: единый контракт для клиента, почты и таблицы. */
 export type Lead = {
   name: string;
+  /** Форма макета собирает имя и телефон — почта остаётся необязательной. */
   email: string;
   phone: string;
   /** Ловушка для ботов: живой человек это поле не видит и не заполняет. */
@@ -32,7 +33,8 @@ export function validateLead(input: unknown): Validation {
 
   const errors: Partial<Record<keyof LeadFields, string>> = {};
   if (name.length < 2) errors.name = 'Укажите имя';
-  if (!EMAIL.test(email)) errors.email = 'Проверьте адрес почты';
+  // Почта необязательна, но если её прислали — она должна быть рабочей.
+  if (email && !EMAIL.test(email)) errors.email = 'Проверьте адрес почты';
   if ((phone.match(/\d/g) ?? []).length < PHONE_DIGITS) errors.phone = 'Проверьте номер телефона';
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };

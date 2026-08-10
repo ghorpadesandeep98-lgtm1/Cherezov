@@ -1,0 +1,309 @@
+.section {
+  padding: clamp(44px, 7vw, 88px) clamp(16px, 4vw, 24px);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.8vw, 36px);
+}
+
+.title {
+  font-weight: 800;
+  font-size: clamp(22px, 4.2vw, 66px);
+  line-height: 1;
+  letter-spacing: -0.042em;
+  white-space: nowrap;
+}
+
+.titleAccent {
+  position: relative;
+  display: inline-block;
+  color: var(--kd-green-dark);
+}
+
+/* Фирменная точка над «к проекту» */
+.titleDot {
+  position: absolute;
+  top: 0.06em;
+  right: -0.13em;
+  width: 0.15em;
+  height: 0.15em;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 33% 26%,
+    #9ae7bf 0%,
+    #4fbc86 16%,
+    #2f9c68 38%,
+    #178552 62%,
+    #0f5f3c 84%,
+    #0a3f28 100%
+  );
+  box-shadow:
+    inset -0.02em -0.03em 0.05em rgba(4, 30, 18, 0.55),
+    inset 0.015em 0.02em 0.04em rgba(255, 255, 255, 0.55);
+  animation: kdOrbSpin 14s linear infinite;
+}
+
+.carousel {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  z-index: 4;
+  display: none;
+  cursor: pointer;
+  padding: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(11, 51, 37, 0.62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(165, 232, 92, 0.4);
+  color: var(--kd-salad);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 38px;
+  text-align: center;
+}
+
+.track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 1.2vw, 14px);
+  align-items: stretch;
+}
+
+.card,
+.cardMuted {
+  scroll-snap-align: center;
+  flex: 1 1 216px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  border-radius: clamp(26px, 3vw, 40px);
+  padding: clamp(18px, 2.4vw, 26px) clamp(14px, 1.8vw, 18px);
+  transition: transform 0.35s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.card:hover,
+.cardMuted:hover {
+  transform: translateY(-8px);
+}
+
+.card {
+  background: linear-gradient(180deg, #edf8e7 0%, #d9efcf 100%);
+  box-shadow:
+    0 26px 48px -32px rgba(15, 95, 60, 0.45),
+    0 2px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -20px 34px -26px rgba(15, 95, 60, 0.4) inset,
+    0 0 0 1px rgba(184, 216, 172, 0.75) inset;
+}
+
+.cardMuted {
+  background: linear-gradient(180deg, #f6f8f7 0%, #e9eeeb 100%);
+  box-shadow:
+    0 22px 40px -34px rgba(15, 95, 60, 0.3),
+    0 2px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -20px 34px -26px rgba(15, 95, 60, 0.18) inset,
+    0 0 0 1px rgba(216, 224, 220, 0.9) inset;
+}
+
+.cardTitle,
+.cardTitleMuted {
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.cardTitle {
+  color: var(--kd-ink);
+  min-height: clamp(32px, 4vw, 48px);
+}
+
+.cardTitleMuted {
+  color: var(--kd-stone);
+  min-height: 48px;
+}
+
+.cardImage,
+.cardImageMuted {
+  width: 100%;
+  height: clamp(120px, 15vw, 168px);
+  flex: none;
+  object-fit: contain;
+}
+
+.cardImage {
+  filter: drop-shadow(0 22px 18px rgba(15, 95, 60, 0.28));
+}
+
+.cardImageMuted {
+  filter: grayscale(1) drop-shadow(0 20px 16px rgba(15, 95, 60, 0.14));
+  opacity: 0.6;
+}
+
+.cardLines,
+.cardLinesMuted {
+  display: flex;
+  flex-direction: column;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.cardLines {
+  color: var(--kd-green-deep);
+}
+
+.cardLinesMuted {
+  color: var(--kd-stone);
+}
+
+.cardLine {
+  display: block;
+}
+
+.result {
+  margin-top: auto;
+  width: 100%;
+  min-height: clamp(64px, 8vw, 88px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 12px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.resultLabel {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--kd-green-deep);
+}
+
+.resultText {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: 4px;
+  color: var(--kd-ink);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--kd-green-dark);
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--kd-green-mid);
+}
+
+/* --- Две подписи-скобки под лентой --- */
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 1.2vw, 14px);
+}
+
+.note,
+.noteOurs {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.noteOurs {
+  flex: 3 1 300px;
+}
+
+.note {
+  flex: 2 1 200px;
+}
+
+.brace,
+.braceOurs {
+  height: 16px;
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+}
+
+.braceOurs {
+  border: 2px solid rgba(122, 203, 46, 0.55);
+  border-top: 0;
+}
+
+.brace {
+  border: 2px solid var(--kd-line);
+  border-top: 0;
+}
+
+.noteText,
+.noteTextOurs {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 0 6px;
+}
+
+.noteTextOurs {
+  color: var(--kd-green-deep);
+}
+
+.noteText {
+  color: var(--kd-stone);
+}
+
+@media (max-width: 719px) {
+  .arrow {
+    display: block;
+  }
+
+  .track {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+  }
+
+  .card,
+  .cardMuted {
+    flex: 0 0 76%;
+  }
+}
+
+/* css-modules локализует и @keyframes, и ссылку на него в animation,
+   поэтому кадры живут рядом с использующими их правилами. */
+/* Фирменный шар: медленное вращение бликов */
+@keyframes kdOrbSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
