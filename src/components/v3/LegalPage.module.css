@@ -1,0 +1,113 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--kd-glass);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: clamp(20px, 3vw, 32px) clamp(20px, 4vw, 48px);
+  border-bottom: 1px solid var(--kd-line);
+}
+
+.logo {
+  display: inline-flex;
+  border-bottom: 0;
+}
+
+.back {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--kd-green-dark);
+  border-bottom: 0;
+}
+
+.back:hover {
+  color: var(--kd-green-deep);
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 72px) clamp(20px, 4vw, 24px) clamp(48px, 7vw, 96px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  color: var(--kd-ink);
+  text-wrap: balance;
+}
+
+.revision {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--kd-stone);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: clamp(20px, 3vw, 32px);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--kd-slate);
+}
+
+.body h2 {
+  margin-top: clamp(20px, 3vw, 30px);
+  font-weight: 800;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--kd-ink);
+}
+
+.body ul {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.body a {
+  color: var(--kd-green-dark);
+  border-bottom: 1px solid var(--kd-line);
+}
+
+.body a:hover {
+  color: var(--kd-green-deep);
+  border-bottom-color: var(--kd-green-mid);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: clamp(20px, 3vw, 28px) clamp(20px, 4vw, 48px);
+  border-top: 1px solid var(--kd-line);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--kd-stone);
+}
+
+.contacts a {
+  color: var(--kd-green-dark);
+  border-bottom: 0;
+}

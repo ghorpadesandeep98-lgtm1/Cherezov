@@ -28,7 +28,12 @@ export function readSheetsConfig(): SheetsConfig | null {
     clientEmail: GOOGLE_SERVICE_ACCOUNT_EMAIL,
     // В переменных окружения перевод строки хранится как \n — возвращаем его на место.
     privateKey: GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    range: process.env.GOOGLE_SHEETS_RANGE || 'Заявки!A:E',
+    /*
+     * Диапазон без имени листа — Google дописывает строку на первую вкладку.
+     * Так настройка не ломается из-за того, что вкладку забыли переименовать;
+     * если листов несколько, укажите имя явно: GOOGLE_SHEETS_RANGE=Заявки!A:E
+     */
+    range: process.env.GOOGLE_SHEETS_RANGE || 'A:E',
   };
 }
 
@@ -76,16 +81,28 @@ export async function appendLeadToSheet(lead: Lead): Promise<void> {
 
   const token = await fetchAccessToken(config);
 
+  /*
+   * RAW, а не USER_ENTERED: телефон начинается с «+», и таблица принимает его
+   * за формулу — в ячейке оказывается #ERROR!. Формулы нам тут не нужны,
+   * значения должны лечь как есть.
+   */
   const url =
     `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(config.spreadsheetId)}` +
     `/values/${encodeURIComponent(config.range)}:append` +
-    '?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS';
+    '?valueInputOption=RAW&insertDataOption=INSERT_ROWS';
 
   const response = await fetch(url, {
     method: 'POST',
     headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+    /*
+     * Пустых ячеек быть не должно: append ищет в диапазоне «таблицу», а дырка
+     * в колонке разрывает её на две — и строка уезжает в правый обрывок.
+     * Форма не собирает почту, поэтому на её месте прочерк.
+     */
     body: JSON.stringify({
-      values: [[formatMoscowTime(), lead.name, lead.email, lead.phone, lead.source ?? '']],
+      values: [
+        [formatMoscowTime(), lead.name, lead.email || '—', lead.phone, lead.source || '—'],
+      ],
     }),
   });
 

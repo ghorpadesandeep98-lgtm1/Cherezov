@@ -1,0 +1,401 @@
+.section {
+  padding: clamp(36px, 6vw, 64px) 0 0;
+}
+
+/* Плита во всю ширину: содержимое выравнивается по общей сетке 1280px. */
+.plate {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  padding: clamp(36px, 4vw, 64px) max(clamp(20px, 4vw, 64px), calc((100% - 1280px) / 2));
+  background: rgba(239, 251, 223, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3vw, 36px);
+}
+
+.dots,
+.sheet,
+.glow {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dots {
+  inset: 0;
+  background: radial-gradient(rgba(15, 95, 60, 0.13) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+}
+
+.sheet {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 64%;
+  background: linear-gradient(
+    128deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.5) 38%,
+    transparent 72%
+  );
+  clip-path: polygon(28% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.glow {
+  right: -8%;
+  top: -24%;
+  width: min(560px, 58%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(165, 232, 92, 0.6),
+    rgba(63, 203, 132, 0.2) 54%,
+    transparent 76%
+  );
+  filter: blur(80px);
+}
+
+.head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.overline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--kd-green-dark);
+}
+
+.overlineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--kd-green-mid);
+}
+
+.title {
+  font-weight: 800;
+  font-size: clamp(28px, 4.4vw, 62px);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  color: var(--kd-ink);
+  text-wrap: balance;
+}
+
+.titleAccent {
+  color: var(--kd-green-dark);
+}
+
+.lead {
+  max-width: 56ch;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--kd-slate);
+}
+
+/* --- Карточки аудиторий: шахматный сдвиг по вертикали --- */
+.cards {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: clamp(10px, 1.2vw, 16px);
+  align-items: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 260px;
+  padding: clamp(18px, 2.4vw, 28px) clamp(18px, 2.2vw, 26px);
+  border-radius: 38px;
+  box-shadow: 0 18px 40px -30px rgba(15, 95, 60, 0.55);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.6, 0.2, 1),
+    box-shadow 0.35s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px -28px rgba(15, 95, 60, 0.6);
+}
+
+.cardDropped {
+  margin-top: 26px;
+  min-height: 234px;
+}
+
+.cardDotWrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex: none;
+  background: rgba(122, 203, 46, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--kd-green-mid);
+}
+
+.cardTitle {
+  font-weight: 800;
+  font-size: clamp(18px, 1.8vw, 21px);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.cardText {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.cardBright {
+  background: var(--kd-salad-bright);
+}
+
+.cardBright .cardTitle {
+  color: var(--kd-green-deep);
+}
+
+.cardBright .cardText,
+.cardWhite .cardText {
+  color: var(--kd-slate);
+}
+
+.cardWhite {
+  background: var(--kd-white);
+}
+
+.cardWhite .cardTitle {
+  color: var(--kd-ink);
+}
+
+.cardForest {
+  background: var(--kd-forest);
+}
+
+.cardForest .cardDot {
+  background: var(--kd-salad);
+}
+
+.cardForest .cardTitle {
+  color: var(--kd-glass);
+}
+
+.cardForest .cardText {
+  color: rgba(234, 246, 240, 0.66);
+}
+
+/* --- Таблица сравнения --- */
+.compareOverline {
+  position: relative;
+  z-index: 1;
+  display: none;
+  padding-bottom: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--kd-green-dark);
+}
+
+.table {
+  position: relative;
+  z-index: 1;
+  border-radius: 32px;
+  background: var(--kd-white);
+  box-shadow: 0 24px 60px -44px rgba(15, 95, 60, 0.7);
+  overflow: hidden;
+}
+
+/* Салатовая полоса под колонкой модели */
+.band {
+  position: absolute;
+  left: calc(28% + clamp(14px, 2vw, 26px));
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(239, 251, 223, 0.85), rgba(239, 251, 223, 0.35));
+  pointer-events: none;
+}
+
+.tableHead,
+.tableRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(96px, 28%) 1fr 1fr;
+}
+
+.tableHead {
+  gap: 0 clamp(10px, 2vw, 26px);
+  align-items: end;
+  padding: clamp(18px, 2.6vw, 32px) clamp(20px, 2.6vw, 34px) clamp(12px, 1.6vw, 20px);
+}
+
+.tableHeadKey {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kd-stone);
+}
+
+.tableHeadExcel {
+  justify-self: start;
+  font-weight: 700;
+  font-size: clamp(12px, 1.5vw, 21px);
+  letter-spacing: -0.02em;
+  color: var(--kd-stone);
+}
+
+.tableHeadModel {
+  justify-self: start;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  font-weight: 800;
+  font-size: clamp(12px, 1.5vw, 21px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--kd-green-deep);
+}
+
+.tableHeadModelDot {
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--kd-green-mid);
+}
+
+.labelNarrow {
+  display: none;
+}
+
+.tableRow {
+  gap: 8px clamp(14px, 2vw, 26px);
+  align-items: center;
+  padding: clamp(15px, 1.7vw, 20px) clamp(20px, 2.6vw, 34px);
+  border-top: 1px solid var(--kd-line);
+  transition: background 0.25s;
+}
+
+.tableRow:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.rowKey {
+  font-weight: 600;
+  font-size: clamp(11px, 1.1vw, 13px);
+  letter-spacing: 0.02em;
+  color: var(--kd-stone);
+}
+
+.rowExcel,
+.rowModel {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(6px, 1vw, 10px);
+  font-size: clamp(12.5px, 1.2vw, 15px);
+  line-height: 1.45;
+}
+
+.rowExcel {
+  font-weight: 400;
+  color: var(--kd-slate);
+}
+
+.rowDash {
+  width: 9px;
+  flex: none;
+  margin-top: 0.6em;
+  height: 1px;
+  background: var(--kd-stone);
+}
+
+.rowModel {
+  font-weight: 500;
+  color: var(--kd-ink);
+}
+
+.rowCheck {
+  width: clamp(15px, 1.6vw, 20px);
+  height: clamp(15px, 1.6vw, 20px);
+  flex: none;
+  margin-top: 0.1em;
+  border-radius: 50%;
+  background: var(--kd-green-mid);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 10px;
+}
+
+@media (max-width: 719px) {
+  .card {
+    min-height: auto;
+    border-radius: 26px;
+  }
+
+  .cardDropped {
+    margin-top: 0;
+    min-height: auto;
+  }
+
+  .compareOverline {
+    display: block;
+  }
+
+  .band {
+    left: calc(50% + 5px);
+    opacity: 0.5;
+  }
+
+  .tableHead,
+  .tableRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tableHead {
+    align-items: center;
+  }
+
+  .tableHeadKey {
+    display: none;
+  }
+
+  .labelWide {
+    display: none;
+  }
+
+  .labelNarrow {
+    display: inline;
+  }
+
+  .rowKey {
+    grid-column: 1 / -1;
+  }
+}

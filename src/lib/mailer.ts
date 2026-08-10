@@ -42,10 +42,11 @@ const escapeHtml = (value: string) =>
 function renderHtml(lead: Lead, receivedAt: string) {
   const rows: [string, string][] = [
     ['Имя', lead.name],
-    ['Почта', lead.email],
+    ['Почта', lead.email || '—'],
     ['Телефон', lead.phone],
     ['Источник', lead.source ?? '—'],
     ['Получено', receivedAt],
+    ['Согласие на обработку ПДн', `дано ${receivedAt}`],
   ];
 
   return `<!doctype html>
@@ -63,7 +64,11 @@ function renderHtml(lead: Lead, receivedAt: string) {
           .join('')}
       </table>
       <p style="margin:24px 0 0;font-size:13px;color:#5a635c">
-        Ответить можно прямо из этого письма — адрес заявителя подставлен в «Reply-To».
+        ${
+          lead.email
+            ? 'Ответить можно прямо из этого письма — адрес заявителя подставлен в «Reply-To».'
+            : 'Заявитель оставил только телефон — свяжитесь по номеру выше.'
+        }
       </p>
     </td></tr>
   </table>
@@ -86,16 +91,18 @@ export async function sendLeadEmail(lead: Lead): Promise<void> {
   await transport.sendMail({
     from: config.from,
     to: config.to,
-    replyTo: `${lead.name} <${lead.email}>`,
+    // Без почты отвечать нечему — тогда «Reply-To» не ставим.
+    replyTo: lead.email ? `${lead.name} <${lead.email}>` : undefined,
     subject: `Заявка с сайта — ${lead.name}`,
     text: [
       'Новая заявка с сайта «Культура девелопмента»',
       '',
       `Имя: ${lead.name}`,
-      `Почта: ${lead.email}`,
+      `Почта: ${lead.email || '—'}`,
       `Телефон: ${lead.phone}`,
       `Источник: ${lead.source ?? '—'}`,
       `Получено: ${receivedAt}`,
+      `Согласие на обработку ПДн: дано ${receivedAt}`,
     ].join('\n'),
     html: renderHtml(lead, receivedAt),
   });
