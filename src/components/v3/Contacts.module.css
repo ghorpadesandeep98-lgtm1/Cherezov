@@ -237,6 +237,17 @@
   border-bottom: 0;
 }
 
+/* Техническая причина отказа: нужна на настройке, посетителю не мешает. */
+.errorDetail {
+  display: block;
+  margin-top: 6px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.45;
+  color: rgba(234, 246, 240, 0.62);
+  word-break: break-word;
+}
+
 .done {
   display: flex;
   flex-direction: column;

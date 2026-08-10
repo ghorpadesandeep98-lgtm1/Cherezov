@@ -68,7 +68,18 @@ export async function POST(request: Request) {
       email: lead.email,
       phone: lead.phone,
     });
-    return NextResponse.json({ error: 'Не удалось отправить заявку' }, { status: 502 });
+    /*
+     * Причина отказа уходит и в ответ, а не только в логи: без неё на настройке
+     * приходится лазить в панель хостинга. Текст — сообщение канала (ответ
+     * Google или SMTP), секретов в нём нет.
+     */
+    return NextResponse.json(
+      {
+        error: 'Не удалось отправить заявку',
+        detail: failed.map((f) => `${f.name}: ${String(f.reason).slice(0, 300)}`).join(' · '),
+      },
+      { status: 502 },
+    );
   }
 
   return NextResponse.json({ ok: true, delivered: channels.length - failed.length });
