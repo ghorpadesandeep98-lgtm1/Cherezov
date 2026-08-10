@@ -28,7 +28,12 @@ export function readSheetsConfig(): SheetsConfig | null {
     clientEmail: GOOGLE_SERVICE_ACCOUNT_EMAIL,
     // В переменных окружения перевод строки хранится как \n — возвращаем его на место.
     privateKey: GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    range: process.env.GOOGLE_SHEETS_RANGE || 'Заявки!A:E',
+    /*
+     * Диапазон без имени листа — Google дописывает строку на первую вкладку.
+     * Так настройка не ломается из-за того, что вкладку забыли переименовать;
+     * если листов несколько, укажите имя явно: GOOGLE_SHEETS_RANGE=Заявки!A:E
+     */
+    range: process.env.GOOGLE_SHEETS_RANGE || 'A:E',
   };
 }
 
