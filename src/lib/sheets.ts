@@ -19,21 +19,34 @@ type SheetsConfig = {
   range: string;
 };
 
+/**
+ * Ключ можно задать двумя способами. GOOGLE_PRIVATE_KEY_BASE64 надёжнее:
+ * это одна строка без переводов, кавычек и пробелов, поэтому её нельзя
+ * испортить при вставке в панель хостинга. Обычный GOOGLE_PRIVATE_KEY тоже
+ * работает — из него снимаются кавычки и разворачиваются \n.
+ */
+function readPrivateKey(): string | null {
+  const encoded = process.env.GOOGLE_PRIVATE_KEY_BASE64?.trim();
+  if (encoded) return Buffer.from(encoded, 'base64').toString('utf8');
+
+  const raw = process.env.GOOGLE_PRIVATE_KEY;
+  if (!raw) return null;
+
+  return raw
+    .trim()
+    .replace(/^["']|["']$/g, '')
+    .replace(/\\n/g, '\n');
+}
+
 export function readSheetsConfig(): SheetsConfig | null {
-  const { GOOGLE_SHEETS_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY } = process.env;
-  if (!GOOGLE_SHEETS_ID || !GOOGLE_SERVICE_ACCOUNT_EMAIL || !GOOGLE_PRIVATE_KEY) return null;
+  const { GOOGLE_SHEETS_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL } = process.env;
+  const privateKey = readPrivateKey();
+  if (!GOOGLE_SHEETS_ID || !GOOGLE_SERVICE_ACCOUNT_EMAIL || !privateKey) return null;
 
   return {
     spreadsheetId: GOOGLE_SHEETS_ID,
     clientEmail: GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    /*
-     * Ключ из JSON часто копируют вместе с обрамляющими кавычками — снимаем их,
-     * иначе подпись падает. Перевод строки в переменных окружения хранится
-     * как \n: возвращаем его на место.
-     */
-    privateKey: GOOGLE_PRIVATE_KEY.trim()
-      .replace(/^["']|["']$/g, '')
-      .replace(/\\n/g, '\n'),
+    privateKey,
     /*
      * Диапазон без имени листа — Google дописывает строку на первую вкладку.
      * Так настройка не ломается из-за того, что вкладку забыли переименовать;
