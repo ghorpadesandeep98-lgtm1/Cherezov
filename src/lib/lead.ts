@@ -4,13 +4,15 @@ export type Lead = {
   /** Форма макета собирает имя и телефон — почта остаётся необязательной. */
   email: string;
   phone: string;
+  /** Согласие по 152-ФЗ: без него заявку принимать нельзя. */
+  consent: boolean;
   /** Ловушка для ботов: живой человек это поле не видит и не заполняет. */
   company?: string;
   /** Откуда пришла заявка — блок формы или другой источник на странице. */
   source?: string;
 };
 
-export type LeadFields = Pick<Lead, 'name' | 'email' | 'phone'>;
+export type LeadFields = Pick<Lead, 'name' | 'email' | 'phone' | 'consent'>;
 
 const LIMITS = { name: 120, email: 160, phone: 40, source: 80 } as const;
 
@@ -31,15 +33,19 @@ export function validateLead(input: unknown): Validation {
   const company = str(raw.company);
   const source = str(raw.source).slice(0, LIMITS.source) || 'Форма на сайте';
 
+  const consent = raw.consent === true;
+
   const errors: Partial<Record<keyof LeadFields, string>> = {};
   if (name.length < 2) errors.name = 'Укажите имя';
   // Почта необязательна, но если её прислали — она должна быть рабочей.
   if (email && !EMAIL.test(email)) errors.email = 'Проверьте адрес почты';
   if ((phone.match(/\d/g) ?? []).length < PHONE_DIGITS) errors.phone = 'Проверьте номер телефона';
+  // Проверяем на сервере: галочку в браузере обойти слишком просто.
+  if (!consent) errors.consent = 'Нужно согласие на обработку персональных данных';
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };
 
-  return { ok: true, lead: { name, email, phone, company, source } };
+  return { ok: true, lead: { name, email, phone, consent, company, source } };
 }
 
 /** Заполненная ловушка — это бот. Отвечаем как на успех, но никуда не доставляем. */

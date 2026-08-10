@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Logo } from '@/components/ds/Logo';
 import { CONTACTS, NAV_LINKS } from '@/data/v3/content';
@@ -28,8 +29,9 @@ function maskPhone(raw: string) {
 export function Contacts() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>('idle');
-  const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string; phone?: string; consent?: string }>({});
 
   const sceneRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -87,11 +89,13 @@ export function Contacts() {
       const response = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, phone, company, source: 'Форма в контактах' }),
+        body: JSON.stringify({ name, phone, consent, company, source: 'Форма в контактах' }),
       });
 
       if (response.status === 422) {
-        const body = (await response.json()) as { errors?: { name?: string; phone?: string } };
+        const body = (await response.json()) as {
+          errors?: { name?: string; phone?: string; consent?: string };
+        };
         setErrors(body.errors ?? {});
         setStatus('idle');
         return;
@@ -104,6 +108,7 @@ export function Contacts() {
 
       setName('');
       setPhone('');
+      setConsent(false);
       setStatus('sent');
     } catch {
       setStatus('failed');
@@ -190,7 +195,26 @@ export function Contacts() {
                   className={styles.honeypot}
                 />
 
-                <button type="submit" className={styles.submit} disabled={status === 'sending'}>
+                <label className={styles.consent}>
+                  <input
+                    type="checkbox"
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    aria-invalid={Boolean(errors.consent)}
+                    className={styles.consentBox}
+                  />
+                  <span className={styles.consentText}>
+                    Я даю <Link href="/consent">согласие на обработку персональных данных</Link> и
+                    ознакомлен с <Link href="/privacy">политикой конфиденциальности</Link>.
+                  </span>
+                </label>
+                {errors.consent && <span className={styles.error}>{errors.consent}</span>}
+
+                <button
+                  type="submit"
+                  className={styles.submit}
+                  disabled={status === 'sending' || !consent}
+                >
                   {status === 'sending' ? 'Отправляем…' : 'Обсудить проект'}
                 </button>
 
@@ -252,12 +276,12 @@ export function Contacts() {
             </div>
             <div className={styles.footerColumn}>
               <span className={styles.footerLabel}>ДОКУМЕНТЫ</span>
-              <a href="#contacts" className={styles.footerLink}>
+              <Link href="/privacy" className={styles.footerLink}>
                 Политика конфиденциальности
-              </a>
-              <a href="#contacts" className={styles.footerLink}>
+              </Link>
+              <Link href="/consent" className={styles.footerLink}>
                 Согласие на обработку персональных данных
-              </a>
+              </Link>
             </div>
           </div>
         </div>

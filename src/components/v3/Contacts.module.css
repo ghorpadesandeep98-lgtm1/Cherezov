@@ -170,6 +170,39 @@
   opacity: 0;
 }
 
+/* Галочка 152-ФЗ: без неё кнопка отправки заблокирована. */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.consentBox {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--kd-salad);
+  cursor: pointer;
+}
+
+.consentText {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(234, 246, 240, 0.78);
+}
+
+.consentText a {
+  color: var(--kd-salad);
+  border-bottom: 1px solid rgba(165, 232, 92, 0.4);
+}
+
+.consentText a:hover {
+  color: var(--kd-salad-bright);
+  border-bottom-color: var(--kd-salad-bright);
+}
+
 .submit {
   width: 100%;
   border: 0;
@@ -188,8 +221,8 @@
 }
 
 .submit:disabled {
-  cursor: progress;
-  opacity: 0.75;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .error {

@@ -46,6 +46,7 @@ function renderHtml(lead: Lead, receivedAt: string) {
     ['Телефон', lead.phone],
     ['Источник', lead.source ?? '—'],
     ['Получено', receivedAt],
+    ['Согласие на обработку ПДн', `дано ${receivedAt}`],
   ];
 
   return `<!doctype html>
@@ -101,6 +102,7 @@ export async function sendLeadEmail(lead: Lead): Promise<void> {
       `Телефон: ${lead.phone}`,
       `Источник: ${lead.source ?? '—'}`,
       `Получено: ${receivedAt}`,
+      `Согласие на обработку ПДн: дано ${receivedAt}`,
     ].join('\n'),
     html: renderHtml(lead, receivedAt),
   });
