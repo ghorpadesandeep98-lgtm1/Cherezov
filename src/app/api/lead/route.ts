@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { isBot, validateLead } from '@/lib/lead';
 import { readSmtpConfig, sendLeadEmail } from '@/lib/mailer';
-import { appendLeadToSheet, readSheetsConfig } from '@/lib/sheets';
+import { appendLeadToSheet, readSheetsConfig, verifySheetsAccess } from '@/lib/sheets';
 
 /** nodemailer и подпись JWT требуют Node — Edge-рантайм здесь не подходит. */
 export const runtime = 'nodejs';
@@ -12,10 +12,15 @@ export const dynamic = 'force-dynamic';
  * Только флаги — ни адресов, ни ключей наружу не отдаём. Нужна, чтобы после
  * деплоя за секунду понять, доехали ли переменные окружения.
  */
-export function GET() {
-  return NextResponse.json({
-    channels: { email: Boolean(readSmtpConfig()), sheets: Boolean(readSheetsConfig()) },
-  });
+export async function GET(request: Request) {
+  const channels = { email: Boolean(readSmtpConfig()), sheets: Boolean(readSheetsConfig()) };
+
+  // ?check=1 — дополнительно дёргаем Google и показываем, почему отказ.
+  if (new URL(request.url).searchParams.has('check')) {
+    return NextResponse.json({ channels, sheets: await verifySheetsAccess() });
+  }
+
+  return NextResponse.json({ channels });
 }
 
 export async function POST(request: Request) {

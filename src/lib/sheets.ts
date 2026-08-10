@@ -26,8 +26,14 @@ export function readSheetsConfig(): SheetsConfig | null {
   return {
     spreadsheetId: GOOGLE_SHEETS_ID,
     clientEmail: GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    // В переменных окружения перевод строки хранится как \n — возвращаем его на место.
-    privateKey: GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    /*
+     * Ключ из JSON часто копируют вместе с обрамляющими кавычками — снимаем их,
+     * иначе подпись падает. Перевод строки в переменных окружения хранится
+     * как \n: возвращаем его на место.
+     */
+    privateKey: GOOGLE_PRIVATE_KEY.trim()
+      .replace(/^["']|["']$/g, '')
+      .replace(/\\n/g, '\n'),
     /*
      * Диапазон без имени листа — Google дописывает строку на первую вкладку.
      * Так настройка не ломается из-за того, что вкладку забыли переименовать;
@@ -73,6 +79,41 @@ async function fetchAccessToken(config: SheetsConfig): Promise<string> {
   const data = (await response.json()) as { access_token?: string };
   if (!data.access_token) throw new Error('Google не вернул access_token');
   return data.access_token;
+}
+
+/**
+ * Проверка настройки без отправки заявки: подпись ключом и доступ к таблице.
+ * Возвращает короткую причину отказа — по ней видно, ключ битый или не выдан
+ * доступ к документу. Секреты в ответ не попадают.
+ */
+export async function verifySheetsAccess(): Promise<{ ok: boolean; reason?: string }> {
+  const config = readSheetsConfig();
+  if (!config) return { ok: false, reason: 'Переменные окружения не заданы' };
+
+  if (!config.privateKey.includes('BEGIN PRIVATE KEY')) {
+    return { ok: false, reason: 'GOOGLE_PRIVATE_KEY не похож на ключ: нет строки BEGIN PRIVATE KEY' };
+  }
+
+  let token: string;
+  try {
+    token = await fetchAccessToken(config);
+  } catch (error) {
+    return { ok: false, reason: `Google не принял ключ: ${String(error).slice(0, 300)}` };
+  }
+
+  const response = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(config.spreadsheetId)}?fields=properties.title`,
+    { headers: { authorization: `Bearer ${token}` } },
+  );
+
+  if (!response.ok) {
+    return {
+      ok: false,
+      reason: `Таблица недоступна (${response.status}): ${(await response.text()).slice(0, 300)}`,
+    };
+  }
+
+  return { ok: true };
 }
 
 export async function appendLeadToSheet(lead: Lead): Promise<void> {
