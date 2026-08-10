@@ -31,6 +31,7 @@ export function Contacts() {
   const [phone, setPhone] = useState('');
   const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>('idle');
+  const [failReason, setFailReason] = useState('');
   const [errors, setErrors] = useState<{ name?: string; phone?: string; consent?: string }>({});
 
   const sceneRef = useRef<HTMLElement>(null);
@@ -102,6 +103,11 @@ export function Contacts() {
       }
 
       if (!response.ok) {
+        // Причину показываем под формой — на настройке она экономит часы.
+        const body = (await response.json().catch(() => null)) as
+          | { error?: string; detail?: string }
+          | null;
+        setFailReason([body?.error, body?.detail].filter(Boolean).join(' — '));
         setStatus('failed');
         return;
       }
@@ -222,6 +228,7 @@ export function Contacts() {
                   <span className={styles.error} role="alert">
                     Заявка не ушла. Попробуйте ещё раз или напишите на{' '}
                     <a href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</a>.
+                    {failReason && <span className={styles.errorDetail}>{failReason}</span>}
                   </span>
                 )}
               </>

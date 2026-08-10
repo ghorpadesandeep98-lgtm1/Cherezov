@@ -1,11 +1,27 @@
 import { NextResponse } from 'next/server';
 import { isBot, validateLead } from '@/lib/lead';
 import { readSmtpConfig, sendLeadEmail } from '@/lib/mailer';
-import { appendLeadToSheet, readSheetsConfig } from '@/lib/sheets';
+import { appendLeadToSheet, readSheetsConfig, verifySheetsAccess } from '@/lib/sheets';
 
 /** nodemailer и подпись JWT требуют Node — Edge-рантайм здесь не подходит. */
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+/**
+ * Диагностика настройки: показывает, какие каналы доставки видит сервер.
+ * Только флаги — ни адресов, ни ключей наружу не отдаём. Нужна, чтобы после
+ * деплоя за секунду понять, доехали ли переменные окружения.
+ */
+export async function GET(request: Request) {
+  const channels = { email: Boolean(readSmtpConfig()), sheets: Boolean(readSheetsConfig()) };
+
+  // ?check=1 — дополнительно дёргаем Google и показываем, почему отказ.
+  if (new URL(request.url).searchParams.has('check')) {
+    return NextResponse.json({ channels, sheets: await verifySheetsAccess() });
+  }
+
+  return NextResponse.json({ channels });
+}
 
 export async function POST(request: Request) {
   let payload: unknown;
@@ -52,7 +68,18 @@ export async function POST(request: Request) {
       email: lead.email,
       phone: lead.phone,
     });
-    return NextResponse.json({ error: 'Не удалось отправить заявку' }, { status: 502 });
+    /*
+     * Причина отказа уходит и в ответ, а не только в логи: без неё на настройке
+     * приходится лазить в панель хостинга. Текст — сообщение канала (ответ
+     * Google или SMTP), секретов в нём нет.
+     */
+    return NextResponse.json(
+      {
+        error: 'Не удалось отправить заявку',
+        detail: failed.map((f) => `${f.name}: ${String(f.reason).slice(0, 300)}`).join(' · '),
+      },
+      { status: 502 },
+    );
   }
 
   return NextResponse.json({ ok: true, delivered: channels.length - failed.length });
