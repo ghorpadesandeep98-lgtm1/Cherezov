@@ -9,4 +9,4 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3
 );
 
 /** Страницы, которые попадают в карту сайта. */
-export const SITE_ROUTES = ['/', '/privacy', '/consent'] as const;
+export const SITE_ROUTES = ['/', '/calculator', '/privacy', '/consent'] as const;
