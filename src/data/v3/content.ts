@@ -4,11 +4,11 @@
  */
 
 export const NAV_LINKS = [
-  { title: 'Решение', href: '#audience' },
-  { title: 'Как работает', href: '#screen' },
-  { title: 'Кейсы', href: '#case' },
-  { title: 'Команда', href: '#proof' },
-  { title: 'FAQ', href: '#faq' },
+  { title: 'Решение', href: '/#audience' },
+  { title: 'Калькулятор', href: '/calculator' },
+  { title: 'Кейсы', href: '/#case' },
+  { title: 'Команда', href: '/#proof' },
+  { title: 'FAQ', href: '/#faq' },
 ] as const;
 
 export const HERO_STATS = [
