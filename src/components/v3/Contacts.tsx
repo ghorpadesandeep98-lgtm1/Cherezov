@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Logo } from '@/components/ds/Logo';
 import { CONTACTS, NAV_LINKS } from '@/data/v3/content';
+import { reachGoal } from '@/lib/metrika';
 import styles from './Contacts.module.css';
 
 type Status = 'idle' | 'sending' | 'sent' | 'failed';
@@ -116,6 +117,8 @@ export function Contacts() {
       setPhone('');
       setConsent(false);
       setStatus('sent');
+      // Заявка дошла до сервера — отмечаем конверсию в Метрике.
+      reachGoal();
     } catch {
       setStatus('failed');
     }

@@ -10,6 +10,7 @@ import { Optics } from '@/components/v3/Optics';
 import { Process } from '@/components/v3/Process';
 import { Proof } from '@/components/v3/Proof';
 import { Questions } from '@/components/v3/Questions';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 export default function Page() {
   return (
@@ -26,6 +27,7 @@ export default function Page() {
       <Proof />
       <Faq />
       <Contacts />
+      <JsonLd />
     </>
   );
 }
