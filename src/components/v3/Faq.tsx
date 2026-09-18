@@ -1,29 +1,62 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { FAQ } from '@/data/v3/content';
 import styles from './Faq.module.css';
 
+/**
+ * Элемент блока вопрос-ответов.
+ *
+ * `facts` — короткие утверждения под прямым ответом: их пишут специально под
+ * цитирование поиском и нейропоиском. `note` — оговорка, если ответ касается
+ * расчётов.
+ */
+export type FaqItem = {
+  readonly q: string;
+  readonly a: string;
+  readonly facts?: readonly string[];
+  readonly note?: string;
+};
+
+type FaqProps = {
+  /** Чем наполнять блок. По умолчанию — общие вопросы с главной. */
+  items?: readonly FaqItem[];
+  title?: ReactNode;
+  lead?: string;
+  /** Якорь секции: на главной `faq`, на странице раздела может быть свой. */
+  id?: string;
+};
+
+const DEFAULT_TITLE = (
+  <>
+    Остались вопросы?<span className={styles.titleArrow}>↗</span>
+  </>
+);
+
+const DEFAULT_LEAD =
+  'Свяжитесь с нами, если у вас остались вопросы или нужна консультация — разберём ваш ' +
+  'участок и ответим по существу.';
+
 /** Аккордеон вопросов: открыт ровно один пункт, по умолчанию первый. */
-export function Faq() {
+export function Faq({
+  items = FAQ,
+  title = DEFAULT_TITLE,
+  lead = DEFAULT_LEAD,
+  id = 'faq',
+}: FaqProps = {}) {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className={styles.section}>
+    <section id={id} className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.card}>
           <div className={styles.head}>
-            <h2 className={styles.title}>
-              Остались вопросы?<span className={styles.titleArrow}>↗</span>
-            </h2>
-            <p className={styles.lead}>
-              Свяжитесь с нами, если у вас остались вопросы или нужна консультация — разберём ваш
-              участок и ответим по существу.
-            </p>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.lead}>{lead}</p>
           </div>
 
           <div className={styles.rows}>
-            {FAQ.map((item, i) => {
+            {items.map((item, i) => {
               const isOpen = open === i;
               return (
                 <button
@@ -35,7 +68,23 @@ export function Faq() {
                 >
                   <span className={styles.rowBody}>
                     <b className={isOpen ? styles.questionOpen : styles.question}>{item.q}</b>
-                    {isOpen && <span className={styles.answer}>{item.a}</span>}
+                    {isOpen && (
+                      <>
+                        <span className={styles.answer}>{item.a}</span>
+                        {/* Список размечен ролями, а не ul/li: строка целиком —
+                            это <button>, внутрь которого блочные теги нельзя. */}
+                        {item.facts && item.facts.length > 0 && (
+                          <span className={styles.facts} role="list">
+                            {item.facts.map((fact) => (
+                              <span key={fact} className={styles.fact} role="listitem">
+                                {fact}
+                              </span>
+                            ))}
+                          </span>
+                        )}
+                        {item.note && <span className={styles.note}>{item.note}</span>}
+                      </>
+                    )}
                   </span>
                   <span className={isOpen ? styles.toggleOpen : styles.toggle}>↘</span>
                 </button>

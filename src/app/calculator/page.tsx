@@ -2,9 +2,13 @@ import type { Metadata } from 'next';
 import { Audiences } from '@/components/v3/Audiences';
 import { CaseStudy } from '@/components/v3/CaseStudy';
 import { Contacts } from '@/components/v3/Contacts';
+import { Faq } from '@/components/v3/Faq';
 import { Header } from '@/components/v3/Header';
 import { OneScreen } from '@/components/v3/OneScreen';
 import { Questions } from '@/components/v3/Questions';
+import { PageIntro } from '@/components/v3/calculator/PageIntro';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { CALCULATOR_FAQ } from '@/data/v3/content';
 
 /**
  * Страница инструмента: «Калькулятор девелопера».
@@ -13,6 +17,9 @@ import { Questions } from '@/components/v3/Questions';
  * вершиной: здесь человек уже знает, чего хочет, и ему нужен не рассказ о
  * подходе, а сам инструмент — пять вопросов, демонстрационный экран модели,
  * кому это нужно и доказательство на кейсе.
+ *
+ * Вопрос-ответы и FAQPage стоят здесь, а не на главной: это вопросы про саму
+ * предпроектную оценку, и разметка должна лежать на странице с этим текстом.
  */
 
 const TITLE = 'Калькулятор девелопера — модель предпроектной оценки участка';
@@ -40,11 +47,18 @@ export default function CalculatorPage() {
   return (
     <>
       <Header />
+      <PageIntro />
       <Questions />
       <OneScreen />
       <Audiences />
       <CaseStudy />
+      <Faq
+        items={CALCULATOR_FAQ}
+        title="Что спрашивают про предпроектную оценку"
+        lead="Прямые ответы на вопросы, с которыми приходят чаще всего: чем это отличается от консалтинга и как считается цена входа."
+      />
       <Contacts />
+      <JsonLd faq={CALCULATOR_FAQ} path="/calculator" />
     </>
   );
 }
