@@ -141,7 +141,7 @@ export function Contacts() {
         <div className={styles.grid}>
           <div className={styles.copy}>
             <span className={styles.overline}>контакты</span>
-            <h2 className={styles.title}>Обсудим ваш проект</h2>
+            <h2 className={styles.title}>Разберём ваш участок</h2>
             <p className={styles.lead}>
               Пришлите участок — вернёмся с разбором: что на нём можно построить и что это
               даёт в деньгах. Ответим в течение двух рабочих дней.
