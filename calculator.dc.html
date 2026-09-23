@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Калькулятор девелопера — Культура девелопмента</title>
+<meta name="description" content="Земельный брокер и fee-девелопмент: земля, продукт, экономика и архитектура в одной модели — до разрешения на строительство." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet" />
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#04140E;color:#F2F8F4;font-family:Manrope,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:#A5E85C;text-decoration:none}
+a:hover{color:#C7F291}
+input,button{font-family:Manrope,system-ui,sans-serif}
+@keyframes kdRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div style="background:#04140E;min-height:100vh;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:40;backdrop-filter:blur(18px);background:rgba(4,20,14,.86);border-bottom:1px solid rgba(242,248,244,.1)">
+    <div style="max-width:1440px;margin:0 auto;padding:16px clamp(16px,3vw,32px);display:flex;align-items:center;gap:clamp(16px,3vw,40px)">
+      <a href="home.dc.html" style="display:flex;align-items:center;gap:9px;color:#F2F8F4;font-size:15px;font-weight:600;letter-spacing:-.01em">
+        <img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" />
+      </a>
+      <nav style="display:flex;gap:clamp(10px,1.5vw,24px);margin-left:auto;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+        <a href="#questions" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Пять вопросов</a>
+        <a href="#model" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Результат</a>
+        <a href="#excel" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Почему не Excel</a>
+        <a href="#audience" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Кому нужен</a>
+        <a href="mim.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">МиМ</a>
+        <a href="priroda.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Природа</a>
+      </nav>
+      <a href="#demo" style="background:#A5E85C;color:#04140E;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:14px 18px;border-radius:4px;white-space:nowrap" style-hover="background:#C7F291">Показать демо</a>
+    </div>
+  </header>
+
+  <section style="position:relative;min-height:min(100vh,900px);display:flex;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.97) 10%,rgba(4,20,14,.55) 52%,rgba(4,20,14,.7) 100%),url('assets/renders/plot-aerial.jpg');background-size:cover;background-position:center;overflow:hidden">
+    <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(242,248,244,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,248,244,.055) 1px,transparent 1px);background-size:120px 120px"></div>
+    <div style="position:absolute;inset:clamp(16px,3vw,32px);pointer-events:none;border:1px solid rgba(242,248,244,.14)"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:repeating-linear-gradient(to bottom,rgba(165,232,92,.34) 0 6px,transparent 6px 14px)"></div>
+      <div style="position:absolute;left:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:#A5E85C;display:block"></span><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Участок</span></div>
+      <div style="position:absolute;right:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Сценарий</span><span style="width:7px;height:7px;background:#A5E85C;display:block"></span></div>
+    </div>
+    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(140px,20vh,220px) clamp(28px,4.2vw,56px) clamp(40px,6vw,72px);box-sizing:border-box;animation:kdRise .8s cubic-bezier(.2,.6,.2,1) both">
+    <img src="assets/logo/calc-light.png" alt="Калькулятор девелопера" style="height:44px;width:auto;display:block;margin:0 0 28px" />
+    <p style="margin:0 0 24px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">компетенция 01 · инструмент предпроектной оценки</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,64px);align-items:end">
+      <h1 style="margin:0;font-size:clamp(38px,6.2vw,100px);font-weight:400;line-height:1.02;letter-spacing:-.045em;color:#FFFFFF;max-width:15ch;text-wrap:balance">Посчитать участок до того, как за него заплачено</h1>
+      <div>
+        <p style="margin:0 0 32px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:48ch">Инструмент, в котором земля, продукт, экономика и сценарии живут в одной модели. Он отвечает на вопрос, который дороже всех остальных: стоит ли вообще заходить в этот участок и по какой цене.</p>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+          <a href="#demo" style="background:#A5E85C;color:#04140E;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 24px;border-radius:4px" style-hover="background:#C7F291">Показать демо на моём участке</a>
+          <a href="mim.dc.html" style="color:#F2F8F4;font-size:14px;font-weight:400;border-bottom:1px solid rgba(242,248,244,.28);padding-bottom:3px" style-hover="color:#A5E85C">Дальше по маршруту: бюро МиМ →</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(20px,3vw,40px);border-top:1px solid rgba(242,248,244,.14);padding-top:24px;margin-top:clamp(48px,7vw,88px)">
+      <sc-for list="{{ specs }}" as="s" hint-placeholder-count="3">
+        <div>
+          <p style="margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">{{ s.label }}</p>
+          <p style="margin:0;font-size:17px;font-weight:400;line-height:1.45;color:#F2F8F4">{{ s.value }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </section>
+
+  <section id="questions" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <h2 style="margin:0 0 24px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Пока ответов нет, любое решение по участку — ставка</h2>
+    <p style="margin:0 0 clamp(44px,6vw,88px);font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:48ch">Мы отвечаем на все пять до того, как деньги зашли в проект.</p>
+    <div style="display:flex;flex-direction:column;gap:clamp(32px,4.5vw,56px)">
+      <sc-for list="{{ questions }}" as="q" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(16px,3vw,48px);align-items:baseline">
+          <div style="display:flex;gap:18px;align-items:baseline">
+            <span style="font-size:clamp(20px,2.2vw,30px);font-weight:400;color:#A5E85C;font-variant-numeric:tabular-nums">{{ q.n }}</span>
+            <h3 style="margin:0;font-size:clamp(24px,3vw,42px);font-weight:400;line-height:1.08;letter-spacing:-.035em;color:#FFFFFF">{{ q.title }}</h3>
+          </div>
+          <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">{{ q.text }}</p>
+          <div>
+            <p style="margin:0 0 6px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">результат</p>
+            <p style="margin:0;font-size:17px;font-weight:400;color:#A5E85C">{{ q.result }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="model" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <h2 style="margin:0 0 24px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF">Как выглядит результат</h2>
+    <p style="margin:0 0 clamp(36px,5vw,64px);font-size:17px;font-weight:300;line-height:1.6;color:#8FA69C;max-width:52ch">Демонстрационная модель условного проекта. Все значения приведены для показа логики расчёта.</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(32px,4vw,52px)">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <button type="button" onClick="{{ t.onClick }}" style="background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.bd }};border-radius:4px;padding:12px 20px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">{{ t.label }}</button>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(28px,4vw,64px);align-items:center">
+      <div style="position:relative">
+        <img src="assets/macbook.png" alt="" style="width:100%;height:auto;display:block" />
+        <div style="position:absolute;left:11.3%;right:11.3%;top:9.4%;bottom:17.6%;border-radius:4px;overflow:hidden;background:#0B3325">
+          <img src="{{ tabImage }}" alt="Демонстрационный экран калькулятора" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.96" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(4,20,14,.82),rgba(4,20,14,.1))"></div>
+          <div style="position:absolute;left:6%;right:6%;bottom:8%">
+            <p style="margin:0 0 2px;font-size:clamp(9px,1.05vw,15px);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A5E85C">{{ tabLabel }}</p>
+            <p style="margin:0;font-size:clamp(14px,2.1vw,30px);font-weight:400;line-height:1.1;letter-spacing:-.03em;color:#FFFFFF">{{ tabHeadline }}</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:clamp(20px,3vw,36px);margin-bottom:clamp(28px,4vw,44px)">
+          <sc-for list="{{ tabMetrics }}" as="m" hint-placeholder-count="4">
+            <div>
+              <p style="margin:0;font-size:clamp(26px,2.9vw,46px);font-weight:400;line-height:1;letter-spacing:-.045em;color:#FFFFFF;font-variant-numeric:tabular-nums">{{ m.value }}</p>
+              <p style="margin:10px 0 0;font-size:13px;font-weight:300;line-height:1.5;color:#8FA69C">{{ m.label }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(24px,3vw,36px)">
+          <sc-for list="{{ tabBars }}" as="b" hint-placeholder-count="4">
+            <div>
+              <div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:8px">
+                <span style="font-size:14px;font-weight:300;color:#C6D8CE">{{ b.label }}</span>
+                <span style="font-size:14px;font-weight:400;color:#F2F8F4;font-variant-numeric:tabular-nums">{{ b.value }}</span>
+              </div>
+              <div style="height:3px;background:rgba(242,248,244,.12);overflow:hidden">
+                <div style="height:100%;width:{{ b.pct }};background:{{ b.color }}"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:0;font-size:16px;font-weight:300;line-height:1.65;color:#C6D8CE;max-width:46ch">{{ tabNote }}</p>
+      </div>
+    </div>
+    <p style="margin:clamp(28px,4vw,44px) 0 0;font-size:12px;font-weight:300;color:#6E8479">Все данные на экране демонстрационные и не являются инвестиционной рекомендацией.</p>
+  </section>
+
+  <section id="excel" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(30px,5vw,64px);align-items:center;margin-bottom:clamp(40px,6vw,72px)">
+      <h2 style="margin:0;font-size:clamp(32px,5vw,88px);font-weight:400;line-height:1.02;letter-spacing:-.045em;color:#FFFFFF">Почему не Excel</h2>
+      <img src="assets/renders/excel-funnel-sm.png" alt="Файлы сходятся в одну модель" style="width:100%;height:auto;display:block;filter:drop-shadow(0 22px 18px rgba(15,95,60,.28))" />
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(30px,5vw,72px)">
+      <div>
+        <p style="margin:0 0 26px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#6E8479">excel-модель — файл одного человека</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <sc-for list="{{ excel }}" as="e" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="width:6px;height:6px;background:rgba(242,248,244,.28);flex:none;margin-top:8px"></span>
+              <p style="margin:0;font-size:16px;font-weight:300;line-height:1.55;color:#8FA69C">{{ e }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 26px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">калькулятор — модель проектной команды</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <sc-for list="{{ calc }}" as="c" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="width:6px;height:6px;background:#A5E85C;flex:none;margin-top:8px"></span>
+              <p style="margin:0;font-size:16px;font-weight:400;line-height:1.55;color:#F2F8F4">{{ c }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="audience" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <h2 style="margin:0 0 clamp(44px,6vw,88px);font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Для тех, кто отвечает за деньги</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(30px,4vw,56px)">
+      <sc-for list="{{ audience }}" as="a" hint-placeholder-count="4">
+        <div>
+          <h3 style="margin:0 0 14px;font-size:clamp(22px,2.4vw,32px);font-weight:400;line-height:1.1;letter-spacing:-.03em;color:#FFFFFF">{{ a.title }}</h3>
+          <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;color:#C6D8CE">{{ a.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;min-height:min(92vh,820px);display:flex;align-items:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.96) 14%,rgba(4,20,14,.5) 64%,rgba(4,20,14,.62)),url('assets/renders/case-nsk.jpg');background-size:cover;background-position:center">
+    <div style="max-width:1440px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(72px,12vw,180px) clamp(28px,4.2vw,56px) clamp(40px,6vw,72px)">
+      <p style="margin:0 0 20px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">кейс · Новосибирск · 4,5 га</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,56px);align-items:end">
+        <div>
+          <p style="margin:0;font-size:clamp(44px,6vw,104px);font-weight:400;line-height:1;letter-spacing:-.05em;color:#A5E85C;font-variant-numeric:tabular-nums">+1,2 млрд ₽</p>
+          <p style="margin:16px 0 0;font-size:15px;font-weight:300;line-height:1.55;color:#C6D8CE;max-width:28ch">улучшение финансового результата на участке площадью 4,5 га</p>
+        </div>
+        <p style="margin:0;font-size:17px;font-weight:300;line-height:1.65;color:#F2F8F4;max-width:46ch">Связали в одной модели параметры участка, продукт, архитектуру и экономику — и выбрали сценарий, в котором продуктовые решения лучше работают на экономику проекта. Масштаб результата определяет не размер участка, а качество решений до начала строительства.</p>
+      </div>
+      <p style="margin:clamp(32px,4vw,48px) 0 0;font-size:12px;font-weight:300;color:#6E8479">Данные приведены для примера расчёта и не являются инвестиционной рекомендацией.</p>
+    </div>
+  </section>
+
+  <section id="demo" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(30px,5vw,72px);align-items:start">
+      <div>
+        <h2 style="margin:0 0 24px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.03;letter-spacing:-.045em;color:#FFFFFF;max-width:16ch">Покажем демо на вашем участке</h2>
+        <p style="margin:0 0 36px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:42ch">Пришлите кадастровый номер или адрес — соберём экспресс-оценку и покажем логику расчёта на вашем участке.</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <a href="tel:+79128268070" style="font-size:clamp(20px,2.4vw,30px);font-weight:400;letter-spacing:-.025em;color:#F2F8F4" style-hover="color:#A5E85C">+7 912 826-80-70</a>
+          <a href="mailto:468070@mail.ru" style="font-size:16px;font-weight:300;color:#8FA69C" style-hover="color:#A5E85C">468070@mail.ru · Telegram @culture_dev</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px;max-width:460px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="margin:0 0 12px;font-size:clamp(22px,2.6vw,34px);font-weight:400;line-height:1.15;letter-spacing:-.03em;color:#A5E85C">Заявка отправлена</p>
+            <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">Перезвоним в течение рабочего дня.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div>
+              <label for="c-name" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">имя</label>
+              <input id="c-name" type="text" placeholder="Как к вам обращаться" value="{{ name }}" onChange="{{ onName }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
+            </div>
+            <div>
+              <label for="c-phone" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">телефон</label>
+              <input id="c-phone" type="tel" placeholder="+7 900 000-00-00" value="{{ phone }}" onChange="{{ onPhone }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
+            </div>
+            <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+              <input type="checkbox" checked="{{ agree }}" onChange="{{ onAgree }}" style="width:20px;height:20px;margin:2px 0 0;accent-color:#A5E85C;flex:none" />
+              <span style="font-size:14px;font-weight:300;line-height:1.5;color:#8FA69C">Согласен на обработку персональных данных — <a href="legal.dc.html#consent" style="color:#A5E85C">согласие</a> и <a href="legal.dc.html#privacy" style="color:#A5E85C">политика</a></span>
+            </label>
+            <button type="button" onClick="{{ submit }}" disabled="{{ disabled }}" style="background:#A5E85C;color:#04140E;border:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:18px 24px;border-radius:4px;cursor:pointer;opacity:{{ btnOpacity }}" style-hover="background:#C7F291">{{ btnLabel }}</button>
+            <p style="margin:0;font-size:12px;font-weight:300;color:#6E8479">Разбор участка не является инвестиционной рекомендацией.</p>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="max-width:1440px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(28px,4.2vw,56px) clamp(48px,7vw,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;border-top:1px solid rgba(165,232,92,.12)">
+    <div>
+      <p style="margin:0 0 10px;display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:#F2F8F4"><img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" /></p>
+      <p style="margin:0;font-size:13px;font-weight:300;line-height:1.6;color:#6E8479">ООО «Культура девелопмента», ИНН 6685224585</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="home.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">← Назад: главная</a>
+      <a href="mim.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Дальше по маршруту: МиМ →</a>
+      <a href="priroda.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Природа проектирования →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="tel:+79128268070" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">+7 912 826-80-70</a>
+      <a href="mailto:468070@mail.ru" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">468070@mail.ru</a>
+      <a href="https://t.me/culture_dev" target="_blank" rel="noopener" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">@culture_dev</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { tab: 0, name: "", phone: "", agree: false, status: "idle" };
+
+  submit = async () => {
+    if (!this.state.name.trim() || !this.state.phone.trim() || !this.state.agree) return;
+    this.setState({ status: "sending" });
+    try {
+      const r = await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: this.state.name, phone: this.state.phone, page: document.title || location.pathname }) });
+      if (!r.ok) throw new Error(String(r.status));
+      this.setState({ status: "sent" });
+    } catch (e) { this.setState({ status: "error" }); }
+  };
+
+  renderVals() {
+    const s = this.state;
+    const ready = s.name.trim() && s.phone.trim() && s.agree;
+    const tabData = [
+      {
+        label: "земля", headline: "Участок 28 450 м², цена входа 608 млн ₽",
+        image: "assets/renders/dash-land.jpg",
+        metrics: [
+          { value: "28 450 м²", label: "площадь участка" },
+          { value: "78 600 м²", label: "потенциал GBA" },
+          { value: "2,76", label: "плотность" },
+          { value: "608 млн ₽", label: "цена входа" }
+        ],
+        bars: [
+          { label: "наш участок", value: "5 340 ₽/м² GBA", pct: "68%", color: "#A5E85C" },
+          { label: "медиана по локации", value: "5 870 ₽/м² GBA", pct: "75%", color: "#3FCB84" },
+          { label: "верхний квартиль", value: "7 810 ₽/м² GBA", pct: "100%", color: "rgba(242,248,244,.42)" },
+          { label: "нижний квартиль", value: "4 260 ₽/м² GBA", pct: "55%", color: "rgba(242,248,244,.42)" }
+        ],
+        note: "Участок выкупается на 9 % ниже медианы по локации. Ограничения по высотности снимаются проектом планировки, вид разрешённого использования менять не нужно, перенос ТП учтён в затратах."
+      },
+      {
+        label: "продукт", headline: "Структура GBA 78 600 м²",
+        image: "assets/renders/dash-product.jpg",
+        metrics: [
+          { value: "52 380 м²", label: "жильё" },
+          { value: "13 100 м²", label: "паркинг" },
+          { value: "9 420 м²", label: "коммерция" },
+          { value: "3 700 м²", label: "соцобъекты" }
+        ],
+        bars: [
+          { label: "жильё", value: "67 %", pct: "67%", color: "#A5E85C" },
+          { label: "паркинг", value: "17 %", pct: "17%", color: "#3FCB84" },
+          { label: "коммерция", value: "12 %", pct: "12%", color: "#7BE0A8" },
+          { label: "соцобъекты", value: "4 %", pct: "4%", color: "rgba(242,248,244,.42)" }
+        ],
+        note: "Квартирография собирается под спрос локации: доля студий и однокомнатных ограничена, первые этажи отданы коммерции с собственным входом."
+      },
+      {
+        label: "экономика", headline: "Срок до РНС — 11 месяцев",
+        image: "assets/renders/dash-land.jpg",
+        metrics: [
+          { value: "11 мес.", label: "срок до РНС" },
+          { value: "5 340 ₽", label: "цена за м² GBA" },
+          { value: "2,76", label: "плотность застройки" },
+          { value: "608 млн ₽", label: "потребность на входе" }
+        ],
+        bars: [
+          { label: "затраты на землю", value: "доля в бюджете", pct: "22%", color: "#A5E85C" },
+          { label: "СМР и инженерия", value: "доля в бюджете", pct: "58%", color: "#3FCB84" },
+          { label: "проектирование и согласования", value: "доля в бюджете", pct: "9%", color: "#7BE0A8" },
+          { label: "прочие и резерв", value: "доля в бюджете", pct: "11%", color: "rgba(242,248,244,.42)" }
+        ],
+        note: "Экономика проекта считается от продукта, а не от площади: график выручки, себестоимость и потребность в финансировании пересчитываются вместе со сценарием."
+      },
+      {
+        label: "сценарии", headline: "Чувствительность к рынку и затратам",
+        image: "assets/renders/dash-product.jpg",
+        metrics: [
+          { value: "4", label: "сценария в сравнении" },
+          { value: "±10 %", label: "шаг по цене продажи" },
+          { value: "±8 %", label: "шаг по себестоимости" },
+          { value: "1 экран", label: "сравнение сценариев" }
+        ],
+        bars: [
+          { label: "базовый", value: "опорный сценарий", pct: "70%", color: "#A5E85C" },
+          { label: "рост затрат", value: "−", pct: "46%", color: "#A5E85C" },
+          { label: "падение продаж", value: "−", pct: "38%", color: "#C96F53" },
+          { label: "оптимизированный продукт", value: "+", pct: "88%", color: "#3FCB84" }
+        ],
+        note: "Сценарии сравниваются в одном интерфейсе: видно, какие допущения ломают проект, а какие решения вытаскивают его обратно в плюс."
+      },
+      {
+        label: "решение", headline: "Покупать, менять концепцию или отказаться",
+        image: "assets/renders/dash-land.jpg",
+        metrics: [
+          { value: "Покупать", label: "вывод по участку" },
+          { value: "608 млн ₽", label: "предельная цена входа" },
+          { value: "11 мес.", label: "до разрешения на строительство" },
+          { value: "−9 %", label: "к медиане локации" }
+        ],
+        bars: [],
+        note: "Вывод связан с конкретными показателями, а не с общей оценкой: его можно показать инвестору, банку и городу и защитить каждой цифрой."
+      }
+    ];
+    const t = tabData[s.tab];
+    return {
+      tabs: tabData.map((d, i) => ({
+        label: d.label,
+        onClick: () => this.setState({ tab: i }),
+        bg: i === s.tab ? "#A5E85C" : "transparent",
+        fg: i === s.tab ? "#04140E" : "#8FA69C",
+        bd: i === s.tab ? "#A5E85C" : "rgba(165,232,92,.24)"
+      })),
+      tabLabel: t.label, tabHeadline: t.headline, tabImage: t.image,
+      tabMetrics: t.metrics, tabBars: t.bars, tabNote: t.note,
+      name: s.name, phone: s.phone, agree: s.agree,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onAgree: (e) => this.setState({ agree: e.target.checked }),
+      submit: this.submit,
+      sent: s.status === "sent",
+      showForm: s.status !== "sent",
+      disabled: !ready || s.status === "sending",
+      btnOpacity: ready && s.status !== "sending" ? 1 : 0.5,
+      btnLabel: s.status === "sending" ? "Отправляем…" : s.status === "error" ? "Не отправилось — ещё раз" : "Показать демо на моём участке",
+      specs: [
+        { label: "роль в маршруте", value: "первый этап, до покупки и проектирования" },
+        { label: "срок", value: "от экспресс-оценки до полной модели" },
+        { label: "на выходе", value: "сценарий, цена входа и решение" }
+      ],
+      questions: [
+        { n: "01", title: "Земля", text: "Стоит ли покупать участок и по какой цене?", result: "цена входа" },
+        { n: "02", title: "Продукт", text: "Что строить для этого рынка и для кого?", result: "квартирография" },
+        { n: "03", title: "Экономика", text: "Сколько проект заработает и когда?", result: "NPV и график" },
+        { n: "04", title: "Сценарии", text: "Что изменится при росте затрат или падении продаж?", result: "чувствительность" },
+        { n: "05", title: "Решение", text: "Покупать, менять концепцию или отказываться?", result: "вывод" }
+      ],
+      excel: [
+        "Доступ зависит от автора",
+        "Допущения трудно проверить",
+        "Сценарии пересчитываются вручную",
+        "Решение сложно объяснить внешнему партнёру"
+      ],
+      calc: [
+        "Доступна всей проектной команде",
+        "Все исходные данные и связи видны",
+        "Сценарии сравниваются в одном интерфейсе",
+        "Вывод связан с конкретными показателями"
+      ],
+      audience: [
+        { title: "Собственник земли", text: "Понять потенциал участка и аргументировать цену перед покупателем." },
+        { title: "Девелопер", text: "Проверить продукт, экономику и потребность в проектном финансировании." },
+        { title: "Инвестор", text: "Сравнить сценарии и увидеть чувствительность результата к рынку и затратам." },
+        { title: "Региональная команда", text: "Оценить территорию и подготовить обоснование для акционеров и банка." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

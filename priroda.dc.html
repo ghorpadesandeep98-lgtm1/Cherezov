@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Природа проектирования — Культура девелопмента</title>
+<meta name="description" content="Земельный брокер и fee-девелопмент: земля, продукт, экономика и архитектура в одной модели — до разрешения на строительство." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet" />
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#04140E;color:#F2F8F4;font-family:Manrope,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:#A5E85C;text-decoration:none}
+a:hover{color:#C7F291}
+input,button{font-family:Manrope,system-ui,sans-serif}
+@keyframes kdRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div style="background:#04140E;min-height:100vh;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:40;backdrop-filter:blur(18px);background:rgba(4,20,14,.86);border-bottom:1px solid rgba(242,248,244,.1)">
+    <div style="max-width:1440px;margin:0 auto;padding:16px clamp(16px,3vw,32px);display:flex;align-items:center;gap:clamp(16px,3vw,40px)">
+      <a href="home.dc.html" style="display:flex;align-items:center;gap:9px;color:#F2F8F4;font-size:15px;font-weight:600;letter-spacing:-.01em">
+        <img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" />
+      </a>
+      <nav style="display:flex;gap:clamp(10px,1.5vw,24px);margin-left:auto;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+        <a href="calculator.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Калькулятор</a>
+        <a href="mim.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">МиМ</a>
+        <a href="#process" style="color:#F2F8F4;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase">Процесс</a>
+        <a href="#sections" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Разделы</a>
+        <a href="#zok" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">ЗОК</a>
+      </nav>
+      <a href="#talk" style="background:#A5E85C;color:#04140E;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:14px 18px;border-radius:4px;white-space:nowrap" style-hover="background:#C7F291">Обсудить проект</a>
+    </div>
+  </header>
+
+  <section style="position:relative;min-height:min(100vh,900px);display:flex;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.97) 10%,rgba(4,20,14,.55) 52%,rgba(4,20,14,.7) 100%),url('assets/renders/case-nsk.jpg');background-size:cover;background-position:center;overflow:hidden">
+    <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(242,248,244,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,248,244,.055) 1px,transparent 1px);background-size:120px 120px"></div>
+    <div style="position:absolute;inset:clamp(16px,3vw,32px);pointer-events:none;border:1px solid rgba(242,248,244,.14)"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:repeating-linear-gradient(to bottom,rgba(165,232,92,.34) 0 6px,transparent 6px 14px)"></div>
+      <div style="position:absolute;left:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:#A5E85C;display:block"></span><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Концепция</span></div>
+      <div style="position:absolute;right:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">РНС</span><span style="width:7px;height:7px;background:#A5E85C;display:block"></span></div>
+    </div>
+    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(140px,20vh,220px) clamp(28px,4.2vw,56px) clamp(40px,6vw,72px);box-sizing:border-box;animation:kdRise .8s cubic-bezier(.2,.6,.2,1) both">
+    <img src="assets/logo/priroda-light.png" alt="Природа проектирования" style="height:46px;width:auto;display:block;margin:0 0 28px" />
+    <p style="margin:0 0 24px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">культура девелопмента · компетенция 03</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,64px);align-items:end">
+      <h1 style="margin:0;font-size:clamp(38px,6vw,96px);font-weight:400;line-height:1.02;letter-spacing:-.045em;color:#FFFFFF;max-width:15ch;text-wrap:balance">Проект теряет деньги не на стройке, а на стадии документации</h1>
+      <div>
+        <p style="margin:0 0 32px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:48ch">Центр проектирования полного цикла. Забирает архитектурную концепцию и доводит проект до разрешения на строительство: изыскания, проектная и рабочая документация, инженерные разделы, экспертиза и согласования.</p>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+          <a href="#talk" style="background:#A5E85C;color:#04140E;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 24px;border-radius:4px" style-hover="background:#C7F291">Обсудить проектирование</a>
+          <a href="mim.dc.html" style="color:#F2F8F4;font-size:14px;font-weight:400;border-bottom:1px solid rgba(242,248,244,.28);padding-bottom:3px" style-hover="color:#A5E85C">← Назад: бюро МиМ</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(20px,3vw,40px);border-top:1px solid rgba(242,248,244,.14);padding-top:24px;margin-top:clamp(44px,6vw,80px)">
+      <sc-for list="{{ specs }}" as="s" hint-placeholder-count="3">
+        <div>
+          <p style="margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">{{ s.label }}</p>
+          <p style="margin:0;font-size:17px;font-weight:400;line-height:1.45;color:#F2F8F4">{{ s.value }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </section>
+
+  <section style="max-width:1440px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(28px,4.2vw,56px) clamp(60px,9vw,120px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(30px,5vw,64px);align-items:center">
+      <img src="assets/renders/stage-planning-sm.png" alt="Проектная стадия" style="width:100%;height:auto;display:block;filter:drop-shadow(0 22px 18px rgba(15,95,60,.34))" />
+      <div>
+        <h2 style="margin:0 0 24px;font-size:clamp(28px,3.6vw,58px);font-weight:400;line-height:1.05;letter-spacing:-.04em;color:#FFFFFF;max-width:18ch">Проектировщик, который помнит про экономику</h2>
+        <p style="margin:0;font-size:18px;font-weight:300;line-height:1.65;color:#C6D8CE;max-width:48ch">На стадии документации проект чаще всего теряет деньги: решения принимаются «по нормативу», без связи с моделью. Мы ведём проектирование как продолжение девелоперского сценария — и каждое инженерное решение сверяем со сметой и сроком.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px) clamp(60px,9vw,120px)">
+    <h2 style="margin:0 0 clamp(44px,6vw,88px);font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:18ch">Путь до разрешения на строительство</h2>
+    <div style="display:flex;flex-direction:column;gap:clamp(32px,4.5vw,56px)">
+      <sc-for list="{{ process }}" as="p" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(16px,3vw,48px);align-items:baseline">
+          <div style="display:flex;gap:18px;align-items:baseline">
+            <span style="font-size:clamp(20px,2.2vw,30px);font-weight:400;color:#A5E85C;font-variant-numeric:tabular-nums">{{ p.n }}</span>
+            <h3 style="margin:0;font-size:clamp(24px,3vw,42px);font-weight:400;line-height:1.08;letter-spacing:-.035em;color:#FFFFFF">{{ p.title }}</h3>
+          </div>
+          <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">{{ p.text }}</p>
+          <div>
+            <p style="margin:0 0 6px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">результат</p>
+            <p style="margin:0;font-size:17px;font-weight:400;color:#A5E85C">{{ p.result }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="sections" style="max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px) clamp(60px,9vw,120px)">
+    <h2 style="margin:0 0 clamp(44px,6vw,88px);font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF">Разделы и компетенции</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(24px,3vw,44px)">
+      <sc-for list="{{ sections }}" as="s" hint-placeholder-count="8">
+        <div style="border-top:1px solid rgba(165,232,92,.22);padding-top:22px">
+          <p style="margin:0 0 14px;font-size:clamp(20px,2vw,28px);font-weight:400;line-height:1;letter-spacing:-.035em;color:#A5E85C">{{ s.code }}</p>
+          <p style="margin:0;font-size:15px;font-weight:300;line-height:1.6;color:#C6D8CE">{{ s.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="zok" style="position:relative;overflow:hidden;background:#071D14;border-top:1px solid rgba(242,248,244,.12);border-bottom:1px solid rgba(242,248,244,.12)">
+    <div style="max-width:1440px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(48px,7vw,100px) clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
+      <div>
+        <p style="margin:0 0 20px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">защитные ограждающие конструкции от БПЛА</p>
+        <h2 style="margin:0 0 24px;font-size:clamp(30px,4.4vw,72px);font-weight:400;line-height:1.03;letter-spacing:-.045em;color:#FFFFFF;max-width:16ch">Задачи без готового решения</h2>
+        <p style="margin:0 0 36px;font-size:18px;font-weight:300;line-height:1.65;color:#C6D8CE;max-width:48ch">Отдельное направление центра: проектирование ЗОК по СП 542.1325800.2024 для промышленности и ТЭК, энергетики, инфраструктуры и объектов госзаказа. Работаем по всей России — от обследования объекта до рабочей документации.</p>
+        <a href="https://zokbpla.pro" target="_blank" rel="noopener" style="display:inline-block;background:#A5E85C;color:#04140E;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 24px;border-radius:4px" style-hover="background:#C7F291">Направление ЗОК ↗</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:clamp(20px,3vw,36px)">
+        <sc-for list="{{ zok }}" as="z" hint-placeholder-count="4">
+          <div>
+            <p style="margin:0;font-size:clamp(22px,2.2vw,32px);font-weight:400;line-height:1.1;letter-spacing:-.03em;color:#FFFFFF">{{ z.value }}</p>
+            <p style="margin:10px 0 0;font-size:14px;font-weight:300;line-height:1.5;color:#8FA69C">{{ z.label }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px) clamp(60px,9vw,120px)">
+    <h2 style="margin:0 0 20px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Там, где нормативной базы ещё нет</h2>
+    <p style="margin:0 0 clamp(40px,6vw,80px);font-size:17px;font-weight:300;line-height:1.6;color:#8FA69C;max-width:52ch">Инженерная часть бренда выросла из проектов, для которых типового решения не существовало. Оба кейса — опыт руководителя и команды, а не проекты юрлица.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(30px,4vw,56px)">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="2">
+        <div style="border-top:1px solid rgba(165,232,92,.28);padding-top:26px">
+          <p style="margin:0 0 16px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A5E85C">{{ c.kicker }}</p>
+          <h3 style="margin:0 0 18px;font-size:clamp(24px,2.6vw,38px);font-weight:400;line-height:1.08;letter-spacing:-.03em;color:#FFFFFF">{{ c.title }}</h3>
+          <p style="margin:0;font-size:16px;font-weight:300;line-height:1.65;color:#C6D8CE;max-width:44ch">{{ c.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="border-top:1px solid rgba(165,232,92,.3);padding-top:26px;margin-top:clamp(40px,6vw,72px);max-width:62ch">
+      <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A5E85C">нужен факт · заполняется заказчиком</p>
+      <p style="margin:0;font-size:17px;font-weight:300;line-height:1.65;color:#8FA69C">2–3 объекта самого центра. По каждому: что проектировали, состав разделов, срок прохождения экспертизы, полученное разрешение.</p>
+    </div>
+  </section>
+
+  <section id="talk" style="position:relative;overflow:hidden;background-image:linear-gradient(to bottom,rgba(4,20,14,.82),rgba(4,20,14,.94)),url('assets/renders/contacts-aerial.png');background-size:cover;background-position:center">
+    <div style="max-width:1440px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(56px,8vw,120px) clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(36px,5vw,72px)">
+      <div>
+        <h2 style="margin:0 0 24px;font-size:clamp(30px,4.4vw,72px);font-weight:400;line-height:1.03;letter-spacing:-.045em;color:#FFFFFF;max-width:16ch">С чего всё начинается</h2>
+        <p style="margin:0 0 36px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:42ch">Если проект уже на стадии концепции — обсудим состав разделов и срок до РНС. Если участок только рассматривается — начните с калькулятора.</p>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <a href="calculator.dc.html" style="font-size:clamp(18px,2vw,26px);font-weight:400;letter-spacing:-.025em;color:#F2F8F4" style-hover="color:#A5E85C">Калькулятор девелопера →</a>
+          <a href="mim.dc.html" style="font-size:16px;font-weight:300;color:#8FA69C" style-hover="color:#A5E85C">Бюро МиМ →</a>
+        </div>
+      </div>
+      <div style="max-width:460px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="margin:0 0 12px;font-size:clamp(22px,2.6vw,34px);font-weight:400;line-height:1.15;letter-spacing:-.03em;color:#A5E85C">Заявка отправлена</p>
+            <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">Перезвоним в течение рабочего дня.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div>
+              <label for="p-name" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">имя</label>
+              <input id="p-name" type="text" placeholder="Как к вам обращаться" value="{{ name }}" onChange="{{ onName }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
+            </div>
+            <div>
+              <label for="p-phone" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">телефон</label>
+              <input id="p-phone" type="tel" placeholder="+7 900 000-00-00" value="{{ phone }}" onChange="{{ onPhone }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
+            </div>
+            <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+              <input type="checkbox" checked="{{ agree }}" onChange="{{ onAgree }}" style="width:20px;height:20px;margin:2px 0 0;accent-color:#A5E85C;flex:none" />
+              <span style="font-size:14px;font-weight:300;line-height:1.5;color:#8FA69C">Согласен на обработку персональных данных — <a href="legal.dc.html#consent" style="color:#A5E85C">согласие</a> и <a href="legal.dc.html#privacy" style="color:#A5E85C">политика</a></span>
+            </label>
+            <button type="button" onClick="{{ submit }}" disabled="{{ disabled }}" style="background:#A5E85C;color:#04140E;border:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:18px 24px;border-radius:4px;cursor:pointer;opacity:{{ btnOpacity }}" style-hover="background:#C7F291">{{ btnLabel }}</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="max-width:1440px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(28px,4.2vw,56px) clamp(48px,7vw,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;border-top:1px solid rgba(165,232,92,.12)">
+    <div>
+      <p style="margin:0 0 10px;display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:#F2F8F4"><img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" /></p>
+      <p style="margin:0;font-size:13px;font-weight:300;line-height:1.6;color:#6E8479">ООО «Культура девелопмента», ИНН 6685224585</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="home.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Главная</a>
+      <a href="calculator.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Калькулятор девелопера</a>
+      <a href="mim.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">МиМ «Архитектура и Исследование»</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="tel:+79128268070" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">+7 912 826-80-70</a>
+      <a href="mailto:468070@mail.ru" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">468070@mail.ru</a>
+      <a href="https://zokbpla.pro" target="_blank" rel="noopener" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">zokbpla.pro</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { name: "", phone: "", agree: false, status: "idle" };
+
+  submit = async () => {
+    if (!this.state.name.trim() || !this.state.phone.trim() || !this.state.agree) return;
+    this.setState({ status: "sending" });
+    try {
+      const r = await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: this.state.name, phone: this.state.phone, page: document.title || location.pathname }) });
+      if (!r.ok) throw new Error(String(r.status));
+      this.setState({ status: "sent" });
+    } catch (e) { this.setState({ status: "error" }); }
+  };
+
+  renderVals() {
+    const s = this.state;
+    const ready = s.name.trim() && s.phone.trim() && s.agree;
+    return {
+      name: s.name, phone: s.phone, agree: s.agree,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onAgree: (e) => this.setState({ agree: e.target.checked }),
+      submit: this.submit,
+      sent: s.status === "sent",
+      showForm: s.status !== "sent",
+      disabled: !ready || s.status === "sending",
+      btnOpacity: ready && s.status !== "sending" ? 1 : 0.5,
+      btnLabel: s.status === "sending" ? "Отправляем…" : s.status === "error" ? "Не отправилось — ещё раз" : "Обсудить проектирование",
+      specs: [
+        { label: "роль в маршруте", value: "третий этап, проектная стадия" },
+        { label: "вход", value: "мастер-план и архитектурная концепция" },
+        { label: "выход", value: "РНС и готовность к старту продаж" }
+      ],
+      process: [
+        { n: "01", title: "Изыскания", text: "Геология, геодезия, экология, исходные данные и ТУ.", result: "исходные данные" },
+        { n: "02", title: "Проектная документация", text: "Все разделы ПД в объёме постановления № 87.", result: "комплект ПД" },
+        { n: "03", title: "Экспертиза", text: "Сопровождение, ответы на замечания, корректировки.", result: "положительное заключение" },
+        { n: "04", title: "Рабочая документация", text: "РД под стройку, спецификации, узлы.", result: "рабочие чертежи" },
+        { n: "05", title: "РНС", text: "Сбор согласований и получение разрешения.", result: "разрешение на строительство" }
+      ],
+      sections: [
+        { code: "ПЗУ · АР", text: "Схема планировочной организации участка, архитектурные решения, посадка объекта." },
+        { code: "КР", text: "Фундаменты, каркас, узлы, расчёты и оптимизация конструктива по стоимости." },
+        { code: "ИОС", text: "Электроснабжение, водоснабжение и канализация, отопление и вентиляция, сети связи, технологические решения." },
+        { code: "ПБ", text: "Мероприятия по пожарной безопасности, расчёты рисков, СТУ при необходимости." },
+        { code: "ПОС · ПОД", text: "Проект организации строительства, стройгенплан, демонтажные работы, этапность." },
+        { code: "ООС · ЭЭ", text: "Охрана окружающей среды, энергоэффективность, требования по эксплуатации." },
+        { code: "ОДИ · СМ", text: "Мероприятия для маломобильных групп, сметная документация, проверка стоимости." },
+        { code: "АН", text: "Авторский надзор: сопровождение стройки, корректировки РД, работа с подрядчиком." }
+      ],
+      zok: [
+        { value: "СП 542.1325800.2024", label: "норматив, по которому проектируем" },
+        { value: "Вся Россия", label: "география работы" },
+        { value: "От обследования", label: "до рабочей документации" },
+        { value: "ТЭК · госзаказ", label: "промышленность, энергетика, инфраструктура" }
+      ],
+      cases: [
+        { kicker: "Кировская область · первый в регионе", title: "Деревянный каркасно-щитовой детский сад", text: "Нормативной базы под такой объект не было: нашли реализованный аналог, провели испытания в профильном институте и прошли экспертизу с положительным заключением." },
+        { kicker: "Промышленный объект · 4 месяца", title: "Модернизация птицефабрики", text: "Проектная структура на ~30 специалистов собрана с нуля, технологи привлечены из разных регионов — выход из экспертизы с положительным заключением за четыре месяца." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

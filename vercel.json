@@ -1,0 +1,13 @@
+{
+  "cleanUrls": false,
+  "rewrites": [
+    { "source": "/", "destination": "/home.dc.html" },
+    { "source": "/calculator", "destination": "/calculator.dc.html" },
+    { "source": "/mim", "destination": "/mim.dc.html" },
+    { "source": "/priroda", "destination": "/priroda.dc.html" },
+    { "source": "/legal", "destination": "/legal.dc.html" }
+  ],
+  "redirects": [
+    { "source": "/home-v1-archive.dc.html", "destination": "/", "permanent": false }
+  ]
+}

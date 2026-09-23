@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>МиМ «Архитектура и Исследование» — Культура девелопмента</title>
+<meta name="description" content="Земельный брокер и fee-девелопмент: земля, продукт, экономика и архитектура в одной модели — до разрешения на строительство." />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet" />
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#04140E;color:#F2F8F4;font-family:Manrope,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:#A5E85C;text-decoration:none}
+a:hover{color:#C7F291}
+input,button{font-family:Manrope,system-ui,sans-serif}
+@keyframes kdRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div style="background:#04140E;min-height:100vh;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:40;backdrop-filter:blur(18px);background:rgba(4,20,14,.86);border-bottom:1px solid rgba(242,248,244,.1)">
+    <div style="max-width:1440px;margin:0 auto;padding:16px clamp(16px,3vw,32px);display:flex;align-items:center;gap:clamp(16px,3vw,40px)">
+      <a href="home.dc.html" style="display:flex;align-items:center;gap:9px;color:#F2F8F4;font-size:15px;font-weight:600;letter-spacing:-.01em">
+        <img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" />
+      </a>
+      <nav style="display:flex;gap:clamp(10px,1.5vw,24px);margin-left:auto;align-items:center;flex-wrap:wrap;justify-content:flex-end">
+        <a href="calculator.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Калькулятор</a>
+        <a href="#principle" style="color:#F2F8F4;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase">Принцип</a>
+        <a href="#scope" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Состав работ</a>
+        <a href="#process" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Процесс</a>
+        <a href="priroda.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Природа</a>
+      </nav>
+      <a href="#talk" style="background:#A5E85C;color:#04140E;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:14px 18px;border-radius:4px;white-space:nowrap" style-hover="background:#C7F291">Обсудить концепцию</a>
+    </div>
+  </header>
+
+  <section style="position:relative;min-height:min(100vh,900px);display:flex;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.97) 10%,rgba(4,20,14,.55) 52%,rgba(4,20,14,.7) 100%),url('assets/renders/hero-aerial.jpg');background-size:cover;background-position:center;overflow:hidden">
+    <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(242,248,244,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,248,244,.055) 1px,transparent 1px);background-size:120px 120px"></div>
+    <div style="position:absolute;inset:clamp(16px,3vw,32px);pointer-events:none;border:1px solid rgba(242,248,244,.14)"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:repeating-linear-gradient(to bottom,rgba(165,232,92,.34) 0 6px,transparent 6px 14px)"></div>
+      <div style="position:absolute;left:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:#A5E85C;display:block"></span><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Сценарий</span></div>
+      <div style="position:absolute;right:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Концепция</span><span style="width:7px;height:7px;background:#A5E85C;display:block"></span></div>
+    </div>
+    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(140px,20vh,220px) clamp(28px,4.2vw,56px) clamp(40px,6vw,72px);box-sizing:border-box;animation:kdRise .8s cubic-bezier(.2,.6,.2,1) both">
+    <img src="assets/logo/mim-light.png" alt="МиМ «Архитектура и Исследование»" style="height:60px;width:auto;display:block;margin:0 0 28px" />
+    <p style="margin:0 0 24px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">культура девелопмента · компетенция 02</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,64px);align-items:end">
+      <h1 style="margin:0;font-size:clamp(38px,6vw,96px);font-weight:400;line-height:1.02;letter-spacing:-.045em;color:#FFFFFF;max-width:15ch;text-wrap:balance">Концепция, которая сходится в экономике проекта</h1>
+      <div>
+        <p style="margin:0 0 32px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:48ch">Архитектурно-исследовательское бюро внутри бренда. Мы начинаем не с эскиза, а с рынка и цифры: бюро подключается, когда девелоперский сценарий уже выбран, и переводит его в объём, мастер-план и архитектуру.</p>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+          <a href="#talk" style="background:#A5E85C;color:#04140E;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 24px;border-radius:4px" style-hover="background:#C7F291">Обсудить концепцию</a>
+          <a href="calculator.dc.html" style="color:#F2F8F4;font-size:14px;font-weight:400;border-bottom:1px solid rgba(242,248,244,.28);padding-bottom:3px" style-hover="color:#A5E85C">← Назад: калькулятор девелопера</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(20px,3vw,40px);border-top:1px solid rgba(242,248,244,.14);padding-top:24px;margin-top:clamp(44px,6vw,80px)">
+      <sc-for list="{{ specs }}" as="s" hint-placeholder-count="3">
+        <div>
+          <p style="margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">{{ s.label }}</p>
+          <p style="margin:0;font-size:17px;font-weight:400;line-height:1.45;color:#F2F8F4">{{ s.value }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;min-height:min(92vh,820px);background-image:linear-gradient(to top,rgba(4,20,14,.94) 10%,rgba(4,20,14,.28) 70%),url('assets/renders/masterplan-aerial.jpg');background-size:cover;background-position:center;display:flex;align-items:flex-end">
+    <p style="margin:0;padding:clamp(28px,4vw,56px) clamp(28px,4.2vw,56px);font-size:clamp(18px,2.2vw,32px);font-weight:300;line-height:1.35;letter-spacing:-.02em;color:#F2F8F4;max-width:24ch">Мастер-план — это не картинка территории, а способ разложить экономику по кварталам и очередям.</p>
+  </section>
+
+  <section id="principle" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <h2 style="margin:0 0 24px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Архитектура, которая проверяется цифрой</h2>
+    <p style="margin:0 0 clamp(44px,6vw,88px);font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:58ch">Красивый эскиз, который не сходится в экономике, — это отложенная переделка. Поэтому в бюро исследование, продукт и объёмное решение делаются в связке с финансовой моделью проекта, а не после неё.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(30px,5vw,72px)">
+      <div>
+        <p style="margin:0 0 26px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#6E8479">обычное бюро — сначала образ</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <sc-for list="{{ usual }}" as="u" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="width:6px;height:6px;background:rgba(242,248,244,.28);flex:none;margin-top:8px"></span>
+              <p style="margin:0;font-size:16px;font-weight:300;line-height:1.55;color:#8FA69C">{{ u }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 26px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">бюро мим — сначала гипотеза рынка</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <sc-for list="{{ mim }}" as="m" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <span style="width:6px;height:6px;background:#A5E85C;flex:none;margin-top:8px"></span>
+              <p style="margin:0;font-size:16px;font-weight:400;line-height:1.55;color:#F2F8F4">{{ m }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scope" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <h2 style="margin:0 0 clamp(44px,6vw,88px);font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF">Что делает бюро</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(24px,3vw,44px)">
+      <sc-for list="{{ scope }}" as="s" hint-placeholder-count="8">
+        <div style="border-top:1px solid rgba(165,232,92,.22);padding-top:22px">
+          <p style="margin:0 0 16px;font-size:clamp(22px,2.2vw,30px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#A5E85C;font-variant-numeric:tabular-nums">{{ s.n }}</p>
+          <h3 style="margin:0 0 12px;font-size:clamp(19px,1.9vw,24px);font-weight:400;line-height:1.15;letter-spacing:-.025em;color:#FFFFFF">{{ s.title }}</h3>
+          <p style="margin:0;font-size:15px;font-weight:300;line-height:1.6;color:#8FA69C">{{ s.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="process" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
+    <h2 style="margin:0 0 clamp(44px,6vw,88px);font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:18ch">От сценария — к ДНК проекта</h2>
+    <div style="display:flex;flex-direction:column;gap:clamp(32px,4.5vw,56px)">
+      <sc-for list="{{ process }}" as="p" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(16px,3vw,48px);align-items:baseline">
+          <div style="display:flex;gap:18px;align-items:baseline">
+            <span style="font-size:clamp(20px,2.2vw,30px);font-weight:400;color:#A5E85C;font-variant-numeric:tabular-nums">{{ p.n }}</span>
+            <h3 style="margin:0;font-size:clamp(24px,3vw,42px);font-weight:400;line-height:1.08;letter-spacing:-.035em;color:#FFFFFF">{{ p.title }}</h3>
+          </div>
+          <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">{{ p.text }}</p>
+          <div>
+            <p style="margin:0 0 6px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">результат</p>
+            <p style="margin:0;font-size:17px;font-weight:400;color:#A5E85C">{{ p.result }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="cases" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px) clamp(30px,4vw,56px)">
+    <h2 style="margin:0 0 20px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Проекты, где архитектура изменила экономику</h2>
+    <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#8FA69C;max-width:48ch">Часть проектов раскрывается без названий — по условиям соглашений с заказчиками.</p>
+  </section>
+
+  <section style="position:relative;overflow:hidden;min-height:min(92vh,820px);display:flex;align-items:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.96) 14%,rgba(4,20,14,.5) 66%),url('assets/renders/case-nsk.jpg');background-size:cover;background-position:center">
+    <div style="max-width:1440px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(72px,12vw,180px) clamp(28px,4.2vw,56px) clamp(40px,6vw,72px)">
+      <p style="margin:0 0 20px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">кейс 01 · Новосибирск · 4,5 га</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,56px);align-items:end">
+        <div>
+          <p style="margin:0;font-size:clamp(44px,6vw,104px);font-weight:400;line-height:1;letter-spacing:-.05em;color:#A5E85C;font-variant-numeric:tabular-nums">+1,2 млрд ₽</p>
+          <p style="margin:16px 0 0;font-size:15px;font-weight:300;line-height:1.55;color:#C6D8CE;max-width:28ch">улучшение финансового результата на участке площадью 4,5 га</p>
+        </div>
+        <p style="margin:0;font-size:17px;font-weight:300;line-height:1.65;color:#F2F8F4;max-width:46ch">Продуктовые и архитектурные параметры пересобраны вместе с моделью: другой баланс застройки — другой финансовый результат.</p>
+      </div>
+      <p style="margin:clamp(32px,4vw,48px) 0 0;font-size:12px;font-weight:300;color:#6E8479">Данные приведены для примера расчёта и не являются инвестиционной рекомендацией.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px) clamp(60px,9vw,120px)">
+    <div style="border-top:1px solid rgba(165,232,92,.3);padding-top:26px;max-width:62ch">
+      <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A5E85C">нужен факт · заполняется заказчиком</p>
+      <p style="margin:0;font-size:17px;font-weight:300;line-height:1.65;color:#8FA69C">Ещё 2 кейса бюро. По каждому: локация, площадь участка или GBA, задача заказчика, что именно сделало бюро, измеримый результат, 2–3 визуализации или фото. Можно обезличенно.</p>
+    </div>
+  </section>
+
+  <section id="talk" style="position:relative;overflow:hidden;background-image:linear-gradient(to bottom,rgba(4,20,14,.8),rgba(4,20,14,.94)),url('assets/renders/plot-aerial.jpg');background-size:cover;background-position:center">
+    <div style="max-width:1440px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(56px,8vw,120px) clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(36px,5vw,72px)">
+      <div>
+        <h2 style="margin:0 0 24px;font-size:clamp(30px,4.4vw,72px);font-weight:400;line-height:1.03;letter-spacing:-.045em;color:#FFFFFF;max-width:16ch">Концепция готова. Дальше — документация</h2>
+        <p style="margin:0 0 36px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:42ch">Расскажите про участок и выбранный сценарий — обсудим, что бюро может сделать на вашей стадии.</p>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <a href="priroda.dc.html" style="font-size:clamp(18px,2vw,26px);font-weight:400;letter-spacing:-.025em;color:#F2F8F4" style-hover="color:#A5E85C">Дальше: «Природа проектирования» →</a>
+          <a href="calculator.dc.html" style="font-size:16px;font-weight:300;color:#8FA69C" style-hover="color:#A5E85C">← Калькулятор девелопера</a>
+        </div>
+      </div>
+      <div style="max-width:460px">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p style="margin:0 0 12px;font-size:clamp(22px,2.6vw,34px);font-weight:400;line-height:1.15;letter-spacing:-.03em;color:#A5E85C">Заявка отправлена</p>
+            <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">Перезвоним в течение рабочего дня.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div>
+              <label for="m-name" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">имя</label>
+              <input id="m-name" type="text" placeholder="Как к вам обращаться" value="{{ name }}" onChange="{{ onName }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
+            </div>
+            <div>
+              <label for="m-phone" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">телефон</label>
+              <input id="m-phone" type="tel" placeholder="+7 900 000-00-00" value="{{ phone }}" onChange="{{ onPhone }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
+            </div>
+            <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
+              <input type="checkbox" checked="{{ agree }}" onChange="{{ onAgree }}" style="width:20px;height:20px;margin:2px 0 0;accent-color:#A5E85C;flex:none" />
+              <span style="font-size:14px;font-weight:300;line-height:1.5;color:#8FA69C">Согласен на обработку персональных данных — <a href="legal.dc.html#consent" style="color:#A5E85C">согласие</a> и <a href="legal.dc.html#privacy" style="color:#A5E85C">политика</a></span>
+            </label>
+            <button type="button" onClick="{{ submit }}" disabled="{{ disabled }}" style="background:#A5E85C;color:#04140E;border:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:18px 24px;border-radius:4px;cursor:pointer;opacity:{{ btnOpacity }}" style-hover="background:#C7F291">{{ btnLabel }}</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <footer style="max-width:1440px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(28px,4.2vw,56px) clamp(48px,7vw,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;border-top:1px solid rgba(165,232,92,.12)">
+    <div>
+      <p style="margin:0 0 10px;display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:#F2F8F4"><img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" /></p>
+      <p style="margin:0;font-size:13px;font-weight:300;line-height:1.6;color:#6E8479">ООО «Культура девелопмента», ИНН 6685224585</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="home.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Главная</a>
+      <a href="calculator.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Калькулятор девелопера</a>
+      <a href="priroda.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Природа проектирования</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="tel:+79128268070" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">+7 912 826-80-70</a>
+      <a href="mailto:468070@mail.ru" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">468070@mail.ru</a>
+      <a href="https://t.me/culture_dev" target="_blank" rel="noopener" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">@culture_dev</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { name: "", phone: "", agree: false, status: "idle" };
+
+  submit = async () => {
+    if (!this.state.name.trim() || !this.state.phone.trim() || !this.state.agree) return;
+    this.setState({ status: "sending" });
+    try {
+      const r = await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: this.state.name, phone: this.state.phone, page: document.title || location.pathname }) });
+      if (!r.ok) throw new Error(String(r.status));
+      this.setState({ status: "sent" });
+    } catch (e) { this.setState({ status: "error" }); }
+  };
+
+  renderVals() {
+    const s = this.state;
+    const ready = s.name.trim() && s.phone.trim() && s.agree;
+    return {
+      name: s.name, phone: s.phone, agree: s.agree,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onAgree: (e) => this.setState({ agree: e.target.checked }),
+      submit: this.submit,
+      sent: s.status === "sent",
+      showForm: s.status !== "sent",
+      disabled: !ready || s.status === "sending",
+      btnOpacity: ready && s.status !== "sending" ? 1 : 0.5,
+      btnLabel: s.status === "sending" ? "Отправляем…" : s.status === "error" ? "Не отправилось — ещё раз" : "Обсудить концепцию",
+      specs: [
+        { label: "роль в маршруте", value: "второй этап, предпроектная стадия" },
+        { label: "вход", value: "сценарий и экономика из калькулятора" },
+        { label: "выход", value: "мастер-план и архитектурная концепция" }
+      ],
+      usual: [
+        "Концепция рождается из портфолио и вкуса",
+        "ТЭП подгоняются под картинку",
+        "Экономику считает кто-то другой и позже",
+        "Изменение бюджета означает перерисовку почти с нуля"
+      ],
+      mim: [
+        "Исследование спроса и конкурентов до первой линии",
+        "Массинг проверяется балансом территории и ТЭП",
+        "Архитектура и модель пересчитываются вместе",
+        "Концепция сразу готова к защите перед банком и городом"
+      ],
+      scope: [
+        { n: "01", title: "Исследование рынка", text: "Спрос, конкуренты, ценовые коридоры, поглощение, позиционирование." },
+        { n: "02", title: "Градостроительный анализ", text: "ПЗЗ, ГПЗУ, высотность, охранные зоны, ограничения и возможности." },
+        { n: "03", title: "Массинг и ТЭП", text: "Объёмно-пространственные варианты, плотность, баланс территории, посадка на рельеф." },
+        { n: "04", title: "Мастер-план", text: "Кварталы, улично-дорожная сеть, этапность освоения, социальная и коммерческая инфраструктура." },
+        { n: "05", title: "Продукт и квартирография", text: "Форматы жилья, площади, наполнение первых этажей, сценарии жизни." },
+        { n: "06", title: "Архитектурная концепция", text: "Образ, фасадные решения, материалы, детали, узнаваемость проекта." },
+        { n: "07", title: "Благоустройство и среда", text: "Дворы, общественные пространства, связь проекта с городом." },
+        { n: "08", title: "Материалы для защиты", text: "Визуализации, буклет проекта, аргументация для инвестора, банка и градсовета." }
+      ],
+      process: [
+        { n: "01", title: "Исследование", text: "Рынок, конкуренты, аудитория, ограничения участка.", result: "гипотеза продукта" },
+        { n: "02", title: "Массинг", text: "Варианты застройки и балансы, проверенные ТЭП и моделью.", result: "объём и плотность" },
+        { n: "03", title: "Мастер-план", text: "Структура территории, этапность, инфраструктура.", result: "планировочное решение" },
+        { n: "04", title: "Концепция", text: "Архитектурный образ, фасады, среда, детали.", result: "облик проекта" },
+        { n: "05", title: "Защита", text: "Материалы для инвестора, банка, города и отдела продаж.", result: "ДНК проекта" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
