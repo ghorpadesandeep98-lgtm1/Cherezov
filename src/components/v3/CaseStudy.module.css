@@ -231,9 +231,21 @@
   color: var(--kd-ink);
 }
 
+/* Подпись под кнопкой: держит связь чужого кейса с участком читателя. */
+.ctaNote {
+  margin-top: -4px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(234, 246, 240, 0.5);
+}
+
 @media (max-width: 719px) {
   .cta {
     align-self: center;
+  }
+
+  .ctaNote {
+    text-align: center;
   }
 }
 

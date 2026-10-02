@@ -120,11 +120,56 @@
   text-shadow: 0 2px 18px rgba(4, 26, 18, 0.5);
 }
 
+/* Кнопки, обещание и ссылка на «Калькулятор» — один блок действия.
+   В .copy между элементами 26px, а эти три строки должны держаться вместе. */
+.action {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .buttons {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+/* Что человек получает в ответ на заявку. */
+.promise {
+  max-width: 46ch;
+  font-size: clamp(13px, 3.2vw, 15px);
+  line-height: 1.55;
+  color: rgba(234, 246, 240, 0.78);
+  text-shadow: 0 2px 18px rgba(4, 26, 18, 0.5);
+}
+
+/* Именно ссылка, а не вторая кнопка: без рамки и без фона, иначе спорит
+   с главной кнопкой. Зона попадания — вся строка целиком и не ниже 44px. */
+.calcLink {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 46ch;
+  padding: 4px 0;
+  font-weight: 600;
+  font-size: clamp(13px, 3.2vw, 16px);
+  line-height: 1.4;
+  color: var(--kd-salad);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-shadow: 0 2px 18px rgba(4, 26, 18, 0.5);
+}
+
+.calcLink:hover {
+  color: var(--kd-salad);
+  text-decoration-thickness: 2px;
+}
+
+.calcLinkShort {
+  display: none;
 }
 
 .primary {
@@ -253,6 +298,16 @@
   font-weight: 500;
   font-size: 14px;
   color: rgba(15, 31, 25, 0.72);
+}
+
+@media (max-width: 479px) {
+  .calcLinkFull {
+    display: none;
+  }
+
+  .calcLinkShort {
+    display: inline;
+  }
 }
 
 @media (max-width: 719px) {
