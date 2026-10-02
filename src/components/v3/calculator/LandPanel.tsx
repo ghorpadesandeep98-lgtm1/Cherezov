@@ -21,9 +21,18 @@ export function LandPanel() {
 
         <div className={d.split}>
           <div className={d.splitLeft} style={{ flex: '1 1 46%', gap: 8 }}>
-            {/* Сцена рисуется в фиксированном масштабе, поэтому обычный img. */}
+            {/* Сцена рисуется в фиксированном масштабе, поэтому обычный img.
+                loading="lazy" — чтобы React не ставил на картинку preload в <head>:
+                она лежит глубоко под первым экраном и не должна спорить с героем. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/v3/plot.jpg" alt="Участок" className={d.thumb} style={{ height: 112 }} />
+            <img
+              src="/assets/v3/plot.jpg"
+              alt="Участок"
+              className={d.thumb}
+              style={{ height: 112 }}
+              loading="lazy"
+              decoding="async"
+            />
             <div className={d.meta}>
               28 450 м² · зона Ж-4
               <br />

@@ -141,9 +141,10 @@ export function Contacts() {
         <div className={styles.grid}>
           <div className={styles.copy}>
             <span className={styles.overline}>контакты</span>
-            <h2 className={styles.title}>Обсудим ваш проект</h2>
+            <h2 className={styles.title}>Разберём ваш участок</h2>
             <p className={styles.lead}>
-              Расскажите об участке или идее — начнём с предметного разговора.
+              Пришлите участок — вернёмся с разбором: что на нём можно построить и что это
+              даёт в деньгах. Ответим в течение двух рабочих дней.
             </p>
             <div className={styles.details}>
               <a href={CONTACTS.phoneHref} className={styles.phone}>
@@ -157,7 +158,7 @@ export function Contacts() {
           </div>
 
           <form id="form" className={styles.form} onSubmit={onSubmit} noValidate>
-            <span className={styles.formLabel}>получить второе мнение</span>
+            <span className={styles.formLabel}>разбор участка</span>
 
             {status === 'sent' ? (
               <div className={styles.done}>
@@ -224,7 +225,7 @@ export function Contacts() {
                   className={styles.submit}
                   disabled={status === 'sending' || !consent}
                 >
-                  {status === 'sending' ? 'Отправляем…' : 'Обсудить проект'}
+                  {status === 'sending' ? 'Отправляем…' : 'Разобрать участок'}
                 </button>
 
                 {status === 'failed' && (

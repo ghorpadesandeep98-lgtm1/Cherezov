@@ -1,3 +1,4 @@
+import type { FaqItem } from '@/components/v3/Faq';
 import { CONTACTS, FAQ } from '@/data/v3/content';
 import { SITE_URL } from '@/lib/site';
 
@@ -46,18 +47,39 @@ const ORGANIZATION = {
   ],
 } as const;
 
-const FAQ_PAGE = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  '@id': `${SITE_URL}/#faq`,
-  mainEntity: FAQ.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
+/**
+ * FAQPage собираем по той странице, на которой блок реально стоит: у разметки
+ * и у вёрстки должен быть один и тот же текст, иначе поиск считает разметку
+ * недостоверной. `path` — путь страницы, он же уникальный `@id`.
+ *
+ * В `text` уходит прямой ответ вместе с фактами для цитирования — ровно то,
+ * что человек видит в раскрытом пункте.
+ */
+function faqPage(items: readonly FaqItem[], path: string) {
+  const base = path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${base}#faq`,
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: [item.a, ...(item.facts ?? []), item.note ?? ''].filter(Boolean).join(' '),
+      },
+    })),
+  };
+}
+
+type JsonLdProps = {
+  /** Вопрос-ответы этой страницы. По умолчанию — общие вопросы с главной. */
+  faq?: readonly FaqItem[];
+  /** Путь страницы, на которой стоит блок: '/' или, например, '/calculator'. */
+  path?: string;
 };
 
-export function JsonLd() {
+export function JsonLd({ faq = FAQ, path = '/' }: JsonLdProps = {}) {
   return (
     <>
       <script
@@ -66,7 +88,7 @@ export function JsonLd() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_PAGE) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPage(faq, path)) }}
       />
     </>
   );

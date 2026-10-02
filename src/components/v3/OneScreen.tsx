@@ -119,12 +119,18 @@ export function OneScreen() {
                 {atEnd ? '←' : '→'}
               </button>
 
-              {/* Рамка макбука — часть иллюстрации, поэтому обычный img поверх сцены. */}
+              {/* Рамка макбука — часть иллюстрации, поэтому обычный img поверх сцены.
+                  loading="lazy" обязателен: без него React отдаёт на картинку
+                  <link rel="preload" as="image"> в <head>, и 165 КБ PNG конкурируют
+                  за канал с героем — на мобильном вдобавок впустую, там .macbook
+                  скрыт через display:none (OneScreen.module.css, <=819px). */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/assets/v3/macbook.png"
                 alt="MacBook с интерфейсом калькулятора"
                 className={styles.macbook}
+                loading="lazy"
+                decoding="async"
               />
 
               <div ref={boxRef} className={styles.screen} onScroll={onScroll}>

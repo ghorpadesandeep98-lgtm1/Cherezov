@@ -1,0 +1,39 @@
+.section {
+  padding: clamp(28px, 4.5vw, 56px) clamp(16px, 4vw, 24px) 0;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 16px);
+}
+
+.overline {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kd-stone);
+}
+
+.title {
+  font-weight: 800;
+  font-size: clamp(30px, 3.9vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: var(--kd-ink);
+  max-width: 24ch;
+}
+
+.titleAccent {
+  color: var(--kd-green-mid);
+}
+
+.lead {
+  max-width: 62ch;
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.62;
+  color: var(--kd-slate);
+}
