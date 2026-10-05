@@ -84,7 +84,40 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+}
+
+/* Ответ, факты и оговорка лежат в DOM всегда (см. Faq.tsx): разметка FAQPage
+   обещает поиску ответ на каждый вопрос, и он обязан быть в HTML страницы.
+   Закрытый пункт прячет их стилем — для человека поведение то же, что было
+   у аккордеона с условным рендером. */
+.collapse,
+.collapseOpen {
+  display: flex;
+  flex-direction: column;
   gap: 6px;
+  transition: opacity 0.25s;
+}
+
+.collapse {
+  /* Нулевая высота плюс overflow: содержимое остаётся в HTML, но не занимает
+     места и не торчит из строки. */
+  max-height: 0;
+  padding-top: 0;
+  overflow: hidden;
+  opacity: 0;
+  /* visibility убирает скрытый текст из дерева доступности и из поиска
+     по странице, оставляя его в разметке. */
+  visibility: hidden;
+}
+
+.collapseOpen {
+  /* Открытый ответ высотой не ограничен намеренно: любой предел в em обрезал бы
+     самый длинный ответ на узком экране, а анимации высоты здесь и не было —
+     до этой правки ответ появлялся в DOM мгновенно. */
+  max-height: none;
+  padding-top: 6px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .question,

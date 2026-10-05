@@ -37,7 +37,12 @@ const DEFAULT_LEAD =
   'Свяжитесь с нами, если у вас остались вопросы или нужна консультация — разберём ваш ' +
   'участок и ответим по существу.';
 
-/** Аккордеон вопросов: открыт ровно один пункт, по умолчанию первый. */
+/**
+ * Аккордеон вопросов: открыт ровно один пункт, по умолчанию первый.
+ *
+ * Закрытые ответы остаются в DOM и прячутся стилем — так требует разметка
+ * `FAQPage`, которая собирается из этого же массива в `JsonLd`.
+ */
 export function Faq({
   items = FAQ,
   title = DEFAULT_TITLE,
@@ -68,23 +73,27 @@ export function Faq({
                 >
                   <span className={styles.rowBody}>
                     <b className={isOpen ? styles.questionOpen : styles.question}>{item.q}</b>
-                    {isOpen && (
-                      <>
-                        <span className={styles.answer}>{item.a}</span>
-                        {/* Список размечен ролями, а не ul/li: строка целиком —
-                            это <button>, внутрь которого блочные теги нельзя. */}
-                        {item.facts && item.facts.length > 0 && (
-                          <span className={styles.facts} role="list">
-                            {item.facts.map((fact) => (
-                              <span key={fact} className={styles.fact} role="listitem">
-                                {fact}
-                              </span>
-                            ))}
-                          </span>
-                        )}
-                        {item.note && <span className={styles.note}>{item.note}</span>}
-                      </>
-                    )}
+                    {/* Ответ рендерится всегда и у закрытого пункта скрывается стилем.
+                        Это обязательное условие разметки FAQPage: `acceptedAnswer`
+                        каждого вопроса должен присутствовать в HTML страницы. Если
+                        ответ вынимать из DOM по `isOpen`, разметка обещает поиску
+                        десять ответов, а на странице лежит один, и её перестают
+                        учитывать целиком. */}
+                    <span className={isOpen ? styles.collapseOpen : styles.collapse}>
+                      <span className={styles.answer}>{item.a}</span>
+                      {/* Список размечен ролями, а не ul/li: строка целиком —
+                          это <button>, внутрь которого блочные теги нельзя. */}
+                      {item.facts && item.facts.length > 0 && (
+                        <span className={styles.facts} role="list">
+                          {item.facts.map((fact) => (
+                            <span key={fact} className={styles.fact} role="listitem">
+                              {fact}
+                            </span>
+                          ))}
+                        </span>
+                      )}
+                      {item.note && <span className={styles.note}>{item.note}</span>}
+                    </span>
                   </span>
                   <span className={isOpen ? styles.toggleOpen : styles.toggle}>↘</span>
                 </button>
