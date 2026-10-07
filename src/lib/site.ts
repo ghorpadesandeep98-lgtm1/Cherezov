@@ -29,4 +29,4 @@ export const CANONICAL_HOST = (() => {
 })();
 
 /** Страницы, которые попадают в карту сайта. */
-export const SITE_ROUTES = ['/', '/calculator', '/privacy', '/consent'] as const;
+export const SITE_ROUTES = ['/', '/calculator', '/pzz-gpzu', '/privacy', '/consent'] as const;
