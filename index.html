@@ -37,7 +37,8 @@ a:hover{color:var(--acc)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </helmet>
-<div data-theme="{{ theme }}" style="background:var(--bg);color:var(--ink);font-family:'Onest',system-ui,sans-serif;font-size:17px;line-height:1.5;min-height:100vh;overflow-x:clip">
+<div data-theme="{{ theme }}" style="background:var(--bg);color:var(--ink);font-family:'Onest',system-ui,sans-serif;font-size:clamp(15px,1.2vw + 11px,17px);line-height:1.5;min-height:100vh;overflow-x:clip">
+<button type="button" aria-label="Наверх" onClick="{{ toTop }}" style="position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:60;width:52px;height:52px;padding:0;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--ink);background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.12);transition:opacity .25s,transform .25s,background .2s;opacity:{{ topOp }};transform:translateY({{ topY }});pointer-events:{{ topPe }}" style-hover="background:var(--acc);color:#fff;border-color:var(--acc)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg></button>
 
 <header style="position:sticky;top:0;z-index:50;padding:calc(10px + env(safe-area-inset-top)) clamp(12px,3vw,32px) 10px;background:var(--glass);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border-bottom:1px solid var(--line)">
   <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
@@ -61,13 +62,13 @@ a:hover{color:var(--acc)}
       <div style="padding:clamp(24px,5vw,72px);border-radius:clamp(24px,3vw,40px);background:var(--glass);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);border:1px solid var(--glassLine);box-shadow:0 40px 100px -40px rgba(140,50,10,.35);display:flex;flex-direction:column;gap:clamp(20px,3vw,36px)">
         <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Бренд-стратег · маркетолог · дизайнер · экс-руководитель маркетинга «Железно»</div>
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(16px,3vw,40px)">
-          <h1 style="margin:0;min-width:0;font-weight:500;font-size:clamp(42px,9vw,136px);line-height:.92;letter-spacing:-0.05em">Ольга<br>Пегушина</h1>
+          <h1 style="margin:0;min-width:0;font-weight:500;font-size:clamp(31px,7.2vw,109px);line-height:.92;letter-spacing:-0.05em">Ольга<br>Пегушина</h1>
           <figure style="margin:0;flex:none;position:relative;width:clamp(84px,11vw,150px)">
             <img src="img/olga.webp" alt="Ольга Пегушина" width="232" height="290" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:clamp(16px,2vw,26px);box-shadow:0 30px 60px -30px rgba(140,40,10,.55)">
             <span style="position:absolute;left:-10px;bottom:12%;padding:6px 10px;border-radius:999px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--glassLine);font-size:clamp(11px,1vw,13px);white-space:nowrap;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#3BB36B"></span>беру проекты</span>
           </figure>
         </div>
-        <p style="margin:0;max-width:980px;font-size:clamp(26px,3.6vw,52px);line-height:1.06;letter-spacing:-0.035em;font-weight:500;text-wrap:balance">Делаю бренды со смыслом, <span style="color:var(--mute2)">в которые влюбляются с первого взгляда.</span></p>
+        <p style="margin:0;max-width:980px;font-size:clamp(21px,3.02vw,44px);line-height:1.06;letter-spacing:-0.035em;font-weight:500;text-wrap:balance">Делаю бренды со смыслом, <span style="color:var(--mute2)">в которые влюбляются с первого взгляда.</span></p>
         <p style="margin:0;max-width:720px;color:var(--mute);font-size:clamp(16px,1.3vw,18px);text-wrap:pretty">В маркетинге с 2013 года. Семь лет работала в маркетинге девелопера «Железно»: прошла путь от менеджера по цифровому маркетингу до руководителя отдела маркетинга. Сейчас я в декрете и веду личную практику: стратегический маркетинг (коммерческие и коммуникационные стратегии, запуск и перезапуск маркетинга проектов) и брендинг (бренд-платформы, брендбуки, лендинги). Здесь собраны оба направления.</p>
       </div>
 
@@ -84,9 +85,9 @@ a:hover{color:var(--acc)}
           <span>2013</span><span>2019 · «Железно»</span><span>2025 · своя практика</span>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:8px">
-          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(56px,7vw,96px);font-weight:400;letter-spacing:-0.05em;line-height:1">13 лет</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">в маркетинге, с 2013 года</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(56px,7vw,96px);font-weight:400;letter-spacing:-0.05em;line-height:1">7 лет</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">в девелопере «Железно», 2019–2025</span></div>
-          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(56px,7vw,96px);font-weight:400;letter-spacing:-0.05em;line-height:1;color:var(--acc)">30+</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">брендбуков и логобуков</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(41px,5.6vw,77px);font-weight:400;letter-spacing:-0.05em;line-height:1">13 лет</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">в маркетинге, с 2013 года</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(41px,5.6vw,77px);font-weight:400;letter-spacing:-0.05em;line-height:1">7 лет</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">в девелопере «Железно», 2019–2025</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(41px,5.6vw,77px);font-weight:400;letter-spacing:-0.05em;line-height:1;color:var(--acc)">30+</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">брендбуков и логобуков</span></div>
         </div>
       </div>
     </div>
@@ -97,14 +98,14 @@ a:hover{color:var(--acc)}
       <a href="#practice" style="position:relative;overflow:hidden;text-decoration:none;color:var(--ink);padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:20px;min-height:340px">
         <span style="position:absolute;right:-90px;bottom:-110px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFD7B8 0%,#F58A4A 40%,#D2501A 72%,#8E300C 100%);filter:blur(1px);opacity:.95"></span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">01 · с 2025</span>
-        <span style="font-size:clamp(34px,4vw,56px);font-weight:500;letter-spacing:-0.04em;line-height:1">Личная практика</span>
+        <span style="font-size:clamp(27px,3.36vw,47px);font-weight:500;letter-spacing:-0.04em;line-height:1">Личная практика</span>
         <span style="max-width:440px;color:var(--mute);position:relative">Стратегический маркетинг и брендинг: стратегии, запуск маркетинга проектов, бренд-платформы, брендбуки, логотипы и сайты.</span>
         <span style="margin-top:auto;position:relative;align-self:flex-start;padding:12px 18px;border-radius:14px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glassLine);font-size:15px">10 кейсов и 4 сайта ↓</span>
       </a>
       <a href="#zhelezno" style="position:relative;overflow:hidden;text-decoration:none;color:var(--ink);padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:20px;min-height:340px">
         <span style="position:absolute;right:-60px;bottom:-60px;width:240px;height:240px;border-radius:50%;border:34px solid #F28B4E;box-shadow:inset 10px 10px 18px rgba(255,230,210,.6),inset -10px -12px 20px rgba(150,45,10,.45),0 24px 50px rgba(200,80,20,.25);transform:rotate(-24deg) scaleY(.62)"></span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">02 · 2019–2025</span>
-        <span style="font-size:clamp(34px,4vw,56px);font-weight:500;letter-spacing:-0.04em;line-height:1">Девелопер «Железно»</span>
+        <span style="font-size:clamp(27px,3.36vw,47px);font-weight:500;letter-spacing:-0.04em;line-height:1">Девелопер «Железно»</span>
         <span style="max-width:440px;color:var(--mute);position:relative">Маркетинг девелопера: команда из 40 человек, бренд, лидогенерация и запуск четырёх новых регионов.</span>
         <span style="margin-top:auto;position:relative;align-self:flex-start;padding:12px 18px;border-radius:14px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glassLine);font-size:15px">Опыт и кейсы ↓</span>
       </a>
@@ -115,20 +116,20 @@ a:hover{color:var(--acc)}
     <div style="max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,88px)">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px 64px;align-items:end">
         <div style="display:flex;align-items:baseline;gap:clamp(12px,2vw,24px);flex-wrap:wrap">
-          <span style="font-size:clamp(48px,7vw,104px);font-weight:300;color:var(--mute2);letter-spacing:-0.05em;line-height:1">01</span>
-          <h2 style="margin:0;font-size:clamp(36px,5vw,72px);font-weight:500;letter-spacing:-0.045em;line-height:1">Личная практика</h2>
+          <span style="font-size:clamp(36px,5.6vw,83px);font-weight:300;color:var(--mute2);letter-spacing:-0.05em;line-height:1">01</span>
+          <h2 style="margin:0;font-size:clamp(29px,4vw,58px);font-weight:500;letter-spacing:-0.045em;line-height:1">Личная практика</h2>
         </div>
-        <p style="margin:0;font-size:clamp(18px,1.6vw,22px);color:var(--mute);max-width:520px;text-wrap:pretty"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--acc);display:block;margin-bottom:8px">С июля 2025</span>Работаю с бизнесом напрямую по двум направлениям: стратегический маркетинг и брендинг.</p>
+        <p style="margin:0;font-size:clamp(16px,1.6vw,22px);color:var(--mute);max-width:520px;text-wrap:pretty"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--acc);display:block;margin-bottom:8px">С июля 2025</span>Работаю с бизнесом напрямую по двум направлениям: стратегический маркетинг и брендинг.</p>
       </div>
 
       <div style="position:relative;overflow:hidden;padding:clamp(24px,4vw,56px);border-radius:clamp(22px,3vw,36px);background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px clamp(24px,5vw,72px);align-items:start">
         <span style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#FFE0C7 0%,#FF9A5C 32%,#E85A1E 64%,#93300B 100%);filter:blur(2px);opacity:.9;pointer-events:none"></span>
         <div style="position:relative;display:flex;flex-direction:column;gap:14px">
           <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Почему с 2025-го</span>
-          <h3 style="margin:0;font-size:clamp(30px,4vw,56px);font-weight:500;letter-spacing:-0.045em;line-height:1;text-wrap:balance">Декрет — не пауза, <span style="color:var(--mute2)">а новый формат работы.</span></h3>
+          <h3 style="margin:0;font-size:clamp(24px,3.36vw,47px);font-weight:500;letter-spacing:-0.045em;line-height:1;text-wrap:balance">Декрет — не пауза, <span style="color:var(--mute2)">а новый формат работы.</span></h3>
         </div>
         <div style="position:relative;display:flex;flex-direction:column;gap:18px">
-          <p style="margin:0;font-size:clamp(17px,1.4vw,19px);text-wrap:pretty">В июле 2025 года я ушла в декрет. Планёрки и офис остались на паузе, а 13 лет маркетинга и привычка думать брендами — со мной. Так появилась личная практика: беру проекты напрямую и погружаюсь в каждый так же глубоко, как когда руководила отделом из 40 человек.</p>
+          <p style="margin:0;font-size:clamp(16px,1.4vw,19px);text-wrap:pretty">В июле 2025 года я ушла в декрет. Планёрки и офис остались на паузе, а 13 лет маркетинга и привычка думать брендами — со мной. Так появилась личная практика: беру проекты напрямую и погружаюсь в каждый так же глубоко, как когда руководила отделом из 40 человек.</p>
           <p style="margin:0;color:var(--mute);text-wrap:pretty">Проектов беру ровно столько, сколько могу сделать хорошо. Поэтому каждый получает моё полное внимание, а не остаток рабочего дня.</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px">
             <span style="padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--glassLine);font-size:14px">Удалённо, из Кирова</span>
@@ -144,7 +145,7 @@ a:hover{color:var(--acc)}
           <sc-for list="{{ help }}" as="col" hint-placeholder-count="2">
             <div style="padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:16px">
               <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">{{ col.kicker }}</span>
-              <h3 style="margin:0;font-size:clamp(28px,3vw,40px);font-weight:500;letter-spacing:-0.035em;line-height:1.05">{{ col.title }}</h3>
+              <h3 style="margin:0;font-size:clamp(22px,2.52vw,34px);font-weight:500;letter-spacing:-0.035em;line-height:1.05">{{ col.title }}</h3>
               <p style="margin:0;color:var(--mute)">{{ col.sub }}</p>
               <ul style="margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column">
                 <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="6">
@@ -160,7 +161,7 @@ a:hover{color:var(--acc)}
         <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
           <div style="display:flex;flex-direction:column;gap:10px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Кейсы · {{ visibleCount }}</div>
-            <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Оглавление</h3>
+            <h3 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em;line-height:1">Оглавление</h3>
           </div>
           <div style="display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--track);flex-wrap:wrap">
             <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
@@ -181,10 +182,10 @@ a:hover{color:var(--acc)}
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px 64px;align-items:start">
               <div style="display:flex;flex-direction:column;gap:12px">
                 <div style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">Кейс {{ c.num }}</span><span style="width:24px;height:1px;background:var(--line)"></span><span>{{ c.sphere }}</span></div>
-                <h3 style="margin:0;font-size:clamp(40px,5.4vw,80px);font-weight:500;letter-spacing:-0.05em;line-height:.95">{{ c.name }}</h3>
+                <h3 style="margin:0;font-size:clamp(30px,4.32vw,64px);font-weight:500;letter-spacing:-0.05em;line-height:.95">{{ c.name }}</h3>
               </div>
               <div style="display:flex;flex-direction:column;gap:18px">
-                <p style="margin:0;font-size:clamp(17px,1.4vw,19px);text-wrap:pretty">{{ c.lead }}</p>
+                <p style="margin:0;font-size:clamp(16px,1.4vw,19px);text-wrap:pretty">{{ c.lead }}</p>
                 <sc-if value="{{ c.hasNote }}">
                   <div style="display:grid;grid-template-columns:auto 1fr;gap:12px;padding:14px 16px;border-radius:14px;border:1px dashed var(--acc);font-size:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);padding-top:2px">Авторство</span><span>{{ c.note }}</span></div>
                 </sc-if>
@@ -233,7 +234,7 @@ a:hover{color:var(--acc)}
 
             <sc-if value="{{ c.hasExtra }}">
               <div id="merch" style="scroll-margin-top:90px;margin-top:clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:20px">
-                <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Подблок</span><h4 style="margin:0;font-size:clamp(26px,2.8vw,38px);font-weight:500;letter-spacing:-0.035em">Мерч и носители</h4></div>
+                <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Подблок</span><h4 style="margin:0;font-size:clamp(21px,2.52vw,34px);font-weight:500;letter-spacing:-0.035em">Мерч и носители</h4></div>
                 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:20px 12px;align-items:start">
                   <figure style="margin:0;display:flex;flex-direction:column;gap:8px;grid-row:span 2">
                     <video ref="{{ videoRef }}" src="img/jack-merch/promo.mp4" poster="img/jack-merch/promo.jpg" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" controls="{{ videoControls }}" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px;background:#0B0B0B"></video>
@@ -255,7 +256,7 @@ a:hover{color:var(--acc)}
       <div id="sites" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:24px">
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">4 живых сайта</div>
-          <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Сайты и лендинги</h3>
+          <h3 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em;line-height:1">Сайты и лендинги</h3>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
           <sc-for list="{{ sites }}" as="s" hint-placeholder-count="4">
@@ -278,7 +279,7 @@ a:hover{color:var(--acc)}
       <div id="process" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:28px;padding-bottom:clamp(56px,7vw,104px)">
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">4 шага</div>
-          <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Как я работаю</h3>
+          <h3 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em;line-height:1">Как я работаю</h3>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px">
           <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
@@ -300,13 +301,13 @@ a:hover{color:var(--acc)}
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end">
         <div style="display:flex;flex-direction:column;gap:16px">
           <div style="display:flex;align-items:baseline;gap:clamp(12px,2vw,24px);flex-wrap:wrap">
-            <span style="font-size:clamp(48px,7vw,104px);font-weight:300;color:var(--mute2);letter-spacing:-0.05em;line-height:1">02</span>
-            <h2 style="margin:0;font-size:clamp(36px,5vw,72px);font-weight:500;letter-spacing:-0.045em;line-height:1">Девелопер «Железно»</h2>
+            <span style="font-size:clamp(36px,5.6vw,83px);font-weight:300;color:var(--mute2);letter-spacing:-0.05em;line-height:1">02</span>
+            <h2 style="margin:0;font-size:clamp(29px,4vw,58px);font-weight:500;letter-spacing:-0.045em;line-height:1">Девелопер «Железно»</h2>
           </div>
           <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--acc)">2019–2025</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:16px">
-          <p style="margin:0;font-size:clamp(17px,1.4vw,19px);text-wrap:pretty">Семь лет в маркетинге девелопера, который за это время вырос из трёх регионов до шести. Подключилась менеджером по цифровому маркетингу, дальше руководила операционным маркетингом, брендингом и PR и в итоге отделом маркетинга. С 2019 по 2025 год: бренд, лидогенерация, PR и запуск новых регионов.</p>
+          <p style="margin:0;font-size:clamp(16px,1.4vw,19px);text-wrap:pretty">Семь лет в маркетинге девелопера, который за это время вырос из трёх регионов до шести. Подключилась менеджером по цифровому маркетингу, дальше руководила операционным маркетингом, брендингом и PR и в итоге отделом маркетинга. С 2019 по 2025 год: бренд, лидогенерация, PR и запуск новых регионов.</p>
           <span style="align-self:flex-start;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--mute)">С июля 2025 года — в декрете</span>
         </div>
       </div>
@@ -328,14 +329,14 @@ a:hover{color:var(--acc)}
       <div style="display:flex;flex-direction:column;gap:28px">
         <div style="display:flex;flex-direction:column;gap:10px">
           <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Зона ответственности</div>
-          <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Что было на мне</h3>
+          <h3 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em;line-height:1">Что было на мне</h3>
         </div>
         <div style="display:flex;flex-wrap:wrap;align-items:stretch">
           <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column">
             <sc-for list="{{ duties }}" as="d" hint-placeholder-count="4">
               <div style="display:flex;align-items:center;gap:16px;padding:22px 0;border-top:1px solid var(--line)">
                 <div style="flex:1 1 auto;max-width:520px;display:flex;flex-direction:column;gap:10px">
-                  <span style="font-size:clamp(56px,7vw,100px);font-weight:400;letter-spacing:-0.05em;line-height:.95">{{ d.big }}</span>
+                  <span style="font-size:clamp(41px,5.6vw,80px);font-weight:400;letter-spacing:-0.05em;line-height:.95">{{ d.big }}</span>
                   <span style="font-weight:500">{{ d.cap }}</span>
                   <span style="font-size:15px;color:var(--mute);text-wrap:pretty">{{ d.text }}</span>
                   <span style="align-self:flex-start;padding:6px 12px;border-radius:10px;background:var(--card);font-size:13px;box-shadow:0 6px 20px -10px rgba(0,0,0,.2)">{{ d.tag }}</span>
@@ -357,7 +358,7 @@ a:hover{color:var(--acc)}
         <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
           <div style="display:flex;flex-direction:column;gap:10px">
             <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Награды компании</div>
-            <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Награды и громкие проекты</h3>
+            <h3 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em;line-height:1">Награды и громкие проекты</h3>
           </div>
           <span style="font-size:14px;color:var(--mute)">Участие в отраслевых премиях входило в мои задачи</span>
         </div>
@@ -379,7 +380,7 @@ a:hover{color:var(--acc)}
 
       <div style="padding:clamp(24px,4vw,48px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 48px;align-items:center">
         <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Рекомендации</div>
-        <p style="margin:0;font-size:clamp(20px,2vw,26px);letter-spacing:-0.02em;line-height:1.3">Рекомендации по моей работе в девелопменте может дать <b style="font-weight:600">Дмитрий Липовой</b>, директор по продвижению девелопера SMINEX. <span style="color:var(--mute)">Контакт передам по запросу.</span></p>
+        <p style="margin:0;font-size:clamp(18px,1.8vw,23px);letter-spacing:-0.02em;line-height:1.3">Рекомендации по моей работе в девелопменте может дать <b style="font-weight:600">Дмитрий Липовой</b>, директор по продвижению девелопера SMINEX. <span style="color:var(--mute)">Контакт передам по запросу.</span></p>
       </div>
     </div>
   </section>
@@ -391,8 +392,8 @@ a:hover{color:var(--acc)}
   <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
     <div style="display:flex;flex-direction:column;gap:24px">
       <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Резюме</span>
-      <h1 style="margin:0;font-weight:500;font-size:clamp(44px,7vw,104px);line-height:.95;letter-spacing:-0.05em">Ольга Пегушина</h1>
-      <p style="margin:0;font-size:clamp(20px,2.2vw,30px);letter-spacing:-0.02em;color:var(--mute)">Руководитель отдела маркетинга, бренд-стратег, креативный стратег</p>
+      <h1 style="margin:0;font-weight:500;font-size:clamp(33px,5.6vw,83px);line-height:.95;letter-spacing:-0.05em">Ольга Пегушина</h1>
+      <p style="margin:0;font-size:clamp(20px,1.98vw,27px);letter-spacing:-0.02em;color:var(--mute)">Руководитель отдела маркетинга, бренд-стратег, креативный стратег</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:12px">
         <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
           <div style="padding:18px 20px;border-radius:18px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">{{ f.k }}</span><span style="font-weight:500">{{ f.v }}</span></div>
@@ -402,7 +403,7 @@ a:hover{color:var(--acc)}
     </div>
 
     <div style="display:flex;flex-direction:column;gap:8px">
-      <h2 style="margin:0 0 16px;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em">Опыт работы</h2>
+      <h2 style="margin:0 0 16px;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em">Опыт работы</h2>
 
       <div style="display:flex;flex-wrap:wrap;gap:12px 48px;padding:28px 0;border-top:1px solid var(--line)">
         <div style="flex:0 0 200px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc)">2025 — сейчас</span></div>
@@ -453,7 +454,7 @@ a:hover{color:var(--acc)}
     </div>
 
     <div style="display:flex;flex-direction:column;gap:16px">
-      <h2 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em">Компетенции</h2>
+      <h2 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em">Компетенции</h2>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         <sc-for list="{{ skills }}" as="s" hint-placeholder-count="12"><span style="padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:15px">{{ s }}</span></sc-for>
       </div>
@@ -467,13 +468,13 @@ a:hover{color:var(--acc)}
   <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(24px,5vw,64px);border-radius:clamp(24px,3vw,40px);background:var(--glass);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);border:1px solid var(--glassLine);box-shadow:0 40px 100px -40px rgba(140,50,10,.35);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 64px;align-items:end">
     <div style="display:flex;flex-direction:column;gap:20px">
       <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Контакты</span>
-      <h2 style="margin:0;font-size:clamp(40px,5.6vw,84px);font-weight:500;letter-spacing:-0.05em;line-height:.98">Расскажите, что за проект.</h2>
+      <h2 style="margin:0;font-size:clamp(30px,4.48vw,67px);font-weight:500;letter-spacing:-0.05em;line-height:.98">Расскажите, что за проект.</h2>
       <p style="margin:0;color:var(--mute);max-width:460px;font-size:18px">Разберусь в задаче, предложу решение и сделаю так, чтобы бренд не просто радовал глаз, а продавал. Красиво — это минимум, работающе — цель.</p>
     </div>
     <div style="display:flex;flex-direction:column">
       <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="3">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;border-top:1px solid var(--line);flex-wrap:wrap">
-          <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">{{ c.k }}</span><a href="{{ c.href }}" target="{{ c.target }}" rel="noopener" style="font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-0.02em;text-decoration:none;overflow-wrap:anywhere">{{ c.v }}</a></div>
+          <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">{{ c.k }}</span><a href="{{ c.href }}" target="{{ c.target }}" rel="noopener" style="font-size:clamp(18px,1.8vw,23px);font-weight:500;letter-spacing:-0.02em;text-decoration:none;overflow-wrap:anywhere">{{ c.v }}</a></div>
           <button onClick="{{ c.copy }}" style="font:inherit;font-size:14px;cursor:pointer;padding:10px 16px;min-height:44px;border-radius:12px;border:1px solid var(--line);background:{{ c.bg }};color:{{ c.fg }}">{{ c.label }}</button>
         </div>
       </sc-for>
@@ -624,10 +625,12 @@ class Component extends DCLogic {
     this.onResize = () => { const vw = window.innerWidth; if ((vw < 640) !== (this.state.vw < 640) || (vw < 960) !== (this.state.vw < 960)) this.setState({ vw }); };
     window.addEventListener('resize', this.onResize);
     window.addEventListener('hashchange', this.onHash);
+    this.onScroll = () => { const t = window.scrollY > 700; if (t !== !!this.state.showTop) this.setState({ showTop: t }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
     this.playVideo();
   }
   componentDidUpdate() { this.playVideo(); }
-  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('resize', this.onResize); }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); }
   playVideo() { const v = this.videoRef.current; if (v && !this.reduced && v.paused && !v._tried) { v._tried = true; v.play().catch(() => {}); } }
 
   setTab(tab, target) {
@@ -698,7 +701,10 @@ class Component extends DCLogic {
     const cur = lb ? lb.items[lb.i] : null;
     let tx = 0;
     const density = this.props.galleryDensity ?? 'Средняя';
+    const st = !!this.state.showTop && !lb;
     return {
+      toTop: () => window.scrollTo({ top: 0, behavior: this.reduced ? 'auto' : 'smooth' }),
+      topOp: st ? 1 : 0, topY: st ? '0' : '12px', topPe: st ? 'auto' : 'none',
       theme: ({ 'Системная': 'auto', 'Светлая': 'light', 'Тёмная': 'dark' })[this.props.theme ?? 'Системная'] || 'auto',
       wide: this.state.vw >= 960,
       hdr: this.state.vw < 640 ? { navDisplay: 'contents', tabsOrder: 3, tabsFlex: '1 1 100%' } : { navDisplay: 'flex', tabsOrder: 0, tabsFlex: '0 0 auto' },
