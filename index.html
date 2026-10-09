@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ольга Пегушина — бренд-стратег, маркетолог, дизайнер</title>
+<meta name="description" content="Бренды со смыслом: стратегия, нейминг, логотипы, брендбуки, сайты и мерч. 13 лет в маркетинге, экс-руководитель маркетинга «Железно».">
+<meta name="theme-color" content="#EDE9E4">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ольга Пегушина — бренд-стратег, маркетолог, дизайнер">
+<meta property="og:description" content="Портфолио и резюме: бренды, логотипы, сайты, мерч.">
+<meta property="og:image" content="/img/gori/01.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23E8591E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://unpkg.com" crossorigin="">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ольга Пегушина — бренд-стратег, маркетолог, дизайнер</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{--bg:#ECE9E5;--bg2:#E4E0DB;--ink:#16130F;--mute:#69625C;--mute2:#A39C95;--line:rgba(30,20,10,.12);--card:#F6F4F1;--track:rgba(30,20,10,.06);--glass:rgba(255,253,250,.42);--glassLine:rgba(255,255,255,.7);--acc:#E8541C;--accSoft:#F5B48F;--inv:#F6F4F1;color-scheme:light}
+[data-theme="dark"]{--bg:#121110;--bg2:#1A1816;--ink:#F2EEE9;--mute:#A79F97;--mute2:#5E5852;--line:rgba(255,240,225,.12);--card:#1D1B19;--track:rgba(255,240,225,.07);--glass:rgba(32,28,25,.45);--glassLine:rgba(255,240,225,.14);--acc:#F2672E;--accSoft:#8A3A18;--inv:#16130F;color-scheme:dark}
+@media (prefers-color-scheme:dark){[data-theme="auto"]{--bg:#121110;--bg2:#1A1816;--ink:#F2EEE9;--mute:#A79F97;--mute2:#5E5852;--line:rgba(255,240,225,.12);--card:#1D1B19;--track:rgba(255,240,225,.07);--glass:rgba(32,28,25,.45);--glassLine:rgba(255,240,225,.14);--acc:#F2672E;--accSoft:#8A3A18;--inv:#16130F;color-scheme:dark}}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:clip}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration-color:var(--acc);text-underline-offset:3px}
+a:hover{color:var(--acc)}
+::selection{background:var(--acc);color:#fff}
+@keyframes floatA{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-22px,0)}}
+@keyframes floatB{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(14px,16px,0)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="background:var(--bg);color:var(--ink);font-family:'Onest',system-ui,sans-serif;font-size:17px;line-height:1.5;min-height:100vh;overflow-x:clip">
+
+<header style="position:sticky;top:0;z-index:50;padding:calc(10px + env(safe-area-inset-top)) clamp(12px,3vw,32px) 10px;background:var(--glass);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border-bottom:1px solid var(--line)">
+  <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <a href="#top" onClick="{{ goTop }}" style="font-weight:600;font-size:17px;letter-spacing:-0.01em;text-decoration:none;display:flex;align-items:center;gap:10px"><span style="width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFD2AE,#F27A38 55%,#B8410F);flex:none"></span>Ольга Пегушина</a>
+    <nav style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;display:{{ hdr.navDisplay }}">
+      <div style="display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--track);order:{{ hdr.tabsOrder }};flex:{{ hdr.tabsFlex }}">
+        <button onClick="{{ showPortfolio }}" style="flex:1;font:inherit;font-size:15px;border:0;cursor:pointer;padding:9px 16px;border-radius:10px;background:{{ tabA.bg }};color:var(--ink);box-shadow:{{ tabA.sh }};min-height:40px">Портфолио</button>
+        <button onClick="{{ showResume }}" style="flex:1;font:inherit;font-size:15px;border:0;cursor:pointer;padding:9px 16px;border-radius:10px;background:{{ tabB.bg }};color:var(--ink);box-shadow:{{ tabB.sh }};min-height:40px">Резюме</button>
+      </div>
+      <a href="#contacts" style="font-size:15px;padding:10px 16px;border-radius:12px;background:var(--ink);color:var(--inv);text-decoration:none;min-height:40px;display:flex;align-items:center">Связаться</a>
+    </nav>
+  </div>
+</header>
+
+<sc-if value="{{ isPortfolio }}" hint-placeholder-val="{{ true }}">
+<main id="top">
+
+  <section style="position:relative;padding:clamp(28px,5vw,64px) clamp(16px,4vw,48px) clamp(48px,7vw,96px);overflow:hidden">
+    <div style="position:absolute;inset:0;pointer-events:none">{{ heroBlobs }}</div>
+    <div style="position:relative;max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)">
+      <div style="padding:clamp(24px,5vw,72px);border-radius:clamp(24px,3vw,40px);background:var(--glass);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);border:1px solid var(--glassLine);box-shadow:0 40px 100px -40px rgba(140,50,10,.35);display:flex;flex-direction:column;gap:clamp(20px,3vw,36px)">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Бренд-стратег · маркетолог · дизайнер · экс-руководитель маркетинга «Железно»</div>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(16px,3vw,40px)">
+          <h1 style="margin:0;min-width:0;font-weight:500;font-size:clamp(42px,9vw,136px);line-height:.92;letter-spacing:-0.05em">Ольга<br>Пегушина</h1>
+          <figure style="margin:0;flex:none;position:relative;width:clamp(84px,11vw,150px)">
+            <img src="img/olga.webp" alt="Ольга Пегушина" width="232" height="290" fetchpriority="high" decoding="async" style="display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:clamp(16px,2vw,26px);box-shadow:0 30px 60px -30px rgba(140,40,10,.55)">
+            <span style="position:absolute;left:-10px;bottom:12%;padding:6px 10px;border-radius:999px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--glassLine);font-size:clamp(11px,1vw,13px);white-space:nowrap;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#3BB36B"></span>беру проекты</span>
+          </figure>
+        </div>
+        <p style="margin:0;max-width:980px;font-size:clamp(26px,3.6vw,52px);line-height:1.06;letter-spacing:-0.035em;font-weight:500;text-wrap:balance">Делаю бренды со смыслом, <span style="color:var(--mute2)">в которые влюбляются с первого взгляда.</span></p>
+        <p style="margin:0;max-width:720px;color:var(--mute);font-size:clamp(16px,1.3vw,18px);text-wrap:pretty">В маркетинге с 2013 года. Семь лет работала в маркетинге девелопера «Железно»: прошла путь от менеджера по цифровому маркетингу до руководителя отдела маркетинга. Сейчас я в декрете и веду личную практику: стратегический маркетинг (коммерческие и коммуникационные стратегии, запуск и перезапуск маркетинга проектов) и брендинг (бренд-платформы, брендбуки, лендинги). Здесь собраны оба направления.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:flex-end;gap:clamp(3px,0.6vw,8px);height:56px">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="14">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;height:100%">
+              <sc-if value="{{ t.dot }}"><span style="width:12px;height:12px;border-radius:50%;background:var(--ink)"></span></sc-if>
+              <span style="width:2px;height:{{ t.h }};border-radius:2px;background:{{ t.c }}"></span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);letter-spacing:.06em">
+          <span>2013</span><span>2019 · «Железно»</span><span>2025 · своя практика</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:8px">
+          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(56px,7vw,96px);font-weight:400;letter-spacing:-0.05em;line-height:1">13 лет</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">в маркетинге, с 2013 года</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(56px,7vw,96px);font-weight:400;letter-spacing:-0.05em;line-height:1">7 лет</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">в девелопере «Железно», 2019–2025</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding-top:16px;border-top:1px solid var(--line)"><span style="font-size:clamp(56px,7vw,96px);font-weight:400;letter-spacing:-0.05em;line-height:1;color:var(--acc)">30+</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--mute)">брендбуков и логобуков</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(16px,4vw,48px) clamp(64px,8vw,120px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+      <a href="#practice" style="position:relative;overflow:hidden;text-decoration:none;color:var(--ink);padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:20px;min-height:340px">
+        <span style="position:absolute;right:-90px;bottom:-110px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFD7B8 0%,#F58A4A 40%,#D2501A 72%,#8E300C 100%);filter:blur(1px);opacity:.95"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">01 · с 2025</span>
+        <span style="font-size:clamp(34px,4vw,56px);font-weight:500;letter-spacing:-0.04em;line-height:1">Личная практика</span>
+        <span style="max-width:440px;color:var(--mute);position:relative">Стратегический маркетинг и брендинг: стратегии, запуск маркетинга проектов, бренд-платформы, брендбуки, логотипы и сайты.</span>
+        <span style="margin-top:auto;position:relative;align-self:flex-start;padding:12px 18px;border-radius:14px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glassLine);font-size:15px">10 кейсов и 4 сайта ↓</span>
+      </a>
+      <a href="#zhelezno" style="position:relative;overflow:hidden;text-decoration:none;color:var(--ink);padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:20px;min-height:340px">
+        <span style="position:absolute;right:-60px;bottom:-60px;width:240px;height:240px;border-radius:50%;border:34px solid #F28B4E;box-shadow:inset 10px 10px 18px rgba(255,230,210,.6),inset -10px -12px 20px rgba(150,45,10,.45),0 24px 50px rgba(200,80,20,.25);transform:rotate(-24deg) scaleY(.62)"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">02 · 2019–2025</span>
+        <span style="font-size:clamp(34px,4vw,56px);font-weight:500;letter-spacing:-0.04em;line-height:1">Девелопер «Железно»</span>
+        <span style="max-width:440px;color:var(--mute);position:relative">Маркетинг девелопера: команда из 40 человек, бренд, лидогенерация и запуск четырёх новых регионов.</span>
+        <span style="margin-top:auto;position:relative;align-self:flex-start;padding:12px 18px;border-radius:14px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glassLine);font-size:15px">Опыт и кейсы ↓</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="practice" style="scroll-margin-top:72px;padding:clamp(56px,7vw,104px) clamp(16px,4vw,48px) 0;border-top:1px solid var(--line)">
+    <div style="max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,88px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px 64px;align-items:end">
+        <div style="display:flex;align-items:baseline;gap:clamp(12px,2vw,24px);flex-wrap:wrap">
+          <span style="font-size:clamp(48px,7vw,104px);font-weight:300;color:var(--mute2);letter-spacing:-0.05em;line-height:1">01</span>
+          <h2 style="margin:0;font-size:clamp(36px,5vw,72px);font-weight:500;letter-spacing:-0.045em;line-height:1">Личная практика</h2>
+        </div>
+        <p style="margin:0;font-size:clamp(18px,1.6vw,22px);color:var(--mute);max-width:520px;text-wrap:pretty"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--acc);display:block;margin-bottom:8px">С июля 2025</span>Работаю с бизнесом напрямую по двум направлениям: стратегический маркетинг и брендинг.</p>
+      </div>
+
+      <div style="position:relative;overflow:hidden;padding:clamp(24px,4vw,56px);border-radius:clamp(22px,3vw,36px);background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px clamp(24px,5vw,72px);align-items:start">
+        <span style="position:absolute;right:-70px;top:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#FFE0C7 0%,#FF9A5C 32%,#E85A1E 64%,#93300B 100%);filter:blur(2px);opacity:.9;pointer-events:none"></span>
+        <div style="position:relative;display:flex;flex-direction:column;gap:14px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Почему с 2025-го</span>
+          <h3 style="margin:0;font-size:clamp(30px,4vw,56px);font-weight:500;letter-spacing:-0.045em;line-height:1;text-wrap:balance">Декрет — не пауза, <span style="color:var(--mute2)">а новый формат работы.</span></h3>
+        </div>
+        <div style="position:relative;display:flex;flex-direction:column;gap:18px">
+          <p style="margin:0;font-size:clamp(17px,1.4vw,19px);text-wrap:pretty">В июле 2025 года я ушла в декрет. Планёрки и офис остались на паузе, а 13 лет маркетинга и привычка думать брендами — со мной. Так появилась личная практика: беру проекты напрямую и погружаюсь в каждый так же глубоко, как когда руководила отделом из 40 человек.</p>
+          <p style="margin:0;color:var(--mute);text-wrap:pretty">Проектов беру ровно столько, сколько могу сделать хорошо. Поэтому каждый получает моё полное внимание, а не остаток рабочего дня.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--glassLine);font-size:14px">Удалённо, из Кирова</span>
+            <span style="padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--glassLine);font-size:14px">Напрямую, без посредников</span>
+            <span style="padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--glassLine);font-size:14px">Свой ритм — ваши сроки</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="help" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">С чем помогаю</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+          <sc-for list="{{ help }}" as="col" hint-placeholder-count="2">
+            <div style="padding:clamp(24px,3vw,40px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:16px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">{{ col.kicker }}</span>
+              <h3 style="margin:0;font-size:clamp(28px,3vw,40px);font-weight:500;letter-spacing:-0.035em;line-height:1.05">{{ col.title }}</h3>
+              <p style="margin:0;color:var(--mute)">{{ col.sub }}</p>
+              <ul style="margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column">
+                <sc-for list="{{ col.items }}" as="it" hint-placeholder-count="6">
+                  <li style="padding:14px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:28px 1fr;gap:8px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute2);padding-top:4px">{{ it.n }}</span><span><b style="font-weight:600">{{ it.b }}</b>{{ it.t }}</span></li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div id="cases" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Кейсы · {{ visibleCount }}</div>
+            <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Оглавление</h3>
+          </div>
+          <div style="display:flex;gap:4px;padding:4px;border-radius:14px;background:var(--track);flex-wrap:wrap">
+            <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+              <button onClick="{{ f.onClick }}" style="font:inherit;font-size:15px;border:0;cursor:pointer;padding:9px 14px;border-radius:10px;min-height:40px;background:{{ f.bg }};box-shadow:{{ f.sh }};color:var(--ink)">{{ f.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));column-gap:32px">
+          <sc-for list="{{ cases }}" as="c" hint-placeholder-count="10">
+            <li style="border-top:1px solid var(--line)"><a href="#{{ c.anchor }}" style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 0;text-decoration:none"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)">{{ c.num }}</span><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-weight:500;font-size:18px;line-height:1.25">{{ c.name }}</span><span style="font-size:14px;color:var(--mute);line-height:1.35">{{ c.sphere }}</span></span></a></li>
+          </sc-for>
+        </ol>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+          <article id="{{ c.anchor }}" style="scroll-margin-top:72px;padding:clamp(40px,5vw,72px) 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px)">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px 64px;align-items:start">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)"><span style="color:var(--acc)">Кейс {{ c.num }}</span><span style="width:24px;height:1px;background:var(--line)"></span><span>{{ c.sphere }}</span></div>
+                <h3 style="margin:0;font-size:clamp(40px,5.4vw,80px);font-weight:500;letter-spacing:-0.05em;line-height:.95">{{ c.name }}</h3>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:18px">
+                <p style="margin:0;font-size:clamp(17px,1.4vw,19px);text-wrap:pretty">{{ c.lead }}</p>
+                <sc-if value="{{ c.hasNote }}">
+                  <div style="display:grid;grid-template-columns:auto 1fr;gap:12px;padding:14px 16px;border-radius:14px;border:1px dashed var(--acc);font-size:15px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);padding-top:2px">Авторство</span><span>{{ c.note }}</span></div>
+                </sc-if>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">Что сделано</span>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px">
+                    <sc-for list="{{ c.did }}" as="d" hint-placeholder-count="5"><span style="padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px">{{ d }}</span></sc-for>
+                  </div>
+                </div>
+                <sc-if value="{{ c.hasLink }}">
+                  <a href="{{ c.linkHref }}" target="_blank" rel="noopener" style="align-self:flex-start;font-size:15px;font-weight:500">Сайт: {{ c.linkLabel }} ↗</a>
+                </sc-if>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px">
+              <sc-for list="{{ c.swatches }}" as="s" hint-placeholder-count="4">
+                <div style="height:72px;border-radius:14px;background:{{ s.hex }};border:1px solid var(--line);padding:10px 12px;display:flex;align-items:flex-end;font-family:'JetBrains Mono',monospace;font-size:13px;color:{{ s.fg }}">{{ s.hex }}</div>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ c.isGallery }}">
+              <figure style="margin:0;display:flex;flex-direction:column;gap:10px">
+                <button onClick="{{ c.cover.open }}" style="padding:0;border:0;background:var(--card);border-radius:clamp(16px,2vw,28px);overflow:hidden;cursor:zoom-in;display:block;width:100%"><img src="{{ c.cover.src }}" alt="{{ c.cover.cap }}" loading="lazy" decoding="async" width="1400" height="788" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></button>
+                <figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">01 — {{ c.cover.cap }}</figcaption>
+              </figure>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,{{ thumbMin }}),1fr));gap:20px 12px">
+                <sc-for list="{{ c.rest }}" as="im" hint-placeholder-count="6">
+                  <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+                    <button onClick="{{ im.open }}" style="padding:0;border:0;background:var(--card);border-radius:14px;overflow:hidden;cursor:zoom-in;display:block;width:100%"><img src="{{ im.t }}" alt="{{ im.cap }}" loading="lazy" decoding="async" width="720" height="405" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></button>
+                    <figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">{{ im.n }} — {{ im.cap }}</figcaption>
+                  </figure>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ c.isLogo }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:20px 12px">
+                <sc-for list="{{ c.tiles }}" as="im" hint-placeholder-count="6">
+                  <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+                    <button onClick="{{ im.open }}" style="padding:0;border:1px solid var(--line);background:{{ im.bg }};border-radius:16px;overflow:hidden;cursor:zoom-in;display:block;width:100%"><img src="{{ im.src }}" alt="{{ im.cap }}" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:4/3;object-fit:contain"></button>
+                    <figcaption style="display:flex;justify-content:space-between;gap:8px;font-size:14px"><span style="font-weight:500">{{ im.name }}</span><span style="color:var(--mute);text-align:right">{{ im.sphere }}</span></figcaption>
+                  </figure>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ c.hasExtra }}">
+              <div id="merch" style="scroll-margin-top:90px;margin-top:clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:20px">
+                <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Подблок</span><h4 style="margin:0;font-size:clamp(26px,2.8vw,38px);font-weight:500;letter-spacing:-0.035em">Мерч и носители</h4></div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:20px 12px;align-items:start">
+                  <figure style="margin:0;display:flex;flex-direction:column;gap:8px;grid-row:span 2">
+                    <video ref="{{ videoRef }}" src="img/jack-merch/promo.mp4" poster="img/jack-merch/promo.jpg" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" controls="{{ videoControls }}" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px;background:#0B0B0B"></video>
+                    <figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">Видео — Анимированный пост «Оформи подписку»: карта Джека</figcaption>
+                  </figure>
+                  <sc-for list="{{ c.extraItems }}" as="im" hint-placeholder-count="6">
+                    <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+                      <button onClick="{{ im.open }}" style="padding:0;border:0;background:var(--card);border-radius:14px;overflow:hidden;cursor:zoom-in;display:block;width:100%"><img src="{{ im.t }}" alt="{{ im.cap }}" loading="lazy" decoding="async" width="720" height="557" style="display:block;width:100%;height:auto;aspect-ratio:1397/1080;object-fit:cover"></button>
+                      <figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">{{ im.n }} — {{ im.cap }}</figcaption>
+                    </figure>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </article>
+        </sc-for>
+      </div>
+
+      <div id="sites" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">4 живых сайта</div>
+          <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Сайты и лендинги</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+          <sc-for list="{{ sites }}" as="s" hint-placeholder-count="4">
+            <a href="{{ s.href }}" target="_blank" rel="noopener" style="text-decoration:none;color:var(--ink);padding:12px 12px 24px;border-radius:24px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px" style-hover="border-color:var(--acc)">
+              <div style="border-radius:16px;overflow:hidden;background:var(--track);border:1px solid var(--line)">
+                <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;border-bottom:1px solid var(--line)"><span style="width:7px;height:7px;border-radius:50%;background:var(--mute2)"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--mute2)"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--mute2)"></span><span style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ s.host }}</span></div>
+                <img src="{{ s.shot }}" alt="Скриншот сайта {{ s.name }}" loading="lazy" decoding="async" width="1200" height="750" style="display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:12px;padding:6px 12px 0;flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)"><span>{{ s.n }}</span><span style="width:36px;height:36px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px">↗</span></div>
+              <span style="font-size:24px;font-weight:500;letter-spacing:-0.025em">{{ s.name }}</span>
+              <span style="font-size:18px;line-height:1.3;letter-spacing:-0.01em">«{{ s.quote }}»</span>
+              <span style="font-size:15px;color:var(--mute);margin-top:auto;text-wrap:pretty">{{ s.text }}</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div id="process" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:28px;padding-bottom:clamp(56px,7vw,104px)">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">4 шага</div>
+          <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Как я работаю</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;align-items:center;gap:0"><span style="width:12px;height:12px;border-radius:50%;background:var(--acc);flex:none"></span><span style="flex:1;height:1px;background:var(--acc);opacity:.5"></span></div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)">{{ s.n }}</span>
+              <span style="font-size:26px;font-weight:500;letter-spacing:-0.03em">{{ s.t }}</span>
+              <span style="color:var(--mute);max-width:300px">{{ s.d }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:0;color:var(--mute);font-size:15px;max-width:640px">Так же веду и стратегические проекты: бриф и исследование, варианты решения, доработка, готовый документ с планом действий.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="zhelezno" style="scroll-margin-top:72px;padding:clamp(56px,7vw,104px) clamp(16px,4vw,48px);border-top:1px solid var(--line);background:var(--bg2)">
+    <div style="max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,96px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;gap:clamp(12px,2vw,24px);flex-wrap:wrap">
+            <span style="font-size:clamp(48px,7vw,104px);font-weight:300;color:var(--mute2);letter-spacing:-0.05em;line-height:1">02</span>
+            <h2 style="margin:0;font-size:clamp(36px,5vw,72px);font-weight:500;letter-spacing:-0.045em;line-height:1">Девелопер «Железно»</h2>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;color:var(--acc)">2019–2025</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <p style="margin:0;font-size:clamp(17px,1.4vw,19px);text-wrap:pretty">Семь лет в маркетинге девелопера, который за это время вырос из трёх регионов до шести. Подключилась менеджером по цифровому маркетингу, дальше руководила операционным маркетингом, брендингом и PR и в итоге отделом маркетинга. С 2019 по 2025 год: бренд, лидогенерация, PR и запуск новых регионов.</p>
+          <span style="align-self:flex-start;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--mute)">С июля 2025 года — в декрете</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Карьерная лестница</div>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px">
+          <sc-for list="{{ ladder }}" as="l" hint-placeholder-count="4">
+            <div style="flex:1 1 140px;min-width:0;display:flex;flex-direction:column;gap:14px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc)">{{ l.y }}</span>
+              <span style="font-size:clamp(17px,1.6vw,21px);font-weight:500;letter-spacing:-0.02em;line-height:1.2">{{ l.role }}</span>
+              <span style="font-size:clamp(13px,1.2vw,15px);color:var(--mute);flex:1">{{ l.d }}</span>
+              <div style="height:{{ l.h }};border-radius:18px 18px 4px 4px;background:repeating-linear-gradient(90deg,var(--acc) 0 2px,transparent 2px 9px);opacity:{{ l.o }};border-top:3px solid var(--acc)"></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Зона ответственности</div>
+          <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Что было на мне</h3>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:stretch">
+          <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column">
+            <sc-for list="{{ duties }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:16px;padding:22px 0;border-top:1px solid var(--line)">
+                <div style="flex:1 1 auto;max-width:520px;display:flex;flex-direction:column;gap:10px">
+                  <span style="font-size:clamp(56px,7vw,100px);font-weight:400;letter-spacing:-0.05em;line-height:.95">{{ d.big }}</span>
+                  <span style="font-weight:500">{{ d.cap }}</span>
+                  <span style="font-size:15px;color:var(--mute);text-wrap:pretty">{{ d.text }}</span>
+                  <span style="align-self:flex-start;padding:6px 12px;border-radius:10px;background:var(--card);font-size:13px;box-shadow:0 6px 20px -10px rgba(0,0,0,.2)">{{ d.tag }}</span>
+                </div>
+                <div style="flex:1 0 40px;display:flex;align-items:center"><span style="flex:1;height:1px;background:var(--acc);opacity:.6"></span><span style="width:9px;height:9px;border-radius:50%;background:var(--acc)"></span></div>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><div style="flex:0 1 380px;min-width:260px;min-height:420px;position:relative;overflow:hidden">
+            <div style="position:absolute;left:0;top:50%;width:720px;height:720px;transform:translateY(-50%);border-radius:50%;border:2px dotted var(--acc);opacity:.45"></div>
+            <div style="position:absolute;left:40px;top:50%;width:640px;height:640px;transform:translateY(-50%);border-radius:50%;background:repeating-conic-gradient(from 0deg,var(--acc) 0deg 1.4deg,transparent 1.4deg 4deg);-webkit-mask:radial-gradient(circle,transparent 58%,#000 59%);mask:radial-gradient(circle,transparent 58%,#000 59%);opacity:.75"></div>
+            <div style="position:absolute;left:100px;top:50%;width:520px;height:520px;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle at 30% 50%,var(--accSoft),transparent 70%);opacity:.8"></div>
+            <div style="position:absolute;left:160px;top:50%;width:360px;height:520px;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,#FF6A2C 0%,rgba(255,106,44,.55) 40%,transparent 70%);filter:blur(30px)"></div>
+          </div></sc-if>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Награды компании</div>
+            <h3 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em;line-height:1">Награды и громкие проекты</h3>
+          </div>
+          <span style="font-size:14px;color:var(--mute)">Участие в отраслевых премиях входило в мои задачи</span>
+        </div>
+        <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));column-gap:40px">
+          <sc-for list="{{ awards }}" as="a" hint-placeholder-count="8">
+            <li style="display:grid;grid-template-columns:36px 1fr;gap:12px;padding:16px 0;border-top:1px solid var(--line)"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute2);padding-top:3px">{{ a.n }}</span><span><b style="font-weight:600;display:block">{{ a.t }}</b><span style="color:var(--mute);font-size:15px">{{ a.d }}</span></span></li>
+          </sc-for>
+        </ol>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+          <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+            <div style="padding:24px;border-radius:24px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">{{ e.k }}</span>
+              <span style="font-size:22px;font-weight:500;letter-spacing:-0.02em;line-height:1.2">{{ e.t }}</span>
+              <span style="font-size:15px;color:var(--mute);text-wrap:pretty">{{ e.d }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="padding:clamp(24px,4vw,48px);border-radius:28px;background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px 48px;align-items:center">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Рекомендации</div>
+        <p style="margin:0;font-size:clamp(20px,2vw,26px);letter-spacing:-0.02em;line-height:1.3">Рекомендации по моей работе в девелопменте может дать <b style="font-weight:600">Дмитрий Липовой</b>, директор по продвижению девелопера SMINEX. <span style="color:var(--mute)">Контакт передам по запросу.</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isResume }}" hint-placeholder-val="{{ false }}">
+<main id="resume" style="padding:clamp(32px,5vw,72px) clamp(16px,4vw,48px)">
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Резюме</span>
+      <h1 style="margin:0;font-weight:500;font-size:clamp(44px,7vw,104px);line-height:.95;letter-spacing:-0.05em">Ольга Пегушина</h1>
+      <p style="margin:0;font-size:clamp(20px,2.2vw,30px);letter-spacing:-0.02em;color:var(--mute)">Руководитель отдела маркетинга, бренд-стратег, креативный стратег</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:12px">
+        <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+          <div style="padding:18px 20px;border-radius:18px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">{{ f.k }}</span><span style="font-weight:500">{{ f.v }}</span></div>
+        </sc-for>
+      </div>
+      <p style="margin:12px 0 0;font-size:clamp(18px,1.6vw,21px);max-width:880px;text-wrap:pretty">Делаю бренды со смыслом, в которые влюбляются с первого взгляда. За плечами полный цикл маркетинга девелопера: от исследований, продукта и бренд-платформы до лидогенерации, PR и выхода в новые регионы. С 2016 года руковожу маркетинговыми командами. Сейчас в личной практике веду стратегический маркетинг и брендинг: коммерческие и коммуникационные стратегии, запуск и перезапуск маркетинга проектов, бренд-платформы, брендбуки и сайты.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <h2 style="margin:0 0 16px;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em">Опыт работы</h2>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px 48px;padding:28px 0;border-top:1px solid var(--line)">
+        <div style="flex:0 0 200px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc)">2025 — сейчас</span></div>
+        <div style="flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:12px;max-width:760px">
+          <span style="font-size:26px;font-weight:500;letter-spacing:-0.025em">Личная практика</span>
+          <span style="color:var(--mute)">Стратегический маркетинг и брендинг</span>
+          <ul style="margin:0;padding:0;list-style:none">
+            <sc-for list="{{ practiceLinks }}" as="p" hint-placeholder-count="6">
+              <li style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 0;border-top:1px solid var(--line)"><span>{{ p.t }}</span><a href="#{{ p.id }}" onClick="{{ p.go }}" style="font-size:15px;font-weight:500;white-space:nowrap">{{ p.l }}</a></li>
+            </sc-for>
+          </ul>
+        </div>
+      </div>
+
+      <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="2">
+        <div style="display:flex;flex-wrap:wrap;gap:12px 48px;padding:28px 0;border-top:1px solid var(--line)">
+          <div style="flex:0 0 200px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc)">{{ j.y }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)">{{ j.dur }}</span></div>
+          <div style="flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:12px;max-width:760px">
+            <span style="font-size:26px;font-weight:500;letter-spacing:-0.025em">{{ j.co }}</span>
+            <span style="color:var(--mute)">{{ j.sub }}</span>
+            <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ j.sum }}" as="s" hint-placeholder-count="3"><li>{{ s }}</li></sc-for>
+            </ul>
+            <sc-for list="{{ j.roles }}" as="r" hint-placeholder-count="2">
+              <div style="margin-top:16px;padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline"><span style="font-size:19px;font-weight:600">{{ r.t }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)">{{ r.y }}</span></div>
+                <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--mute)">
+                  <sc-for list="{{ r.b }}" as="s" hint-placeholder-count="3"><li>{{ s }}</li></sc-for>
+                </ul>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+      <div style="padding:28px;border-radius:24px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">Рекомендации · Девелопмент</span>
+        <span style="font-size:22px;font-weight:500">Дмитрий Липовой</span>
+        <span style="color:var(--mute)">Директор по продвижению, SMINEX. Контакт передам по запросу.</span>
+      </div>
+      <div style="padding:28px;border-radius:24px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">Образование</span>
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:10px"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc);padding-top:3px">2017</span><span><b style="font-weight:600;display:block">РАНХиГС при Президенте РФ</b><span style="color:var(--mute);font-size:15px">Высшее, государственное и муниципальное управление</span></span></div>
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:10px"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc);padding-top:3px">2013</span><span><b style="font-weight:600;display:block">Кировский лесопромышленный колледж</b><span style="color:var(--mute);font-size:15px">Среднее специальное, менеджмент</span></span></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-size:clamp(30px,3.6vw,48px);font-weight:500;letter-spacing:-0.04em">Компетенции</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ skills }}" as="s" hint-placeholder-count="12"><span style="padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:15px">{{ s }}</span></sc-for>
+      </div>
+    </div>
+  </div>
+</main>
+</sc-if>
+
+<section id="contacts" style="scroll-margin-top:60px;position:relative;overflow:hidden;padding:clamp(64px,9vw,140px) clamp(16px,4vw,48px);border-top:1px solid var(--line)">
+  <div style="position:absolute;inset:0;pointer-events:none">{{ contactBlobs }}</div>
+  <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(24px,5vw,64px);border-radius:clamp(24px,3vw,40px);background:var(--glass);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);border:1px solid var(--glassLine);box-shadow:0 40px 100px -40px rgba(140,50,10,.35);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px 64px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Контакты</span>
+      <h2 style="margin:0;font-size:clamp(40px,5.6vw,84px);font-weight:500;letter-spacing:-0.05em;line-height:.98">Расскажите, что за проект.</h2>
+      <p style="margin:0;color:var(--mute);max-width:460px;font-size:18px">Разберусь в задаче, предложу решение и сделаю так, чтобы бренд не просто радовал глаз, а продавал. Красиво — это минимум, работающе — цель.</p>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;border-top:1px solid var(--line);flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)">{{ c.k }}</span><a href="{{ c.href }}" target="{{ c.target }}" rel="noopener" style="font-size:clamp(20px,2vw,26px);font-weight:500;letter-spacing:-0.02em;text-decoration:none;overflow-wrap:anywhere">{{ c.v }}</a></div>
+          <button onClick="{{ c.copy }}" style="font:inherit;font-size:14px;cursor:pointer;padding:10px 16px;min-height:44px;border-radius:12px;border:1px solid var(--line);background:{{ c.bg }};color:{{ c.fg }}">{{ c.label }}</button>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="position:relative;max-width:1320px;margin:28px auto 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)"><span>© Ольга Пегушина</span><span>Все логотипы на сайте разработаны мной, кроме «Гори Ясно»</span></div>
+</section>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ lbClose }}" onTouchStart="{{ touchStart }}" onTouchEnd="{{ touchEnd }}" style="position:fixed;inset:0;z-index:100;background:rgba(12,10,9,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;color:#F2EEE9">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px clamp(12px,3vw,28px);font-family:'JetBrains Mono',monospace;font-size:14px">
+      <span>{{ lb.counter }}</span>
+      <button onClick="{{ lbClose }}" aria-label="Закрыть" style="font:inherit;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer;font-size:20px">×</button>
+    </div>
+    <div style="position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 clamp(8px,2vw,24px)">
+      <button onClick="{{ lbPrev }}" aria-label="Назад" style="position:absolute;left:clamp(8px,2vw,24px);top:50%;transform:translateY(-50%);z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(20,16,14,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;cursor:pointer;font-size:20px">←</button>
+      <img onClick="{{ stop }}" src="{{ lb.src }}" alt="{{ lb.cap }}" style="max-width:min(100%,1600px);max-height:calc(100dvh - 150px);min-width:0;object-fit:contain;border-radius:12px;display:block">
+      <button onClick="{{ lbNext }}" aria-label="Вперёд" style="position:absolute;right:clamp(8px,2vw,24px);top:50%;transform:translateY(-50%);z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(20,16,14,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;cursor:pointer;font-size:20px">→</button>
+    </div>
+    <div style="padding:16px clamp(12px,3vw,28px) calc(22px + env(safe-area-inset-bottom));text-align:center;font-size:15px;text-wrap:balance"><span style="color:#A79F97">{{ lb.group }} · </span>{{ lb.cap }}</div>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Системная&quot;,&quot;Светлая&quot;,&quot;Тёмная&quot;],&quot;default&quot;:&quot;Системная&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showBlobs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;galleryDensity&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Плотная&quot;,&quot;Средняя&quot;,&quot;Крупная&quot;],&quot;default&quot;:&quot;Средняя&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const pad = n => String(n).padStart(2, '0');
+const CASES = [
+  {id:'kultura',dir:'01-kultura',f:['bb','web'],name:'Культура девелопмента',sphere:'Консалтинг для девелоперов',link:['cultdev.pro','https://www.cultdev.pro/'],
+   lead:'Бренд команды, которая считает потенциал земельного участка до покупки. Спокойная бумажная палитра, знак «К» с точкой и один яркий лаймовый цвет. Сайт собран так, что «вся логика продукта помещается на один экран».',
+   did:['логобук','знак','палитра','паттерны','носители и мерч','лендинг'],colors:['#B8D83C','#1A3225','#F3EFE9','#9B9E7E'],
+   caps:['Логотип на обложке','Логобук','Знак «К»','Фирменные цвета','Паттерны','Калькулятор девелопера','Носители и мерч','Сайт: первый экран','Сайт: вся логика на одном экране','Сайт: цифры и результат']},
+  {id:'gori',dir:'gori',f:['bb'],name:'Гори Ясно',sphere:'Лагерь для взрослых',
+   lead:'Брендбук от инсайта до фотостиля. Всё выросло из одной фразы гостя: «Мне не нужен ещё один отпуск. Мне нужно, чтобы пару дней за меня всё решили, а рядом были хорошие люди». Отсюда позиционирование «не турбаза, не ретрит, не тимбилдинг», слоган «У нас по-семейному», пара маскотов-искр и графика из одного круга.',
+   did:['бренд-платформа','позиционирование','тон голоса','слоган','маскоты','графика и паттерны','фотостиль','носители'],
+   note:'Логотип разработан не мной. Платформа, тон, маскоты, графика и правила — мои.',colors:['#DC3C0A','#504614','#28280A','#F0DCB4'],
+   caps:['«Взрослым тоже нужно лето»','Инсайт','Позиционирование','Слоган «У нас по-семейному»','Маскоты','Маскот Гори','Маскот Ясна','Графика: всё из одного круга','Паттерны','Элементы в деле','Фотостиль','Фото и графика','Примеры носителей']},
+  {id:'svoboda',dir:'svoboda',f:['bb','web'],name:'Свобода Слова',sphere:'Онлайн-обучение живой речи',
+   lead:'Дизайн-система сайта на 22 страницы. Концепция «Не курс. Личный маршрут»: сайт ведёт человека от сомнения к понятному следующему шагу. Логотип-диалог из двух облаков, тёмно-синий и винный, сетка на 8 px и все компоненты интерфейса, от кнопок до шапки.',
+   did:['логотип','концепция','цвет и типографика','сетка desktop и mobile','UI-компоненты','иконки и стикеры','3D-графика'],colors:['#000A1E','#780A28','#78B4DC','#F0F0F0'],
+   caps:['Обложка дизайн-системы','Карта системы','Концепция «Свобода говорить»','Логотип: допустимые версии','Цветовая система','Типографическая семья','Сетка desktop и mobile','Digital-фишки бренда','Фото на весь экран','3D-язык «Да / Yes»','Иконки и стикеры','Кнопки и ссылки','Шапка и подвал']},
+  {id:'petarion',dir:'petarion',f:['bb','web'],name:'Petarion',sphere:'Премиальный уход за питомцами',
+   lead:'Российский бренд ухода за собаками и кошками: БАДы, шампуни, защитные средства. Позиционирование lifestyle premium: продукт, который ставят на полку рядом со своей косметикой, а не прячут под ванну. Ключевая идея «Solar Care System»: забота, которая начинается с нового дня. Отсюда солярный знак из круга и линии горизонта.',
+   did:['бренд-платформа','архетип и легенда','логотип и знак','анимация логотипа','палитра и шрифты','фотостиль','сайт и приложение','упаковка','наружная реклама'],colors:['#071D35','#C89B5A','#0B1222','#F0E2C8'],
+   caps:['Обложка брендбука','Solar Care System','Знак бренда','Знак в объёме','Ключевой визуал','Палитра','Фотостиль','Носители бренда','Сайт','Приложение','Билборд','Аксессуары: тактильный люкс','Упаковка']},
+  {id:'ceprex',dir:'ceprex',f:['bb'],name:'Цепрэкс',sphere:'ИТ-консалтинг',
+   lead:'Независимый эксперт в подготовке проектов цифровой трансформации и внедрения ИТ-решений. «Проверяем решения. Снижаем риски.» Логотип в двух написаниях, Ceprex и Цепрэкс, с бордовым акцентом в буквах X и К. Паттерн из наклонного сегмента: маленькая деталь, которая меняет траекторию системы.',
+   did:['логотип: латиница и кириллица','палитра','типографика','паттерн','презентации','КП и документы','носители'],colors:['#14246B','#8B1A2B','#F3F4F6','#FFFFFF'],
+   caps:['Обложка брендбука','Логотипы','Фирменная палитра','Типографика','Паттерн','Презентация','Коммерческое предложение','Отчёт и дашборд','Носители фирменного стиля']},
+  {id:'jack',dir:'04-jack-tanker',f:['bb','merch'],name:'Джек Танкер',sphere:'Маркет напитков',
+   lead:'«Свой порт. Свои правила.» Портовая эстетика: сигнальные полосы, трафаретный шрифт, бирки и маркировка грузов. Бренд проверен на фасаде вечером, в интерьере, на бочке-кассе, а потом разложен на целую линейку мерча и навигации для магазина.',
+   did:['брендбук','система логотипов','паттерны','фасад и интерьер','мерч: 50+ макетов','навигация в зале','анимация для соцсетей'],colors:['#C0480C','#0B0B0B','#49382B','#F2EDE4'],
+   caps:['Обложка брендбука','Логотипы','Паттерны','«Свой порт. Свои правила»','Вечерний фасад','Интерьер','Оформление бочки-кассы','Мерч'],
+   extra:{dir:'jack-merch',caps:['Флаги-перья','Бочка «Касса»','Худи «Полный бак»','Худи «Экипаж Джека»','Худи «75»','Кепка','Жилетка «75»','Фартуки','Бейдж сотрудника','Стикеры','Крафт-пакет','Навигация «Как получить доступ»']}},
+  {id:'kind',dir:'05-kind-stories',f:['bb'],name:'Kind Stories',sphere:'Видеопродакшен',
+   lead:'«Истории, которые выбирают». Плотный кинематографичный шрифт, чёрный и фиолетовый как свет на площадке. Логотип собран в систему версий и разложен на мерч, технику и сайт.',
+   did:['брендбук','логотип и версии','паттерны','палитра','мерч','первый экран сайта'],colors:['#5418FC','#020205','#FC6000','#F6F3EE'],
+   caps:['Обложка брендбука','Логотип','Версии логотипа','Паттерны','Цветовая палитра','Мерч','«Истории, которые выбирают»']},
+  {id:'ko',dir:'06-komanda-ko',f:['bb'],name:'Команда КО',sphere:'Театральная студия',
+   lead:'Знак построен на одной дуге: она задаёт вектор взгляда, как жест актёра. Из дуги вырастают паттерны-декорации, афиши, которые собирают залы, и мерч. Финал — жёлтый знак в луче прожектора.',
+   did:['логобук','геометрия знака','паттерны','афиши','мерч'],colors:['#3C6C3C','#10241A','#E4A818','#F1EAD7'],
+   caps:['Обложка логобука','Знак','Геометрия дуги','Паттерны-декорации','Полиграфия: афиши','Мерч','Знак в луче прожектора']},
+  {id:'aura',dir:'07-aura',f:['bb'],name:'Аура',sphere:'Декор для дома',
+   lead:'Тихий бренд для дома: мятный, тёплый коричневый и много воздуха. Смысловой центр знака — буква «У», точка притяжения в интерьере. Стиль показан на упаковке, носителях и фактурах.',
+   did:['логобук','смысловой код знака','палитра','упаковка','носители'],colors:['#B0D1C8','#543C30','#C8C0B4','#EDEAE3'],
+   caps:['Логотип','Смысловой код','Хроматическая гармония','Упаковка','Носители в интерьере','Атмосфера бренда','Фактуры']},
+  {id:'logo',dir:'logos',f:['logo'],name:'Логотипы',sphere:'Разные сферы',
+   lead:'Все знаки собраны на одной странице: из брендбуков выше и отдельные проекты для малого бизнеса, от консалтинга для девелоперов до детской изостудии. Каждый читается и на вывеске, и в аватарке.',
+   did:['логотипы','нейминг','мини-гайды'],colors:['#C0E03D','#0B0B0B','#000A1E','#F82104'],
+   logos:[['Культура девелопмента','консалтинг для девелоперов','#C0E03D'],['Калькулятор девелопера','цифровой сервис','#FFFFFF'],['Джек Танкер','маркет напитков','#0E0D0C'],['Цепрэкс','ИТ-консалтинг','#FFFFFF'],['Petarion','уход за питомцами','#071D35'],['Природа проектирования','проектная компания','#FFFFFF'],['М и М','архитектурное бюро','#F7F6F5'],['Аура','декор для дома','#B0D1C8'],['Команда КО','театральная студия','#F0EDE8'],['Kind Stories','видеопродакшен','#050507'],['Свобода Слова','онлайн-обучение живой речи','#FFFFFF'],['Рисуйте','изостудия для детей','#F82104'],['Ладоушки','массаж ручной работы','#66899F'],['Форма','декор для дома','#E8E4D8'],['Красим','покраска стен','#EEE9E3']]}
+];
+const FILTERS = [['all','Все'],['bb','Брендбуки'],['web','Сайты'],['merch','Мерч'],['logo','Логотипы']];
+const HELP = [
+  {kicker:'Стратегический маркетинг',title:'Запускаю и перезапускаю маркетинг',sub:'Опыт руководителя отдела маркетинга девелопера: от анализа рынка до плана, бюджета и команды.',
+   items:[['Запуск маркетинга проекта',' с нуля: исследование, позиционирование, стратегия запуска, план продвижения'],['Перезапуск маркетинга',', когда текущий перестал работать: аудит, новые цели, каналы и приоритеты'],['Коммерческая стратегия',': продукт, УТП, отстройка от конкурентов, воронка продаж'],['Коммуникационная стратегия',': что, кому и где говорить, медиастратегия'],['Маркетинговая стратегия',' на год и квартал, медиаплан и бюджет'],['Выход в новый регион',': анализ спроса, адаптация бренда, быстрый старт маркетинга']]},
+  {kicker:'Брендинг',title:'Создаю бренд от смысла до носителей',sub:'Сначала разбираемся, кому вы продаёте и чем отличаетесь, потом рисуем.',
+   items:[['Бренд-платформа',': миссия, ценности, позиционирование, tone of voice'],['Нейминг',' компании, продукта или проекта'],['Логотип и фирменный стиль',''],['Брендбуки и логобуки',' с правилами применения'],['Лендинги и сайты',', дизайн-системы'],['Мерч и носители',': от вывески до упаковки']]}
+];
+const SITES = [
+  {name:'cultdev.pro',quote:'Проверьте потенциал участка до покупки и проектирования',text:'Консалтинг для девелоперов. Лендинг, в котором вся логика продукта помещается на один экран, и живой интерфейс «Калькулятора девелопера».',href:'https://www.cultdev.pro/'},
+  {name:'zokbpla.pro',quote:'Защитные ограждающие конструкции от БПЛА',text:'Инженерная услуга для промышленных и энергетических объектов. Сайт раскладывает нормативку по СП 542 так, чтобы собственник объекта понял, какой уровень защиты ему нужен и с чего начать.',href:'https://zokbpla.pro/'},
+  {name:'Домашний Родник',quote:'Питьевая вода. В доме всегда. По подписке.',text:'Отдельный кран чистой воды в каждой квартире. Сайт для застройщиков: вода как аргумент в каждой сделке и доход для девелопера.',href:'https://domashniy-rodnik-site.vercel.app/'},
+  {name:'ЖБИ Партнёр',quote:'Поставка ЖБИ в нужную точку в срок',text:'Поставщик железобетонных изделий: собирает всю спецификацию у 30 заводов-партнёров в одну поставку. Киров, Коми, Татарстан, Марий Эл.',href:'https://zhbi-partner.vercel.app/'}
+];
+const STEPS = [['Бриф','Разбираемся, кому вы продаёте и чем отличаетесь.'],['Две концепции','Показываю два разных направления, вы выбираете.'],['Доработка','Правки в рамках выбранной концепции без ограничений.'],['Исходники','Все файлы и понятные правила, чтобы стиль не развалился у подрядчика.']];
+const LADDER = [
+  {y:'2019–2021',role:'Менеджер по цифровому маркетингу',d:'Весь поток лидогенерации: Киров, Ижевск, Ульяновск',h:'clamp(36px,6vw,70px)',o:.45},
+  {y:'2022–2023',role:'Руководитель операционного маркетинга',d:'7 человек в команде и 10+ подрядчиков, PR-поддержка всех регионов',h:'clamp(60px,11vw,130px)',o:.6},
+  {y:'2023–2024',role:'Руководитель отдела брендинга и PR',d:'PR-стратегия, tone of voice, SMM, репутация, нейминг и брендинг новых проектов',h:'clamp(84px,16vw,190px)',o:.8},
+  {y:'2024–2025',role:'Руководитель отдела маркетинга',d:'40 человек в двух отделах, единая стратегия на федеральном и региональном уровне',h:'clamp(108px,21vw,250px)',o:1}
+];
+const DUTIES = [
+  {tag:'Регионы',big:'4',cap:'новых региона запустила с командой',text:'Маркетинг выхода застройщика на новую территорию: анализ спроса и конкурентов, адаптация бренда и продукта под регион, стратегия входа, запуск продаж и коммуникаций на новой территории.'},
+  {tag:'Лидогенерация',big:'100%',cap:'заявок компании — моя зона с 2019 года',text:'В 2019 году отвечала за весь поток обращений в трёх регионах, дальше за план заявок, каналы, веб-аналитику и CRM-коммуникации во всех регионах.'},
+  {tag:'Бренд',big:'20+',cap:'брендов под зонтиком «Железно»',text:'Бренд «Железно» и бренды проектов: позиционирование «девелопмент со смыслом», платформа, tone of voice, репутация, нейминг и упаковка новых ЖК, офисы продаж и стройплощадки.'},
+  {tag:'Команда',big:'40',cap:'человек в команде, два отдела',text:'Руководила маркетингом как системой: бренд, PR, контент, digital, операционный маркетинг и маркетинг проектов. Два отдела, подрядчики и бюджет.'}
+];
+const AWARDS = [['Девелопер года','Federal Urban Awards, 2024'],['Топ-4 застройщиков России','по потребительским качествам жилья, ЕРЗ, 2025'],['7 наград ТОП ЖК–2025','главный градостроительный конкурс ЕРЗ'],['Лучшая жилая новостройка России','«Булычёв», ТОП ЖК–2024'],['Лучший проект премиум-класса России','«Булычёв», Urban Awards, 2023'],['Серебро WOW Awards','«Ребрендинг компании», 2025'],['Серебро WOW Awards','«Бренд проекта: стандарт/комфорт», ЖК «Икигай», 2025'],['Работа в конкурсе WOW Awards','закрытая презентация дома «Булычёв», 2023']];
+const EVENTS = [
+  {k:'Кино · 2025',t:'Фильм «Булычёв — Дом, которого не должно было быть»',d:'Документальный фильм о том, как строили дом бутик-класса в центре Кирова. Онлайн-премьера 13 февраля 2025 года.'},
+  {k:'Событие · 2022',t:'Закрытая презентация «Булычёва»',d:'Кировский кукольный театр на один вечер превратили в бутик-отель. Больше 300 гостей: деловая элита города, клиенты, дизайнеры, брокеры, блогеры.'},
+  {k:'Digital · РП проекта',t:'Сайт zhcom.ru — дважды',d:'Два поколения сайта компании, включая текущий, сделаны вместе с IDA Project. Я вела проект как руководитель со стороны «Железно».'}
+];
+const FACTS = [['Опыт','13 лет в маркетинге, с 2013 года'],['Город','Киров, работаю удалённо'],['Формат','Проектная работа, частичная или полная занятость'],['Сейчас','В декрете с июля 2025, веду личную практику']];
+const PRACTICE = [
+  ['Коммерческие, коммуникационные и маркетинговые стратегии; запуск и перезапуск маркетинга проектов','Что делаю →','help'],
+  ['Бренд-платформы, позиционирование, нейминг','Что делаю →','help'],
+  ['Брендбуки и логобуки','Смотреть кейсы →','cases'],
+  ['Логотипы','Смотреть логотипы →','case-logo'],
+  ['Дизайн-системы, лендинги и сайты','Смотреть сайты →','sites'],
+  ['Мерч и носители','Смотреть мерч →','case-jack']
+];
+const JOBS = [
+  {y:'2019 — 2025',dur:'6 лет',co:'Специализированный застройщик «Железно»',sub:'Девелопмент, жилищное строительство',
+   sum:['С 2019 года в маркетинге компании: подключилась менеджером, с 2022 года на руководящих должностях','Управляла командой из 40 человек в двух отделах','Руководила проектом сайта zhcom.ru: два поколения вместе с IDA Project','Проекты отмечены WOW Awards, ТОП ЖК и Urban Awards','Запустила маркетинг в 4 новых регионах','Вся лидогенерация компании — моя зона ответственности с 2019 года','Бренд «Железно» и бренды проектов'],
+   roles:[
+    {t:'Руководитель отдела маркетинга',y:'сен 2024 — сейчас',b:['Единая маркетинговая стратегия девелопера на федеральном и региональном уровнях; деление функции на бренд, PR, контент, digital, операционный маркетинг и маркетинг проектов','Руководство блоками брендинга и PR и операционного маркетинга, распределённая команда в регионах, цели и KPI','Бренд компании и проектов: позиционирование, платформа бренда, tone of voice, репутация, единый brand experience','Упаковка новых проектов: нейминг, брендинг, коммуникационная концепция, креативные кампании, стройплощадки, офисы продаж, шоурумы','Участие в продукте: УТП, продуктовая концепция, инсайты, CJM, ассортиментная и ценовая логика','Исследования рынка, потребителя, конкурентов, оценка площадок и локаций','Лидогенерация и performance: объёмы обращений, каналы, веб-аналитика, CRM-коммуникации, эффективность вложений','Выход в новые регионы: анализ спроса, адаптация бренда и продукта, стратегия входа, быстрый старт маркетинга','Маркетинг территорий и проектов комплексного развития','Маркетинговый бюджет, подрядчики, тестирование гипотез']},
+    {t:'Руководитель отдела брендинга и PR',y:'май 2023 — авг 2024',b:['PR-стратегия и коммуникационная стратегия бренда на федеральном и региональном уровне, tone of voice','Контент-маркетинг и SMM, управление репутацией (SERM), узнаваемость бренда','Нейминг и брендинг новых проектов','Продакшен: дизайн рекламы и всех точек контакта, фото, видео, 3D, рендеры','Премии, конференции, выставки; собственные урбан-туры, пресс-туры, брокер-туры']},
+    {t:'Руководитель операционного маркетинга',y:'янв 2022 — май 2023',b:['Команда из 7 человек и более 10 подрядчиков на аутсорсе','Стратегия продвижения и PR-политика в трёх регионах','Медиапланы, бюджет и его исполнение без превышения','Аналитика KPI проектов: заявки, встречи, продажи','Участие в креативных концепциях жилых комплексов']},
+    {t:'Менеджер по цифровому маркетингу',y:'сен 2019 — дек 2021',b:['Весь поток лидогенерации компании в трёх регионах: Киров, Ижевск, Ульяновск','Стратегия и тактика продвижения жилых комплексов, медиапланы','Контент-стратегия и рост аудитории во всех каналах','Анализ аудитории, продукта и конкурентов, концепции жилых комплексов']}
+   ]},
+  {y:'2013 — 2019',dur:'6 лет',co:'ГК «К)Сервис»',sub:'Автоматизация бизнеса и телекоммуникации, Киров и Санкт-Петербург',sum:[],
+   roles:[
+    {t:'Руководитель отдела маркетинга',y:'2016 — 2019',b:['Отдел из 4 человек, вхождение в топ-команду компании из 7 человек','Маркетинговое планирование и бюджет по пяти группам продаж: розница, опт, корпоративные клиенты, IT-услуги и собственная марка DIGIFORS','Упаковка и инструкции для собственной марки DIGIFORS, промоматериалы, акции','Руководство проектом интернет-магазина, сайты на 1С-Битрикс']},
+    {t:'Маркетолог',y:'2014 — 2016',b:['Контекстная реклама, SMM, рассылки, мероприятия, сувенирная продукция']},
+    {t:'Помощник директора по маркетингу',y:'2013',b:[]}
+   ]}
+];
+const SKILLS = 'маркетинговая стратегия — бренд-платформа — позиционирование — tone of voice — коммуникационная стратегия — медиастратегия — продукт и УТП — исследования и CJM — лидогенерация — performance-маркетинг — веб-аналитика — PR и SERM — события и туры — выход в новые регионы — управление командой — бюджет и подрядчики — нейминг — брендинг — брендбуки — сайты и лендинги'.split(' — ');
+const CONTACTS = [['Telegram','@olyaavi_pos','https://t.me/olyaavi_pos','_blank'],['Почта','pos.720@yandex.ru','mailto:pos.720@yandex.ru','_self'],['Телефон','+7 953 679-01-27','tel:+79536790127','_self']];
+
+function lum(hex){const h=hex.replace('#','');const [r,g,b]=[0,2,4].map(i=>parseInt(h.substr(i,2),16)/255).map(c=>c<=.03928?c/12.92:Math.pow((c+.055)/1.055,2.4));return .2126*r+.7152*g+.0722*b;}
+
+class Component extends DCLogic {
+  state = { tab: 'portfolio', filter: 'all', lb: null, copied: null, vw: typeof window !== 'undefined' ? window.innerWidth : 1280 };
+  videoRef = React.createRef();
+  reduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  componentDidMount() {
+    if (location.hash === '#resume') this.setState({ tab: 'resume' });
+    this.onKey = e => {
+      if (!this.state.lb) return;
+      if (e.key === 'Escape') this.closeLb();
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    this.onHash = () => { if (location.hash === '#resume') this.setTab('resume'); };
+    window.addEventListener('keydown', this.onKey);
+    this.onResize = () => { const vw = window.innerWidth; if ((vw < 640) !== (this.state.vw < 640) || (vw < 960) !== (this.state.vw < 960)) this.setState({ vw }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('hashchange', this.onHash);
+    this.playVideo();
+  }
+  componentDidUpdate() { this.playVideo(); }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('resize', this.onResize); }
+  playVideo() { const v = this.videoRef.current; if (v && !this.reduced && v.paused && !v._tried) { v._tried = true; v.play().catch(() => {}); } }
+
+  setTab(tab, target) {
+    this.setState({ tab }, () => {
+      try { history.replaceState(null, '', tab === 'resume' ? '#resume' : location.pathname + location.search); } catch (e) {}
+      requestAnimationFrame(() => {
+        const el = target && document.getElementById(target);
+        window.scrollTo({ top: el ? el.getBoundingClientRect().top + window.scrollY - 72 : 0, behavior: el ? 'smooth' : 'auto' });
+      });
+    });
+  }
+  openLb(items, i, group) { this.setState({ lb: { items, i, group } }); document.body.style.overflow = 'hidden'; }
+  closeLb() { this.setState({ lb: null }); document.body.style.overflow = ''; }
+  step(d) { this.setState(s => { const n = s.lb.items.length; return { lb: { ...s.lb, i: (s.lb.i + d + n) % n } }; }); }
+  copy(key, text) {
+    const done = () => { this.setState({ copied: key }); clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copied: null }), 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => this.fallbackCopy(text, done)); else this.fallbackCopy(text, done);
+  }
+  fallbackCopy(text, done) { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (e) {} t.remove(); done(); }
+
+  blobs(set) {
+    if (this.props.showBlobs === false) return null;
+    const anim = (k, d) => this.reduced ? 'none' : `${k} ${d}s ease-in-out infinite`;
+    const sphere = (s, i) => React.createElement('div', { key: i, style: { position: 'absolute', left: s.x, top: s.y, width: s.s, height: s.s, borderRadius: '50%', background: 'radial-gradient(circle at 34% 28%, #FFE0C7 0%, #FF9A5C 32%, #E85A1E 64%, #93300B 100%)', filter: `blur(${s.b}px)`, opacity: s.o || 1, animation: anim(s.k || 'floatA', s.d || 9) } });
+    const ring = (s, i) => React.createElement('div', { key: i, style: { position: 'absolute', left: s.x, top: s.y, width: s.s, height: s.s, filter: `blur(${s.b}px)`, animation: anim(s.k || 'floatB', s.d || 11) } },
+      React.createElement('div', { style: { width: '100%', height: '100%', borderRadius: '50%', border: `${Math.round(s.s * 0.13)}px solid #FFA36C`, boxShadow: 'inset 10px 10px 20px rgba(255,236,220,.7), inset -12px -14px 24px rgba(170,55,12,.55), 0 30px 60px rgba(210,90,30,.25)', transform: `rotate(${s.r}deg) scaleY(.6)` } }));
+    const sets = {
+      hero: [
+        { t: 's', x: '72%', y: '-14%', s: 'clamp(280px,38vw,560px)', b: 6 },
+        { t: 'r', x: '18%', y: '-6%', s: 'clamp(150px,18vw,260px)', b: 2, r: -28 },
+        { t: 's', x: '-3%', y: '46%', s: 'clamp(80px,9vw,130px)', b: 1, k: 'floatB', d: 7 },
+        { t: 'r', x: '58%', y: '70%', s: 'clamp(140px,16vw,240px)', b: 8, r: 18, d: 13 },
+        { t: 's', x: '93%', y: '62%', s: 'clamp(60px,6vw,90px)', b: 3, d: 8 }
+      ],
+      contact: [
+        { t: 's', x: '-8%', y: '30%', s: 'clamp(240px,30vw,440px)', b: 10 },
+        { t: 'r', x: '78%', y: '-10%', s: 'clamp(160px,18vw,280px)', b: 3, r: 24 },
+        { t: 's', x: '86%', y: '66%', s: 'clamp(70px,8vw,120px)', b: 1, k: 'floatB', d: 7 }
+      ]
+    };
+    return sets[set].map((s, i) => s.t === 's' ? sphere(s, i) : ring(s, i));
+  }
+
+  renderVals() {
+    const { tab, filter, lb, copied } = this.state;
+    const active = { bg: 'var(--card)', sh: '0 2px 10px rgba(0,0,0,.08)' }, idle = { bg: 'transparent', sh: 'none' };
+    const ticks = Array.from({ length: 14 }, (_, k) => { const y = 2013 + k; const z = y >= 2019 && y <= 2025; return { h: (16 + k * 2.6) + 'px', c: z ? 'var(--acc)' : y > 2025 ? 'var(--mute2)' : 'var(--ink)', dot: y === 2025 }; });
+
+    const cases = CASES.map((c, ci) => ({ c, num: pad(ci + 1) })).filter(({ c }) => filter === 'all' || c.f.includes(filter)).map(({ c, num }) => {
+      const out = { num, anchor: 'case-' + c.id, name: c.name, sphere: c.sphere, lead: c.lead, did: c.did, hasNote: !!c.note, note: c.note || '',
+        hasLink: !!c.link, linkLabel: c.link ? c.link[0] : '', linkHref: c.link ? c.link[1] : '',
+        swatches: c.colors.map(hex => ({ hex, fg: lum(hex) > 0.4 ? '#16130F' : '#F6F4F1' })), isLogo: !!c.logos, isGallery: !c.logos, hasExtra: !!c.extra };
+      if (c.logos) {
+        const items = c.logos.map((l, i) => ({ src: `img/logos/${pad(i + 1)}.jpg`, t: `img/logos/t/${pad(i + 1)}.webp`, cap: `${l[0]} — ${l[1]}` }));
+        out.tiles = c.logos.map((l, i) => ({ src: items[i].t, cap: items[i].cap, name: l[0], sphere: l[1], bg: l[2], open: () => this.openLb(items, i, c.name) }));
+      } else {
+        const items = c.caps.map((cap, i) => ({ src: `img/${c.dir}/${pad(i + 1)}.jpg`, cap }));
+        const all = items.map((it, i) => ({ ...it, t: `img/${c.dir}/t/${pad(i + 1)}.webp`, n: pad(i + 1), open: () => this.openLb(items, i, c.name) }));
+        out.cover = all[0]; out.rest = all.slice(1);
+      }
+      if (c.extra) {
+        const ex = c.extra.caps.map((cap, i) => ({ src: `img/${c.extra.dir}/${pad(i + 1)}.jpg`, cap }));
+        out.extraItems = ex.map((it, i) => ({ ...it, t: `img/${c.extra.dir}/t/${pad(i + 1)}.webp`, n: pad(i + 1), open: () => this.openLb(ex, i, 'Джек Танкер · Мерч и носители') }));
+      }
+      return out;
+    });
+
+    const cur = lb ? lb.items[lb.i] : null;
+    let tx = 0;
+    const density = this.props.galleryDensity ?? 'Средняя';
+    return {
+      theme: ({ 'Системная': 'auto', 'Светлая': 'light', 'Тёмная': 'dark' })[this.props.theme ?? 'Системная'] || 'auto',
+      wide: this.state.vw >= 960,
+      hdr: this.state.vw < 640 ? { navDisplay: 'contents', tabsOrder: 3, tabsFlex: '1 1 100%' } : { navDisplay: 'flex', tabsOrder: 0, tabsFlex: '0 0 auto' },
+      isPortfolio: tab === 'portfolio', isResume: tab === 'resume',
+      tabA: tab === 'portfolio' ? active : idle, tabB: tab === 'resume' ? active : idle,
+      showPortfolio: () => this.setTab('portfolio'), showResume: () => this.setTab('resume'),
+      goTop: e => { e.preventDefault(); this.setTab('portfolio'); },
+      heroBlobs: this.blobs('hero'), contactBlobs: this.blobs('contact'),
+      ticks,
+      help: HELP.map(h => ({ ...h, items: h.items.map((it, i) => ({ n: pad(i + 1), b: it[0], t: it[1] })) })),
+      filters: FILTERS.map(([k, label]) => ({ label, ...(filter === k ? active : idle), onClick: () => this.setState({ filter: k }) })),
+      cases, visibleCount: cases.length,
+      thumbMin: density === 'Крупная' ? '420px' : density === 'Плотная' ? '200px' : '280px',
+      videoRef: this.videoRef, videoControls: this.reduced,
+      sites: SITES.map((s, i) => ({ ...s, n: pad(i + 1), host: s.href.replace(/^https?:\/\//, '').replace(/\/$/, ''), shot: `https://s.wordpress.com/mshots/v1/${encodeURIComponent(s.href)}?w=1200&h=750` })),
+      steps: STEPS.map((s, i) => ({ n: pad(i + 1), t: s[0], d: s[1] })),
+      ladder: LADDER, duties: DUTIES,
+      awards: AWARDS.map((a, i) => ({ n: pad(i + 1), t: a[0], d: a[1] })), events: EVENTS,
+      facts: FACTS.map(f => ({ k: f[0], v: f[1] })),
+      practiceLinks: PRACTICE.map(p => ({ t: p[0], l: p[1], id: p[2], go: e => { e.preventDefault(); if (p[2] === 'cases' || p[2] === 'case-logo' || p[2] === 'case-jack') this.setState({ filter: 'all' }); this.setTab('portfolio', p[2]); } })),
+      jobs: JOBS, skills: SKILLS,
+      contacts: CONTACTS.map(([k, v, href, target]) => ({ k, v, href, target, label: copied === k ? 'Скопировано ✓' : 'Копировать', bg: copied === k ? 'var(--acc)' : 'transparent', fg: copied === k ? '#fff' : 'var(--ink)', copy: () => this.copy(k, v) })),
+      lbOpen: !!lb,
+      lb: cur ? { src: cur.src, cap: cur.cap, group: lb.group, counter: `${pad(lb.i + 1)} / ${pad(lb.items.length)}` } : { src: '', cap: '', group: '', counter: '' },
+      lbClose: () => this.closeLb(),
+      lbPrev: e => { e.stopPropagation(); this.step(-1); }, lbNext: e => { e.stopPropagation(); this.step(1); },
+      stop: e => e.stopPropagation(),
+      touchStart: e => { this._tx = e.changedTouches[0].clientX; },
+      touchEnd: e => { const dx = e.changedTouches[0].clientX - (this._tx || 0); if (Math.abs(dx) > 50) { e.preventDefault(); this.step(dx < 0 ? 1 : -1); } }
+    };
+  }
+}
+</script>
+</body>
+</html>
