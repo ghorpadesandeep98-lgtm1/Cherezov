@@ -35,6 +35,15 @@ a:hover{color:var(--acc)}
 @keyframes floatA{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-22px,0)}}
 @keyframes floatB{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(14px,16px,0)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:640px){
+[data-rail]{display:flex!important;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;gap:10px!important;margin-inline:-16px;padding:0 16px 6px;scroll-padding-inline:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+[data-rail]::-webkit-scrollbar{display:none}
+[data-rail]>figure{flex:0 0 82%;min-width:0;scroll-snap-align:start;grid-row:auto!important}
+[data-rail]>figure:has(video){flex-basis:56%}
+[data-logos]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 10px!important}
+[data-logos] figcaption{flex-direction:column!important;gap:0!important;font-size:13px!important}
+[data-logos] figcaption span:last-child{text-align:left!important}
+}
 </style>
 </helmet>
 <div data-theme="{{ theme }}" style="background:var(--bg);color:var(--ink);font-family:'Onest',system-ui,sans-serif;font-size:clamp(15px,1.2vw + 11px,17px);line-height:1.5;min-height:100vh;overflow-x:clip">
@@ -174,6 +183,11 @@ a:hover{color:var(--acc)}
             <li style="border-top:1px solid var(--line)"><a href="#{{ c.anchor }}" style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 0;text-decoration:none"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)">{{ c.num }}</span><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-weight:500;font-size:18px;line-height:1.25">{{ c.name }}</span><span style="font-size:14px;color:var(--mute);line-height:1.35">{{ c.sphere }}</span></span></a></li>
           </sc-for>
         </ol>
+        <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));column-gap:32px">
+          <sc-for list="{{ stratToc }}" as="t" hint-placeholder-count="2">
+            <li style="border-top:1px solid var(--line)"><a href="#{{ t.anchor }}" style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:baseline;padding:14px 0;text-decoration:none"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc)">{{ t.num }}</span><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-weight:500;font-size:18px;line-height:1.25">{{ t.name }}</span><span style="font-size:14px;color:var(--mute);line-height:1.35">{{ t.sphere }}</span></span></a></li>
+          </sc-for>
+        </ol>
       </div>
 
       <div style="display:flex;flex-direction:column">
@@ -211,7 +225,7 @@ a:hover{color:var(--acc)}
                 <button onClick="{{ c.cover.open }}" style="padding:0;border:0;background:var(--card);border-radius:clamp(16px,2vw,28px);overflow:hidden;cursor:zoom-in;display:block;width:100%"><img src="{{ c.cover.src }}" alt="{{ c.cover.cap }}" loading="lazy" decoding="async" width="1400" height="788" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></button>
                 <figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">01 — {{ c.cover.cap }}</figcaption>
               </figure>
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,{{ thumbMin }}),1fr));gap:20px 12px">
+              <div data-rail="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,{{ thumbMin }}),1fr));gap:20px 12px">
                 <sc-for list="{{ c.rest }}" as="im" hint-placeholder-count="6">
                   <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
                     <button onClick="{{ im.open }}" style="padding:0;border:0;background:var(--card);border-radius:14px;overflow:hidden;cursor:zoom-in;display:block;width:100%"><img src="{{ im.t }}" alt="{{ im.cap }}" loading="lazy" decoding="async" width="720" height="405" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></button>
@@ -222,7 +236,7 @@ a:hover{color:var(--acc)}
             </sc-if>
 
             <sc-if value="{{ c.isLogo }}">
-              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:20px 12px">
+              <div data-logos="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:20px 12px">
                 <sc-for list="{{ c.tiles }}" as="im" hint-placeholder-count="6">
                   <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
                     <button onClick="{{ im.open }}" style="padding:0;border:1px solid var(--line);background:{{ im.bg }};border-radius:16px;overflow:hidden;cursor:zoom-in;display:block;width:100%"><img src="{{ im.src }}" alt="{{ im.cap }}" loading="lazy" decoding="async" style="display:block;width:100%;aspect-ratio:4/3;object-fit:contain"></button>
@@ -235,7 +249,7 @@ a:hover{color:var(--acc)}
             <sc-if value="{{ c.hasExtra }}">
               <div id="merch" style="scroll-margin-top:90px;margin-top:clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:20px">
                 <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Подблок</span><h4 style="margin:0;font-size:clamp(21px,2.52vw,34px);font-weight:500;letter-spacing:-0.035em">Мерч и носители</h4></div>
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:20px 12px;align-items:start">
+                <div data-rail="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:20px 12px;align-items:start">
                   <figure style="margin:0;display:flex;flex-direction:column;gap:8px;grid-row:span 2">
                     <video ref="{{ videoRef }}" src="img/jack-merch/promo.mp4" poster="img/jack-merch/promo.jpg" preload="none" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" controls="{{ videoControls }}" style="display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:16px;background:#0B0B0B"></video>
                     <figcaption style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">Видео — Анимированный пост «Оформи подписку»: карта Джека</figcaption>
@@ -250,6 +264,53 @@ a:hover{color:var(--acc)}
               </div>
             </sc-if>
           </article>
+        </sc-for>
+      </div>
+
+      <div id="strat-docs" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px 64px;align-items:end">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">Стратегии · 2</div>
+            <h3 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em;line-height:1">Коммерческая и коммуникационные стратегии</h3>
+          </div>
+          <p style="margin:0;color:var(--mute);font-size:clamp(15px,1.2vw,17px);text-wrap:pretty">Показываю превью и ключевые выводы. Полные документы с цифрами и расчётами пришлю по запросу.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px">
+          <sc-for list="{{ stratDocs }}" as="s" hint-placeholder-count="2">
+            <article id="{{ s.anchor }}" style="scroll-margin-top:90px;padding:12px 12px 24px;border-radius:24px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px">
+              <a href="{{ s.href }}" target="_blank" rel="noopener" style="display:block;border-radius:16px;overflow:hidden;background:var(--track);border:1px solid var(--line);text-decoration:none">
+                <div style="display:flex;align-items:center;gap:5px;padding:8px 10px;border-bottom:1px solid var(--line)"><span style="width:7px;height:7px;border-radius:50%;background:var(--mute2)"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--mute2)"></span><span style="width:7px;height:7px;border-radius:50%;background:var(--mute2)"></span><span style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ s.host }}</span></div>
+                <img src="{{ s.shot }}" alt="Скриншот: {{ s.name }}" loading="lazy" decoding="async" width="1200" height="750" style="display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top">
+              </a>
+              <div style="display:flex;flex-direction:column;gap:12px;padding:6px 12px 0;flex:1">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc)">{{ s.kicker }}</span>
+                <span style="font-size:clamp(22px,2vw,26px);font-weight:500;letter-spacing:-0.025em;line-height:1.15">{{ s.name }}</span>
+                <span style="font-size:15px;color:var(--mute);text-wrap:pretty">{{ s.text }}</span>
+                <div style="margin-top:auto;padding-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                  <a href="{{ s.href }}" target="_blank" rel="noopener" style="display:flex;align-items:center;padding:12px 18px;border-radius:12px;background:var(--ink);color:var(--inv);text-decoration:none;font-size:15px;min-height:44px">Смотреть ↗</a>
+                  <a href="#contacts" style="display:flex;align-items:center;padding:12px 18px;border-radius:12px;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:15px;min-height:44px">Запросить полную версию</a>
+                </div>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+        <sc-for list="{{ stratDocs }}" as="s" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:14px;padding-top:12px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+              <span style="font-size:clamp(18px,1.6vw,21px);font-weight:500;letter-spacing:-0.02em">Скриншоты: {{ s.kicker }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">листайте → · внутри кадра можно скроллить</span>
+            </div>
+            <div style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 14px;margin:0 calc(-1 * clamp(16px,4vw,48px));padding-left:clamp(16px,4vw,48px);padding-right:clamp(16px,4vw,48px);scroll-padding-left:clamp(16px,4vw,48px);-webkit-overflow-scrolling:touch">
+              <sc-for list="{{ s.pages }}" as="p" hint-placeholder-count="4">
+                <figure style="margin:0;flex:0 0 clamp(250px,30vw,380px);scroll-snap-align:start;display:flex;flex-direction:column;gap:8px">
+                  <div style="height:clamp(340px,40vw,520px);overflow-y:auto;border-radius:16px;background:var(--track);border:1px solid var(--line);overscroll-behavior:contain">
+                    <img src="{{ p.shot }}" alt="Скриншот: {{ p.label }}" loading="lazy" decoding="async" width="1200" height="2400" style="display:block;width:100%;height:auto">
+                  </div>
+                  <figcaption style="display:flex;justify-content:space-between;gap:8px;font-size:14px"><span>{{ p.label }}</span><a href="{{ p.href }}" target="_blank" rel="noopener" style="color:var(--acc);text-decoration:none">открыть ↗</a></figcaption>
+                </figure>
+              </sc-for>
+            </div>
+          </div>
         </sc-for>
       </div>
 
@@ -352,6 +413,33 @@ a:hover{color:var(--acc)}
             <div style="position:absolute;left:160px;top:50%;width:360px;height:520px;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle,#FF6A2C 0%,rgba(255,106,44,.55) 40%,transparent 70%);filter:blur(30px)"></div>
           </div></sc-if>
         </div>
+      </div>
+
+      <div id="strategies" style="scroll-margin-top:90px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px 64px;align-items:end">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)">7 проектов + бренд · 5 городов</div>
+            <h3 style="margin:0;font-size:clamp(24px,3.02vw,40px);font-weight:500;letter-spacing:-0.04em;line-height:1">Коммуникационные стратегии</h3>
+          </div>
+          <p style="margin:0;color:var(--mute);font-size:clamp(15px,1.2vw,17px);text-wrap:pretty">У каждого жилого комплекса одна большая идея, которой подчинено всё: название, визуал, события, офис продаж и посты. Путь каждой стратегии: инсайт → позиция → идея → сообщения → точки контакта → результат.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:12px">
+          <sc-for list="{{ strategies }}" as="s" hint-placeholder-count="8">
+            <a href="{{ s.url }}" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:14px;padding:clamp(20px,2vw,26px);border-radius:24px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);min-height:230px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 22px 44px -24px rgba(120,50,10,.35)">
+              <img src="{{ s.shot }}" alt="Скриншот стратегии {{ s.name }}" loading="lazy" decoding="async" width="1200" height="750" style="display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:14px;background:var(--track);border:1px solid var(--line)">
+              <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+                <span style="font-size:clamp(20px,1.8vw,24px);font-weight:500;letter-spacing:-0.03em;line-height:1.1">{{ s.name }}</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute);white-space:nowrap">{{ s.city }}</span>
+              </div>
+              <span style="font-size:15px;color:var(--acc);font-weight:500">«{{ s.idea }}»</span>
+              <div style="margin-top:auto;display:flex;align-items:baseline;gap:10px;padding-top:14px;border-top:1px solid var(--line)">
+                <span style="font-size:clamp(28px,2.6vw,36px);font-weight:400;letter-spacing:-0.04em;line-height:1">{{ s.big }}</span>
+                <span style="font-size:13px;color:var(--mute);line-height:1.3;text-wrap:pretty">{{ s.cap }}</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+        <a href="https://olga-pegushina-strategies.vercel.app" target="_blank" rel="noopener" style="align-self:flex-start;display:flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;background:var(--ink);color:var(--inv);text-decoration:none;font-size:15px;min-height:44px">Все стратегии целиком ↗</a>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:28px">
@@ -545,12 +633,12 @@ const CASES = [
    did:['логотипы','нейминг','мини-гайды'],colors:['#C0E03D','#0B0B0B','#000A1E','#F82104'],
    logos:[['Культура девелопмента','консалтинг для девелоперов','#C0E03D'],['Калькулятор девелопера','цифровой сервис','#FFFFFF'],['Джек Танкер','маркет напитков','#0E0D0C'],['Цепрэкс','ИТ-консалтинг','#FFFFFF'],['Petarion','уход за питомцами','#071D35'],['Природа проектирования','проектная компания','#FFFFFF'],['М и М','архитектурное бюро','#F7F6F5'],['Аура','декор для дома','#B0D1C8'],['Команда КО','театральная студия','#F0EDE8'],['Kind Stories','видеопродакшен','#050507'],['Свобода Слова','онлайн-обучение живой речи','#FFFFFF'],['Рисуйте','изостудия для детей','#F82104'],['Ладоушки','массаж ручной работы','#66899F'],['Форма','декор для дома','#E8E4D8'],['Красим','покраска стен','#EEE9E3']]}
 ];
-const FILTERS = [['all','Все'],['bb','Брендбуки'],['web','Сайты'],['merch','Мерч'],['logo','Логотипы']];
+const FILTERS = [['all','Все'],['bb','Брендбуки'],['web','Сайты'],['merch','Мерч'],['logo','Логотипы'],['com','Коммерческая стратегия'],['cmm','Коммуникационные стратегии']];
 const HELP = [
   {kicker:'Стратегический маркетинг',title:'Запускаю и перезапускаю маркетинг',sub:'Опыт руководителя отдела маркетинга девелопера: от анализа рынка до плана, бюджета и команды.',
    items:[['Запуск маркетинга проекта',' с нуля: исследование, позиционирование, стратегия запуска, план продвижения'],['Перезапуск маркетинга',', когда текущий перестал работать: аудит, новые цели, каналы и приоритеты'],['Коммерческая стратегия',': продукт, УТП, отстройка от конкурентов, воронка продаж'],['Коммуникационная стратегия',': что, кому и где говорить, медиастратегия'],['Маркетинговая стратегия',' на год и квартал, медиаплан и бюджет'],['Выход в новый регион',': анализ спроса, адаптация бренда, быстрый старт маркетинга']]},
   {kicker:'Брендинг',title:'Создаю бренд от смысла до носителей',sub:'Сначала разбираемся, кому вы продаёте и чем отличаетесь, потом рисуем.',
-   items:[['Бренд-платформа',': миссия, ценности, позиционирование, tone of voice'],['Нейминг',' компании, продукта или проекта'],['Логотип и фирменный стиль',''],['Брендбуки и логобуки',' с правилами применения'],['Лендинги и сайты',', дизайн-системы'],['Мерч и носители',': от вывески до упаковки']]}
+   items:[['Коммуникационная стратегия',': большая идея, сообщения, точки контакта'],['Бренд-платформа',': миссия, ценности, позиционирование, tone of voice'],['Нейминг',' компании, продукта или проекта'],['Логотип и фирменный стиль',''],['Брендбуки и логобуки',' с правилами применения'],['Лендинги и сайты',', дизайн-системы'],['Мерч и носители',': от вывески до упаковки']]}
 ];
 const SITES = [
   {name:'cultdev.pro',quote:'Проверьте потенциал участка до покупки и проектирования',text:'Консалтинг для девелоперов. Лендинг, в котором вся логика продукта помещается на один экран, и живой интерфейс «Калькулятора девелопера».',href:'https://www.cultdev.pro/'},
@@ -564,6 +652,28 @@ const LADDER = [
   {y:'2022–2023',role:'Руководитель операционного маркетинга',d:'7 человек в команде и 10+ подрядчиков, PR-поддержка всех регионов',h:'clamp(60px,11vw,130px)',o:.6},
   {y:'2023–2024',role:'Руководитель отдела брендинга и PR',d:'PR-стратегия, tone of voice, SMM, репутация, нейминг и брендинг новых проектов',h:'clamp(84px,16vw,190px)',o:.8},
   {y:'2024–2025',role:'Руководитель отдела маркетинга',d:'40 человек в двух отделах, единая стратегия на федеральном и региональном уровне',h:'clamp(108px,21vw,250px)',o:1}
+];
+const SU = 'https://olga-pegushina-strategies.vercel.app/';
+const SHOT = u => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(u)}?w=1200&h=750`;
+const TALL = u => `https://s.wordpress.com/mshots/v1/${encodeURIComponent(u)}?w=1200&h=2400&vpw=1200&vph=2400`;
+const CM = 'https://strategiya-zhk.vercel.app/';
+const STRAT_PAGES = {
+  com: [['Главная', CM]],
+  get cmm() { return [['Обзор', SU], ...STRATEGIES.map(s => [s.name, s.url])]; }
+};
+const STRAT_DOCS = [
+  {f:'com',anchor:'strat-commercial',kicker:'Коммерческая стратегия',name:'Коммерческая стратегия ЖК',sphere:'Продукт, УТП, воронка продаж',text:'Продукт, УТП, отстройка от конкурентов и воронка продаж жилого комплекса.',href:'https://strategiya-zhk.vercel.app/'},
+  {f:'cmm',anchor:'strat-comm',kicker:'Коммуникационные стратегии',name:'7 жилых комплексов и бренд «Железно»',sphere:'Идея, сообщения, точки контакта',text:'Инсайт → позиция → большая идея → сообщения → точки контакта → результат. Киров, Ижевск, Пермь, Екатеринбург, Ульяновск.',href:SU}
+];
+const STRATEGIES = [
+  {name:'Зарядное',city:'Киров',idea:'Сила места',big:'+30%',cap:'цена м² выше средней по Кирову',url:SU+'zaryadnoe.html'},
+  {name:'Булычёв',city:'Киров',idea:'Дом бутик-класса',big:'≈93%',cap:'квартир продано',url:SU+'bulychev.html'},
+  {name:'ZNAK',city:'Киров · Ижевск',idea:'Обещание, которое уже сдержано',big:'43',cap:'квартиры в месяц — самый быстрый темп в Ижевске',url:SU+'znak.html'},
+  {name:'ЛЕС',city:'Екатеринбург',idea:'Лес — главный герой',big:'+60%',cap:'рост цены м² от старта продаж',url:SU+'les.html'},
+  {name:'Камаполис',city:'Пермь',idea:'Новая история города',big:'№1',cap:'ТОП новостроек ЕРЗ Пермского края',url:SU+'kamapolis.html'},
+  {name:'Город новаторов',city:'Ульяновск',idea:'ОГО-ГО-город',big:'21',cap:'квартира в месяц — лидер Засвияжья',url:SU+'gorod-novatorov.html'},
+  {name:'Миры',city:'Ижевск',idea:'Выбирай свой мир',big:'×3',cap:'темп продаж быстрее бизнес-конкурентов',url:SU+'miry.html'},
+  {name:'Железно · бренд',city:'5 регионов',idea:'Девелопмент со смыслом',big:'2024–25',cap:'ребрендинг девелопера',url:SU+'zhelezno.html'}
 ];
 const DUTIES = [
   {tag:'Регионы',big:'4',cap:'новых региона запустила с командой',text:'Маркетинг выхода застройщика на новую территорию: анализ спроса и конкурентов, адаптация бренда и продукта под регион, стратегия входа, запуск продаж и коммуникаций на новой территории.'},
@@ -716,12 +826,14 @@ class Component extends DCLogic {
       ticks,
       help: HELP.map(h => ({ ...h, items: h.items.map((it, i) => ({ n: pad(i + 1), b: it[0], t: it[1] })) })),
       filters: FILTERS.map(([k, label]) => ({ label, ...(filter === k ? active : idle), onClick: () => this.setState({ filter: k }) })),
-      cases, visibleCount: cases.length,
+      cases, visibleCount: cases.length + (filter === 'all' ? STRAT_DOCS.length : ['com','cmm'].includes(filter) ? 1 : 0),
       thumbMin: density === 'Крупная' ? '420px' : density === 'Плотная' ? '200px' : '280px',
       videoRef: this.videoRef, videoControls: this.reduced,
       sites: SITES.map((s, i) => ({ ...s, n: pad(i + 1), host: s.href.replace(/^https?:\/\//, '').replace(/\/$/, ''), shot: `https://s.wordpress.com/mshots/v1/${encodeURIComponent(s.href)}?w=1200&h=750` })),
       steps: STEPS.map((s, i) => ({ n: pad(i + 1), t: s[0], d: s[1] })),
-      ladder: LADDER, duties: DUTIES,
+      ladder: LADDER, duties: DUTIES, strategies: STRATEGIES.map(s => ({ ...s, shot: SHOT(s.url) })),
+      stratDocs: STRAT_DOCS.filter(s => !['com','cmm'].includes(filter) || s.f === filter).map(s => ({ ...s, host: s.href.replace(/^https?:\/\//, '').replace(/\/$/, ''), shot: SHOT(s.href), pages: STRAT_PAGES[s.f].map(([label, href]) => ({ label, href, shot: TALL(href) })) })),
+      stratToc: STRAT_DOCS.map((s, i) => ({ s, num: pad(CASES.length + i + 1) })).filter(({ s }) => filter === 'all' || s.f === filter).map(({ s, num }) => ({ anchor: s.anchor, name: s.kicker, sphere: s.sphere, num })),
       awards: AWARDS.map((a, i) => ({ n: pad(i + 1), t: a[0], d: a[1] })), events: EVENTS,
       facts: FACTS.map(f => ({ k: f[0], v: f[1] })),
       practiceLinks: PRACTICE.map(p => ({ t: p[0], l: p[1], id: p[2], go: e => { e.preventDefault(); if (p[2] === 'cases' || p[2] === 'case-logo' || p[2] === 'case-jack') this.setState({ filter: 'all' }); this.setTab('portfolio', p[2]); } })),
