@@ -9,13 +9,15 @@ module.exports = async (req, res) => {
   const name = String((body && body.name) || "").trim().slice(0, 200);
   const phone = String((body && body.phone) || "").trim().slice(0, 50);
   const page = String((body && body.page) || "").trim().slice(0, 200);
+  const plot = String((body && body.plot) || "").trim().slice(0, 300);
+  const docs = String((body && body.docs) || "").trim().slice(0, 500);
   if (!name || !phone) { res.status(400).json({ ok: false, error: "name and phone required" }); return; }
 
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chat = process.env.TELEGRAM_CHAT_ID;
   if (!token || !chat) { res.status(500).json({ ok: false, error: "Telegram env vars not set" }); return; }
 
-  const text = "Новая заявка с сайта\n\nИмя: " + name + "\nТелефон: " + phone + "\nСтраница: " + page +
+  const text = "Новая заявка с сайта\n\nИмя: " + name + "\nТелефон: " + phone + (plot ? "\nУчасток: " + plot : "") + (docs ? "\nНа руках: " + docs : "") + "\nСтраница: " + page +
     "\nВремя: " + new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }) + " МСК";
   try {
     const r = await fetch("https://api.telegram.org/bot" + token + "/sendMessage", {

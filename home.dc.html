@@ -8,744 +8,942 @@
 <body>
 <x-dc>
 <helmet>
-<title>Культура девелопмента — земля как будущий актив</title>
-<meta name="description" content="Земельный брокер и fee-девелопмент: земля, продукт, экономика и архитектура в одной модели — до разрешения на строительство." />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<title>Культура девелопмента — выжимаем из участка максимум</title>
+<meta name="description" content="Считаем, что можно построить и сколько это принесёт. От расчёта до разрешения на строительство." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
 <style>
 html{scroll-behavior:smooth}
-body{margin:0;background:#04140E;color:#F2F8F4;font-family:Manrope,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
-a{color:#A5E85C;text-decoration:none}
-a:hover{color:#C7F291}
-input,button{font-family:Manrope,system-ui,sans-serif}
-input::placeholder{color:rgba(242,248,244,.3)}
-input[type=range]{accent-color:#A5E85C}
-@keyframes kdRise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes kdScan{from{transform:translateY(-100%)}to{transform:translateY(900%)}}
+body{margin:0;background:#EEF2EC;color:#04140E;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+input,textarea,button{font-family:Manrope,system-ui,sans-serif}
+input::placeholder,textarea::placeholder{color:rgba(4,20,14,.35)}
+*{box-sizing:border-box}
+@keyframes cdKen{0%{transform:scale(1.03) translate(0,0)}100%{transform:scale(1.09) translate(-1.5%,-1%)}}
+@keyframes cdScan{0%{top:-10%;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:105%;opacity:0}}
+@keyframes cdDash{to{stroke-dashoffset:-48}}
+@keyframes cdPing{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+@keyframes cdGrow{from{transform:scaleY(0);opacity:.3}to{transform:scaleY(1);opacity:1}}
+@keyframes cdBreathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.06)}}
+@keyframes cdPop{from{opacity:0;transform:translateY(12px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes cdBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes cdFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes cdRiseDust{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-320px);opacity:0}}
+@keyframes cdFloatSoft{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes cdSpin{to{rotate:360deg}}
+@keyframes cdFloat{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -14px;rotate:-1.5deg}}
 </style>
 </helmet>
-<div style="background:#04140E;overflow-x:hidden">
+<div style="background:#EEF2EC;overflow-x:hidden;min-height:100vh">
 
-  <header style="position:sticky;top:0;z-index:40;backdrop-filter:blur(18px);background:rgba(4,20,14,.86);border-bottom:1px solid rgba(242,248,244,.1)">
-    <div style="max-width:1440px;margin:0 auto;padding:16px clamp(16px,3vw,32px);display:flex;align-items:center;gap:clamp(16px,3vw,40px)">
-      <a href="home.dc.html" style="display:flex;align-items:center"><img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" /></a>
-      <nav style="display:flex;gap:clamp(10px,1.5vw,24px);margin-left:auto;align-items:center;flex-wrap:wrap;justify-content:flex-end">
-        <a href="#terminal" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Модель</a>
-        <a href="#route" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Маршрут</a>
-        <a href="#competencies" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Компетенции</a>
-        <a href="calculator.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Калькулятор</a>
-        <a href="mim.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">МиМ</a>
-        <a href="priroda.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Природа</a>
+  <header style="position:sticky;top:0;z-index:50;padding:12px clamp(12px,2vw,24px) 0;pointer-events:none">
+    <div style="pointer-events:auto;max-width:1440px;margin:0 auto;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-radius:999px;padding:8px 8px 8px 22px;display:flex;align-items:center;gap:16px 28px;box-shadow:0 6px 30px rgba(4,20,14,.08)">
+      <a href="home.dc.html" style="display:flex;flex:none"><img src="assets/logo/culture-ink.png" alt="Культура девелопмента — на главную" style="height:24px;width:auto;display:block" /></a>
+      <nav aria-label="Основное меню" style="flex:1 1 auto;min-width:0;display:flex;gap:22px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;justify-content:flex-start">
+        <a href="#scenarios" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Два сценария</a>
+        <a href="calculator.dc.html" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Калькулятор девелопера</a>
+        <a href="mim.dc.html" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">МиМ</a>
+        <a href="priroda.dc.html" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Природа проектирования</a>
+        <a href="#case" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Кейсы</a>
+        <a href="#contact" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Контакты</a>
       </nav>
-      <a href="#contact" style="background:#A5E85C;color:#04140E;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:12px 18px;border-radius:4px;white-space:nowrap" style-hover="background:#C7F291">Разобрать участок</a>
+      <a href="#contact" style="flex:none;background:#04140E;color:#FFFFFF;font-size:13px;font-weight:600;padding:12px 20px;border-radius:999px;display:flex;align-items:center;gap:10px;white-space:nowrap" style-hover="background:#A5E85C;color:#04140E"><span style="width:8px;height:8px;border-radius:50%;background:#A5E85C"></span>Оценка актива</a>
     </div>
   </header>
 
-  <section id="top" style="position:relative;min-height:min(100vh,940px);display:flex;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.96) 6%,rgba(4,20,14,.48) 46%,rgba(4,20,14,.6) 100%),url('assets/renders/hero-aerial.jpg');background-size:cover;background-position:center;overflow:hidden">
-    <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(242,248,244,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,248,244,.055) 1px,transparent 1px);background-size:120px 120px"></div>
-    <div style="position:absolute;inset:clamp(16px,3vw,32px);pointer-events:none;border:1px solid rgba(242,248,244,.14)"></div>
-    <div style="position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none;overflow:hidden">
-      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:repeating-linear-gradient(to bottom,rgba(165,232,92,.34) 0 6px,transparent 6px 14px)"></div>
-      <div style="position:absolute;left:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px">
-        <span style="width:7px;height:7px;background:#A5E85C;display:block"></span>
-        <span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Земля</span>
+  <section data-g="hero" data-screen-label="01 Первый экран" style="position:relative;margin-top:-64px;padding:96px clamp(12px,2vw,24px) clamp(24px,3vw,40px)">
+    <img src="assets/renders/hero-aerial.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.8)" />
+    <div style="position:relative;max-width:1440px;margin:0 auto;background:#FFFFFF;border-radius:36px;padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:12px">
+      <div style="display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(24px,4vw,56px);min-height:clamp(420px,46vw,640px)">
+        <p style="margin:0 0 auto;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62">оценка активов · сделки с землёй · управление проектом</p>
+        <h1 style="margin:40px 0 24px;font-size:clamp(38px,4.6vw,72px);font-weight:600;line-height:1;letter-spacing:-.04em;text-wrap:balance">Выжимаем из участка <span data-g="hl" style="display:inline-block;background-image:linear-gradient(#A5E85C,#A5E85C);background-repeat:no-repeat;background-position:0 0;background-size:100% 100%;border-radius:16px;padding:0 .18em;margin:.04em 0">максимум.</span> От&nbsp;расчёта до&nbsp;разрешения</h1>
+        <p style="margin:0 0 36px;font-size:clamp(15px,1.15vw,17px);line-height:1.55;color:#33463C;max-width:48ch;text-wrap:pretty">Считаем, что можно построить и сколько это принесёт. Готовы вести проект — берём на себя всё, кроме стройки, и прибыль остаётся у вас. Предпочитаете выйти из актива — подготовим участок и продадим дороже.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <a href="#contact" style="background:#04140E;color:#FFFFFF;font-size:15px;font-weight:600;padding:17px 26px;border-radius:999px;white-space:nowrap" style-hover="background:#A5E85C;color:#04140E">Запросить оценку актива</a>
+          <a href="#scenarios" style="background:#EEF2EC;color:#04140E;font-size:15px;font-weight:600;padding:17px 26px;border-radius:999px;display:flex;gap:10px;white-space:nowrap" style-hover="background:#DDE6D9">Два сценария <span>↗</span></a>
+        </div>
       </div>
-      <div style="position:absolute;right:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px">
-        <span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Актив</span>
-        <span style="width:7px;height:7px;background:#A5E85C;display:block"></span>
-      </div>
-    </div>
-
-    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(120px,20vh,220px) clamp(28px,4.2vw,56px) clamp(28px,4vw,48px);animation:kdRise .8s cubic-bezier(.2,.6,.2,1) both;box-sizing:border-box">
-      <p style="margin:0 0 26px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">Земельный брокер · Fee-девелопмент · 15 регионов России</p>
-      <h1 style="margin:0 0 30px;font-size:clamp(38px,7.4vw,124px);font-weight:400;line-height:.94;letter-spacing:-.045em;color:#FFFFFF;max-width:15ch;text-wrap:balance">Мы не находим землю. Мы находим будущий актив</h1>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(24px,4vw,64px);align-items:end">
-        <p style="margin:0;font-size:17px;font-weight:300;line-height:1.55;color:#C6D8CE;max-width:52ch">Мы не показываем участки — мы собираем девелоперский сценарий: землю, продукт, экономику и архитектуру в одной модели. И доводим его до разрешения на строительство своим калькулятором, своим бюро и своим проектным центром.</p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
-          <a href="#contact" style="background:#A5E85C;color:#04140E;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 26px;border-radius:4px" style-hover="background:#C7F291">Разобрать мой участок</a>
-          <a href="#terminal" style="color:#F2F8F4;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:15px 24px;border:1px solid rgba(242,248,244,.34);border-radius:4px" style-hover="border-color:#A5E85C">Открыть модель</a>
+      <div data-g="heroMedia" style="position:relative;border-radius:26px;overflow:hidden;min-height:480px;background:#0B2219;isolation:isolate">
+        {{ heroImg }}
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,20,14,.25),transparent 35%,transparent 70%,rgba(4,20,14,.35))"></div>
+        <span aria-hidden="true" style="position:absolute;top:18px;left:18px;width:22px;height:22px;border-top:1.5px solid rgba(255,255,255,.85);border-left:1.5px solid rgba(255,255,255,.85)"></span>
+        <span aria-hidden="true" style="position:absolute;bottom:18px;left:18px;width:22px;height:22px;border-bottom:1.5px solid rgba(255,255,255,.85);border-left:1.5px solid rgba(255,255,255,.85)"></span>
+        <span aria-hidden="true" style="position:absolute;top:18px;right:18px;width:22px;height:22px;border-top:1.5px solid rgba(255,255,255,.85);border-right:1.5px solid rgba(255,255,255,.85)"></span>
+        <div style="position:absolute;left:14%;top:20%;display:flex;flex-direction:column;align-items:flex-start">
+          <span style="background:rgba(255,255,255,.96);color:#04140E;font-size:13px;font-weight:600;padding:8px 14px;border-radius:12px;margin-left:14px;box-shadow:0 8px 24px rgba(4,20,14,.25)">Что можно построить</span>
+          {{ heroPing0 }}
+        </div>
+        <div style="position:absolute;right:12%;top:56%;display:flex;flex-direction:column;align-items:flex-end">
+          <span style="background:rgba(255,255,255,.96);color:#04140E;font-size:13px;font-weight:600;padding:8px 14px;border-radius:12px;margin-right:14px;box-shadow:0 8px 24px rgba(4,20,14,.25)">Сколько это принесёт</span>
+          {{ heroPing1 }}
+        </div>
+        <div style="position:absolute;left:18px;top:18px;margin-left:34px;display:flex;align-items:center;gap:14px;padding:8px 8px 8px 14px;border-radius:999px;background:rgba(4,20,14,.38);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.18);color:#FFFFFF;max-width:calc(100% - 90px)">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);white-space:nowrap">от расчёта до разрешения</span>
+          <span style="display:flex;gap:4px">
+            <sc-for list="{{ heroSteps }}" as="st" hint-placeholder-count="4">
+              <span title="{{ st.t }}" style="height:4px;width:{{ st.wBar }};border-radius:2px;background:{{ st.dotBg }};transition:width .6s cubic-bezier(.2,.7,.2,1),background .6s"></span>
+            </sc-for>
+          </span>
+          <span style="font-size:13px;font-weight:600;white-space:nowrap;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.14)">{{ heroStepName }}</span>
+        </div>
+        <div style="position:absolute;right:0;bottom:0;background:#FFFFFF;border-top-left-radius:26px;padding:12px 0 0 12px;display:flex;gap:8px">
+          <span aria-hidden="true" style="position:absolute;right:0;top:-26px;width:26px;height:26px;background:radial-gradient(circle at 0 0,transparent 26px,#FFFFFF 26.5px)"></span>
+          <span aria-hidden="true" style="position:absolute;left:-26px;bottom:0;width:26px;height:26px;background:radial-gradient(circle at 0 0,transparent 26px,#FFFFFF 26.5px)"></span>
+          <a href="calculator.dc.html" aria-label="Калькулятор девелопера" style="display:flex;align-items:center;justify-content:center;height:56px;padding:0 16px;border-radius:999px;background:#EEF2EC;transition:background .25s" style-hover="background:#A5E85C"><img src="assets/logo/calc-ink.png" alt="Калькулятор девелопера" style="height:28px;width:92px;object-fit:contain;filter:brightness(0)" /></a>
+          <a href="mim.dc.html" aria-label="МиМ" style="display:flex;align-items:center;justify-content:center;height:56px;padding:0 16px;border-radius:999px;background:#EEF2EC;transition:background .25s" style-hover="background:#A5E85C"><img src="assets/logo/mim-ink-clean.png" alt="МиМ" style="height:28px;width:72px;object-fit:contain;filter:brightness(0)" /></a>
+          <a href="priroda.dc.html" aria-label="Природа проектирования" style="display:flex;align-items:center;justify-content:center;height:56px;padding:0 16px;border-radius:999px;background:#EEF2EC;transition:background .25s" style-hover="background:#A5E85C"><img src="assets/logo/priroda-ink.png" alt="Природа проектирования" style="height:28px;width:92px;object-fit:contain;filter:brightness(0)" /></a>
         </div>
       </div>
     </div>
+  </section>
 
-    <div style="position:relative;border-top:1px solid rgba(242,248,244,.14);background:rgba(4,20,14,.6)">
-      <div style="max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(50%,180px),1fr))">
-        <sc-for list="{{ figures }}" as="f" hint-placeholder-count="4">
-          <div style="padding:22px 22px 24px 0;border-right:1px solid rgba(242,248,244,.1)">
-            <p style="margin:0;font-size:clamp(24px,2.6vw,38px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#FFFFFF;font-variant-numeric:tabular-nums">{{ f.value }}</p>
-            <p style="margin:10px 0 0;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.5;color:#8FA69C;max-width:24ch">{{ f.label }}</p>
+  <section data-screen-label="02 Активы" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px)">
+    <div style="max-width:1440px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:24px 64px;align-items:end;margin-bottom:clamp(32px,4vw,56px)">
+        <div>
+          <p style="margin:0 0 18px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>активы</p>
+          <h2 style="margin:0;font-size:clamp(36px,4.8vw,72px);font-weight:600;line-height:1;letter-spacing:-.045em;text-wrap:balance">Берём любой участок. Особенно — <span style="display:inline-block;background:#04140E;color:#A5E85C;border-radius:18px;padding:0 .2em;margin-top:.06em;white-space:nowrap">сложный.</span></h2>
+        </div>
+        <p style="margin:0;font-size:18px;font-weight:500;line-height:1.55;color:#2A3D33;max-width:46ch;text-wrap:pretty">Ровный участок под жильё посчитает любой застройщик. Мы зарабатываем там, где стоимость не раскрыта: мешают документы, назначение или само здание. По каждому активу считаем сценарий и доходность.</p>
+      </div>
+      <div style="position:relative;background:#04140E;color:#FFFFFF;border-radius:40px;padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px;align-items:center;overflow:hidden;margin-bottom:12px">
+        <div style="position:relative">
+          <p style="margin:0 0 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9DB3A8">любое назначение · любое состояние</p>
+          <p style="margin:0 0 20px;font-size:clamp(28px,3vw,44px);font-weight:700;line-height:1.05;letter-spacing:-.035em;max-width:14ch">Если участок есть — его можно посчитать</p>
+          <p style="margin:0 0 28px;font-size:17px;font-weight:500;line-height:1.55;color:#D5E2DA;max-width:40ch">Вопрос не в том, подходит ли ваш актив, а в том, сколько стоимости в нём пока не видно. Это и показывает оценка.</p>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#A5E85C;color:#04140E;font-size:15px;font-weight:700;padding:16px 24px;border-radius:999px;white-space:nowrap" style-hover="background:#FFFFFF;color:#04140E">Запросить оценку актива <span>↗</span></a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:14px 10px;padding:12px 0">
+            <span style="background:#A5E85C;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(-6deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">жилая застройка</span>
+            <span style="background:#FFFFFF;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(4deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">коммерция</span>
+            <span style="background:#1C3A2C;color:#FFFFFF;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(-3deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">ИЖС и посёлки</span>
+            <span style="background:#FFFFFF;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(7deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">промзоны</span>
+            <span style="background:#A5E85C;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(2deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">действующие здания</span>
+            <span style="background:#2A4A3A;color:#FFFFFF;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(-5deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">пустые участки</span>
+            <span style="background:#FFFFFF;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(-2deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">торги и КРТ</span>
+            <span style="background:#1C3A2C;color:#FFFFFF;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(5deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">в аренде</span>
+            <span style="background:#A5E85C;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(-7deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">обременения</span>
+            <span style="background:#FFFFFF;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(3deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">смена назначения</span>
+            <span style="background:#2A4A3A;color:#FFFFFF;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(-4deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">мелкие участки</span>
+            <span style="background:#A5E85C;color:#04140E;font-size:clamp(14px,1.2vw,17px);font-weight:700;padding:12px 18px;border-radius:16px;transform:rotate(6deg);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .3s" style-hover="transform:rotate(0deg) scale(1.06)">комплексное развитие</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin:clamp(56px,6vw,88px) 0 24px">
+        <h3 style="margin:0;display:flex;align-items:center;gap:16px;font-size:clamp(26px,2.6vw,38px);font-weight:700;line-height:1.05;letter-spacing:-.03em"><span style="flex:none;width:18px;height:18px;border-radius:50%;background:#A5E85C;box-shadow:0 0 0 6px #DCEFC4"></span>Где стоимость скрыта сильнее всего</h3>
+        <span style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:7px;height:7px;border-radius:50%;background:#A5E85C"></span>наведите — покажем причину</span>
+      </div>
+      <div ref="{{ forkRef }}" style="display:grid;grid-template-columns:{{ sitCols }};gap:12px">
+        <sc-for list="{{ sits }}" as="s" hint-placeholder-count="4">
+          <div onMouseEnter="{{ s.pick }}" onMouseLeave="{{ s.unpick }}" onClick="{{ s.toggle }}" style="position:relative;height:440px;border-radius:30px;overflow:hidden;cursor:pointer;isolation:isolate;color:#04140E;background:linear-gradient(170deg,rgba(255,255,255,.92),rgba(255,255,255,.62));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(4,20,14,.07);box-shadow:inset 0 1px 0 #FFFFFF,{{ s.cardShadow }};transform:{{ s.cardLift }};transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s">
+            <span aria-hidden="true" style="position:absolute;right:-6px;top:-22px;font-size:clamp(130px,11vw,170px);font-weight:700;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1.2px rgba(4,20,14,.09);z-index:-1">{{ s.n }}</span>
+            <div style="padding:clamp(20px,2vw,26px);display:flex;flex-direction:column;gap:14px">
+              <span style="align-self:flex-start;display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:7px;height:7px;border-radius:50%;background:#A5E85C"></span>{{ s.n }} / 04</span>
+              <span style="margin-top:18px;font-size:clamp(20px,1.6vw,23px);font-weight:700;line-height:1.15;letter-spacing:-.02em;text-wrap:balance">{{ s.title }}</span>
+              <span style="display:flex;flex-direction:column;gap:6px;opacity:{{ s.symOp }};transition:opacity .3s">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7C8C83">что вы видите</span>
+                <span style="font-size:15px;font-weight:500;line-height:1.5;color:#33463C;text-wrap:pretty">{{ s.symptom }}</span>
+              </span>
+            </div>
+            <div style="position:absolute;left:8px;right:8px;bottom:8px;border-radius:24px;background:{{ s.panelBg }};color:{{ s.panelFg }};padding:16px 18px 18px;display:flex;flex-direction:column;gap:12px;max-height:calc(100% - 190px);transform:{{ s.panelY }};transition:transform .55s cubic-bezier(.2,.75,.2,1),background .45s,color .45s">
+              <span style="display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:24px">
+                <span style="font-size:14px;font-weight:700">{{ s.peek }}</span>
+                <span style="width:30px;height:30px;border-radius:50%;background:{{ s.arrowBg }};color:{{ s.arrowFg }};display:flex;align-items:center;justify-content:center;font-size:13px;transform:{{ s.arrowRot }};transition:transform .4s,background .45s">↑</span>
+              </span>
+              <span style="font-size:15px;font-weight:500;line-height:1.55;color:#DCE7E0;text-wrap:pretty">{{ s.cause }}</span>
+              <span style="display:flex;align-items:center;gap:10px;margin-top:2px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)">
+                <span style="flex:none;width:8px;height:8px;border-radius:50%;background:#A5E85C;box-shadow:0 0 10px rgba(165,232,92,.8)"></span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9DB3A8">считаем</span>
+                <span style="font-size:14px;font-weight:700;color:#FFFFFF">{{ s.sc }}</span>
+              </span>
+            </div>
           </div>
         </sc-for>
       </div>
     </div>
   </section>
 
-  <section id="terminal" style="position:relative;padding:clamp(56px,9vw,130px) 0;border-bottom:1px solid rgba(242,248,244,.1)">
-    <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(242,248,244,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(242,248,244,.03) 1px,transparent 1px);background-size:60px 60px"></div>
-    <div style="position:relative;max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,72px);align-items:center">
-      <div>
-        <p style="margin:0 0 22px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">01 — Модель участка</p>
-        <h2 style="margin:0 0 24px;font-size:clamp(30px,4.4vw,72px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#FFFFFF;max-width:16ch">Земля превращается в объём, объём — в деньги</h2>
-        <p style="margin:0 0 34px;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:46ch">Потяните по плану или выберите сценарий: этажность, GBA, плотность и цена входа пересчитываются синхронно — ровно так же, как это делает калькулятор девелопера на реальном участке.</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px">
-          <sc-for list="{{ presets }}" as="p" hint-placeholder-count="3">
-            <button type="button" onClick="{{ p.onClick }}" style="background:{{ p.bg }};color:{{ p.fg }};border:1px solid {{ p.bd }};border-radius:4px;padding:12px 18px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;cursor:pointer">{{ p.label }}</button>
-          </sc-for>
+  <section id="scenarios" ref="{{ scenRef }}" data-screen-label="03 Два сценария" style="padding:0 clamp(12px,2vw,24px)">
+    <div style="position:relative;max-width:1440px;margin:0 auto;background:#04140E;color:#FFFFFF;border-radius:40px;padding:clamp(36px,6vw,88px) clamp(16px,4vw,64px);overflow:hidden;isolation:isolate">
+      <div aria-hidden="true" style="position:absolute;width:620px;height:620px;left:-140px;top:38%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%);filter:blur(30px);z-index:-1"></div>
+      <div aria-hidden="true" style="position:absolute;width:760px;height:760px;right:-180px;top:22%;border-radius:50%;background:radial-gradient(circle,rgba(165,232,92,.55),rgba(165,232,92,.12) 45%,transparent 70%);filter:blur(40px);z-index:-1"></div>
+      <div aria-hidden="true" style="position:absolute;width:300px;height:300px;left:46%;bottom:-80px;border-radius:50%;background:radial-gradient(circle,rgba(165,232,92,.35),transparent 70%);filter:blur(30px);z-index:-1"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end;margin-bottom:clamp(36px,5vw,64px)">
+        <div>
+          <p style="margin:0 0 18px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A9BDB3"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C;box-shadow:0 0 12px #A5E85C"></span>развилка</p>
+          <h2 style="margin:0;font-size:clamp(34px,4.4vw,64px);font-weight:600;line-height:1;letter-spacing:-.04em;max-width:16ch"><span style="color:#A5E85C;text-shadow:0 0 30px rgba(165,232,92,.45)">2</span> сценария извлечения стоимости</h2>
         </div>
-        <input type="range" min="0" max="100" step="1" value="{{ densityPct }}" onChange="{{ onDensity }}" aria-label="Плотность застройки" style="width:100%;max-width:440px;margin:0 0 34px;height:3px;cursor:ew-resize;display:block" />
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(50%,150px),1fr));gap:10px">
-          <sc-for list="{{ stageMetrics }}" as="m" hint-placeholder-count="4">
-            <div style="background:#04140E;border:1px solid rgba(242,248,244,.14);padding:18px 16px">
-              <p style="margin:0;font-size:clamp(19px,2vw,28px);font-weight:400;line-height:1;letter-spacing:-.035em;color:#FFFFFF;font-variant-numeric:tabular-nums;white-space:nowrap">{{ m.value }}</p>
-              <p style="margin:10px 0 0;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;line-height:1.5;color:#8FA69C">{{ m.label }}</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <p style="margin:0;font-size:18px;line-height:1.55;color:#DCE7E0;max-width:46ch">Сначала расчёт, затем решение. Вопрос один: девелоперскую маржу забирает <span style="color:#FFFFFF;font-weight:700">покупатель участка</span> — или <span style="color:#A5E85C;font-weight:700">собственник</span>.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:14px;font-weight:600;color:#DCE7E0">
+            <span style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)"><span style="width:12px;height:12px;border-radius:3px;background:#2F5241"></span>пройденный этап</span>
+            <span style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)"><span style="width:12px;height:12px;border-radius:3px;background:#A5E85C;box-shadow:0 0 10px #A5E85C"></span>ваша стоимость</span>
+            <span style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)"><span style="width:12px;height:12px;border-radius:3px;border:1.5px dashed rgba(242,248,244,.5)"></span>уходит покупателю</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:16px">
+        <div style="perspective:1400px;min-width:0">
+          <article onMouseMove="{{ tiltMove0 }}" onMouseLeave="{{ tiltLeave0 }}" style="position:relative;height:100%;transform:{{ tilt0 }};transform-style:preserve-3d;transition:transform .25s ease-out;border-radius:34px;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;background:linear-gradient(155deg,rgba(255,255,255,.13),rgba(255,255,255,.04) 45%,rgba(255,255,255,.07));backdrop-filter:blur(28px) saturate(150%);-webkit-backdrop-filter:blur(28px) saturate(150%);border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(255,255,255,.05),0 30px 80px rgba(0,0,0,.45);overflow:hidden;color:#FFFFFF">
+            <div aria-hidden="true" style="position:absolute;inset:0;border-radius:inherit;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%22.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');opacity:.07;mix-blend-mode:overlay;pointer-events:none"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;border-radius:inherit;background:{{ glare0 }};pointer-events:none;transition:background .2s"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;transform:translateZ(40px)">
+              <span style="display:flex;align-items:center;gap:12px"><span style="width:46px;height:46px;border-radius:50%;background:#FFFFFF;color:#04140E;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;box-shadow:0 0 0 6px rgba(255,255,255,.1)">01</span><span style="font-size:19px;font-weight:700">Продать дороже</span></span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A9BDB3;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:999px">сценарий · продажа</span>
             </div>
-          </sc-for>
+            <div style="position:relative;margin:26px 0 8px;border-radius:26px;padding:44px 16px 14px 16px;background:rgba(4,20,14,.45);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 2px 20px rgba(0,0,0,.35);transform:translateZ(60px)">
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:end;min-height:230px">
+              <div style="display:flex;flex-direction:column;justify-content:flex-end;min-width:0">
+                
+                <div style="position:relative;flex:none;height:42px;margin-right:22px;transform-origin:bottom center;animation:cdGrow 1.3s cubic-bezier(.2,.8,.2,1) 0.20s both,cdBreathe 4.5s ease-in-out 1.60s infinite;animation-play-state:{{ scPlay }}">
+                  <div style="position:absolute;left:0;right:0;bottom:100%;height:22px;transform-origin:bottom left;transform:skewX(-45deg);background:#40654F;border-radius:3px"></div>
+                  <div style="position:absolute;top:0;bottom:0;left:100%;width:22px;transform-origin:top left;transform:skewY(-45deg);background:#203A2E;border-radius:3px"></div>
+                  <div style="position:absolute;inset:0;background:#2F5241;border-radius:3px"></div>
+                </div>
+                <span style="margin-top:12px;padding-right:22px;font-size:14px;font-weight:700;color:#C6D8CE;text-align:center">Земля</span>
+              </div><div style="display:flex;flex-direction:column;justify-content:flex-end;min-width:0">
+                <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:32px;padding-right:22px;animation:cdPop .7s cubic-bezier(.2,.8,.2,1) 1.10s both,cdBob 3.6s ease-in-out 2.40s infinite;animation-play-state:{{ scPlay }}"><span style="background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#04140E;font-size:13px;font-weight:700;padding:9px 13px;border-radius:13px;white-space:nowrap;border:1px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(0,0,0,.3)">продаёте здесь</span><span style="width:18px;height:18px;border-radius:50%;background:#A5E85C;border:4px solid #FFFFFF;margin-top:-5px;box-shadow:0 0 14px rgba(165,232,92,.8)"></span></div>
+                <div style="position:relative;flex:none;height:82px;margin-right:22px;transform-origin:bottom center;animation:cdGrow 1.3s cubic-bezier(.2,.8,.2,1) 0.38s both,cdBreathe 4.5s ease-in-out 1.96s infinite;animation-play-state:{{ scPlay }}">
+                  <div style="position:absolute;left:0;right:0;bottom:100%;height:22px;transform-origin:bottom left;transform:skewX(-45deg);background:#C7F291;border-radius:3px"></div>
+                  <div style="position:absolute;top:0;bottom:0;left:100%;width:22px;transform-origin:top left;transform:skewY(-45deg);background:#79B23C;border-radius:3px"></div>
+                  <div style="position:absolute;inset:0;background:#A5E85C;border-radius:3px;box-shadow:0 0 60px rgba(165,232,92,.55),0 0 120px rgba(165,232,92,.25)"></div>
+                </div>
+                <span style="margin-top:12px;padding-right:22px;font-size:14px;font-weight:700;color:#FFFFFF;text-align:center">Проект</span>
+              </div><div style="display:flex;flex-direction:column;justify-content:flex-end;min-width:0">
+                <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:32px;padding-right:22px;animation:cdPop .7s cubic-bezier(.2,.8,.2,1) 1.25s both,cdBob 3.6s ease-in-out 2.80s infinite;animation-play-state:{{ scPlay }}"><span style="background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#E3ECE6;font-size:13px;font-weight:700;padding:9px 13px;border-radius:13px;white-space:nowrap;border:1px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(0,0,0,.3)">маржа покупателя</span><span style="width:18px;height:18px;border-radius:50%;background:#A5E85C;border:4px solid rgba(255,255,255,.4);margin-top:-5px;box-shadow:0 0 14px rgba(165,232,92,.8)"></span></div>
+                <div style="position:relative;flex:none;height:130px;margin-right:22px;transform-origin:bottom center;animation:cdGrow 1.3s cubic-bezier(.2,.8,.2,1) 0.56s both,cdBreathe 4.5s ease-in-out 2.32s infinite;animation-play-state:{{ scPlay }}">
+                  <div style="position:absolute;left:0;right:0;bottom:100%;height:22px;transform-origin:bottom left;transform:skewX(-45deg);background:rgba(255,255,255,.02);border:1.5px dashed rgba(242,248,244,.25);border-radius:3px"></div>
+                  <div style="position:absolute;top:0;bottom:0;left:100%;width:22px;transform-origin:top left;transform:skewY(-45deg);background:rgba(255,255,255,.015);border:1.5px dashed rgba(242,248,244,.2);border-radius:3px"></div>
+                  <div style="position:absolute;inset:0;background:rgba(255,255,255,.03);border:1.5px dashed rgba(242,248,244,.35);border-radius:3px"></div>
+                </div>
+                <span style="margin-top:12px;padding-right:22px;font-size:14px;font-weight:700;color:#A9BDB3;text-align:center">Объект</span>
+              </div>
+              </div>
+            </div>
+            <h3 style="position:relative;margin:22px 0 12px;font-size:clamp(24px,2.1vw,32px);font-weight:700;line-height:1.06;letter-spacing:-.03em;text-wrap:balance;transform:translateZ(30px)">Выход из актива по цене проекта</h3>
+            <p style="position:relative;margin:0 0 18px;font-size:17px;font-weight:700;line-height:1.45;color:#FFFFFF">Собственник не финансирует подготовку: наш интерес реализуется в сделке.</p>
+            <button type="button" onClick="{{ scToggle0 }}" aria-expanded="{{ scOpen0 }}" style="all:unset;box-sizing:border-box;position:relative;margin-top:auto;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px 14px 20px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px);font-size:15px;font-weight:700;color:#FFFFFF;transition:background .3s" style-hover="background:rgba(255,255,255,.14)">
+              <span>{{ scLabel0 }}</span>
+              <span style="width:32px;height:32px;border-radius:50%;background:#A5E85C;color:#04140E;display:flex;align-items:center;justify-content:center;font-size:18px;transform:{{ scRot0 }};transition:transform .45s cubic-bezier(.2,.7,.2,1)">+</span>
+            </button>
+            <div style="position:relative;display:grid;grid-template-rows:{{ scRows0 }};opacity:{{ scOp0 }};transition:grid-template-rows .6s cubic-bezier(.2,.7,.2,1),opacity .4s">
+              <div style="overflow:hidden;min-height:0">
+                <p style="margin:0 0 6px;padding-top:16px;font-size:17px;font-weight:500;line-height:1.6;color:#DCE7E0;text-wrap:pretty">Приводим документы и параметры застройки в состояние, при котором участок оценивается как подготовленный проект, а не как земля. Формируем круг профильных покупателей и ведём сделку до подписания.</p>
+                <div style="padding-top:8px">
+              <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font-size:14px;color:#A9BDB3">подготовку финансирует</span><span style="font-size:16px;font-weight:700;color:#FFFFFF">не собственник</span></div>
+              <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font-size:14px;color:#A9BDB3">маржу забирает</span><span style="font-size:16px;font-weight:700;color:#FFFFFF">покупатель участка</span></div>
+              <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font-size:14px;color:#A9BDB3">вознаграждение</span><span style="font-size:16px;font-weight:700;color:#FFFFFF">процент со сделки</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div style="perspective:1400px;min-width:0">
+          <article onMouseMove="{{ tiltMove1 }}" onMouseLeave="{{ tiltLeave1 }}" style="position:relative;height:100%;transform:{{ tilt1 }};transform-style:preserve-3d;transition:transform .25s ease-out;border-radius:34px;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;background:linear-gradient(155deg,rgba(255,255,255,.13),rgba(255,255,255,.04) 45%,rgba(255,255,255,.07));backdrop-filter:blur(28px) saturate(150%);-webkit-backdrop-filter:blur(28px) saturate(150%);border:1px solid rgba(165,232,92,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(255,255,255,.05),0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(165,232,92,.15),0 0 80px rgba(165,232,92,.18);overflow:hidden;color:#FFFFFF">
+            <div aria-hidden="true" style="position:absolute;inset:0;border-radius:inherit;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%22.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');opacity:.07;mix-blend-mode:overlay;pointer-events:none"></div>
+            <div aria-hidden="true" style="position:absolute;inset:0;border-radius:inherit;background:{{ glare1 }};pointer-events:none;transition:background .2s"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;transform:translateZ(40px)">
+              <span style="display:flex;align-items:center;gap:12px"><span style="width:46px;height:46px;border-radius:50%;background:#A5E85C;color:#04140E;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;box-shadow:0 0 24px rgba(165,232,92,.7)">02</span><span style="font-size:19px;font-weight:700">Построить своё</span></span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A9BDB3;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:999px">сценарий · собственный проект</span>
+            </div>
+            <div style="position:relative;margin:26px 0 8px;border-radius:26px;padding:44px 16px 14px 16px;background:rgba(4,20,14,.45);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 2px 20px rgba(0,0,0,.35);transform:translateZ(60px)">
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:end;min-height:230px">
+              <div style="display:flex;flex-direction:column;justify-content:flex-end;min-width:0">
+                
+                <div style="position:relative;flex:none;height:42px;margin-right:22px;transform-origin:bottom center;animation:cdGrow 1.3s cubic-bezier(.2,.8,.2,1) 0.20s both,cdBreathe 4.5s ease-in-out 1.60s infinite;animation-play-state:{{ scPlay }}">
+                  <div style="position:absolute;left:0;right:0;bottom:100%;height:22px;transform-origin:bottom left;transform:skewX(-45deg);background:#40654F;border-radius:3px"></div>
+                  <div style="position:absolute;top:0;bottom:0;left:100%;width:22px;transform-origin:top left;transform:skewY(-45deg);background:#203A2E;border-radius:3px"></div>
+                  <div style="position:absolute;inset:0;background:#2F5241;border-radius:3px"></div>
+                </div>
+                <span style="margin-top:12px;padding-right:22px;font-size:14px;font-weight:700;color:#C6D8CE;text-align:center">Земля</span>
+              </div><div style="display:flex;flex-direction:column;justify-content:flex-end;min-width:0">
+                
+                <div style="position:relative;flex:none;height:82px;margin-right:22px;transform-origin:bottom center;animation:cdGrow 1.3s cubic-bezier(.2,.8,.2,1) 0.38s both,cdBreathe 4.5s ease-in-out 1.96s infinite;animation-play-state:{{ scPlay }}">
+                  <div style="position:absolute;left:0;right:0;bottom:100%;height:22px;transform-origin:bottom left;transform:skewX(-45deg);background:#40654F;border-radius:3px"></div>
+                  <div style="position:absolute;top:0;bottom:0;left:100%;width:22px;transform-origin:top left;transform:skewY(-45deg);background:#203A2E;border-radius:3px"></div>
+                  <div style="position:absolute;inset:0;background:#2F5241;border-radius:3px"></div>
+                </div>
+                <span style="margin-top:12px;padding-right:22px;font-size:14px;font-weight:700;color:#C6D8CE;text-align:center">Проект</span>
+              </div><div style="display:flex;flex-direction:column;justify-content:flex-end;min-width:0">
+                <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:32px;padding-right:22px;animation:cdPop .7s cubic-bezier(.2,.8,.2,1) 1.40s both,cdBob 3.6s ease-in-out 3.20s infinite;animation-play-state:{{ scPlay }}"><span style="background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#04140E;font-size:13px;font-weight:700;padding:9px 13px;border-radius:13px;white-space:nowrap;border:1px solid rgba(255,255,255,.35);box-shadow:0 8px 24px rgba(0,0,0,.3)">маржа ваша</span><span style="width:18px;height:18px;border-radius:50%;background:#A5E85C;border:4px solid #FFFFFF;margin-top:-5px;box-shadow:0 0 14px rgba(165,232,92,.8)"></span></div>
+                <div style="position:relative;flex:none;height:130px;margin-right:22px;transform-origin:bottom center;animation:cdGrow 1.3s cubic-bezier(.2,.8,.2,1) 0.56s both,cdBreathe 4.5s ease-in-out 2.32s infinite;animation-play-state:{{ scPlay }}">
+                  <div style="position:absolute;left:0;right:0;bottom:100%;height:22px;transform-origin:bottom left;transform:skewX(-45deg);background:#C7F291;border-radius:3px"></div>
+                  <div style="position:absolute;top:0;bottom:0;left:100%;width:22px;transform-origin:top left;transform:skewY(-45deg);background:#79B23C;border-radius:3px"></div>
+                  <div style="position:absolute;inset:0;background:#A5E85C;border-radius:3px;box-shadow:0 0 60px rgba(165,232,92,.55),0 0 120px rgba(165,232,92,.25)"></div>
+                </div>
+                <span style="margin-top:12px;padding-right:22px;font-size:14px;font-weight:700;color:#A5E85C;text-align:center">Объект</span>
+              </div>
+              </div>
+            </div>
+            <h3 style="position:relative;margin:22px 0 12px;font-size:clamp(24px,2.1vw,32px);font-weight:700;line-height:1.06;letter-spacing:-.03em;text-wrap:balance;transform:translateZ(30px)">Девелоперская маржа остаётся у собственника</h3>
+            <p style="position:relative;margin:0 0 18px;font-size:17px;font-weight:700;line-height:1.45;color:#A5E85C">Актив и прибыль остаются у вас. Ответственность за сроки и бюджет — на нас.</p>
+            <button type="button" onClick="{{ scToggle1 }}" aria-expanded="{{ scOpen1 }}" style="all:unset;box-sizing:border-box;position:relative;margin-top:auto;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px 14px 20px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px);font-size:15px;font-weight:700;color:#FFFFFF;transition:background .3s" style-hover="background:rgba(255,255,255,.14)">
+              <span>{{ scLabel1 }}</span>
+              <span style="width:32px;height:32px;border-radius:50%;background:#A5E85C;color:#04140E;display:flex;align-items:center;justify-content:center;font-size:18px;transform:{{ scRot1 }};transition:transform .45s cubic-bezier(.2,.7,.2,1)">+</span>
+            </button>
+            <div style="position:relative;display:grid;grid-template-rows:{{ scRows1 }};opacity:{{ scOp1 }};transition:grid-template-rows .6s cubic-bezier(.2,.7,.2,1),opacity .4s">
+              <div style="overflow:hidden;min-height:0">
+                <p style="margin:0 0 6px;padding-top:16px;font-size:17px;font-weight:500;line-height:1.6;color:#DCE7E0;text-wrap:pretty">Принимаем функции технического заказчика: финансовая модель, архитектура, проектная документация, разрешения, вывод на рынок и продажи. Строительство ведёт генподрядчик под нашим управлением.</p>
+                <div style="padding-top:8px">
+              <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font-size:14px;color:#A9BDB3">подготовку финансирует</span><span style="font-size:16px;font-weight:700;color:#FFFFFF">собственник</span></div>
+              <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font-size:14px;color:#A9BDB3">маржу забирает</span><span style="font-size:16px;font-weight:700;color:#A5E85C">собственник</span></div>
+              <div style="display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)"><span style="font-size:14px;color:#A9BDB3">вознаграждение</span><span style="font-size:16px;font-weight:700;color:#FFFFFF">плата за управление и доля в чистом доходе</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-
-      <div style="border:1px solid rgba(242,248,244,.14);background:#071D14">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;border-bottom:1px solid rgba(242,248,244,.12)">
-          <p style="margin:0;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8FA69C">Кадастровый план · 28 450 м²</p>
-          <p style="margin:0;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A5E85C">Live</p>
+      <div style="position:relative;margin-top:16px;border-radius:34px;padding:clamp(18px,2.4vw,32px);background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 55%,rgba(255,255,255,.05));backdrop-filter:blur(28px) saturate(150%);-webkit-backdrop-filter:blur(28px) saturate(150%);border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 30px 80px rgba(0,0,0,.4)">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:22px">
+          <p style="margin:0;font-size:clamp(24px,2.2vw,32px);font-weight:700;letter-spacing:-.03em">Сравните сценарии</p>
+          <p style="margin:0;font-size:14px;color:#A9BDB3">нажмите на сценарий, чтобы выделить</p>
         </div>
-        <div style="position:relative;min-height:clamp(320px,42vw,520px);cursor:ew-resize;touch-action:pan-y">
-          <canvas ref="{{ canvasRef }}" style="width:100%;height:100%;position:absolute;inset:0;display:block"></canvas>
-        </div>
-        <p style="margin:0;padding:12px 16px;border-top:1px solid rgba(242,248,244,.12);font-size:10px;font-weight:500;letter-spacing:.1em;line-height:1.6;color:#6E8479">Цена входа считается по {{ priceLabel }} ₽ за м² GBA. Пример расчёта, не инвестиционная рекомендация.</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="position:relative;min-height:min(96vh,880px);display:flex;align-items:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.94) 4%,rgba(4,20,14,.12) 60%),url('assets/renders/masterplan-aerial.jpg');background-size:cover;background-position:center">
-    <div style="position:absolute;inset:clamp(16px,3vw,32px);pointer-events:none;border:1px solid rgba(242,248,244,.14)"></div>
-    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(48px,8vw,110px) clamp(28px,4.2vw,56px);box-sizing:border-box">
-      <p style="margin:0 0 18px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">Участок и построенный квартал · одна локация</p>
-      <p style="margin:0;font-size:clamp(26px,4vw,68px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:22ch">Между этими двумя кадрами — сотни решений, каждое из которых стоит денег</p>
-    </div>
-  </section>
-
-  <section id="route" style="max-width:1440px;margin:0 auto;padding:clamp(56px,9vw,130px) clamp(28px,4.2vw,56px)">
-    <p style="margin:0 0 22px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">02 — Маршрут</p>
-    <h2 style="margin:0 0 clamp(36px,6vw,80px);font-size:clamp(30px,4.6vw,76px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Маршрут участка внутри одного бренда</h2>
-    <div style="display:flex;flex-direction:column">
-      <sc-for list="{{ route }}" as="s" hint-placeholder-count="5">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(14px,3vw,48px);align-items:start;border-top:1px solid rgba(242,248,244,.12);padding:26px 0 34px">
-          <div style="display:flex;gap:18px;align-items:baseline">
-            <span style="font-size:13px;font-weight:600;color:#A5E85C;letter-spacing:.18em;font-variant-numeric:tabular-nums">{{ s.n }}</span>
-            <h3 style="margin:0;font-size:clamp(22px,2.8vw,40px);font-weight:400;line-height:1.05;letter-spacing:-.035em;color:#FFFFFF">{{ s.title }}</h3>
-          </div>
-          <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;color:#A9BEB4">{{ s.text }}</p>
-          <div>
-            <p style="margin:0 0 10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">Результат</p>
-            <p style="margin:0 0 14px;font-size:16px;font-weight:400;line-height:1.5;color:#F2F8F4">{{ s.result }}</p>
-            <sc-if value="{{ s.href }}" hint-placeholder-val="{{ true }}">
-              <a href="{{ s.href }}" style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A5E85C;border-bottom:1px solid rgba(165,232,92,.4);padding-bottom:3px" style-hover="color:#C7F291">{{ s.linkLabel }}</a>
-            </sc-if>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <section id="not-consulting" style="max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px) clamp(56px,9vw,130px)">
-    <div style="border-top:1px solid rgba(242,248,244,.12);padding-top:clamp(36px,5vw,64px)">
-      <h2 style="margin:0 0 26px;font-size:clamp(32px,5.2vw,88px);font-weight:400;line-height:.98;letter-spacing:-.045em;color:#FFFFFF">Это не консалтинг</h2>
-      <p style="margin:0 0 clamp(36px,5vw,70px);font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:58ch">Консультант заканчивает работу отчётом и уходит. Мы заходим в проект как внешняя девелоперская команда: считаем, отвечаем за цифру, доводим решение до документации и остаёмся рядом, когда решение нужно защищать.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px">
-        <div style="background:#04140E;border:1px solid rgba(242,248,244,.14);padding:clamp(24px,3vw,40px)">
-          <p style="margin:0 0 26px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">Консалтинг</p>
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <sc-for list="{{ consulting }}" as="c" hint-placeholder-count="5">
-              <div style="display:flex;gap:14px;align-items:flex-start">
-                <span style="width:6px;height:6px;background:rgba(242,248,244,.28);flex:none;margin-top:9px"></span>
-                <p style="margin:0;font-size:16px;font-weight:300;line-height:1.55;color:#8FA69C">{{ c }}</p>
+        <div style="overflow-x:auto;scrollbar-width:none">
+          <div role="table" aria-label="Сравнение сценариев" style="position:relative;min-width:680px">
+            <span aria-hidden="true" style="position:absolute;top:0;bottom:0;left:{{ spotLeft }};width:35.29%;border-radius:22px;background:linear-gradient(180deg,rgba(165,232,92,.16),rgba(165,232,92,.05));border:1px solid rgba(165,232,92,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 50px rgba(165,232,92,.12);transition:left .6s cubic-bezier(.2,.7,.2,1)"></span>
+            <div role="row" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1.2fr)">
+              <span role="columnheader" style="padding:18px 18px 18px 4px;font-size:13px;color:#7F978B;align-self:end">критерий</span>
+              <button type="button" role="columnheader" onClick="{{ cmpPick0 }}" style="all:unset;box-sizing:border-box;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:12px">
+                <span style="flex:none;width:12px;height:12px;border-radius:50%;background:{{ cmpDot0c }};box-shadow:{{ cmpDot0g }};transition:all .4s"></span>
+                <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:#9DB3A8">сценарий 01</span><span style="font-size:19px;font-weight:700;color:{{ cmpHead0Fg }};transition:color .4s">Продать дороже</span></span>
+              </button>
+              <button type="button" role="columnheader" onClick="{{ cmpPick1 }}" style="all:unset;box-sizing:border-box;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:12px">
+                <span style="flex:none;width:12px;height:12px;border-radius:50%;background:{{ cmpDot1c }};box-shadow:{{ cmpDot1g }};transition:all .4s"></span>
+                <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;color:#9DB3A8">сценарий 02</span><span style="font-size:19px;font-weight:700;color:{{ cmpHead1Fg }};transition:color .4s">Построить своё</span></span>
+              </button>
+            </div>
+            <sc-for list="{{ cmpRows }}" as="r" hint-placeholder-count="6">
+              <div role="row" onMouseEnter="{{ r.enter }}" onMouseLeave="{{ r.leave }}" style="position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,1.2fr);border-top:1px solid rgba(255,255,255,.08);background:{{ r.rowBg }};transition:background .3s">
+                <span role="rowheader" style="padding:18px 18px 18px 4px;font-size:15px;font-weight:600;line-height:1.4;color:{{ r.labelFg }};transition:color .3s">{{ r.label }}</span>
+                <span role="cell" style="padding:18px 22px;font-size:16px;line-height:1.45;font-weight:{{ r.w0 }};color:{{ r.fg0 }};transition:color .4s">{{ r.v0 }}</span>
+                <span role="cell" style="padding:18px 22px;font-size:16px;line-height:1.45;font-weight:{{ r.w1 }};color:{{ r.fg1 }};transition:color .4s">{{ r.v1 }}</span>
               </div>
             </sc-for>
           </div>
         </div>
-        <div style="background:#07200F;border:1px solid rgba(165,232,92,.24);padding:clamp(24px,3vw,40px)">
-          <p style="margin:0 0 26px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A5E85C">Культура девелопмента</p>
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <sc-for list="{{ cultura }}" as="c" hint-placeholder-count="5">
-              <div style="display:flex;gap:14px;align-items:flex-start">
-                <span style="width:6px;height:6px;background:#A5E85C;flex:none;margin-top:9px"></span>
-                <p style="margin:0;font-size:16px;font-weight:400;line-height:1.55;color:#F2F8F4">{{ c }}</p>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1)">
+          <p style="margin:0;display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600;color:#FFFFFF"><span style="flex:none;width:10px;height:10px;border-radius:50%;background:#A5E85C;box-shadow:0 0 12px #A5E85C"></span>{{ cmpVerdict }}</p>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#A5E85C;color:#04140E;font-size:15px;font-weight:700;padding:14px 22px;border-radius:999px;white-space:nowrap" style-hover="background:#FFFFFF;color:#04140E">Посчитать оба сценария ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="route" data-screen-label="04 Этапы" style="position:relative;padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px);overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;width:900px;height:600px;left:-10%;top:30%;border-radius:50%;background:radial-gradient(ellipse,rgba(165,232,92,.35),transparent 65%);filter:blur(40px);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;width:700px;height:500px;right:-10%;top:10%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.9),transparent 65%);filter:blur(30px);pointer-events:none"></div>
+    <div style="position:relative;max-width:1440px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end;margin-bottom:clamp(36px,5vw,64px)">
+        <div>
+          <p style="margin:0 0 18px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>этапы работы по активу</p>
+          <h2 style="margin:0;font-size:clamp(36px,5vw,76px);font-weight:600;line-height:.98;letter-spacing:-.045em">Где мы подключаемся <span style="color:#2E8B1E">к&nbsp;проекту</span></h2>
+        </div>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#33463C;max-width:48ch">Строительные работы мы не выполняем: генподрядчик привлекается и управляется нами, ответственность за результат перед собственником остаётся на компании. <span style="font-weight:700;color:#04140E">Наведите на этап — покажем, что внутри.</span></p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:28px 12px">
+        <div style="flex:3 1 640px;min-width:0;display:flex;flex-direction:column;gap:18px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+            <sc-for list="{{ stOurs }}" as="s" hint-placeholder-count="3">
+              <div onMouseEnter="{{ s.enter }}" onMouseLeave="{{ s.leave }}" onClick="{{ s.toggle }}" style="position:relative;min-width:0;height:clamp(470px,38vw,520px);border-radius:30px;overflow:hidden;cursor:pointer;isolation:isolate;background:{{ s.bg }};border:1px solid {{ s.bd }};backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:{{ s.shadow }};transform:{{ s.lift }};transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s">
+                <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:3px;background:{{ s.topLine }}"></span>
+                <span aria-hidden="true" style="position:absolute;right:-4px;top:-18px;font-size:clamp(110px,9vw,150px);font-weight:700;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1.2px {{ s.numStroke }};z-index:-1">{{ s.n }}</span>
+                <div style="position:relative;padding:22px 22px 0;display:flex;flex-direction:column;gap:6px;z-index:2">
+                  <span style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{ s.labelFg }}"><span style="width:7px;height:7px;border-radius:50%;background:{{ s.dotC }}"></span>этап {{ s.n }}</span>
+                  <span style="font-size:clamp(21px,1.8vw,26px);font-weight:700;letter-spacing:-.03em;line-height:1.05;color:{{ s.titleFg }}">{{ s.short }}</span>
+                </div>
+                <div style="position:absolute;left:0;right:0;top:92px;bottom:150px">
+                  <span aria-hidden="true" style="position:absolute;left:22%;right:22%;bottom:4px;height:22px;border-radius:50%;background:{{ s.shadowGlow }};filter:blur(8px)"></span>
+                  {{ s.obj }}
+                </div>
+                <div style="position:absolute;left:0;right:0;bottom:0;padding:16px 20px 18px;display:flex;flex-direction:column;gap:12px;z-index:2;border-top:1px solid {{ s.footLine }};background:{{ s.footBg }}">
+                  <span style="display:flex;flex-direction:column;gap:4px;min-height:58px">
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:{{ s.labelFg }}">{{ s.resLabel }}</span>
+                    <span style="font-size:15px;font-weight:700;line-height:1.3;color:{{ s.resFg }};text-wrap:balance">{{ s.result }}</span>
+                  </span>
+                  <span style="display:flex;justify-content:space-between;align-items:center;gap:10px;height:34px">
+                    <sc-if value="{{ s.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ s.logo }}" alt="{{ s.who }}" style="height:30px;width:118px;object-fit:contain;object-position:left center;filter:brightness(0)" /></sc-if>
+                    <sc-if value="{{ s.noLogo }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;line-height:1.3;color:#7C8C83">{{ s.who }}</span></sc-if>
+                    <span style="flex:none;width:32px;height:32px;border-radius:50%;background:{{ s.plusBg }};color:{{ s.plusFg }};display:flex;align-items:center;justify-content:center;font-size:16px;transform:{{ s.plusRot }};transition:transform .45s">+</span>
+                  </span>
+                </div>
+                <div style="position:absolute;inset:8px;border-radius:24px;padding:22px 20px;display:flex;flex-direction:column;gap:8px;z-index:3;background:{{ s.ovBg }};backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.7);opacity:{{ s.ovOp }};transform:{{ s.ovT }};transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:{{ s.ovPe }}">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#2E6B12">этап {{ s.n }} · что делаем</span>
+                  <span style="font-size:22px;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:#04140E;margin-bottom:8px">{{ s.short }}</span>
+                  <sc-for list="{{ s.tasks }}" as="t" hint-placeholder-count="4">
+                    <span style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.8);font-size:14px;font-weight:600;color:#04140E"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#A5E85C;box-shadow:0 0 0 3px #E8F7D6"></span>{{ t }}</span>
+                  </sc-for>
+                  <sc-if value="{{ s.href }}" hint-placeholder-val="{{ false }}"><a href="{{ s.href }}" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:999px;background:#04140E;color:#FFFFFF;font-size:14px;font-weight:700" style-hover="background:#1C3A2C">{{ s.who }} <span style="color:#A5E85C">↗</span></a></sc-if>
+                </div>
               </div>
             </sc-for>
           </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span data-g="bracket" aria-hidden="true" style="height:16px;border:2px solid #A5E85C;border-top:none;border-radius:0 0 18px 18px;box-shadow:0 8px 20px -8px rgba(165,232,92,.8)"></span>
+            <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:16px;font-weight:600;color:#1E4A14"><span style="background:#A5E85C;color:#04140E;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:6px 12px;border-radius:999px">наша зона ответственности</span>три этапа до старта стройки, где создаётся вся экономика проекта</p>
+          </div>
+        </div>
+        <div style="flex:2 1 420px;min-width:0;display:flex;flex-direction:column;gap:18px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+            <sc-for list="{{ stRest }}" as="s" hint-placeholder-count="2">
+              <div onMouseEnter="{{ s.enter }}" onMouseLeave="{{ s.leave }}" onClick="{{ s.toggle }}" style="position:relative;min-width:0;height:clamp(470px,38vw,520px);border-radius:30px;overflow:hidden;cursor:pointer;isolation:isolate;background:{{ s.bg }};border:1px solid {{ s.bd }};backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:{{ s.shadow }};transform:{{ s.lift }};transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s">
+                <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:3px;background:{{ s.topLine }}"></span>
+                <span aria-hidden="true" style="position:absolute;right:-4px;top:-18px;font-size:clamp(110px,9vw,150px);font-weight:700;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1.2px {{ s.numStroke }};z-index:-1">{{ s.n }}</span>
+                <div style="position:relative;padding:22px 22px 0;display:flex;flex-direction:column;gap:6px;z-index:2">
+                  <span style="display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{ s.labelFg }}"><span style="width:7px;height:7px;border-radius:50%;background:{{ s.dotC }}"></span>этап {{ s.n }}</span>
+                  <span style="font-size:clamp(21px,1.8vw,26px);font-weight:700;letter-spacing:-.03em;line-height:1.05;color:{{ s.titleFg }}">{{ s.short }}</span>
+                </div>
+                <div style="position:absolute;left:0;right:0;top:92px;bottom:150px">
+                  <span aria-hidden="true" style="position:absolute;left:22%;right:22%;bottom:4px;height:22px;border-radius:50%;background:{{ s.shadowGlow }};filter:blur(8px)"></span>
+                  {{ s.obj }}
+                </div>
+                <div style="position:absolute;left:0;right:0;bottom:0;padding:16px 20px 18px;display:flex;flex-direction:column;gap:12px;z-index:2;border-top:1px solid {{ s.footLine }};background:{{ s.footBg }}">
+                  <span style="display:flex;flex-direction:column;gap:4px;min-height:58px">
+                    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:{{ s.labelFg }}">{{ s.resLabel }}</span>
+                    <span style="font-size:15px;font-weight:700;line-height:1.3;color:{{ s.resFg }};text-wrap:balance">{{ s.result }}</span>
+                  </span>
+                  <span style="display:flex;justify-content:space-between;align-items:center;gap:10px;height:34px">
+                    <sc-if value="{{ s.logo }}" hint-placeholder-val="{{ false }}"><img src="{{ s.logo }}" alt="{{ s.who }}" style="height:30px;width:118px;object-fit:contain;object-position:left center;filter:brightness(0)" /></sc-if>
+                    <sc-if value="{{ s.noLogo }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;line-height:1.3;color:#7C8C83">{{ s.who }}</span></sc-if>
+                    <span style="flex:none;width:32px;height:32px;border-radius:50%;background:{{ s.plusBg }};color:{{ s.plusFg }};display:flex;align-items:center;justify-content:center;font-size:16px;transform:{{ s.plusRot }};transition:transform .45s">+</span>
+                  </span>
+                </div>
+                <div style="position:absolute;inset:8px;border-radius:24px;padding:22px 20px;display:flex;flex-direction:column;gap:8px;z-index:3;background:{{ s.ovBg }};backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.7);opacity:{{ s.ovOp }};transform:{{ s.ovT }};transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1);pointer-events:{{ s.ovPe }}">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#2E6B12">этап {{ s.n }} · что делаем</span>
+                  <span style="font-size:22px;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:#04140E;margin-bottom:8px">{{ s.short }}</span>
+                  <sc-for list="{{ s.tasks }}" as="t" hint-placeholder-count="4">
+                    <span style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.8);font-size:14px;font-weight:600;color:#04140E"><span style="flex:none;width:7px;height:7px;border-radius:50%;background:#A5E85C;box-shadow:0 0 0 3px #E8F7D6"></span>{{ t }}</span>
+                  </sc-for>
+                  <sc-if value="{{ s.href }}" hint-placeholder-val="{{ false }}"><a href="{{ s.href }}" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:999px;background:#04140E;color:#FFFFFF;font-size:14px;font-weight:700" style-hover="background:#1C3A2C">{{ s.who }} <span style="color:#A5E85C">↗</span></a></sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span data-g="bracket" aria-hidden="true" style="height:16px;border:2px dashed #B8C4BC;border-top:none;border-radius:0 0 18px 18px"></span>
+            <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:16px;font-weight:600;color:#5B6B62"><span style="background:#FFFFFF;color:#5B6B62;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:6px 12px;border-radius:999px">сопровождаем</span>генподрядчик — под нашим управлением, продажи — в собственном проекте</p>
+          </div>
         </div>
       </div>
-      <p style="margin:clamp(36px,5vw,64px) 0 0;font-size:clamp(22px,2.8vw,44px);font-weight:400;line-height:1.1;letter-spacing:-.035em;color:#A5E85C">Отчёт нельзя построить. Решение — можно.</p>
     </div>
   </section>
 
-  <section style="position:relative;min-height:min(92vh,820px);display:flex;align-items:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.95) 6%,rgba(4,20,14,.2) 62%),url('assets/renders/plot-aerial.jpg');background-size:cover;background-position:center">
-    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(44px,7vw,96px) clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,64px);align-items:end;box-sizing:border-box">
-      <div>
-        <p style="margin:0 0 16px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">Ситуация 01</p>
-        <h3 style="margin:0 0 20px;font-size:clamp(28px,4vw,64px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#FFFFFF">Земли ещё нет</h3>
-        <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:40ch">Вы ищете участок под стратегию и капитал. Мы даём не список свободных лотов, а критерии и проверку до сделки.</p>
+  <section data-screen-label="05 Реновация" style="padding:0 clamp(12px,2vw,24px) clamp(64px,8vw,120px)">
+    <div style="max-width:1440px;margin:0 auto;background:#FFFFFF;border-radius:40px;padding:clamp(28px,5vw,72px) clamp(16px,4vw,64px)">
+      <p style="margin:0 0 18px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>как это выглядит</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end;margin-bottom:clamp(32px,4vw,56px)">
+        <h2 style="margin:0;font-size:clamp(34px,4.4vw,64px);font-weight:600;line-height:1;letter-spacing:-.04em">Тот же объём — другая доходность</h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#33463C;max-width:52ch">Реновация коммерческой части с надстройкой жилья. Один из сценариев, который мы считаем для действующих объектов: он не требует расширения участка.</p>
       </div>
-      <div>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
-          <sc-for list="{{ sit1 }}" as="p" hint-placeholder-count="3">
-            <div style="display:flex;gap:14px;align-items:flex-start;border-top:1px solid rgba(242,248,244,.16);padding-top:12px">
-              <p style="margin:0;font-size:15px;font-weight:300;line-height:1.55;color:#C6D8CE">{{ p }}</p>
-            </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px">
+        <div style="position:relative;aspect-ratio:3/2;border-radius:26px;overflow:hidden;background:#DDE6D9">
+          <image-slot id="home-renov-before" shape="rect" placeholder="Р4 · объект сейчас · 3:2"></image-slot>
+          <div style="position:absolute;left:20px;top:20px;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none">
+            <span style="background:#FFFFFF;font-size:13px;font-weight:600;padding:9px 15px;border-radius:14px;margin-left:14px;box-shadow:0 4px 14px rgba(4,20,14,.12)">Сейчас</span>
+            <span style="width:22px;height:22px;border-radius:50%;background:#C6D0C9;border:5px solid #FFFFFF;margin-top:-6px"></span>
+          </div>
+        </div>
+        <div style="position:relative;aspect-ratio:3/2;border-radius:26px;overflow:hidden;background:#DDE6D9">
+          <image-slot id="home-renov-after" shape="rect" placeholder="Р4 · после реновации с надстройкой · 3:2"></image-slot>
+          <div style="position:absolute;left:20px;top:20px;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none">
+            <span style="background:#FFFFFF;font-size:13px;font-weight:600;padding:9px 15px;border-radius:14px;margin-left:14px;box-shadow:0 4px 14px rgba(4,20,14,.12)">После реновации</span>
+            <span style="width:22px;height:22px;border-radius:50%;background:#A5E85C;border:5px solid #FFFFFF;margin-top:-6px"></span>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;aspect-ratio:21/5;min-height:140px;border-radius:26px;overflow:hidden;background:#EEF2EC;margin-top:12px">
+        <image-slot id="home-renov-section" shape="rect" placeholder="Разрез «было / стало» с масштабной линейкой"></image-slot>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:12px">
+        <div style="background:#EEF2EC;border-radius:24px;padding:24px"><span style="display:inline-flex;width:40px;height:40px;border-radius:50%;background:#FFFFFF;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px">01</span><p style="margin:18px 0 8px;font-size:18px;font-weight:600">Исходное состояние</p><p style="margin:0;font-size:15px;line-height:1.5;color:#33463C">Высота помещений и фасадные решения не соответствуют требованиям арендаторов, вакансия растёт</p></div>
+        <div style="background:#EEF2EC;border-radius:24px;padding:24px"><span style="display:inline-flex;width:40px;height:40px;border-radius:50%;background:#FFFFFF;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px">02</span><p style="margin:18px 0 8px;font-size:18px;font-weight:600">Реновация</p><p style="margin:0;font-size:15px;line-height:1.5;color:#33463C">В тех же габаритах: высота четыре метра, остеклённый фронт, инсоляция. Помещения возвращаются в ликвидный класс</p></div>
+        <div style="background:#EEF2EC;border-radius:24px;padding:24px"><span style="display:inline-flex;width:40px;height:40px;border-radius:50%;background:#FFFFFF;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px">03</span><p style="margin:18px 0 8px;font-size:18px;font-weight:600">Надстройка</p><p style="margin:0;font-size:15px;line-height:1.5;color:#33463C">Жилая функция сверху: новая продаваемая площадь и постоянный трафик для коммерции первых этажей</p></div>
+        <div style="background:#A5E85C;border-radius:24px;padding:24px"><span style="display:inline-flex;width:40px;height:40px;border-radius:50%;background:#04140E;color:#A5E85C;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px">04</span><p style="margin:18px 0 8px;font-size:18px;font-weight:600">Результат для собственника</p><p style="margin:0;font-size:15px;line-height:1.5;color:#1C3318">Арендный поток восстановлен, к нему добавляется выручка от реализации жилья</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="06 Опыт" style="padding:0 clamp(12px,2vw,24px)">
+    <div style="max-width:1440px;margin:0 auto;background:#04140E;color:#FFFFFF;border-radius:40px;padding:clamp(40px,6vw,96px) clamp(20px,4vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;align-items:center">
+      <h2 style="margin:0;font-size:clamp(34px,4.4vw,64px);font-weight:600;line-height:1;letter-spacing:-.04em;max-width:12ch">Реализованные проекты, а не презентации</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+        <div style="background:#A5E85C;color:#04140E;border-radius:28px;padding:24px;aspect-ratio:1/1;display:flex;flex-direction:column;transform:rotate(-3deg)"><span style="font-size:clamp(40px,5vw,72px);font-weight:600;line-height:1">—</span><span style="margin-top:auto;font-size:15px;font-weight:600">млн м² спроектировано</span><span style="margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#25401B">цифра на согласовании</span></div>
+        <div style="background:#FFFFFF;color:#04140E;border-radius:28px;padding:24px;aspect-ratio:1/1;display:flex;flex-direction:column;transform:translateY(24px) rotate(2deg)"><span style="font-size:clamp(40px,5vw,72px);font-weight:600;line-height:1">—</span><span style="margin-top:auto;font-size:15px;font-weight:600">регионов</span></div>
+        <div style="background:#1C3A2C;border-radius:28px;padding:24px;aspect-ratio:1/1;display:flex;flex-direction:column;transform:rotate(2deg)"><span style="font-size:clamp(40px,5vw,72px);font-weight:600;line-height:1">—</span><span style="margin-top:auto;font-size:15px;font-weight:600">проектов</span></div>
+        <div style="background:#EEF2EC;color:#04140E;border-radius:28px;padding:24px;aspect-ratio:1/1;display:flex;flex-direction:column;transform:translateY(24px) rotate(-2deg)"><span style="font-size:clamp(40px,5vw,72px);font-weight:600;line-height:1">—</span><span style="margin-top:auto;font-size:15px;font-weight:600">лет опыта</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="07 Позиция" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px)">
+    <div style="max-width:1440px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 64px;align-items:end;margin-bottom:clamp(32px,4vw,56px)">
+        <h2 style="margin:0;font-size:clamp(34px,4.4vw,64px);font-weight:600;line-height:1;letter-spacing:-.04em">Ответственность, а не рекомендации</h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#33463C;max-width:56ch">Консультант передаёт отчёт и выходит из проекта. Решение и риск остаются у собственника. Мы доводим актив до результата — до сделки или до ввода объекта — и наше вознаграждение привязано к этому результату.</p>
+      </div>
+      <div role="table" aria-label="Консультант и Культура девелопмента" style="background:#FFFFFF;border-radius:32px;padding:clamp(8px,1.5vw,16px);overflow-x:auto">
+        <div role="row" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1fr) minmax(200px,1.2fr);min-width:560px">
+          <span role="columnheader" style="padding:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"></span>
+          <span role="columnheader" style="padding:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62">Консультант</span>
+          <span role="columnheader" style="padding:16px 20px;font-size:14px;font-weight:700;background:#A5E85C;border-radius:20px 20px 0 0">Культура девелопмента</span>
+        </div>
+        <div role="row" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1fr) minmax(200px,1.2fr);min-width:560px;border-top:1px solid #E3E9E1">
+          <span role="cell" style="padding:20px 16px;font-size:15px;color:#5B6B62">Результат работы</span>
+          <span role="cell" style="padding:20px 16px;font-size:16px;color:#8A988F">отчёт и рекомендации</span>
+          <span role="cell" style="padding:20px;font-size:17px;font-weight:600;background:#E8F7D6">сделка или введённый объект</span>
+        </div>
+        <div role="row" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1fr) minmax(200px,1.2fr);min-width:560px;border-top:1px solid #E3E9E1">
+          <span role="cell" style="padding:20px 16px;font-size:15px;color:#5B6B62">Границы участия</span>
+          <span role="cell" style="padding:20px 16px;font-size:16px;color:#8A988F">до передачи отчёта</span>
+          <span role="cell" style="padding:20px;font-size:17px;font-weight:600;background:#E8F7D6">до закрытия сделки или ввода</span>
+        </div>
+        <div role="row" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1fr) minmax(200px,1.2fr);min-width:560px;border-top:1px solid #E3E9E1">
+          <span role="cell" style="padding:20px 16px;font-size:15px;color:#5B6B62">Вознаграждение</span>
+          <span role="cell" style="padding:20px 16px;font-size:16px;color:#8A988F">за объём работ</span>
+          <span role="cell" style="padding:20px;font-size:17px;font-weight:600;background:#E8F7D6">привязано к результату</span>
+        </div>
+        <div role="row" style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(160px,1fr) minmax(200px,1.2fr);min-width:560px;border-top:1px solid #E3E9E1">
+          <span role="cell" style="padding:20px 16px;font-size:15px;color:#5B6B62">Ответственность за цифры</span>
+          <span role="cell" style="padding:20px 16px;font-size:16px;color:#8A988F">остаётся у собственника</span>
+          <span role="cell" style="padding:20px;font-size:17px;font-weight:600;background:#E8F7D6;border-radius:0 0 20px 20px">на компании</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="08 Компетенции" style="padding:0 clamp(12px,2vw,24px) clamp(64px,8vw,120px)">
+    <div onMouseEnter="{{ compPause }}" onMouseLeave="{{ compResume }}" style="position:relative;max-width:1440px;margin:0 auto;background:#020C08;color:#FFFFFF;border-radius:40px;padding:clamp(32px,5vw,72px) clamp(16px,4vw,64px);overflow:hidden;isolation:isolate">
+      <div aria-hidden="true" style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 65% 55%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 65% 55%,#000 20%,transparent 70%);z-index:-1"></div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 48px;margin-bottom:clamp(28px,4vw,48px)">
+        <div>
+          <p style="margin:0 0 18px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A9BDB3"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C;box-shadow:0 0 12px #A5E85C"></span>три подразделения · один контур</p>
+          <h2 style="margin:0;font-size:clamp(36px,5vw,76px);font-weight:600;line-height:.98;letter-spacing:-.045em">Компетенции<br /><span style="color:#A5E85C">внутри</span> компании</h2>
+        </div>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#C6D8CE;max-width:44ch">Оценка, архитектура и проектирование — собственные подразделения. Собственник не собирает трёх подрядчиков и не разбирает, кто из них допустил ошибку.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:16px;align-items:stretch">
+        <div role="tablist" aria-label="Подразделения" style="display:flex;flex-direction:column;gap:8px;min-width:0">
+          <sc-for list="{{ comps }}" as="c" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{ c.open }}" onClick="{{ c.pick }}" style="all:unset;box-sizing:border-box;cursor:pointer;position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:clamp(18px,2vw,26px);border-radius:26px;overflow:hidden;background:{{ c.bg }};border:1px solid {{ c.bd }};backdrop-filter:blur(20px);box-shadow:{{ c.shadow }};transition:background .5s,border-color .5s,box-shadow .5s">
+              <span style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:{{ c.tagFg }};transition:color .5s">{{ c.n }} · {{ c.tag }}</span>
+                <span style="font-size:clamp(28px,2.6vw,40px);font-weight:700;letter-spacing:-.05em;line-height:.9;color:{{ c.numFg }};-webkit-text-stroke:{{ c.stroke }};transition:color .5s">{{ c.n }}</span>
+              </span>
+              <img src="{{ c.logo }}" alt="{{ c.name }}" style="display:block;height:clamp(52px,5vw,72px);width:100%;max-width:300px;object-fit:contain;object-position:left center;filter:{{ c.logoFilter }};opacity:{{ c.logoOp }};transform:{{ c.logoScale }};transform-origin:left center;transition:opacity .5s,filter .5s,transform .6s cubic-bezier(.2,.7,.2,1)" />
+              <span aria-hidden="true" style="position:absolute;left:26px;bottom:0;height:1px;width:calc({{ c.prog }} - 52px);max-width:calc(100% - 52px);background:#C7F291;transition:{{ c.progT }}"></span>
+            </button>
           </sc-for>
         </div>
-        <p style="margin:0;font-size:16px;font-weight:600;line-height:1.4;letter-spacing:.02em;color:#A5E85C">Решение на выходе: где покупать и по какой цене входить</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="position:relative;min-height:min(92vh,820px);display:flex;align-items:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.95) 6%,rgba(4,20,14,.2) 62%),url('assets/renders/case-nsk.jpg');background-size:cover;background-position:center">
-    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(44px,7vw,96px) clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,64px);align-items:end;box-sizing:border-box">
-      <div>
-        <p style="margin:0 0 16px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">Ситуация 02</p>
-        <h3 style="margin:0 0 20px;font-size:clamp(28px,4vw,64px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#FFFFFF">Земля уже есть</h3>
-        <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:40ch">Участок в собственности, но проект в исходных параметрах не заложен — он появляется, когда территорию пересобирают заново.</p>
-      </div>
-      <div>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
-          <sc-for list="{{ sit2 }}" as="p" hint-placeholder-count="3">
-            <div style="display:flex;gap:14px;align-items:flex-start;border-top:1px solid rgba(242,248,244,.16);padding-top:12px">
-              <p style="margin:0;font-size:15px;font-weight:300;line-height:1.55;color:#C6D8CE">{{ p }}</p>
-            </div>
-          </sc-for>
-        </div>
-        <p style="margin:0;font-size:16px;font-weight:600;line-height:1.4;letter-spacing:.02em;color:#A5E85C">Решение на выходе: что строить и сколько это принесёт</p>
-      </div>
-    </div>
-  </section>
-
-  <div style="background:#EEF2EA;color:#0B1F16">
-    <section id="competencies" style="max-width:1440px;margin:0 auto;padding:clamp(56px,9vw,130px) clamp(28px,4.2vw,56px)">
-      <p style="margin:0 0 22px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#4D7D1E">03 — Компетенции</p>
-      <h2 style="margin:0 0 24px;font-size:clamp(30px,4.6vw,76px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#0B1F16;max-width:20ch">Три подразделения, одна модель проекта</h2>
-      <p style="margin:0 0 clamp(40px,6vw,82px);font-size:17px;font-weight:300;line-height:1.6;color:#3F544B;max-width:58ch">Порядок здесь не формальность: каждый следующий этап работает на данных предыдущего, поэтому решения не противоречат друг другу и не требуют дорогой переделки.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
-        <sc-for list="{{ competencies }}" as="c" hint-placeholder-count="3">
-          <a href="{{ c.href }}" style="display:flex;flex-direction:column;color:inherit;background:#EEF2EA;border:1px solid rgba(11,31,22,.18);padding:clamp(22px,2.4vw,34px)" style-hover="background:#E4EBDD">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:22px">
-              <span style="font-size:11px;font-weight:600;letter-spacing:.22em;color:#4D7D1E;font-variant-numeric:tabular-nums">{{ c.num }}</span>
-              <span style="font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E8479;text-align:right">{{ c.role }}</span>
-            </div>
-            <div style="border:1px solid rgba(11,31,22,.12);background-color:#FFFFFF;min-height:clamp(200px,20vw,280px);margin-bottom:26px;background-image:{{ c.bgImage }};background-size:auto 80%;background-position:center bottom 14px;background-repeat:no-repeat"></div>
-            <div style="height:34px;margin-bottom:20px;background-image:{{ c.logoImage }};background-size:contain;background-position:left center;background-repeat:no-repeat"></div>
-            <h3 style="margin:0 0 16px;font-size:clamp(22px,2.2vw,32px);font-weight:400;line-height:1.05;letter-spacing:-.035em;color:#0B1F16">{{ c.title }}</h3>
-            <p style="margin:0 0 22px;font-size:15px;font-weight:300;line-height:1.6;color:#3F544B">{{ c.text }}</p>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px">
-              <sc-for list="{{ c.tags }}" as="t" hint-placeholder-count="4">
-                <span style="font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#0B1F16;border:1px solid rgba(11,31,22,.2);border-radius:4px;padding:7px 10px">{{ t }}</span>
+        <div onMouseMove="{{ compMove }}" onMouseLeave="{{ compLeave }}" style="position:relative;grid-column:span 2;min-width:0;min-height:clamp(560px,48vw,680px);border-radius:32px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 45%,#12301A 0%,#071A10 45%,#020A06 80%);border:1px solid rgba(255,255,255,.06)">
+          <span aria-hidden="true" style="position:absolute;left:50%;top:-10%;width:70%;height:80%;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 0%,rgba(235,255,220,.12),rgba(165,232,92,.03) 45%,transparent 70%);pointer-events:none"></span>
+          <span aria-hidden="true" style="position:absolute;left:50%;top:64%;width:min(60%,460px);height:80px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(ellipse,rgba(165,232,92,.32),rgba(165,232,92,.06) 55%,transparent 75%);filter:blur(18px)"></span>
+          {{ compObjects }}
+          <span style="position:absolute;left:clamp(16px,2vw,24px);top:clamp(16px,2vw,24px);display:none"></span>
+          <sc-for list="{{ comps }}" as="c" hint-placeholder-count="3">
+            <div aria-hidden="{{ c.hidden }}" style="position:absolute;inset:0;pointer-events:none;opacity:{{ c.op }};transform:{{ compPxCall }};transition:opacity .7s ease,transform .6s cubic-bezier(.2,.7,.2,1)">
+              <sc-for list="{{ c.callouts }}" as="p" hint-placeholder-count="3">
+                <span style="position:absolute;left:{{ p.x }};top:{{ p.y }};display:flex;flex-direction:column;align-items:{{ p.align }};transform:{{ c.callT }};opacity:{{ c.op }};transition:transform 1s cubic-bezier(.2,.7,.2,1) {{ p.delay }},opacity .8s ease {{ p.delay }}">
+                  <span style="display:flex;align-items:center;gap:10px;color:#E8EFEA;font-size:13px;font-weight:500;letter-spacing:.01em;white-space:nowrap"><span style="flex:none;width:6px;height:6px;border-radius:50%;background:#C7F291"></span><span style="width:28px;height:1px;background:rgba(255,255,255,.35)"></span>{{ p.t }}</span>
+                </span>
               </sc-for>
             </div>
-            <div style="margin-top:auto">
-              <p style="margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">На выходе</p>
-              <p style="margin:0 0 24px;font-size:15px;font-weight:400;line-height:1.5;color:#0B1F16">{{ c.out }}</p>
-              <span style="display:inline-flex;align-items:center;gap:10px;background:#0B1F16;color:#F2F8F4;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:13px 18px;border-radius:4px">Подробнее →</span>
-            </div>
-          </a>
+          </sc-for>
+          <div style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;padding:28px clamp(20px,3vw,36px);background:linear-gradient(180deg,transparent,rgba(2,10,6,.85) 40%);border-top:1px solid rgba(255,255,255,.07)">
+            <span style="flex:none;display:flex;flex-direction:column;gap:2px;padding-right:24px;border-right:1px solid rgba(255,255,255,.1)"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8FA69C">{{ compCur.n }} / 03</span><span style="font-size:15px;font-weight:700;white-space:nowrap">{{ compCur.tag }}</span></span>
+            <p style="flex:1 1 280px;margin:0;font-size:15px;font-weight:500;line-height:1.55;color:#DCE7E0;text-wrap:pretty">{{ compCur.text }}</p>
+            <a href="{{ compCur.href }}" style="flex:none;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.3);color:#FFFFFF;font-size:14px;font-weight:600;padding:13px 20px;border-radius:999px;white-space:nowrap;transition:all .3s" style-hover="background:#FFFFFF;color:#04140E;border-color:#FFFFFF">Открыть страницу <span style="color:#C7F291">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case" data-screen-label="09 Кейс" style="padding:0 clamp(12px,2vw,24px)">
+    <div style="max-width:1440px;margin:0 auto;position:relative">
+      <div style="position:relative;aspect-ratio:21/9;min-height:520px;border-radius:40px;overflow:hidden;background:#0B2219">
+        <img src="assets/renders/case-nsk.jpg" alt="Панорама проекта: квартал на участке собственника" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,20,14,.75),transparent 60%)"></div>
+        <div style="position:absolute;left:clamp(20px,4vw,64px);top:clamp(28px,4vw,64px);max-width:min(560px,80%)">
+          <p style="margin:0 0 18px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C6D8CE"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>кейс</p>
+          <h2 style="margin:0;font-size:clamp(32px,4vw,60px);font-weight:600;line-height:1;letter-spacing:-.04em;color:#FFFFFF">Актив в работе: от оценки до решения</h2>
+        </div>
+        <div style="position:absolute;right:22%;top:30%;display:flex;flex-direction:column;align-items:flex-end">
+          <span style="background:#FFFFFF;font-size:13px;font-weight:600;padding:9px 15px;border-radius:14px;margin-right:14px">Сценарий: —</span>
+          <span style="width:22px;height:22px;border-radius:50%;background:#A5E85C;border:5px solid #FFFFFF;margin-top:-6px"></span>
+        </div>
+      </div>
+      <div style="position:relative;margin:-120px clamp(12px,3vw,48px) 0 auto;max-width:520px;background:#FFFFFF;border-radius:32px;padding:clamp(22px,3vw,36px);box-shadow:0 20px 60px rgba(4,20,14,.18)">
+        <dl style="margin:0 0 20px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#EEF2EC;border-radius:18px;padding:14px 16px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">локация</dt><dd style="margin:6px 0 0;font-size:18px;font-weight:600">—</dd></div>
+          <div style="background:#EEF2EC;border-radius:18px;padding:14px 16px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">участок</dt><dd style="margin:6px 0 0;font-size:18px;font-weight:600">—</dd></div>
+          <div style="background:#EEF2EC;border-radius:18px;padding:14px 16px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">сценарий</dt><dd style="margin:6px 0 0;font-size:18px;font-weight:600">—</dd></div>
+          <div style="background:#EEF2EC;border-radius:18px;padding:14px 16px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">статус</dt><dd style="margin:6px 0 0;font-size:18px;font-weight:600">—</dd></div>
+          <div style="background:#EEF2EC;border-radius:18px;padding:14px 16px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">на входе</dt><dd style="margin:6px 0 0;font-size:18px;font-weight:600">—</dd></div>
+          <div style="background:#A5E85C;border-radius:18px;padding:14px 16px"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#25401B">эффективность</dt><dd style="margin:6px 0 0;font-size:18px;font-weight:600">—</dd></div>
+        </dl>
+        <p style="margin:0 0 22px;font-size:15px;line-height:1.55;color:#33463C">Исходные данные собственника, результат оценки, выбранный сценарий и итоговый показатель по активу. С цифрой на каждом шаге.</p>
+        <a href="#case" style="display:inline-flex;gap:10px;background:#04140E;color:#FFFFFF;font-size:14px;font-weight:600;padding:15px 22px;border-radius:999px" style-hover="background:#A5E85C;color:#04140E">Смотреть кейс целиком <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="founder" data-screen-label="10 Основатель" style="padding:clamp(64px,8vw,120px) clamp(16px,3vw,40px)">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,80px);align-items:center">
+      <div style="position:relative;max-width:560px;width:100%">
+        <div style="position:relative;aspect-ratio:3/4;border-radius:36px;overflow:hidden;background:#C9D3CC">
+          <img src="assets/team/alexey-sm.png" alt="Алексей Черезов, основатель компании «Культура девелопмента»" style="position:absolute;left:50%;bottom:0;height:92%;width:auto;max-width:none;transform:translateX(-50%);filter:grayscale(1) contrast(1.05)" />
+        </div>
+        <div style="position:absolute;right:clamp(-12px,-2vw,-40px);bottom:12%;max-width:300px;background:#FFFFFF;border-radius:28px 28px 28px 8px;padding:24px;box-shadow:0 20px 50px rgba(4,20,14,.16)">
+          <span style="display:flex;gap:6px;margin-bottom:14px"><span style="width:14px;height:14px;border-radius:50%;background:#A5E85C"></span><span style="width:14px;height:14px;border-radius:50%;background:#04140E"></span></span>
+          <p style="margin:0;font-size:16px;font-weight:600;line-height:1.4">Земля заказчика либо земля продавца. Разница только в том, кто в конце забирает прибыль проекта.</p>
+          <p style="margin:14px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">Алексей Черезов, основатель</p>
+        </div>
+      </div>
+      <div>
+        <h2 style="margin:0 0 24px;font-size:clamp(34px,4.4vw,64px);font-weight:600;line-height:1;letter-spacing:-.04em;max-width:13ch">Методика проверена собственными проектами</h2>
+        <p style="margin:0;font-size:17px;line-height:1.6;color:#33463C;max-width:46ch">Алексей Черезов — от инженерных расчётов к собственным девелоперским проектам. Модель, по которой оценивается ваш актив, создана компанией для своих решений и применяется в них до сих пор.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="11 Условия" style="padding:0 clamp(16px,3vw,40px) clamp(64px,8vw,120px)">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px 64px;align-items:start">
+      <h2 style="margin:0;font-size:clamp(34px,4.4vw,64px);font-weight:600;line-height:1;letter-spacing:-.04em">Условия работы</h2>
+      <div style="display:flex;flex-direction:column;gap:8px;grid-column:span 2;min-width:0">
+        <sc-for list="{{ faq }}" as="q" hint-placeholder-count="6">
+          <div style="background:{{ q.bg }};border-radius:24px;transition:background .25s">
+            <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;gap:18px;padding:20px 20px 20px 24px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62">{{ q.n }}</span>
+              <span style="flex:1;font-size:clamp(16px,1.4vw,19px);font-weight:600">{{ q.title }}</span>
+              <span style="flex:none;width:40px;height:40px;border-radius:50%;background:{{ q.btn }};display:flex;align-items:center;justify-content:center;font-size:18px">{{ q.sign }}</span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:0 80px 24px 58px;font-size:15px;line-height:1.6;color:#33463C">{{ q.body }}</p>
+            </sc-if>
+          </div>
         </sc-for>
       </div>
-    </section>
-  </div>
-
-  <section id="stages" style="max-width:1440px;margin:0 auto;padding:clamp(56px,9vw,130px) clamp(28px,4.2vw,56px)">
-    <p style="margin:0 0 22px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">04 — Жизненный цикл</p>
-    <h2 style="margin:0 0 22px;font-size:clamp(30px,4.6vw,76px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Где мы подключаемся</h2>
-    <p style="margin:0 0 clamp(36px,5vw,70px);font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:54ch">Три первые стадии — наша зона ответственности. Стройку и продажи ведёт застройщик, но их экономика закладывается до нас.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px">
-      <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
-        <div style="display:flex;flex-direction:column;background:{{ s.cardBg }};border:1px solid rgba(242,248,244,.14);padding:20px 18px 24px">
-          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:18px">
-            <span style="font-size:11px;font-weight:600;letter-spacing:.2em;color:{{ s.numColor }};font-variant-numeric:tabular-nums">{{ s.n }}</span>
-            <span style="font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:{{ s.tagColor }};text-align:right">{{ s.tag }}</span>
-          </div>
-          <div style="min-height:clamp(150px,15vw,190px);margin-bottom:20px;background-image:{{ s.bgImage }};background-size:contain;background-position:center bottom;background-repeat:no-repeat;filter:{{ s.filter }}"></div>
-          <h3 style="margin:0 0 10px;font-size:18px;font-weight:400;line-height:1.15;letter-spacing:-.025em;color:#FFFFFF">{{ s.title }}</h3>
-          <p style="margin:0;font-size:14px;font-weight:300;line-height:1.55;color:#8FA69C">{{ s.text }}</p>
-        </div>
-      </sc-for>
     </div>
   </section>
 
-  <section id="case" style="position:relative;min-height:min(100vh,940px);display:flex;align-items:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.97) 10%,rgba(4,20,14,.35) 58%,rgba(4,20,14,.55)),url('assets/renders/case-nsk.jpg');background-size:cover;background-position:center">
-    <div style="position:absolute;inset:clamp(16px,3vw,32px);pointer-events:none;border:1px solid rgba(242,248,244,.14)"></div>
-    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(56px,9vw,120px) clamp(28px,4.2vw,56px);box-sizing:border-box">
-      <p style="margin:0 0 20px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">Кейс · Новосибирск · 4,5 га</p>
-      <h2 style="margin:0 0 clamp(32px,5vw,60px);font-size:clamp(30px,5.2vw,92px);font-weight:400;line-height:.98;letter-spacing:-.045em;color:#FFFFFF;max-width:16ch">Один пересчёт, изменивший логику проекта</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,64px);align-items:start">
-        <div>
-          <p style="margin:0;font-size:clamp(42px,6vw,110px);font-weight:400;line-height:.9;letter-spacing:-.05em;color:#A5E85C;font-variant-numeric:tabular-nums">+1,2 млрд ₽</p>
-          <p style="margin:18px 0 0;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;line-height:1.6;color:#C6D8CE;max-width:28ch">Улучшение финансового результата на участке площадью 4,5 га</p>
+  <section id="contact" data-screen-label="12 Запрос оценки" style="padding:0 clamp(12px,2vw,24px) clamp(12px,2vw,24px)">
+    <div style="max-width:1440px;margin:0 auto;background:#A5E85C;border-radius:40px;padding:clamp(28px,5vw,72px) clamp(16px,4vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(32px,5vw,80px)">
+      <div style="display:flex;flex-direction:column">
+        <h2 style="margin:0 0 22px;font-size:clamp(38px,5vw,80px);font-weight:600;line-height:.98;letter-spacing:-.045em;max-width:10ch">Запросите оценку актива</h2>
+        <p style="margin:0 0 40px;font-size:17px;line-height:1.55;color:#1C3318;max-width:46ch;text-wrap:pretty">Достаточно кадастрового номера или адреса. В ответ вы получаете предварительную оценку: стоимость участка в текущем состоянии, стоимость в подготовленном виде и допущения, на которых построен расчёт. Запрос не влечёт обязательств и остаётся конфиденциальным.</p>
+        <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:rgba(255,255,255,.5);border-radius:18px;padding:14px 16px"><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#25401B">телефон</p><p style="margin:6px 0 0;font-size:16px;font-weight:600">—</p></div>
+          <div style="background:rgba(255,255,255,.5);border-radius:18px;padding:14px 16px"><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#25401B">почта</p><p style="margin:6px 0 0;font-size:16px;font-weight:600">—</p></div>
+          <div style="background:rgba(255,255,255,.5);border-radius:18px;padding:14px 16px"><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#25401B">адрес</p><p style="margin:6px 0 0;font-size:14px;font-weight:600;line-height:1.4">Киров, ул. Молодой Гвардии, 82, оф. 418</p></div>
+          <a href="https://t.me/culture_dev" style="background:#04140E;color:#FFFFFF;border-radius:18px;padding:14px 16px" style-hover="color:#A5E85C"><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8FA69C">telegram</p><p style="margin:6px 0 0;font-size:16px;font-weight:600">@culture_dev ↗</p></a>
         </div>
+      </div>
+      <form onSubmit="{{ submit }}" style="background:#FFFFFF;border-radius:32px;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:10px">
+        <label style="display:flex;flex-direction:column;gap:6px;background:#EEF2EC;border-radius:18px;padding:14px 18px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">имя</span><input value="{{ name }}" onChange="{{ onName }}" autocomplete="name" style="background:transparent;border:none;font-size:17px;outline:none;color:#04140E" /></label>
+        <label style="display:flex;flex-direction:column;gap:6px;background:#EEF2EC;border-radius:18px;padding:14px 18px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">телефон или почта</span><input value="{{ contact }}" onChange="{{ onContact }}" autocomplete="tel" style="background:transparent;border:none;font-size:17px;outline:none;color:#04140E" /></label>
+        <label style="display:flex;flex-direction:column;gap:6px;background:#EEF2EC;border-radius:18px;padding:14px 18px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">актив: кадастровый номер или адрес</span><input value="{{ plot }}" onChange="{{ onPlot }}" placeholder="43:40:000000:000" style="background:transparent;border:none;font-size:17px;outline:none;color:#04140E;font-family:'IBM Plex Mono',monospace" /></label>
+        <label style="display:flex;flex-direction:column;gap:6px;background:#EEF2EC;border-radius:18px;padding:14px 18px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">имеющиеся документы</span><textarea value="{{ docs }}" onChange="{{ onDocs }}" rows="2" style="background:transparent;border:none;font-size:17px;outline:none;resize:vertical;color:#04140E"></textarea></label>
+        <button type="submit" disabled="{{ disabled }}" style="margin-top:6px;background:#04140E;color:#FFFFFF;border:none;border-radius:999px;padding:18px 26px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center" style-hover="background:#1C3A2C">{{ buttonLabel }} <span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span></button>
+        <sc-if value="{{ statusText }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;font-weight:600;color:#2E6B12">{{ statusText }}</p></sc-if>
+        <p style="margin:4px 0 0;font-size:12px;line-height:1.5;color:#5B6B62">Нажимая кнопку, вы соглашаетесь с <a href="legal.dc.html" style="text-decoration:underline" style-hover="color:#04140E">политикой обработки персональных данных</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer style="padding:0 clamp(12px,2vw,24px) clamp(12px,2vw,24px)">
+    <div style="max-width:1440px;margin:0 auto;background:#04140E;color:#C6D8CE;border-radius:40px;padding:clamp(36px,5vw,72px) clamp(20px,4vw,64px) 28px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:36px 32px;padding-bottom:40px">
         <div style="display:flex;flex-direction:column;gap:18px">
-          <sc-for list="{{ caseItems }}" as="c" hint-placeholder-count="4">
-            <div style="border-top:1px solid rgba(242,248,244,.18);padding-top:14px">
-              <p style="margin:0 0 6px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A5E85C">{{ c.label }}</p>
-              <p style="margin:0;font-size:15px;font-weight:300;line-height:1.6;color:#E4EEE8">{{ c.text }}</p>
-            </div>
-          </sc-for>
+          <img src="assets/logo/culture-light.png" alt="Культура девелопмента" style="height:30px;width:auto;align-self:flex-start" />
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#8FA69C;max-width:28ch">Девелоперская экспертиза до того, как принято решение по активу.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5E7468">компетенции</p>
+          <a href="#scenarios" style="font-size:14px" style-hover="color:#A5E85C">Два сценария</a>
+          <a href="calculator.dc.html" style="font-size:14px" style-hover="color:#A5E85C">Калькулятор девелопера</a>
+          <a href="mim.dc.html" style="font-size:14px" style-hover="color:#A5E85C">МиМ</a>
+          <a href="priroda.dc.html" style="font-size:14px" style-hover="color:#A5E85C">Природа проектирования</a>
+          <a href="https://zokbpla.pro" style="font-size:14px" style-hover="color:#A5E85C">ЗОК от БПЛА ↗</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5E7468">компания</p>
+          <a href="#founder" style="font-size:14px" style-hover="color:#A5E85C">О компании</a>
+          <a href="#case" style="font-size:14px" style-hover="color:#A5E85C">Кейсы</a>
+          <a href="#contact" style="font-size:14px" style-hover="color:#A5E85C">Контакты</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0 0 4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5E7468">документы</p>
+          <a href="legal.dc.html" style="font-size:14px" style-hover="color:#A5E85C">Политика обработки данных</a>
+          <a href="legal.dc.html#consent" style="font-size:14px" style-hover="color:#A5E85C">Согласие на обработку</a>
+          <p style="margin:4px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:#5E7468">ИНН —<br />состав юрлиц на уточнении</p>
         </div>
       </div>
-      <p style="margin:clamp(28px,4vw,44px) 0 0;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#6E8479">Данные приведены для примера расчёта и не являются инвестиционной рекомендацией</p>
-    </div>
-  </section>
-
-  <section style="max-width:1440px;margin:0 auto;padding:clamp(56px,9vw,130px) clamp(28px,4.2vw,56px)">
-    <p style="margin:0 0 22px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">05 — Команда</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(30px,5vw,64px);align-items:center;margin-bottom:clamp(44px,7vw,86px)">
-      <div style="border:1px solid rgba(242,248,244,.14);background:#07200F;max-width:440px">
-        <img src="assets/team/alexey-sm.png" alt="Алексей Черезов" style="width:100%;height:auto;display:block" />
+      <div style="display:flex;flex-wrap:wrap;gap:8px;padding-bottom:28px">
+        <a href="calculator.dc.html" style="background:#FFFFFF;border-radius:20px;padding:12px 18px;display:flex;align-items:center" style-hover="background:#E8F7D6"><img src="assets/logo/calc-ink.png" alt="Калькулятор девелопера" style="height:28px;width:auto" /></a>
+        <a href="mim.dc.html" style="background:#FFFFFF;border-radius:20px;padding:12px 18px;display:flex;align-items:center" style-hover="background:#E8F7D6"><img src="assets/logo/mim-ink-clean.png" alt="МиМ — архитектурное бюро" style="height:28px;width:auto" /></a>
+        <a href="priroda.dc.html" style="background:#FFFFFF;border-radius:20px;padding:12px 18px;display:flex;align-items:center" style-hover="background:#E8F7D6"><img src="assets/logo/priroda-ink.png" alt="Природа проектирования" style="height:28px;width:auto" /></a>
       </div>
-      <div>
-        <p style="margin:0 0 18px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">Управляющий партнёр</p>
-        <h2 style="margin:0 0 28px;font-size:clamp(26px,3.4vw,54px);font-weight:400;line-height:1.02;letter-spacing:-.04em;color:#FFFFFF;max-width:18ch">Экспертиза не должна быть безликой</h2>
-        <p style="margin:0 0 24px;font-size:clamp(22px,2.6vw,38px);font-weight:400;line-height:1.16;letter-spacing:-.03em;color:#A5E85C;max-width:22ch">«Любое решение нужно переводить в деньги»</p>
-        <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;color:#A9BEB4;max-width:42ch">Алексей Черезов, управляющий партнёр «Культуры девелопмента». Инженер, продуктолог, девелопер.</p>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(242,248,244,.1);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5E7468">
+        <span>© 2026 Культура девелопмента</span>
+        <span>Киров, проекты по России</span>
+        <a href="https://t.me/culture_dev" style="color:#8FA69C" style-hover="color:#A5E85C">@culture_dev</a>
       </div>
-    </div>
-    <div style="display:flex;flex-direction:column;max-width:920px">
-      <sc-for list="{{ path }}" as="p" hint-placeholder-count="5">
-        <div style="display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:clamp(16px,3vw,40px);align-items:baseline;border-top:1px solid rgba(242,248,244,.12);padding:18px 0">
-          <p style="margin:0;font-size:clamp(17px,1.9vw,24px);font-weight:400;line-height:1.2;letter-spacing:-.025em;color:#FFFFFF">{{ p.label }}</p>
-          <p style="margin:0;font-size:15px;font-weight:300;line-height:1.6;color:#8FA69C">{{ p.text }}</p>
-        </div>
-      </sc-for>
-    </div>
-    <p style="margin:clamp(32px,5vw,60px) 0 0;font-size:16px;font-weight:300;line-height:1.6;color:#A9BEB4;max-width:52ch">Мы не содержим большую команду ради масштаба на фотографии. К каждому проекту подключаются те, кто действительно нужен для результата.</p>
-    <p style="margin:22px 0 0"><a href="https://bk43.ru/rubrics/article/iz-inzhenera-v-developera/" target="_blank" rel="noopener" style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A5E85C;border-bottom:1px solid rgba(165,232,92,.4);padding-bottom:3px" style-hover="color:#C7F291">«Из инженера — в девелопера» · Бизнес Класс, 2026 →</a></p>
-    <div style="display:flex;align-items:center;gap:44px;flex-wrap:wrap;margin-top:clamp(40px,6vw,72px);padding-top:clamp(30px,4vw,48px);border-top:1px solid rgba(242,248,244,.12)">
-      <img src="assets/logo/calc-light.png" alt="Калькулятор девелопера" style="width:200px;height:auto;opacity:.75" />
-      <img src="assets/logo/mim-light.png" alt="МиМ Архитектура и Исследование" style="width:120px;height:auto;opacity:.75" />
-      <img src="assets/logo/priroda-light.png" alt="Природа проектирования" style="width:155px;height:auto;opacity:.75" />
-    </div>
-  </section>
-
-  <section id="contact" style="position:relative;background-image:linear-gradient(to bottom,rgba(4,20,14,.86),rgba(4,20,14,.96)),url('assets/renders/contacts-aerial.png');background-size:cover;background-position:center;border-top:1px solid rgba(242,248,244,.12)">
-    <div style="max-width:1440px;margin:0 auto;padding:clamp(56px,9vw,130px) clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(36px,5vw,72px)">
-      <div>
-        <p style="margin:0 0 22px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">06 — Контакт</p>
-        <h2 style="margin:0 0 24px;font-size:clamp(32px,4.6vw,78px);font-weight:400;line-height:.98;letter-spacing:-.045em;color:#FFFFFF">Обсудим ваш участок</h2>
-        <p style="margin:0 0 40px;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:42ch">Расскажите об участке или идее — начнём с предметного разговора, без презентаций и обещаний.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;max-width:520px">
-          <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
-            <div style="background:#04140E;border:1px solid rgba(242,248,244,.14);padding:18px 16px">
-              <p style="margin:0 0 6px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">{{ c.label }}</p>
-              <p style="margin:0;font-size:16px;font-weight:400;line-height:1.45;color:#F2F8F4">{{ c.value }}</p>
-            </div>
-          </sc-for>
-        </div>
-      </div>
-      <div>
-        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-          <div style="padding:36px 0">
-            <p style="margin:0 0 12px;font-size:clamp(22px,2.6vw,34px);font-weight:400;line-height:1.15;letter-spacing:-.03em;color:#A5E85C">Заявка отправлена</p>
-            <p style="margin:0;font-size:16px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:34ch">Перезвоним в течение рабочего дня.</p>
-          </div>
-        </sc-if>
-        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;flex-direction:column;gap:20px;max-width:460px">
-            <div>
-              <label for="kd-name" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">Имя</label>
-              <input id="kd-name" type="text" placeholder="Как к вам обращаться" value="{{ name }}" onChange="{{ onName }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 16px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
-            </div>
-            <div>
-              <label for="kd-phone" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">Телефон</label>
-              <input id="kd-phone" type="tel" placeholder="+7 900 000-00-00" value="{{ phone }}" onChange="{{ onPhone }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 16px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
-            </div>
-            <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
-              <input type="checkbox" checked="{{ agree }}" onChange="{{ onAgree }}" style="width:18px;height:18px;margin:2px 0 0;accent-color:#A5E85C;flex:none" />
-              <span style="font-size:13px;font-weight:300;line-height:1.5;color:#8FA69C">Согласен на обработку персональных данных — <a href="legal.dc.html#consent" style="color:#A5E85C">согласие</a> и <a href="legal.dc.html#privacy" style="color:#A5E85C">политика</a></span>
-            </label>
-            <button type="button" onClick="{{ submit }}" disabled="{{ disabled }}" style="background:#A5E85C;color:#04140E;border:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:18px 24px;border-radius:4px;cursor:pointer;opacity:{{ btnOpacity }}" style-hover="background:#C7F291">{{ btnLabel }}</button>
-            <p style="margin:0;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6E8479">Разбор участка не является инвестиционной рекомендацией</p>
-          </div>
-        </sc-if>
-      </div>
-    </div>
-  </section>
-
-  <footer style="max-width:1440px;margin:0 auto;padding:clamp(36px,5vw,64px) clamp(28px,4.2vw,56px) clamp(44px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;border-top:1px solid rgba(242,248,244,.12)">
-    <div>
-      <img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block;margin-bottom:14px" />
-      <p style="margin:0;font-size:12px;font-weight:300;line-height:1.6;color:#6E8479">ООО «Культура девелопмента», ИНН 6685224585</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <a href="calculator.dc.html" style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA69C" style-hover="color:#A5E85C">Калькулятор девелопера</a>
-      <a href="mim.dc.html" style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA69C" style-hover="color:#A5E85C">МиМ «Архитектура и Исследование»</a>
-      <a href="priroda.dc.html" style="font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA69C" style-hover="color:#A5E85C">Природа проектирования</a>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <a href="tel:+79128268070" style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#8FA69C" style-hover="color:#A5E85C">+7 912 826-80-70</a>
-      <a href="mailto:468070@mail.ru" style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#8FA69C" style-hover="color:#A5E85C">468070@mail.ru</a>
-      <a href="https://t.me/culture_dev" target="_blank" rel="noopener" style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#8FA69C" style-hover="color:#A5E85C">@culture_dev</a>
     </div>
   </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;gbaPrice&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5340,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:3000,&quot;max&quot;:12000,&quot;step&quot;:10,&quot;unit&quot;:&quot;₽/м²&quot;,&quot;section&quot;:&quot;Модель участка&quot;},&quot;defaultScenario&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;базовый&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;осторожный&quot;,&quot;базовый&quot;,&quot;плотный&quot;],&quot;section&quot;:&quot;Модель участка&quot;}}">
+<script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { name: "", phone: "", agree: false, status: "idle", density: 0.5 };
-
-  PLOT_AREA = 28450;
-  PLOT_W = 192;
-  PLOT_H = 152;
-  PLOT = [[0, 0], [192, 0], [192, 112], [142, 152], [0, 152]];
-  SETBACK = [[6, 6], [186, 6], [186, 110], [140, 146], [6, 146]];
-  BLOCKS = [
-    { x: 10, y: 10, w: 86, h: 24, base: 9 },
-    { x: 104, y: 10, w: 78, h: 24, base: 7 },
-    { x: 158, y: 42, w: 24, h: 62, base: 6 },
-    { x: 22, y: 120, w: 98, h: 24, base: 10 },
-    { x: 10, y: 44, w: 24, h: 70, base: 8 }
-  ];
-
-  price() { return this.props.gbaPrice ?? 5340; }
-  floorsFor(d, base) { return Math.max(2, Math.round(base * (0.55 + d * 0.95))); }
-
+  state = { name: "", contact: "", plot: "", docs: "", status: "", stage: 0, faq: 0, stacked: false, sc: 1, sit: 0, sitOpen: -1 };
+  forkRef = React.createRef();
+  scenRef = React.createRef();
   componentDidMount() {
-    const sc = this.props.defaultScenario;
-    if (sc === "осторожный") this.setState({ density: 0.18 });
-    else if (sc === "плотный") this.setState({ density: 0.86 });
+    this.initMotion();
+    const se = this.scenRef.current;
+    if (se && window.IntersectionObserver) { this.io = new IntersectionObserver(es => { if (es[0].isIntersecting) { this.setState({ scVis: true }); this.io.disconnect(); } }, { threshold: 0, rootMargin: "0px 0px -20% 0px" }); setTimeout(() => { if (!this.state.scVis) this.setState({ scVis: true }); }, 4000); this.io.observe(se); } else this.setState({ scVis: true });
+    this.heroT = setInterval(() => this.setState(s => ({ heroStep: ((s.heroStep || 0) + 1) % 4 })), 2600);
+    this.restartComp();
+    this.auto = setInterval(() => { if (!this.state.paused) this.setState(s => ({ stage: (s.stage + 1) % 5 })); }, 6000);
+    const el = this.forkRef.current; if (!el || !window.ResizeObserver) return;
+    this.ro = new ResizeObserver(() => { const w = el.clientWidth, c = w >= 1100 ? 4 : (w >= 540 ? 2 : 1); if (c !== this.state.cols) this.setState({ cols: c }); });
+    this.ro.observe(el);
   }
-
-  model(d) {
-    let gba = 0, foot = 0, floors = [];
-    for (const b of this.BLOCKS) {
-      const area = b.w * b.h;
-      const f = this.floorsFor(d, b.base);
-      foot += area;
-      floors.push(f);
-      gba += area * f;
-    }
-    const avg = floors.reduce((a, b) => a + b, 0) / floors.length;
-    return {
-      gba: Math.round(gba / 100) * 100,
-      density: gba / this.PLOT_AREA,
-      floors: avg,
-      foot: Math.round(foot),
-      price: gba * this.price()
-    };
+  initMotion(tries = 0) {
+    const g = window.gsap, ST = window.ScrollTrigger, SP = window.SplitText;
+    if (!g || !ST) { if (tries < 40) setTimeout(() => this.initMotion(tries + 1), 150); return; }
+    g.registerPlugin(ST); if (SP) g.registerPlugin(SP);
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    this.gctx = g.context(() => {
+      const hero = document.querySelector('[data-g="hero"]');
+      const h1 = hero && hero.querySelector("h1");
+      if (h1) g.from(h1, { y: 24, opacity: 0, duration: 1.1, ease: "power3.out", delay: .1 });
+      const hl = document.querySelector('[data-g="hl"]');
+      if (hl) g.fromTo(hl, { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: 1, ease: "power3.inOut", delay: .6 });
+      const media = document.querySelector('[data-g="heroMedia"]');
+      if (media) g.from(media, { opacity: 0, scale: .98, duration: 1.2, ease: "power3.out", delay: .2 });
+      document.querySelectorAll("section h2").forEach(el => g.from(el, { y: 24, opacity: 0, duration: .9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } }));
+      const route = document.querySelector("#route");
+      if (route) route.querySelectorAll('[data-g="bracket"]').forEach((br, i) => g.from(br, { clipPath: "inset(0 100% 0 0)", duration: 1.1, ease: "power3.inOut", delay: .2 + i * .2, scrollTrigger: { trigger: br, start: "top 92%", once: true } }));
+    });
+    setTimeout(() => ST.refresh(), 600);
   }
-
-  _gen = 0;
-  setCanvas = (el) => {
-    if (el === this.canvas) return;
-    this.canvas = el;
-    if (!el) return;
-    if (this._ro) { this._ro.disconnect(); this._ro = null; }
-    this._gen++;
-    this.startPlan();
-    if (!this._watchdog) {
-      this._watchdog = setInterval(() => {
-        const cv = this.canvas;
-        if (!cv || !cv.isConnected) return;
-        if (!this._lastFrame || performance.now() - this._lastFrame > 900) { this._gen++; this.startPlan(); }
-      }, 700);
-    }
-  };
-
   componentWillUnmount() {
-    this._gen++;
-    if (this._ro) { this._ro.disconnect(); this._ro = null; }
-    if (this._watchdog) { clearInterval(this._watchdog); this._watchdog = null; }
-    if (this._tick) { clearInterval(this._tick); this._tick = null; }
-    this.canvas = null;
-  }
-
-  startPlan() {
-    const cv = this.canvas;
-    if (!cv) return;
-    const ctx = cv.getContext("2d");
-    const host = cv.parentElement || cv;
-    const P = this.PLOT, B = this.BLOCKS;
-    let w = 0, h = 0, k = 1, px = 0, py = 0;
-
-    const build = () => {
-      const r = host.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = Math.max(1, Math.round(r.width) || 560);
-      h = Math.max(1, Math.round(r.height) || 420);
-      cv.width = w * dpr; cv.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const padX = Math.max(46, w * 0.09), padY = Math.max(46, h * 0.12);
-      k = Math.min((w - padX * 2) / this.PLOT_W, (h - padY * 2) / this.PLOT_H);
-      px = (w - this.PLOT_W * k) / 2;
-      py = (h - this.PLOT_H * k) / 2;
-    };
-    const safeBuild = () => { try { build(); } catch (e) { console.warn("plan build failed", e); } };
-    safeBuild();
-
-    let tries = 0;
-    const settle = () => {
-      if (cv !== this.canvas) return;
-      const r = host.getBoundingClientRect();
-      if (r.width > 1 && r.height > 1) { safeBuild(); return; }
-      if (tries++ < 120) requestAnimationFrame(settle);
-    };
-    requestAnimationFrame(settle);
-    try { this._ro = new ResizeObserver(safeBuild); this._ro.observe(host); }
-    catch (e) { console.warn("ResizeObserver unavailable", e); }
-
-    if (!this._bound) {
-      this._bound = true;
-      const setFromX = (clientX) => {
-        const r = host.getBoundingClientRect();
-        this.setState({ density: Math.min(1, Math.max(0, (clientX - r.left) / r.width)) });
-      };
-      host.addEventListener("pointerdown", (e) => { this._drag = true; host.setPointerCapture(e.pointerId); setFromX(e.clientX); });
-      host.addEventListener("pointermove", (e) => { if (this._drag) setFromX(e.clientX); });
-      host.addEventListener("pointerup", () => { this._drag = false; });
-      host.addEventListener("pointercancel", () => { this._drag = false; });
-    }
-
-    const X = (x) => px + x * k, Y = (y) => py + y * k;
-    const poly = (pts) => {
-      ctx.beginPath();
-      pts.forEach((pt, i) => (i ? ctx.lineTo(X(pt[0]), Y(pt[1])) : ctx.moveTo(X(pt[0]), Y(pt[1]))));
-      ctx.closePath();
-    };
-    const gen = this._gen, t0 = performance.now();
-
-    const paint = (t) => {
-      if (gen !== this._gen || cv !== this.canvas) return false;
-      this._lastFrame = t;
-      const el = (t - t0) / 1000, d = this.state.density;
-      ctx.clearRect(0, 0, w, h);
-
-      ctx.strokeStyle = "rgba(242,248,244,.05)";
-      ctx.lineWidth = 1;
-      for (let x = 0; x < w; x += 30) { ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, h); ctx.stroke(); }
-      for (let y = 0; y < h; y += 30) { ctx.beginPath(); ctx.moveTo(0, y + .5); ctx.lineTo(w, y + .5); ctx.stroke(); }
-
-      ctx.save();
-      poly(P); ctx.clip();
-      ctx.fillStyle = "rgba(165,232,92,.045)";
-      ctx.fillRect(0, 0, w, h);
-      ctx.strokeStyle = "rgba(165,232,92,.1)";
-      for (let x = 0; x <= this.PLOT_W; x += 20) { ctx.beginPath(); ctx.moveTo(X(x), Y(-20)); ctx.lineTo(X(x), Y(this.PLOT_H + 20)); ctx.stroke(); }
-      for (let y = 0; y <= this.PLOT_H; y += 20) { ctx.beginPath(); ctx.moveTo(X(-20), Y(y)); ctx.lineTo(X(this.PLOT_W + 20), Y(y)); ctx.stroke(); }
-      ctx.restore();
-
-      poly(P);
-      ctx.strokeStyle = "rgba(242,248,244,.5)";
-      ctx.lineWidth = 1.4;
-      ctx.stroke();
-
-      ctx.save();
-      ctx.setLineDash([4, 5]);
-      ctx.strokeStyle = "rgba(242,248,244,.3)";
-      ctx.lineWidth = 1;
-      poly(this.SETBACK);
-      ctx.stroke();
-      ctx.restore();
-
-      for (const b of B) {
-        const target = this.floorsFor(d, b.base);
-        b.cur = b.cur == null ? target : b.cur + (target - b.cur) * 0.16;
-        const f = b.cur;
-        const lift = Math.min(1, Math.max(0, (f - 3) / 15));
-        const x0 = X(b.x), y0 = Y(b.y), bw = b.w * k, bh = b.h * k;
-
-        ctx.fillStyle = "rgba(165,232,92," + (0.14 + lift * 0.68).toFixed(3) + ")";
-        ctx.fillRect(x0, y0, bw, bh);
-
-        ctx.save();
-        ctx.beginPath(); ctx.rect(x0, y0, bw, bh); ctx.clip();
-        ctx.strokeStyle = "rgba(4,20,14,.22)";
-        ctx.lineWidth = 1;
-        const along = bw >= bh ? bw : bh;
-        const step = Math.max(7, along / Math.max(4, Math.round(f)));
-        for (let s = step; s < along; s += step) {
-          ctx.beginPath();
-          if (bw >= bh) { ctx.moveTo(x0 + s, y0); ctx.lineTo(x0 + s, y0 + bh); }
-          else { ctx.moveTo(x0, y0 + s); ctx.lineTo(x0 + bw, y0 + s); }
-          ctx.stroke();
-        }
-        ctx.restore();
-
-        ctx.strokeStyle = "rgba(199,242,145,.95)";
-        ctx.lineWidth = 1.1;
-        ctx.strokeRect(x0 + .5, y0 + .5, bw - 1, bh - 1);
-
-        if (bw > 46 && bh > 20) {
-          ctx.fillStyle = lift > 0.45 ? "#04140E" : "#F2F8F4";
-          ctx.font = "600 " + Math.max(10, Math.min(13, Math.min(bh, bw) * 0.34)) + "px Manrope, sans-serif";
-          ctx.textAlign = "center";
-          ctx.textBaseline = "middle";
-          ctx.fillText(Math.round(f) + " ЭТ", x0 + bw / 2, y0 + bh / 2);
-        }
-      }
-
-      const sy = Y(((el * 24) % (this.PLOT_H + 80)) - 40);
-      ctx.save();
-      poly(P); ctx.clip();
-      const grad = ctx.createLinearGradient(0, sy - 34, 0, sy + 34);
-      grad.addColorStop(0, "rgba(165,232,92,0)");
-      grad.addColorStop(0.5, "rgba(165,232,92,.14)");
-      grad.addColorStop(1, "rgba(165,232,92,0)");
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, sy - 34, w, 68);
-      ctx.restore();
-
-      ctx.strokeStyle = "rgba(242,248,244,.3)";
-      ctx.fillStyle = "rgba(242,248,244,.6)";
-      ctx.lineWidth = 1;
-      ctx.font = "600 10px Manrope, sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "alphabetic";
-      const dy = Y(this.PLOT_H) + 22;
-      ctx.beginPath(); ctx.moveTo(X(0), dy); ctx.lineTo(X(this.PLOT_W), dy); ctx.stroke();
-      [0, this.PLOT_W].forEach((x) => { ctx.beginPath(); ctx.moveTo(X(x), dy - 4); ctx.lineTo(X(x), dy + 4); ctx.stroke(); });
-      ctx.fillText(Math.round(this.PLOT_W) + " М", X(this.PLOT_W / 2), dy + 15);
-
-      ctx.save();
-      ctx.translate(X(0) - 22, Y(this.PLOT_H / 2));
-      ctx.rotate(-Math.PI / 2);
-      ctx.beginPath(); ctx.moveTo(-this.PLOT_H * k / 2, 0); ctx.lineTo(this.PLOT_H * k / 2, 0); ctx.stroke();
-      ctx.fillText(Math.round(this.PLOT_H) + " М", 0, -7);
-      ctx.restore();
-
-      ctx.textAlign = "left";
-      ctx.fillStyle = "rgba(165,232,92,.8)";
-      ctx.font = "600 10px Manrope, sans-serif";
-      ctx.fillText("ГРАНИЦА · ПЯТНО ЗАСТРОЙКИ · ЭТАЖНОСТЬ", X(0), Y(0) - 13);
-      return true;
-    };
-
-    const loop = (t) => { if (paint(t || performance.now())) requestAnimationFrame(loop); };
-    paint(performance.now());
-    requestAnimationFrame(loop);
-    if (this._tick) clearInterval(this._tick);
-    this._tick = setInterval(() => {
-      if (gen !== this._gen) { clearInterval(this._tick); return; }
-      const now = performance.now();
-      if (now - (this._lastFrame || 0) > 60) paint(now);
-    }, 60);
-  }
-
-  submit = async () => {
-    if (!this.state.name.trim() || !this.state.phone.trim() || !this.state.agree) return;
+    if (this.gctx) this.gctx.revert();
+    if (this.lenis) { window.gsap && window.gsap.ticker.remove(this.lenisTick); this.lenis.destroy(); } if (this.ro) this.ro.disconnect(); clearInterval(this.auto); clearInterval(this.compAuto); clearInterval(this.heroT); }
+  restartComp() { clearInterval(this.compAuto); this.compAuto = setInterval(() => { if (!this.state.compPaused) this.setState(s => ({ comp: ((s.comp || 0) + 1) % 3 })); }, 7000); }
+  restartAuto() { clearInterval(this.auto); this.auto = setInterval(() => { if (!this.state.paused) this.setState(s => ({ stage: (s.stage + 1) % 5 })); }, 6000); }
+  async send(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const s = this.state;
+    if (!s.name.trim() || !s.contact.trim()) { this.setState({ status: "error-empty" }); return; }
     this.setState({ status: "sending" });
     try {
-      const r = await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: this.state.name, phone: this.state.phone, page: document.title || location.pathname }) });
+      const r = await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: s.name, phone: s.contact, plot: s.plot, docs: s.docs, page: "Главная" }) });
       if (!r.ok) throw new Error(String(r.status));
-      this.setState({ status: "sent" });
-    } catch (e) { this.setState({ status: "error" }); }
-  };
-
-  fmt(n) { return Math.round(n).toLocaleString("ru-RU").replace(/\u00a0/g, " "); }
-
+      this.setState({ status: "sent", name: "", contact: "", plot: "", docs: "" });
+    } catch (err) { this.setState({ status: "error" }); }
+  }
   renderVals() {
-    const s = this.state;
-    const ready = s.name.trim() && s.phone.trim() && s.agree;
-    const m = this.model(s.density);
-    const presetVals = [0.18, 0.5, 0.86];
+    const st = this.state.status;
+    const set = k => e => this.setState({ [k]: e.target.value, status: st === "sent" ? "" : st });
+    const texts = { "error-empty": "Укажите имя и телефон или почту.", sent: "Запрос у нас. Вернёмся с предварительной оценкой.", error: "Не отправилось. Напишите в Telegram: @culture_dev" };
+    const S = [
+      { n: "01", title: "Допроектный этап", sub: "решение о покупке и цене", tasks: ["Оценка рынка и локации", "Проверка потенциала", "Финмодель на этапе идеи", "Проектное решение о покупке"], result: "Решение о покупке и цена", img: "assets/renders/stage-land-sm.png", href: "calculator.dc.html", logo: "assets/logo/calc-ink.png", who: "Калькулятор девелопера" },
+      { n: "02", title: "Предпроектный этап", sub: "продукт и экономика проекта", tasks: ["Концепция продукта", "Анализ конкурентов", "Градостроительный анализ", "Финмодель проекта"], result: "Продукт и экономика, готовые к проектированию", img: "assets/renders/stage-masterplan-sm.png", href: "mim.dc.html", logo: "assets/logo/mim-ink-clean.png", who: "МиМ" },
+      { n: "03", title: "Проектный этап", sub: "документация, экспертиза и РНС", tasks: ["Архитектурные решения", "Проектная документация", "Экспертиза и согласования", "Финмодель под проект"], result: "РНС и готовность к старту продаж", img: "assets/renders/stage-planning-sm.png", href: "priroda.dc.html", logo: "assets/logo/priroda-ink.png", who: "Природа проектирования" },
+      { n: "04", title: "Строительство", sub: "генподрядчик под нашим управлением", tasks: ["Строительство", "ПНР", "Контроль качества"], result: "Контроль сроков и бюджета", img: "assets/renders/crane-cut.png", href: "", logo: "", who: "генподрядчик под нашим контролем" },
+      { n: "05", title: "Продажи", sub: "вывод на рынок в собственном проекте", tasks: ["Маркетинг и продажи", "Управление ценообразованием", "Сопровождение"], result: "Пересчёт модели и ключевые решения", img: "assets/renders/stage-finance-sm.png", href: "", logo: "", who: "в собственном проекте" }
+    ];
+    const sc = this.state.sc, s1 = sc === 1;
+    const SC = [
+      { tag: "сценарий 01 · продажа", title: "Выход из актива по цене проекта", text: "Приводим документы и параметры застройки в состояние, при котором участок оценивается как подготовленный проект, а не как земля. Формируем круг профильных покупателей и ведём сделку до подписания.", key: "Собственник не финансирует подготовку: наш интерес реализуется в сделке." },
+      { tag: "сценарий 02 · собственный проект", title: "Девелоперская маржа остаётся у собственника", text: "Принимаем функции технического заказчика: финансовая модель, архитектура, проектная документация, разрешения, вывод на рынок и продажи. Строительство ведёт генподрядчик под нашим управлением.", key: "Актив и прибыль остаются у вас. Ответственность за сроки и бюджет — на нас." }
+    ][sc];
+    const bars = [
+      { n: "01", label: "Участок как есть", h: "30%", bg: "#2A4A3A", border: "none", numFg: "#C6D8CE", labelFg: "#C6D8CE", callout: "", cBg: "#FFFFFF", cFg: "#04140E", cDot: "#A5E85C" },
+      { n: "02", label: "Подготовленный проект", h: "58%", bg: s1 ? "#2A4A3A" : "#FFFFFF", border: "none", numFg: s1 ? "#C6D8CE" : "#04140E", labelFg: s1 ? "#C6D8CE" : "#FFFFFF", callout: s1 ? "" : "продаёте здесь", cBg: "#FFFFFF", cFg: "#04140E", cDot: "#A5E85C" },
+      { n: "03", label: "Введённый объект", h: "100%", bg: s1 ? "#A5E85C" : "repeating-linear-gradient(135deg,rgba(242,248,244,.07) 0 8px,transparent 8px 16px)", border: s1 ? "none" : "2px dashed rgba(242,248,244,.25)", numFg: s1 ? "#04140E" : "#9DB3A8", labelFg: s1 ? "#A5E85C" : "#9DB3A8", callout: s1 ? "маржа остаётся у вас" : "маржу забирает покупатель", cBg: s1 ? "#FFFFFF" : "#2A4A3A", cFg: s1 ? "#04140E" : "#D5E2DA", cDot: s1 ? "#A5E85C" : "#9DB3A8" }
+    ];
+    const CMP = [
+      ["кто финансирует подготовку", "не собственник — наш интерес в сделке", "собственник, под нашим управлением"],
+      ["кто забирает маржу", "покупатель участка", "собственник"],
+      ["вознаграждение", "процент со сделки", "плата за управление и доля в чистом доходе"]
+    ];
+    const compare = CMP.map((r, i) => ({ label: r[0], v0: r[1], v1: r[2], top: i ? "1px solid rgba(242,248,244,.08)" : "none",
+      bg0: !s1 ? "#FFFFFF" : "transparent", fg0: !s1 ? "#04140E" : "#7F978B",
+      bg1: s1 ? "#A5E85C" : "transparent", fg1: s1 ? "#04140E" : "#7F978B" }));
+    const scen = {
+      sc0: !s1, sc1: s1, pick0: () => this.setState({ sc: 0 }), pick1: () => this.setState({ sc: 1 }),
+      knobX: s1 ? "translateX(100%)" : "translateX(0)", knobBg: s1 ? "#A5E85C" : "#FFFFFF",
+      tab0Fg: s1 ? "#C6D8CE" : "#04140E", tab1Fg: s1 ? "#04140E" : "#C6D8CE",
+      cardBg: s1 ? "#A5E85C" : "#FFFFFF", cardFg: "#04140E", cardMuted: s1 ? "#2C4A1F" : "#5B6B62", cardBody: s1 ? "#15290F" : "#2A3D33",
+      calloutBg: "#04140E", calloutFg: "#FFFFFF",
+      cardTag: SC.tag, cardTitle: SC.title, cardText: SC.text, cardKey: SC.key, bars, compare
+    };
+    const SIT = [
+      ["01", "Коммерческая недвижимость с падающей доходностью", "коммерция", "Арендные ставки не растут, вакансия увеличивается.", "Причина, как правило, не в состоянии отделки, а в параметрах самого здания.", "реновация и надстройка", "assets/renders/case-nsk.jpg"],
+      ["02", "Участок без спроса со стороны застройщиков", "участок без спроса", "Интерес есть, предложений нет.", "Ограничение обычно не в цене, а в документах: по текущим параметрам рентабельный продукт не выходит.", "новые параметры застройки", "assets/renders/plot-aerial.jpg"],
+      ["03", "Промышленная территория в городской черте", "промзона", "Производство выведено, земля сохранена.", "При смене назначения стоимость меняется в разы — вопрос в сроках и порядке перевода.", "смена назначения", "assets/renders/hero-aerial.jpg"],
+      ["04", "Участие в торгах и аукционах КРТ", "торги и КРТ", "Нужен верхний предел ставки, при котором проект остаётся рентабельным.", "Считаем его с обоснованием допущений.", "верхний предел ставки", "assets/renders/masterplan-aerial.jpg"]
+    ];
+    const si = this.state.sit, cs = SIT[si];
+    const hov = this.state.sitOpen;
+    const sits = SIT.map((x, i) => { const o = hov === i; return { n: x[0], title: x[1], symptom: x[3], cause: x[4], sc: x[5],
+      symOp: o ? 0 : 1, panelY: o ? "translateY(0)" : "translateY(calc(100% - 62px))",
+      panelBg: o ? "#04140E" : "rgba(4,20,14,.05)", panelFg: o ? "#FFFFFF" : "#04140E", arrowBg: o ? "#A5E85C" : "#FFFFFF", arrowFg: "#04140E",
+      cardShadow: o ? "0 30px 60px rgba(4,20,14,.12)" : "0 10px 30px rgba(4,20,14,.04)", cardLift: o ? "translateY(-6px)" : "translateY(0)", arrowRot: o ? "rotate(180deg)" : "rotate(0)",
+      peek: o ? "в чём на самом деле причина" : "что скрыто",
+      pick: () => this.setState({ sitOpen: i }), unpick: () => this.setState({ sitOpen: -1 }),
+      toggle: () => this.setState({ sitOpen: o ? -1 : i }) }; });
+    const tl = this.state.tl || {};
+    const mkMove = k => e => { const r = e.currentTarget.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; this.setState({ tl: { ...this.state.tl, [k]: { x, y } } }); };
+    const mkLeave = k => () => this.setState({ tl: { ...this.state.tl, [k]: null } });
+    const tf = p => p ? "rotateX(" + ((0.5 - p.y) * 7).toFixed(2) + "deg) rotateY(" + ((p.x - 0.5) * 9).toFixed(2) + "deg)" : "rotateX(0deg) rotateY(0deg)";
+    const gl = p => p ? "radial-gradient(600px circle at " + (p.x * 100).toFixed(1) + "% " + (p.y * 100).toFixed(1) + "%,rgba(255,255,255,.14),transparent 45%)" : "transparent";
+    const tilt = {};
+    const E = React.createElement;
+    tilt.heroImg = E("img", { key: "hi", src: "assets/renders/masterplan-aerial.jpg", alt: "Мастер-план квартала с воздуха: жилые корпуса, дворы и улицы на участке", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", animation: "cdKen 30s ease-in-out infinite alternate" } });
+    tilt.heroScan = E("span", { key: "hs", "aria-hidden": true, style: { position: "absolute", left: 0, right: 0, height: "120px", background: "linear-gradient(180deg,transparent,rgba(165,232,92,.18) 70%,rgba(165,232,92,.9) 98%,transparent)", borderBottom: "1px solid #A5E85C", boxShadow: "0 8px 24px rgba(165,232,92,.5)", mixBlendMode: "screen", animation: "cdScan 5.5s cubic-bezier(.4,0,.2,1) infinite", pointerEvents: "none" } });
+    tilt.heroPlot = E("svg", { key: "hp", viewBox: "0 0 100 100", preserveAspectRatio: "none", "aria-hidden": true, style: { position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" } },
+      E("polygon", { points: "24,30 62,26 70,58 30,64", fill: "rgba(165,232,92,.14)", stroke: "#A5E85C", strokeWidth: 2, vectorEffect: "non-scaling-stroke", strokeDasharray: "10 6", style: { animation: "cdDash 2.4s linear infinite", filter: "drop-shadow(0 0 6px rgba(165,232,92,.8))" } }),
+      ...[[24,30],[62,26],[70,58],[30,64]].map((p, k) => E("circle", { key: "c" + k, cx: p[0], cy: p[1], r: 0.9, fill: "#FFFFFF", stroke: "#A5E85C", strokeWidth: 2, vectorEffect: "non-scaling-stroke" })));
+    const ping = k => E("span", { key: "pg" + k, style: { position: "relative", width: "18px", height: "18px", marginTop: "-5px" } },
+      E("span", { style: { position: "absolute", inset: 0, borderRadius: "50%", border: "1px solid rgba(255,255,255,.9)", animation: "cdPing 2.8s ease-out " + (k * 1.4) + "s infinite" } }),
+      E("span", { style: { position: "absolute", inset: 0, borderRadius: "50%", background: "#A5E85C", border: "4px solid #FFFFFF" } }));
+    tilt.heroStepName = ["Расчёт", "Концепция", "Документация", "Разрешение"][this.state.heroStep || 0]; tilt.heroPing0 = ping(0); tilt.heroPing1 = ping(1);
+    const hs = this.state.heroStep || 0;
+    tilt.heroSteps = ["Расчёт", "Концепция", "Документация", "Разрешение"].map((t, i) => { const done = i < hs, on = i === hs; return { t,
+      mark: done ? "✓" : String(i + 1), bg: on ? "rgba(165,232,92,.28)" : "rgba(255,255,255,.08)", dotBg: on || done ? "#A5E85C" : "rgba(255,255,255,.35)",
+      wBar: on ? "28px" : "10px", glow: "none", fg: on || done ? "#FFFFFF" : "rgba(255,255,255,.75)", w: on ? 700 : 500 }; });
+    const CM = [
+      { n: "01", tag: "оценка", name: "Калькулятор девелопера", logo: "assets/logo/calc-ink.png", href: "calculator.dc.html", img: "assets/renders/stage-finance-sm.png", alt: "Объёмная модель показателей проекта", text: "Объём застройки, выход продаваемой площади, прогноз цены реализации и верхний предел цены входа в землю. Пять параметров — один экран с решением.", calls: ["объём застройки", "прогноз цены реализации", "предел цены входа в землю"] },
+      { n: "02", tag: "архитектура", name: "МиМ · архитектура и исследование", logo: "assets/logo/mim-ink-clean.png", href: "mim.dc.html", img: "assets/renders/stage-masterplan-sm.png", alt: "Макет квартала: жилые секции и двор", text: "Планировочные решения с контролем эффективности площади: транзитные зоны строятся за счёт собственника, а продаются покупателю только полезные метры.", calls: ["контроль эффективности площади", "транзитные зоны", "только полезные метры"] },
+      { n: "03", tag: "проектирование", name: "Природа проектирования", logo: "assets/logo/priroda-ink.png", href: "priroda.dc.html", img: "assets/renders/stage-planning-sm.png", alt: "Макет проекта на подложке с чертежом", text: "Проектная и рабочая документация до положительного заключения и РНС. Основные потери бюджета возникают на этой стадии — на доработках и повторных согласованиях.", calls: ["проектная и рабочая документация", "положительное заключение", "РНС"] }
+    ];
+    const ci = this.state.comp || 0, cp = !!this.state.compPaused;
+    const POS = [{ x: "5%", y: "12%", align: "flex-start" }, { x: "auto", y: "24%", align: "flex-end", right: true }, { x: "7%", y: "48%", align: "flex-start" }];
+    tilt.comps = CM.map((c, i) => { const o = ci === i; return { n: c.n, tag: c.tag, name: c.name, logo: c.logo, img: c.img, open: o, hidden: !o,
+      thumbBg: o ? "rgba(165,232,92,.16)" : "rgba(255,255,255,.04)", thumbFilter: o ? "drop-shadow(0 6px 10px rgba(0,0,0,.5))" : "grayscale(1) opacity(.5)",
+      logoFilter: "brightness(0) invert(1)", logoOp: o ? 1 : 0.32, logoScale: o ? "scale(1.04)" : "scale(1)",
+      bg: o ? "linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015))" : "transparent", bd: o ? "rgba(255,255,255,.12)" : "rgba(255,255,255,.05)", shadow: o ? "inset 0 1px 0 rgba(255,255,255,.12)" : "none",
+      numFg: o ? "#FFFFFF" : "transparent", stroke: o ? "0" : "1px rgba(255,255,255,.22)", tagFg: o ? "#C7F291" : "#6F857A", titleFg: o ? "#FFFFFF" : "#9DB3A8",
+      prog: o && !cp ? "100%" : "0%", progT: o && !cp ? "width 7s linear" : "none", 
+      op: o ? 1 : 0, callT: o ? "translateY(0)" : "translateY(8px)",
+      callouts: c.calls.map((t, j) => ({ t, x: POS[j].right ? "58%" : POS[j].x, y: POS[j].y, align: POS[j].align, delay: (0.35 + j * 0.12) + "s" })),
+      pick: () => { this.setState({ comp: i }); this.restartComp(); } }; });
+    tilt.compCur = CM[ci];
+    const mp = this.state.compM || { x: 0, y: 0 };
+    tilt.compMove = e => { const r = e.currentTarget.getBoundingClientRect(); this.setState({ compM: { x: (e.clientX - r.left) / r.width - 0.5, y: (e.clientY - r.top) / r.height - 0.5 } }); };
+    tilt.compLeave = () => this.setState({ compM: { x: 0, y: 0 } });
+    tilt.compPxCall = "translate(" + (mp.x * 6).toFixed(1) + "px," + (mp.y * 4).toFixed(1) + "px)";
+    const pxObj = "translate(" + (mp.x * -10).toFixed(1) + "px," + (mp.y * -6).toFixed(1) + "px) rotateY(" + (mp.x * 4).toFixed(1) + "deg) rotateX(" + (mp.y * -3).toFixed(1) + "deg)";
+    const pxWm = "translate(" + (mp.x * 30).toFixed(1) + "px," + (mp.y * 20).toFixed(1) + "px)";
+    tilt.compWatermark = React.createElement("span", { key: "wm" + ci, "aria-hidden": true, style: { position: "absolute", left: "50%", top: "40%", transform: "translate(-50%,-50%) " + pxWm, transition: "transform .8s cubic-bezier(.2,.7,.2,1)", fontSize: "clamp(220px,26vw,380px)", fontWeight: 700, letterSpacing: "-.07em", lineHeight: 1, color: "transparent", WebkitTextStroke: "1px rgba(165,232,92,.14)", animation: "cdFadeIn 1.2s ease both", pointerEvents: "none" } }, CM[ci].n);
+    tilt.compDust = React.createElement("span", { key: "dust", "aria-hidden": true, style: { position: "absolute", inset: 0, pointerEvents: "none" } },
+      [[22, 3.2, 0, 9], [34, 2, 2.5, 11], [48, 2.6, 5, 10], [61, 1.8, 1.2, 12], [72, 3, 3.6, 9.5], [84, 2.2, 6.4, 13], [40, 1.6, 7.8, 10.5], [66, 2.4, 8.6, 11.5]].map((d, k) =>
+        React.createElement("span", { key: k, style: { position: "absolute", left: d[0] + "%", bottom: "28%", width: d[1] + "px", height: d[1] + "px", borderRadius: "50%", background: "#C7F291", boxShadow: "0 0 8px #A5E85C", animation: "cdRiseDust " + d[3] + "s linear " + (-d[2]) + "s infinite" } })));
+    tilt.compPause = () => this.setState({ compPaused: true }); tilt.compResume = () => { this.setState({ compPaused: false }); this.restartComp(); };
+    tilt.compRing = React.createElement("span", { key: "ring", "aria-hidden": true, style: { position: "absolute", left: "50%", top: "40%", width: "min(66%,520px)", aspectRatio: "1", transform: "translate(-50%,-50%)", borderRadius: "50%", background: "conic-gradient(from 0deg,transparent 0deg,rgba(165,232,92,.55) 40deg,transparent 90deg,transparent 180deg,rgba(255,255,255,.25) 220deg,transparent 270deg)", WebkitMask: "radial-gradient(circle,transparent 66%,#000 67%,#000 68%,transparent 69%)", mask: "radial-gradient(circle,transparent 66%,#000 67%,#000 68%,transparent 69%)", animation: "cdSpin 18s linear infinite" } });
+    tilt.compObjects = CM.map((c, i) => React.createElement("span", { key: "co" + i, style: { position: "absolute", left: "50%", top: "40%", width: "min(50%,400px)", aspectRatio: "1", transform: "translate(-50%,-50%) perspective(900px) " + (ci === i ? pxObj + " scale(1)" : "scale(1.06)"), opacity: ci === i ? 1 : 0, filter: ci === i ? "blur(0)" : "blur(14px)", transition: "opacity 1s cubic-bezier(.4,0,.2,1), filter 1s cubic-bezier(.4,0,.2,1), transform 1.2s cubic-bezier(.2,.7,.2,1)", pointerEvents: "none" } },
+      React.createElement("img", { src: c.img, alt: c.alt, style: { width: "100%", height: "100%", objectFit: "contain", display: "block", filter: "drop-shadow(0 40px 50px rgba(0,0,0,.6))", animation: "cdFloatSoft 9s ease-in-out infinite" } })));
+    const LP = [[16, 18], [80, 30], [18, 54]];
+    tilt.compLines = React.createElement("svg", { key: "cl", viewBox: "0 0 100 100", preserveAspectRatio: "none", "aria-hidden": true, style: { position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" } },
+      LP.map((p, j) => React.createElement("line", { key: "l" + j + "-" + ci, x1: p[0], y1: p[1] + 6, x2: 50, y2: 40, stroke: "rgba(165,232,92,.45)", strokeWidth: 1, vectorEffect: "non-scaling-stroke", strokeDasharray: "3 4", style: { animation: "cdFadeIn .9s ease " + (0.3 + j * 0.15) + "s both" } })));
+    const pk = this.state.cmpPick ?? 1, hv = this.state.cmpHover ?? -1;
+    const CR = [
+      ["Что происходит с активом", "продаётся как подготовленный проект", "остаётся у вас и становится объектом"],
+      ["Кто финансирует подготовку", "не собственник — наш интерес в сделке", "собственник, под нашим управлением"],
+      ["Кто забирает девелоперскую маржу", "покупатель участка", "собственник"],
+      ["Наша роль", "подготовка документов и ведение сделки", "технический заказчик: модель, архитектура, документация, разрешения, продажи"],
+      ["Ответственность за сроки и бюджет", "до подписания сделки", "на нас — до ввода объекта"],
+      ["Вознаграждение", "процент со сделки", "плата за управление и доля в чистом доходе"]
+    ];
+    tilt.cmpRows = CR.map((r, i) => { const on = hv === i;
+      const cell = c => { const sel = pk === c; return { bg: "transparent", fg: sel ? "#FFFFFF" : (on ? "#E3ECE6" : "#B5C7BD"), w: sel ? 600 : 500 }; };
+      const a = cell(0), b = cell(1);
+      return { label: r[0], v0: r[1], v1: r[2], bg0: a.bg, fg0: a.fg, w0: a.w, bg1: b.bg, fg1: b.fg, w1: b.w,
+        rowBg: on ? "rgba(255,255,255,.035)" : "transparent", labelFg: on ? "#FFFFFF" : "#A9BDB3", dot: on ? "#A5E85C" : "rgba(255,255,255,.25)", dotGlow: on ? "0 0 12px #A5E85C" : "none",
+        enter: () => this.setState({ cmpHover: i }), leave: () => this.setState({ cmpHover: -1 }) }; });
+    tilt.cmpPick0 = () => this.setState({ cmpPick: 0 }); tilt.cmpPick1 = () => this.setState({ cmpPick: 1 });
+    tilt.cmpHead0Bg = pk === 0 ? "#FFFFFF" : "rgba(255,255,255,.05)"; tilt.cmpHead0Fg = pk === 0 ? "#04140E" : "#C6D8CE"; tilt.cmpHead0Bd = pk === 0 ? "#FFFFFF" : "rgba(255,255,255,.14)"; tilt.cmpDot0 = pk === 0 ? 1 : 0;
+    tilt.cmpHead1Bg = pk === 1 ? "#A5E85C" : "rgba(255,255,255,.05)"; tilt.cmpHead1Fg = pk === 1 ? "#04140E" : "#C6D8CE"; tilt.cmpHead1Bd = pk === 1 ? "#A5E85C" : "rgba(255,255,255,.14)"; tilt.cmpDot1 = pk === 1 ? 1 : 0; tilt.cmpHead1Glow = pk === 1 ? "0 0 40px rgba(165,232,92,.35)" : "none";
+    tilt.spotLeft = pk === 0 ? "29.41%" : "64.71%";
+    tilt.cmpDot0c = pk === 0 ? "#A5E85C" : "rgba(255,255,255,.2)"; tilt.cmpDot0g = pk === 0 ? "0 0 12px #A5E85C" : "none"; tilt.cmpDot1c = pk === 1 ? "#A5E85C" : "rgba(255,255,255,.2)"; tilt.cmpDot1g = pk === 1 ? "0 0 12px #A5E85C" : "none";
+    tilt.cmpHead0Fg = pk === 0 ? "#FFFFFF" : "#B5C7BD"; tilt.cmpHead1Fg = pk === 1 ? "#FFFFFF" : "#B5C7BD";
+    tilt.cmpVerdict = pk === 0 ? "Подходит, если нужны деньги сейчас и без участия в стройке." : "Подходит, если готовы финансировать проект и хотите забрать маржу целиком.";
+    [0, 1].forEach(i => { const o = !!(this.state.scOpen || {})[i]; tilt["scOpen" + i] = o; tilt["scRows" + i] = o ? "1fr" : "0fr"; tilt["scOp" + i] = o ? 1 : 0; tilt["scRot" + i] = o ? "rotate(45deg)" : "rotate(0)"; tilt["scLabel" + i] = o ? "Свернуть" : "Как это работает"; tilt["scToggle" + i] = () => this.setState(s => ({ scOpen: { ...(s.scOpen || {}), [i]: !o } })); });
+    [0, 1, 2, 3, 4].forEach(k => { tilt["tiltMove" + k] = mkMove(k); tilt["tiltLeave" + k] = mkLeave(k); tilt["tilt" + k] = tf(tl[k]); tilt["glare" + k] = gl(tl[k]); });
+    const FL = { 2: "assets/renders/stage-finance-sm.png", 3: "assets/renders/stage-masterplan-sm.png", 4: "assets/renders/stage-planning-sm.png" };
+    const ALT = { 2: "Объёмная модель финансовых показателей проекта", 3: "Макет квартала: жилые секции и озеленённый двор", 4: "Макет проекта с чертежом на подложке" };
+    [2, 3, 4].forEach((k, j) => { const p = tl[k]; tilt["floatImg" + k] = React.createElement("img", { key: "f" + k, src: FL[k], alt: ALT[k], style: { position: "absolute", left: "10%", right: "10%", top: "8%", width: "80%", height: "78%", objectFit: "contain", filter: "drop-shadow(0 30px 40px rgba(0,0,0,.55))", animation: "cdFloat 6s ease-in-out " + (j * -2) + "s infinite", transform: p ? "scale(1.06)" : "none", transition: "transform .4s" } }); });
+    const cur = this.state.stage;
+    const sh = this.state.stHover ?? -1;
+    const stCard = (x, i) => { const ours = i < 3, o = sh === i;
+      return { n: x.n, title: x.title, short: x.title.replace(" этап", ""), tasks: x.tasks,
+        topLine: ours ? "linear-gradient(90deg,transparent,#A5E85C 30%,#A5E85C 70%,transparent)" : "transparent",
+        numStroke: ours ? "rgba(46,107,18,.16)" : "rgba(4,20,14,.07)", labelFg: ours ? "#2E6B12" : "#8A988F", dotC: ours ? "#A5E85C" : "#C6D0C9",
+        footLine: ours ? "rgba(46,107,18,.12)" : "rgba(4,20,14,.06)", footBg: ours ? "rgba(255,255,255,.55)" : "rgba(255,255,255,.35)", plusFg: "#04140E", result: x.result, href: x.href, logo: x.logo, noLogo: !x.logo, who: x.who || "",
+        bg: ours ? "linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(242,250,234,.85) 55%,rgba(222,243,200,.8) 100%)" : "linear-gradient(180deg,rgba(255,255,255,.6),rgba(240,243,241,.45))",
+        bd: ours ? "rgba(165,232,92,.45)" : "rgba(4,20,14,.06)",
+        shadow: ours ? (o ? "inset 0 1px 0 #FFFFFF,0 40px 80px rgba(70,140,30,.28),0 0 0 1px rgba(165,232,92,.4)" : "inset 0 1px 0 #FFFFFF,0 24px 60px rgba(70,140,30,.16)") : "inset 0 1px 0 #FFFFFF,0 20px 50px rgba(4,20,14,.06)",
+        lift: o ? "translateY(-10px)" : "translateY(0)",
+        pillBg: ours ? "#04140E" : "rgba(4,20,14,.06)", pillFg: ours ? "#A5E85C" : "#5B6B62", titleFg: ours ? "#04140E" : "#7C8C83",
+        shadowGlow: ours ? "radial-gradient(ellipse,rgba(80,150,30,.45),transparent 70%)" : "radial-gradient(ellipse,rgba(4,20,14,.15),transparent 70%)",
+        resLabel: ours ? "результат этапа" : "наша роль", resBg: "#FFFFFF", resFg: ours ? "#04140E" : "#7C8C83", resDot: ours ? "#A5E85C" : "#C6D0C9",
+        plusBg: ours ? "#A5E85C" : "rgba(4,20,14,.06)", plusRot: o ? "rotate(45deg)" : "rotate(0)",
+        ovBg: ours ? "linear-gradient(180deg,rgba(244,252,236,.9),rgba(220,244,196,.85))" : "rgba(248,250,248,.92)", ovOp: o ? 1 : 0, ovT: o ? "translateY(0)" : "translateY(24px)", ovPe: o ? "auto" : "none",
+        obj: React.createElement("img", { key: "so" + i, src: x.img, alt: x.title, style: { position: "absolute", left: "4%", top: 0, width: "92%", height: "100%", objectFit: "contain", filter: ours ? "drop-shadow(0 24px 30px rgba(40,90,20,.3))" : "grayscale(1) opacity(.7) drop-shadow(0 20px 24px rgba(0,0,0,.12))", animation: "cdFloat 6s ease-in-out " + (i * -1.2) + "s infinite" } }),
+        enter: () => this.setState({ stHover: i }), leave: () => this.setState({ stHover: -1 }), toggle: () => this.setState({ stHover: o ? -1 : i }) }; };
+    const stAll = S.map(stCard);
+    const stOurs = stAll.slice(0, 3), stRest = stAll.slice(3);
+    const stages = S.map((x, i) => {
+      const open = cur === i, ours = i < 3, done = i < cur;
+      return {
+        n: x.n, title: x.title, sub: x.sub, tasks: x.tasks, result: x.result, img: x.img, href: x.href, logo: x.logo, who: x.who, alt: x.title + ": " + x.sub, open,
+        groupLabel: i === 0 ? "наша зона ответственности · создаём экономику проекта" : (i === 3 ? "сопровождаем: стройка и продажи" : ""),
+        groupMargin: i === 0 ? "0 0 6px" : "18px 0 6px", groupFg: i === 0 ? "#04140E" : "#5B6B62", groupBg: i === 0 ? "#A5E85C" : "#EEF2EC", groupLine: i === 0 ? "#A5E85C" : "repeating-linear-gradient(90deg,#C9D3CC 0 6px,transparent 6px 12px)",
+        tag: done ? "✓" : "",
+        railDot: open ? "#A5E85C" : (done ? "#04140E" : "#FFFFFF"),
+        railRing: open ? "#E8F7D6" : (done ? "#FFFFFF" : (ours ? "#C9D3CC" : "#DDE3DF")),
+        railDotSize: open ? "18px" : "12px",
+        railLine: i === 4 || i === 2 ? "transparent" : (i < cur ? "#04140E" : (ours ? "#DDE3DF" : "repeating-linear-gradient(180deg,#C9D3CC 0 5px,transparent 5px 10px)")),
+        railNum: open ? "#2E6B12" : (ours ? "#5B6B62" : "#9AA79F"),
+        railTitle: !ours && !open ? "#8A988F" : "#04140E",
+        titleScale: open ? "scale(1.3)" : "scale(1)", rows: open ? "1fr" : "0fr", detOp: open ? 1 : 0,
+        prog: open && !this.state.paused ? "100%" : "0%", progT: open && !this.state.paused ? "width 6s linear" : "none",
+        taskBg: ours ? "#EEF2EC" : "#F4F6F3", taskFg: ours ? "#04140E" : "#5B6B62",
+        resLabel: ours ? "результат" : "наша роль", resBg: ours ? "#04140E" : "#EEF2EC", resFg: ours ? "#FFFFFF" : "#33463C", resDot: ours ? "#A5E85C" : "#C6D0C9",
+        imgOp: open ? 1 : 0, imgT: open ? "translateY(0) scale(1)" : "translateY(16px) scale(.96)", filter: ours ? "none" : "grayscale(1)",
+        pipW: open ? "22px" : "8px", pip: open ? "#A5E85C" : (done ? "#04140E" : "rgba(4,20,14,.2)"),
+        activate: () => { this.setState({ stage: i }); this.restartAuto(); }
+      };
+    });
+    const F = [
+      ["Стоимость и срок первичной оценки", "(уточняются). Если расчёт показывает, что проект не выходит на требуемую доходность, мы сообщаем это прямо и не берём актив в работу."],
+      ["Покупатель на участок уже есть", "Оценка покажет, сколько актив стоит в подготовленном виде, и позволит вести переговоры с цифрой на руках, а не с предложенной ценой."],
+      ["Структура вознаграждения", "В сценарии продажи — процент со сделки. В собственном проекте — плата за управление и доля в чистом доходе. Условия фиксируются договором до начала работ."],
+      ["Выполняете ли вы строительные работы", "Нет. Генподрядчик привлекается и контролируется нами. Совмещение проектирования и строительства в одних руках лишает собственника независимого контроля."],
+      ["Конфиденциальность", "Оценка и переговоры ведутся закрыто. Актив выходит на рынок только по решению собственника и в согласованном виде."],
+      ["Проект уже заказан другому подрядчику", "Проводим независимую проверку расчётов и документации до начала финансирования строительства. Это отдельная услуга."]
+    ];
+    const faq = F.map((x, i) => {
+      const open = this.state.faq === i;
+      return { n: "0" + (i + 1), title: x[0], body: x[1], open, sign: open ? "−" : "+", bg: open ? "#FFFFFF" : "rgba(255,255,255,.55)", btn: open ? "#A5E85C" : "#EEF2EC", toggle: () => this.setState({ faq: open ? -1 : i }) };
+    });
     return {
-      canvasRef: this.setCanvas,
-      densityPct: Math.round(s.density * 100),
-      priceLabel: this.fmt(this.price()),
-      onDensity: (e) => this.setState({ density: Number(e.target.value) / 100 }),
-      presets: [
-        { label: "осторожный", v: presetVals[0] },
-        { label: "базовый", v: presetVals[1] },
-        { label: "плотный", v: presetVals[2] }
-      ].map((p) => {
-        const active = Math.abs(s.density - p.v) < 0.08;
-        return {
-          label: p.label,
-          onClick: () => this.setState({ density: p.v }),
-          bg: active ? "#A5E85C" : "transparent",
-          fg: active ? "#04140E" : "#8FA69C",
-          bd: active ? "#A5E85C" : "rgba(242,248,244,.2)"
-        };
-      }),
-      stageMetrics: [
-        { value: this.fmt(m.gba) + " м²", label: "Потенциал GBA" },
-        { value: m.density.toFixed(2), label: "Плотность" },
-        { value: m.floors.toFixed(1) + " эт", label: "Средняя этажность" },
-        { value: this.fmt(m.price / 1e6) + " млн ₽", label: "Цена входа" }
-      ],
-      name: s.name, phone: s.phone, agree: s.agree,
-      onName: (e) => this.setState({ name: e.target.value }),
-      onPhone: (e) => this.setState({ phone: e.target.value }),
-      onAgree: (e) => this.setState({ agree: e.target.checked }),
-      submit: this.submit,
-      sent: s.status === "sent",
-      showForm: s.status !== "sent",
-      disabled: !ready || s.status === "sending",
-      btnOpacity: ready && s.status !== "sending" ? 1 : 0.5,
-      btnLabel: s.status === "sending" ? "Отправляем…" : s.status === "error" ? "Не отправилось — ещё раз" : "Разобрать мой участок",
-      route: [
-        { n: "01", title: "Участок", text: "Земля в рынке или земля в собственности. Документы, ограничения, цель.", result: "Понятная стартовая позиция", href: "", linkLabel: "" },
-        { n: "02", title: "Калькулятор девелопера", text: "Оценка массива, конфигурация продукта, сравнение сценариев.", result: "Сценарий с лучшим NPV и цена входа", href: "Калькулятор девелопера.dc.html", linkLabel: "Калькулятор девелопера →" },
-        { n: "03", title: "МиМ «Архитектура и Исследование»", text: "Анализ рынка, массинг, мастер-план, концепция.", result: "ДНК проекта, которое можно защищать", href: "МиМ Архитектура и Исследование.dc.html", linkLabel: "Бюро МиМ →" },
-        { n: "04", title: "Природа проектирования", text: "Проектная и рабочая документация, экспертиза, согласования.", result: "Разрешение на строительство", href: "Природа проектирования.dc.html", linkLabel: "Природа проектирования →" },
-        { n: "05", title: "Актив", text: "Проект, который сходится в цифрах и готов к старту продаж.", result: "Старт продаж", href: "", linkLabel: "" }
-      ],
-      figures: [
-        { value: "~300", label: "проектов просчитано" },
-        { value: "2,5 млн м²", label: "просчитанной недвижимости" },
-        { value: "15", label: "регионов России" },
-        { value: "+1,2 млрд ₽", label: "результат в кейсе" }
-      ],
-      consulting: [
-        "Исследование рынка отдельно, финмодель отдельно, архитектура отдельно",
-        "Допущения знает только автор файла",
-        "На выходе — документ с рекомендациями",
-        "Ответственность заканчивается на титульном листе",
-        "Дальше девелопер ищет проектировщиков сам"
-      ],
-      cultura: [
-        "Земля, продукт, экономика и архитектура пересчитываются в одной модели",
-        "Все исходные данные и связи видны всей проектной команде",
-        "На выходе — решение: покупать, менять концепцию или отказаться",
-        "Каждое решение переведено в деньги и в сроки",
-        "Бюро и проектный центр внутри бренда, до РНС без передачи подрядчику"
-      ],
-      sit1: [
-        "Торговая разведка и поиск альтернатив в локации",
-        "Проверка права, обременений, мощностей и градостроительных ограничений",
-        "Расчёт предельной цены входа по будущему продукту"
-      ],
-      sit2: [
-        "Сценарии балансов, плотности и квартирографии",
-        "Связка рынка, архитектуры и финансовой модели",
-        "Обоснование цены при продаже или входе партнёра"
-      ],
-      competencies: [
-        { num: "01", href: "Калькулятор девелопера.dc.html", bgImage: "url('assets/renders/stage-land-sm.png')", logoImage: "url('assets/logo/calc-ink.png')", title: "Калькулятор девелопера", role: "инструмент и экспертиза", text: "Собственная модель предпроектной оценки: оценивает земельный массив, собирает продукт и конфигурирует сценарии — с площадями, сроками, себестоимостью, выручкой и NPV.", tags: ["оценка земли", "квартирография", "сценарии", "NPV"], out: "Сценарий развития территории и обоснование для инвестора, банка и города" },
-        { num: "02", href: "МиМ Архитектура и Исследование.dc.html", bgImage: "url('assets/renders/stage-masterplan-sm.png')", logoImage: "url('assets/logo/mim-ink.png')", title: "МиМ «Архитектура и Исследование»", role: "бюро архитектуры и исследований", text: "Бюро подключается, когда сценарий выбран: анализирует рынок и конкурентов, делает массинг, мастер-план и архитектурную концепцию. Архитектура проверяется цифрой, а не вкусом.", tags: ["исследование рынка", "массинг", "мастер-план", "концепция"], out: "Продукт и архитектура, готовые к проектированию" },
-        { num: "03", href: "Природа проектирования.dc.html", bgImage: "url('assets/renders/stage-planning-sm.png')", logoImage: "url('assets/logo/priroda-ink.png')", title: "Природа проектирования", role: "центр проектирования", text: "Разрабатывает проектную и рабочую документацию, ведёт экспертизу и согласования и выводит проект на разрешение на строительство. Полный инженерный состав.", tags: ["ПД и РД", "инженерные разделы", "экспертиза", "согласования"], out: "Разрешение на строительство и готовность к старту продаж" }
-      ],
-      stages: [
-        { n: "01", tag: "мы", tagColor: "#A5E85C", numColor: "#A5E85C", cardBg: "#07200F", filter: "none", bgImage: "url('assets/renders/stage-land-sm.png')", title: "Допроектный", text: "Земля, сценарии, цена входа — калькулятор девелопера." },
-        { n: "02", tag: "мы", tagColor: "#A5E85C", numColor: "#A5E85C", cardBg: "#07200F", filter: "none", bgImage: "url('assets/renders/stage-masterplan-sm.png')", title: "Предпроектный", text: "Массинг, мастер-план, архитектурная концепция — бюро МиМ." },
-        { n: "03", tag: "мы", tagColor: "#A5E85C", numColor: "#A5E85C", cardBg: "#07200F", filter: "none", bgImage: "url('assets/renders/stage-planning-sm.png')", title: "Проектный", text: "ПД и РД, экспертиза, согласования, РНС — «Природа проектирования»." },
-        { n: "04", tag: "застройщик", tagColor: "#6E8479", numColor: "#6E8479", cardBg: "#04140E", filter: "grayscale(1) opacity(.6)", bgImage: "url('assets/renders/crane-cut.png')", title: "Строительство", text: "Вне нашей зоны работы — но себестоимость заложена раньше." },
-        { n: "05", tag: "застройщик", tagColor: "#6E8479", numColor: "#6E8479", cardBg: "#04140E", filter: "grayscale(1) opacity(.6)", bgImage: "url('assets/renders/stage-finance-sm.png')", title: "Продажи", text: "Результат зависит от продукта, выбранного на первых трёх стадиях." }
-      ],
-      caseItems: [
-        { label: "задача", text: "Проверить, раскрывает ли исходная концепция потенциал участка, и найти более эффективную конфигурацию проекта." },
-        { label: "что сделали", text: "Связали в одной модели параметры участка, продукт, архитектуру и экономику. Сравнили сценарии по объёму застройки, затратам, выручке, срокам и потребности в финансировании." },
-        { label: "решение", text: "Выбрали сценарий, в котором продуктовые и архитектурные параметры лучше работают на экономику проекта." },
-        { label: "вывод", text: "Масштаб результата определяет не размер участка, а качество решений, принятых до начала строительства." }
-      ],
-      path: [
-        { label: "Инжиниринг", text: "Модернизация производств УГМК, проектирование инженерных сетей и промышленных объектов." },
-        { label: "Продукт", text: "Отдел исследований и развития девелоперского продукта: рынок, квартирография, экономика решений." },
-        { label: "ФСК", text: "Эффективность и себестоимость строительства, руководство продуктовой инновационной лабораторией, эксперт «Сколково»." },
-        { label: "ПИК", text: "Директор по продукту по регионам России: около 1,5 млн м² в 15 регионах, от Южно-Сахалинска до Новороссийска." },
-        { label: "2023 →", text: "«Культура девелопмента»: внешняя девелоперская команда для региональных проектов, где нет своего штата аналитиков и продуктологов." }
-      ],
-      contacts: [
-        { label: "телефон", value: "+7 912 826-80-70" },
-        { label: "почта", value: "468070@mail.ru" },
-        { label: "офис", value: "Киров, Молодой Гвардии, 82, оф. 418" },
-        { label: "география", value: "15 регионов · @culture_dev" }
-      ]
+      ...scen, ...tilt, scenRef: this.scenRef, scPlay: this.state.scVis ? "running" : "paused", stOurs, stRest, sits, sitCols: "repeat(" + (this.state.cols || 4) + ",minmax(0,1fr))", stages, faq, curN: S[cur].n, curTitle: S[cur].title, curSub: S[cur].sub, curDot: cur > 2 ? "#C6D0C9" : "#A5E85C", curLogo: S[cur].logo, curNoLogo: !S[cur].logo, curWho: S[cur].who, curHref: S[cur].href, curWhoLabel: cur > 2 ? "сопровождаем" : "этап ведёт подразделение", panelBg: cur > 2 ? "linear-gradient(180deg,#F1F3F1,#E1E6E2)" : "linear-gradient(180deg,#F2F8EC,#DCEFC9)", prevStage: () => { this.setState({ stage: (cur + 4) % 5 }); this.restartAuto(); }, nextStage: () => { this.setState({ stage: (cur + 1) % 5 }); this.restartAuto(); },
+      pauseAuto: () => this.setState({ paused: true }), resumeAuto: () => { this.setState({ paused: false }); this.restartAuto(); }, forkRef: this.forkRef, forkWide: !this.state.stacked, forkStacked: this.state.stacked,
+      name: this.state.name, contact: this.state.contact, plot: this.state.plot, docs: this.state.docs,
+      onName: set("name"), onContact: set("contact"), onPlot: set("plot"), onDocs: set("docs"),
+      submit: e => this.send(e),
+      disabled: st === "sending",
+      buttonLabel: st === "sending" ? "Отправляем…" : "Запросить оценку",
+      statusText: texts[st] || ""
     };
   }
 }

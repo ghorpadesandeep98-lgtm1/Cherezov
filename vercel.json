@@ -1,7 +1,4 @@
 {
-  "framework": null,
-  "buildCommand": "echo static-site",
-  "outputDirectory": ".",
   "cleanUrls": false,
   "rewrites": [
     { "source": "/", "destination": "/home.dc.html" },
