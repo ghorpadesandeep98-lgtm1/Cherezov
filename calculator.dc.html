@@ -219,7 +219,7 @@ input::placeholder,textarea::placeholder{color:rgba(242,248,244,.32)}
           <div style="padding:16px 12px 16px 0;border-bottom:1px solid rgba(4,20,14,.25)"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#2B4A3C">телефон</dt><dd style="margin:6px 0 0;font-size:17px;font-weight:600">—</dd></div>
           <div style="padding:16px 0 16px 12px;border-bottom:1px solid rgba(4,20,14,.25);border-left:1px solid rgba(4,20,14,.25)"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#2B4A3C">почта</dt><dd style="margin:6px 0 0;font-size:17px;font-weight:600">—</dd></div>
           <div style="padding:16px 12px 16px 0;border-bottom:1px solid rgba(4,20,14,.25)"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#2B4A3C">адрес</dt><dd style="margin:6px 0 0;font-size:15px;font-weight:600;line-height:1.4">Киров, ул. Молодой Гвардии, 82, оф. 418</dd></div>
-          <div style="padding:16px 0 16px 12px;border-bottom:1px solid rgba(4,20,14,.25);border-left:1px solid rgba(4,20,14,.25)"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#2B4A3C">telegram</dt><dd style="margin:6px 0 0;font-size:17px;font-weight:600"><a href="https://t.me/culture_dev" style="color:#04140E" style-hover="color:#04140E;text-decoration:underline">@culture_dev</a></dd></div>
+          <div style="padding:16px 0 16px 12px;border-bottom:1px solid rgba(4,20,14,.25);border-left:1px solid rgba(4,20,14,.25)"><dt style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#2B4A3C">telegram</dt><dd style="margin:6px 0 0;font-size:17px;font-weight:600"><a href="https://t.me/Al_8070" style="color:#04140E" style-hover="color:#04140E;text-decoration:underline">@Al_8070</a></dd></div>
         </dl>
       </div>
       <form onSubmit="{{ submit }}" style="background:#04140E;color:#F2F8F4;border-radius:4px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:22px">
@@ -273,13 +273,13 @@ input::placeholder,textarea::placeholder{color:rgba(242,248,244,.32)}
           <p style="margin:0 0 4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5E7468">документы</p>
           <a href="legal.dc.html" style="color:#C6D8CE;font-size:14px" style-hover="color:#A5E85C">Политика обработки данных</a>
           <a href="legal.dc.html#consent" style="color:#C6D8CE;font-size:14px" style-hover="color:#A5E85C">Согласие на обработку</a>
-          <p style="margin:4px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:#5E7468">ИНН —<br />юрлицо на уточнении</p>
+          <p style="margin:4px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:#5E7468">ООО «Природа проектирования»<br />ИНН —</p>
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:22px;border-top:1px solid rgba(242,248,244,.1);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5E7468">
         <span>© 2026 Культура девелопмента</span>
         <span>Киров, проекты по России</span>
-        <a href="https://t.me/culture_dev" style="color:#8FA69C" style-hover="color:#A5E85C">@culture_dev</a>
+        <a href="https://t.me/Al_8070" style="color:#8FA69C" style-hover="color:#A5E85C">@Al_8070</a>
       </div>
     </div>
   </footer>
@@ -302,7 +302,7 @@ class Component extends DCLogic {
   renderVals() {
     const st = this.state.status;
     const set = k => e => this.setState({ [k]: e.target.value, status: st === "sent" ? "" : st });
-    const texts = { "error-empty": "Укажите имя и телефон или почту.", sent: "Заявка у нас. Подготовим демо на вашем участке.", error: "Не отправилось. Напишите в Telegram: @culture_dev" };
+    const texts = { "error-empty": "Укажите имя и телефон или почту.", sent: "Заявка у нас. Подготовим демо на вашем участке.", error: "Не отправилось. Напишите в Telegram: @Al_8070" };
     return {
       name: this.state.name, contact: this.state.contact, plot: this.state.plot, docs: this.state.docs,
       onName: set("name"), onContact: set("contact"), onPlot: set("plot"), onDocs: set("docs"),
