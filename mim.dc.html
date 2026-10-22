@@ -9,277 +9,685 @@
 <x-dc>
 <helmet>
 <title>МиМ «Архитектура и Исследование» — Культура девелопмента</title>
-<meta name="description" content="Земельный брокер и fee-девелопмент: земля, продукт, экономика и архитектура в одной модели — до разрешения на строительство." />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet" />
+<meta name="description" content="Архитектурное бюро: творчество, проверенное расчётом. Проекты, мастер-планы и функциональные планировки." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<meta name="ext-resource-dependency" content="assets/renders/case-nsk.jpg" />
+<meta name="ext-resource-dependency" content="assets/renders/masterplan-aerial.jpg" />
+<meta name="ext-resource-dependency" content="assets/renders/hero-quarter.png" />
+<meta name="ext-resource-dependency" content="assets/renders/sit-01.png" />
+<meta name="ext-resource-dependency" content="assets/renders/sit-02.png" />
+<meta name="ext-resource-dependency" content="assets/renders/sit-03.png" />
+<meta name="ext-resource-dependency" content="assets/renders/sit-04.png" />
+<meta name="ext-resource-dependency" content="assets/renders/stage-03-project.png" />
+<meta name="ext-resource-dependency" content="assets/renders/plot-aerial.jpg" />
+<meta name="ext-resource-dependency" content="assets/renders/hero-aerial.jpg" />
+<meta name="ext-resource-dependency" content="assets/renders/stage-02-quarter.png" />
+<meta name="ext-resource-dependency" content="assets/renders/contacts-aerial.png" />
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#04140E"/><path d="M28 66V34l11 16 11-16v32M54 66V34l11 16 11-16v32" fill="none" stroke="#FFFFFF" stroke-width="2.5"/><circle cx="80" cy="30" r="3" fill="#A5E85C"/></svg></template>
 <style>
 html{scroll-behavior:smooth}
-body{margin:0;background:#04140E;color:#F2F8F4;font-family:Manrope,system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
-a{color:#A5E85C;text-decoration:none}
-a:hover{color:#C7F291}
-input,button{font-family:Manrope,system-ui,sans-serif}
-@keyframes kdRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+body{margin:0;background:#F4F5EF;color:#04140E;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+input,textarea,button{font-family:Manrope,system-ui,sans-serif}
+input::placeholder,textarea::placeholder{color:rgba(4,20,14,.35)}
+*{box-sizing:border-box}
+@keyframes cdKen{0%{transform:scale(1.04)}100%{transform:scale(1.12) translate(-1.5%,-1%)}}
 </style>
 </helmet>
-<div style="background:#04140E;min-height:100vh;overflow-x:hidden">
+<div style="background:#F4F5EF;overflow-x:hidden;min-height:100vh">
 
-  <header style="position:sticky;top:0;z-index:40;backdrop-filter:blur(18px);background:rgba(4,20,14,.86);border-bottom:1px solid rgba(242,248,244,.1)">
-    <div style="max-width:1440px;margin:0 auto;padding:16px clamp(16px,3vw,32px);display:flex;align-items:center;gap:clamp(16px,3vw,40px)">
-      <a href="home.dc.html" style="display:flex;align-items:center;gap:9px;color:#F2F8F4;font-size:15px;font-weight:600;letter-spacing:-.01em">
-        <img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" />
-      </a>
-      <nav style="display:flex;gap:clamp(10px,1.5vw,24px);margin-left:auto;align-items:center;flex-wrap:wrap;justify-content:flex-end">
-        <a href="calculator.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Калькулятор</a>
-        <a href="#principle" style="color:#F2F8F4;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase">Принцип</a>
-        <a href="#scope" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Состав работ</a>
-        <a href="#process" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Процесс</a>
-        <a href="priroda.dc.html" style="color:#8FA69C;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase" style-hover="color:#F2F8F4">Природа</a>
+  <header style="position:sticky;top:0;z-index:50;padding:12px clamp(12px,2vw,24px) 0;pointer-events:none">
+    <div style="pointer-events:auto;max-width:1440px;margin:0 auto;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-radius:999px;padding:8px 8px 8px 22px;display:flex;align-items:center;gap:16px 28px;box-shadow:0 6px 30px rgba(4,20,14,.08)">
+      <span style="display:flex;align-items:center;gap:14px;flex:none">
+        <a href="home.dc.html" style="display:flex"><img src="assets/logo/culture-ink.png" alt="Культура девелопмента — на главную" style="height:22px;width:auto;display:block" /></a>
+        <span aria-hidden="true" style="width:1px;height:26px;background:#D3DCD5"></span>
+        <a href="mim.dc.html" style="display:flex;align-items:center;gap:10px"><img src="assets/logo/mim-ink-clean.png" alt="МиМ" style="height:26px;width:auto;display:block;filter:brightness(0)" /><span style="font-size:12px;font-weight:700;line-height:1.1;color:#04140E">архитектурное<br />бюро</span></a>
+      </span>
+      <nav aria-label="Меню бюро" style="flex:1 1 auto;min-width:0;display:flex;gap:22px;overflow-x:auto;white-space:nowrap;scrollbar-width:none">
+        <a href="#works" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Проекты</a>
+        <a href="#cases" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Кейсы</a>
+        <a href="#plans" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Планировки</a>
+        <a href="#loss" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Посчитать</a>
+        <a href="#route" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Ваш участок</a>
+        <a href="#index" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Все проекты</a>
+        <a href="#contact" style="font-size:13px;font-weight:500;color:#33463C" style-hover="color:#04140E">Контакты</a>
       </nav>
-      <a href="#talk" style="background:#A5E85C;color:#04140E;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:14px 18px;border-radius:4px;white-space:nowrap" style-hover="background:#C7F291">Обсудить концепцию</a>
+      <a href="#contact" style="flex:none;background:#04140E;color:#FFFFFF;font-size:13px;font-weight:600;padding:12px 20px;border-radius:999px;display:flex;align-items:center;gap:10px;white-space:nowrap" style-hover="background:#A5E85C;color:#04140E"><span style="width:8px;height:8px;border-radius:50%;background:#A5E85C"></span>Обсудить проект</a>
     </div>
   </header>
 
-  <section style="position:relative;min-height:min(100vh,900px);display:flex;flex-direction:column;justify-content:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.97) 10%,rgba(4,20,14,.55) 52%,rgba(4,20,14,.7) 100%),url('assets/renders/hero-aerial.jpg');background-size:cover;background-position:center;overflow:hidden">
-    <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(242,248,244,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(242,248,244,.055) 1px,transparent 1px);background-size:120px 120px"></div>
-    <div style="position:absolute;inset:clamp(16px,3vw,32px);pointer-events:none;border:1px solid rgba(242,248,244,.14)"></div>
-    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
-      <div style="position:absolute;left:50%;top:0;bottom:0;width:1px;background:repeating-linear-gradient(to bottom,rgba(165,232,92,.34) 0 6px,transparent 6px 14px)"></div>
-      <div style="position:absolute;left:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="width:7px;height:7px;background:#A5E85C;display:block"></span><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Сценарий</span></div>
-      <div style="position:absolute;right:clamp(28px,4.2vw,48px);top:clamp(96px,14vh,150px);display:flex;align-items:center;gap:10px"><span style="font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#F2F8F4">Концепция</span><span style="width:7px;height:7px;background:#A5E85C;display:block"></span></div>
-    </div>
-    <div style="position:relative;max-width:1440px;width:100%;margin:0 auto;padding:clamp(140px,20vh,220px) clamp(28px,4.2vw,56px) clamp(40px,6vw,72px);box-sizing:border-box;animation:kdRise .8s cubic-bezier(.2,.6,.2,1) both">
-    <img src="assets/logo/mim-light.png" alt="МиМ «Архитектура и Исследование»" style="height:60px;width:auto;display:block;margin:0 0 28px" />
-    <p style="margin:0 0 24px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">культура девелопмента · компетенция 02</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,64px);align-items:end">
-      <h1 style="margin:0;font-size:clamp(38px,6vw,96px);font-weight:400;line-height:1.02;letter-spacing:-.045em;color:#FFFFFF;max-width:15ch;text-wrap:balance">Концепция, которая сходится в экономике проекта</h1>
-      <div>
-        <p style="margin:0 0 32px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:48ch">Архитектурно-исследовательское бюро внутри бренда. Мы начинаем не с эскиза, а с рынка и цифры: бюро подключается, когда девелоперский сценарий уже выбран, и переводит его в объём, мастер-план и архитектуру.</p>
-        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
-          <a href="#talk" style="background:#A5E85C;color:#04140E;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:16px 24px;border-radius:4px" style-hover="background:#C7F291">Обсудить концепцию</a>
-          <a href="calculator.dc.html" style="color:#F2F8F4;font-size:14px;font-weight:400;border-bottom:1px solid rgba(242,248,244,.28);padding-bottom:3px" style-hover="color:#A5E85C">← Назад: калькулятор девелопера</a>
+  <section data-screen-label="01 Первый экран" style="position:relative;margin-top:-64px;min-height:max(680px,100vh);display:flex;flex-direction:column;overflow:hidden;isolation:isolate;background:#04140E;color:#FFFFFF">
+    <img src="assets/renders/hero-quarter.png" alt="Жилой квартал с озеленёнными дворами, вид с воздуха" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;animation:cdKen 40s ease-in-out infinite alternate" />
+    <span aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,20,14,.6) 0%,rgba(4,20,14,.25) 38%,rgba(4,20,14,.55) 70%,rgba(4,20,14,.94) 100%)"></span>
+    <div style="flex:1;max-width:1440px;width:100%;margin:0 auto;padding:104px clamp(16px,3vw,40px) clamp(20px,2.4vw,32px);display:flex;flex-direction:column">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.22);font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C6D8CE">
+        <span>архитектура · исследование · мастер-планы</span><span>58°36′N · 49°40′E</span>
+      </div>
+      <div style="flex:1;min-height:40px"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:32px clamp(32px,5vw,96px);align-items:end">
+        <div style="display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px);min-width:0">
+          <h1 data-g="heroTitle" style="margin:0;font-size:clamp(52px,8.4vw,144px);font-weight:400;line-height:.94;letter-spacing:-.06em"><span style="display:block">Творчество</span><span style="display:flex;align-items:baseline;gap:.18em"><span style="font-weight:200;color:#A5E85C">×</span><span>расчёт</span></span></h1>
+          <p style="margin:0;font-size:clamp(16px,1.3vw,19px);font-weight:500;line-height:1.5;color:#E4EEE8;max-width:44ch;text-wrap:pretty">Ищем образ проекта и проверяем его моделью на каждом шаге. Архитектура, которую хочется купить и которая сходится в цифрах.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <a href="#works" style="background:#FFFFFF;color:#04140E;font-size:15px;font-weight:600;padding:16px 24px;border-radius:999px;white-space:nowrap" style-hover="background:#A5E85C">Смотреть проекты</a>
+            <a href="#plans" style="color:#FFFFFF;font-size:15px;font-weight:600;padding:16px 24px;border-radius:999px;white-space:nowrap;border:1px solid rgba(255,255,255,.35)" style-hover="background:rgba(255,255,255,.12)">Планировки ↓</a>
+          </div>
+        </div>
+        <div data-g="lockup" style="justify-self:end;width:min(100%,300px);display:flex;flex-direction:column;gap:14px;padding-top:16px;border-top:1px solid rgba(255,255,255,.4)">
+          <img src="assets/logo/mim-ink-clean.png" alt="МиМ — архитектурное бюро" style="width:100%;height:auto;display:block;filter:brightness(0) invert(1)" />
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:#C6D8CE">в составе «Культуры девелопмента»</span>
         </div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(20px,3vw,40px);border-top:1px solid rgba(242,248,244,.14);padding-top:24px;margin-top:clamp(44px,6vw,80px)">
-      <sc-for list="{{ specs }}" as="s" hint-placeholder-count="3">
-        <div>
-          <p style="margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">{{ s.label }}</p>
-          <p style="margin:0;font-size:17px;font-weight:400;line-height:1.45;color:#F2F8F4">{{ s.value }}</p>
+  </section>
+
+  <section data-screen-label="02 Подход" style="padding:clamp(72px,9vw,140px) clamp(16px,3vw,40px)">
+    <div style="max-width:1440px;margin:0 auto">
+      <h2 style="margin:0 0 clamp(40px,5vw,72px);font-size:clamp(34px,4.4vw,68px);font-weight:500;line-height:1.02;letter-spacing:-.045em;max-width:20ch;text-wrap:balance">Сильная идея — только та, что выдерживает <span style="color:#8A988F">проверку цифрой</span></h2>
+      <div data-g="duo" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px">
+        <div style="position:relative;border-radius:32px;overflow:hidden;min-height:clamp(440px,42vw,600px);background:#E4EBE1;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end">
+          <img src="assets/renders/comp-mim.png" alt="Макет квартала: жилые секции и двор" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2" />
+          <span aria-hidden="true" style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 40%,rgba(4,20,14,.75))"></span>
+          <div style="padding:clamp(22px,2.6vw,36px);color:#FFFFFF">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C7F291">01 · творчество</span>
+            <p style="margin:10px 0 8px;font-size:clamp(28px,2.8vw,42px);font-weight:600;letter-spacing:-.035em;line-height:1">Образ</p>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#E4EEE8;max-width:40ch">Силуэт, фасады, дворы и среда. То, за что покупатель выбирает проект среди соседей.</p>
+          </div>
         </div>
-      </sc-for>
+        <div style="position:relative;border-radius:32px;overflow:hidden;min-height:clamp(440px,42vw,600px);background:#04140E;color:#FFFFFF;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(22px,2.6vw,36px)">
+          <div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.14)">
+            <sc-for list="{{ checks }}" as="c" hint-placeholder-count="5">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)"><span style="font-size:clamp(16px,1.3vw,19px);font-weight:600">{{ c.k }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">{{ c.v }}</span></div>
+            </sc-for>
+          </div>
+          <div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">02 · расчёт</span>
+            <p style="margin:10px 0 8px;font-size:clamp(28px,2.8vw,42px);font-weight:600;letter-spacing:-.035em;line-height:1">Цифра</p>
+            <p style="margin:0;font-size:16px;line-height:1.55;color:#C6D8CE;max-width:40ch">Каждый вариант объёма и планировки сразу пересчитывается в финансовой модели проекта.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
   </section>
 
-  <section style="position:relative;overflow:hidden;min-height:min(92vh,820px);background-image:linear-gradient(to top,rgba(4,20,14,.94) 10%,rgba(4,20,14,.28) 70%),url('assets/renders/masterplan-aerial.jpg');background-size:cover;background-position:center;display:flex;align-items:flex-end">
-    <p style="margin:0;padding:clamp(28px,4vw,56px) clamp(28px,4.2vw,56px);font-size:clamp(18px,2.2vw,32px);font-weight:300;line-height:1.35;letter-spacing:-.02em;color:#F2F8F4;max-width:24ch">Мастер-план — это не картинка территории, а способ разложить экономику по кварталам и очередям.</p>
-  </section>
-
-  <section id="principle" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
-    <h2 style="margin:0 0 24px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Архитектура, которая проверяется цифрой</h2>
-    <p style="margin:0 0 clamp(44px,6vw,88px);font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:58ch">Красивый эскиз, который не сходится в экономике, — это отложенная переделка. Поэтому в бюро исследование, продукт и объёмное решение делаются в связке с финансовой моделью проекта, а не после неё.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(30px,5vw,72px)">
-      <div>
-        <p style="margin:0 0 26px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#6E8479">обычное бюро — сначала образ</p>
-        <div style="display:flex;flex-direction:column;gap:18px">
-          <sc-for list="{{ usual }}" as="u" hint-placeholder-count="4">
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <span style="width:6px;height:6px;background:rgba(242,248,244,.28);flex:none;margin-top:8px"></span>
-              <p style="margin:0;font-size:16px;font-weight:300;line-height:1.55;color:#8FA69C">{{ u }}</p>
+  <section id="works" data-screen-label="03 Избранные проекты" style="padding:0 clamp(16px,3vw,40px) clamp(72px,9vw,140px)">
+    <div style="max-width:1440px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(28px,3vw,44px)">
+        <div>
+          <p style="margin:0 0 16px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>избранные проекты</p>
+          <h2 style="margin:0;font-size:clamp(40px,5.6vw,88px);font-weight:500;line-height:1;letter-spacing:-.05em">Проекты</h2>
+        </div>
+        <a href="#index" style="display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 20px;border-radius:999px;background:#FFFFFF" style-hover="background:#04140E;color:#FFFFFF">Все проекты · {{ total }} <span>↓</span></a>
+      </div>
+      <div data-g="works" style="display:flex;flex-wrap:wrap;gap:12px">
+        <sc-for list="{{ featured }}" as="w" hint-placeholder-count="5">
+          <article style="flex:{{ w.span }};position:relative;height:{{ w.h }};border-radius:30px;overflow:hidden;isolation:isolate;background:#E4EBE1;min-width:0" onMouseEnter="{{ w.enter }}" onMouseLeave="{{ w.leave }}">
+            <div style="position:absolute;inset:0;transform:{{ w.zoom }};transition:transform 1.4s cubic-bezier(.2,.7,.2,1)">
+              <image-slot id="mim-work-{{ w.n }}" src="{{ w.img }}" shape="rect" fit="cover" placeholder="Проект {{ w.n }} · главный рендер"></image-slot>
             </div>
+            <span aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(4,20,14,.25) 0%,transparent 30%,transparent 55%,rgba(4,20,14,.8) 100%)"></span>
+            <button type="button" onClick="{{ w.open }}" aria-label="Открыть кейс" style="position:absolute;top:14px;right:14px;z-index:2;width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;background:#A5E85C;color:#04140E;font-size:18px;font-weight:700;box-shadow:0 10px 24px rgba(0,0,0,.25);transform:{{ w.btnS }};transition:transform .5s cubic-bezier(.22,1,.36,1)">↗</button>
+            <span style="position:absolute;top:18px;left:18px;display:flex;gap:6px;pointer-events:none">
+              <span style="padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.94);font-family:'IBM Plex Mono',monospace;font-size:11px">{{ w.n }}</span>
+              <span style="padding:7px 12px;border-radius:999px;background:rgba(4,20,14,.5);backdrop-filter:blur(10px);color:#FFFFFF;font-family:'IBM Plex Mono',monospace;font-size:11px">{{ w.type }}</span>
+            </span>
+            <div style="position:absolute;left:clamp(18px,2vw,28px);right:clamp(18px,2vw,28px);bottom:clamp(18px,2vw,26px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;color:#FFFFFF;pointer-events:none">
+              <div style="min-width:0">
+                <p style="margin:0 0 6px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C6D8CE">{{ w.city }} · {{ w.year }}</p>
+                <p style="margin:0;font-size:clamp(22px,2.2vw,34px);font-weight:600;line-height:1.05;letter-spacing:-.03em;text-wrap:balance">{{ w.name }}</p>
+              </div>
+              <div style="display:flex;gap:6px;opacity:{{ w.metaOp }};transform:{{ w.metaY }};transition:opacity .5s,transform .6s cubic-bezier(.22,1,.36,1)">
+                <span style="padding:8px 12px;border-radius:12px;background:#FFFFFF;color:#04140E;font-size:13px;font-weight:700">{{ w.area }}</span>
+                <span style="padding:8px 12px;border-radius:12px;background:#A5E85C;color:#04140E;font-size:13px;font-weight:700">{{ w.result }}</span>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" data-screen-label="03a Кейсы с планировками" style="padding:0 clamp(12px,2vw,24px) clamp(72px,9vw,140px)">
+    <div style="max-width:1440px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:clamp(28px,3vw,44px)">
+        <div>
+          <p style="margin:0 0 16px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>кейсы в деталях</p>
+          <h2 style="margin:0;font-size:clamp(40px,5.6vw,88px);font-weight:500;line-height:1;letter-spacing:-.05em;text-wrap:balance">От образа до планировки</h2>
+        </div>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#33463C;max-width:40ch;text-wrap:pretty">Как решение выглядит снаружи, как устроено внутри и что дало проекту.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <sc-for list="{{ stack }}" as="c" hint-placeholder-count="3">
+          <article data-g="stackCard" style="position:{{ c.pos }};top:{{ c.top }};border-radius:36px;overflow:hidden;background:#FFFFFF;box-shadow:0 -20px 60px -30px rgba(4,20,14,.25);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));min-height:clamp(560px,70vh,720px);transform-origin:50% 0">
+            <div style="position:relative;min-height:340px;background:#0B2219;isolation:isolate">
+              <img src="{{ c.img }}" alt="{{ c.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1" />
+              <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,20,14,.3),transparent 35%,transparent 60%,rgba(4,20,14,.8))"></span>
+              <span style="position:absolute;top:22px;left:22px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.94);font-family:'IBM Plex Mono',monospace;font-size:11px">кейс {{ c.n }} · {{ c.type }}</span>
+              <div style="position:absolute;left:clamp(20px,2.6vw,36px);right:clamp(20px,2.6vw,36px);bottom:clamp(20px,2.6vw,32px);color:#FFFFFF">
+                <p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C6D8CE">{{ c.city }} · {{ c.year }} · {{ c.area }}</p>
+                <p style="margin:0;font-size:clamp(30px,3.2vw,52px);font-weight:600;line-height:1;letter-spacing:-.04em;text-wrap:balance">{{ c.name }}</p>
+              </div>
+            </div>
+            <div style="padding:clamp(22px,2.8vw,40px);display:flex;flex-direction:column;gap:20px;min-width:0">
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+                <sc-for list="{{ c.facts }}" as="f" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid {{ f.bd }}"><span style="font-size:clamp(20px,1.8vw,28px);font-weight:600;letter-spacing:-.04em;line-height:1;color:{{ f.c }}">{{ f.v }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#5B6B62">{{ f.k }}</span></div></sc-for>
+              </div>
+              <p style="margin:0;font-size:16px;line-height:1.55;color:#33463C;text-wrap:pretty">{{ c.solution }}</p>
+              <div style="flex:1 1 auto;border-radius:22px;background-color:#F4F5EF;background-image:linear-gradient(rgba(4,20,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(4,20,14,.05) 1px,transparent 1px);background-size:20px 20px;padding:clamp(16px,2vw,28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:220px">
+                <div style="position:relative;width:100%;max-width:{{ c.plan.maxW }};aspect-ratio:{{ c.plan.ratio }};border:2.5px solid #04140E;background:#FFFFFF">
+                  <sc-for list="{{ c.plan.rooms }}" as="r" hint-placeholder-count="5">
+                    <div style="position:absolute;left:{{ r.x }};top:{{ r.y }};width:{{ r.w }};height:{{ r.h }};border:1.2px solid #04140E;background:{{ r.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2px"><span style="font-size:10px;font-weight:700;line-height:1.1">{{ r.l }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#33463C">{{ r.a }}</span></div>
+                  </sc-for>
+                </div>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">{{ c.plan.code }}</span>
+              </div>
+              <button type="button" onClick="{{ c.open }}" style="align-self:flex-start;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:12px;padding:14px 14px 14px 22px;border-radius:999px;background:#04140E;color:#FFFFFF;font-size:15px;font-weight:600" style-hover="background:#1C3A2C">Открыть кейс <span style="width:30px;height:30px;border-radius:50%;background:#A5E85C;color:#04140E;display:flex;align-items:center;justify-content:center">↗</span></button>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="before" data-screen-label="03b Было — стало" style="padding:0 clamp(12px,2vw,24px) clamp(72px,9vw,140px)">
+    <div style="max-width:1440px;margin:0 auto">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(28px,3vw,44px)">
+        <h2 style="margin:0;font-size:clamp(40px,5.6vw,88px);font-weight:500;line-height:1.02;letter-spacing:-.05em;text-wrap:balance">Тот же участок.<br /><span style="color:#8A988F">Другой проект.</span></h2>
+        <p style="margin:20px 0 0;font-size:clamp(17px,1.4vw,21px);font-weight:500;line-height:1.45;color:#33463C;max-width:44ch;text-wrap:balance">Потяните разделитель: исходная концепция заказчика против решения бюро.</p>
+      </div>
+      <div style="position:relative;height:clamp(460px,52vw,760px);border-radius:36px;overflow:hidden;isolation:isolate;background:#0B2219;user-select:none">
+        <div style="position:absolute;inset:0"><image-slot id="mim-after" src="assets/renders/case-nsk.jpg" shape="rect" fit="cover" placeholder="Стало · концепция МиМ"></image-slot></div>
+        <div style="position:absolute;inset:0;clip-path:inset(0 {{ baClip }} 0 0)"><div style="position:absolute;inset:0;filter:grayscale(1) contrast(.9) brightness(.85)"><image-slot id="mim-before" src="assets/renders/plot-aerial.jpg" shape="rect" fit="cover" placeholder="Было · исходная концепция"></image-slot></div></div>
+        <span style="position:absolute;top:0;bottom:0;left:{{ baPos }};width:2px;margin-left:-1px;background:#FFFFFF;pointer-events:none;box-shadow:0 0 20px rgba(0,0,0,.4)"></span>
+        <span style="position:absolute;top:50%;left:{{ baPos }};width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:#A5E85C;color:#04140E;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;pointer-events:none;box-shadow:0 10px 30px rgba(0,0,0,.35)">↔</span>
+        <span style="position:absolute;top:20px;left:20px;padding:8px 14px;border-radius:999px;background:rgba(4,20,14,.6);backdrop-filter:blur(10px);color:#FFFFFF;font-family:'IBM Plex Mono',monospace;font-size:12px;pointer-events:none">было</span>
+        <span style="position:absolute;top:20px;right:20px;padding:8px 14px;border-radius:999px;background:#A5E85C;color:#04140E;font-family:'IBM Plex Mono',monospace;font-size:12px;pointer-events:none">стало · МиМ</span>
+        <input type="range" min="0" max="100" value="{{ ba }}" onInput="{{ onBa }}" onChange="{{ onBa }}" aria-label="Сравнить было и стало" style="position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize" />
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:12px">
+        <sc-for list="{{ baStats }}" as="s" hint-placeholder-count="4">
+          <div style="background:#FFFFFF;border-radius:24px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">{{ s.k }}</span>
+            <span style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font-size:15px;color:#8A988F;text-decoration:line-through">{{ s.a }}</span><span style="font-size:clamp(24px,2.2vw,32px);font-weight:600;letter-spacing:-.04em;color:{{ s.c }}">{{ s.b }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans" data-screen-label="04 Планировки" style="padding:0 clamp(12px,2vw,24px)">
+    <div style="max-width:1440px;margin:0 auto;background:#FFFFFF;border-radius:40px;padding:clamp(24px,4vw,56px) clamp(16px,4vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px 64px;align-items:end;margin-bottom:clamp(28px,3vw,44px)">
+        <div>
+          <p style="margin:0 0 16px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>лаборатория планировок</p>
+          <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);font-weight:500;line-height:1;letter-spacing:-.045em;text-wrap:balance">Каждый метр работает</h2>
+        </div>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#33463C;max-width:46ch;text-wrap:pretty">Коридоры и холлы оплачивает собственник, покупатель платит за квартиру. Поэтому планировку проектируем с контролем полезной площади — от студии до этажа секции.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:#EEF2EC;width:fit-content;max-width:100%;margin-bottom:16px">
+        <sc-for list="{{ planTabs }}" as="t" hint-placeholder-count="5"><button type="button" onClick="{{ t.pick }}" style="border:0;cursor:pointer;padding:12px 20px;border-radius:999px;font-size:15px;font-weight:700;white-space:nowrap;background:{{ t.bg }};color:{{ t.fg }};transition:background .3s,color .3s">{{ t.label }}</button></sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px;align-items:stretch">
+        <div style="position:relative;border-radius:28px;background-color:#F4F5EF;background-image:linear-gradient(rgba(4,20,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(4,20,14,.05) 1px,transparent 1px);background-size:24px 24px;padding:clamp(28px,4vw,64px);display:flex;align-items:center;justify-content:center;min-height:clamp(380px,38vw,560px)">
+          <span style="position:absolute;top:18px;left:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">М 1:100 · схема</span>
+          <span style="position:absolute;top:18px;right:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">↑ фасад</span>
+          <div data-g="plan" style="position:relative;width:100%;max-width:{{ plan.maxW }};aspect-ratio:{{ plan.ratio }};border:3px solid #04140E;background:#FFFFFF">
+            <sc-for list="{{ plan.rooms }}" as="r" hint-placeholder-count="5">
+              <div onMouseEnter="{{ r.enter }}" onMouseLeave="{{ r.leave }}" style="position:absolute;left:{{ r.x }};top:{{ r.y }};width:{{ r.w }};height:{{ r.h }};border:1.5px solid #04140E;background:{{ r.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;padding:4px;cursor:default;transition:background .3s">
+                <span style="font-size:clamp(10px,.95vw,13px);font-weight:700;line-height:1.1;color:#04140E">{{ r.l }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:clamp(9px,.85vw,12px);color:#33463C">{{ r.a }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="border-radius:28px;background:#04140E;color:#FFFFFF;padding:clamp(22px,2.6vw,36px);display:flex;flex-direction:column;gap:24px">
+          <div>
+            <p style="margin:0 0 8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">{{ plan.code }}</p>
+            <p style="margin:0;font-size:clamp(28px,2.8vw,44px);font-weight:600;line-height:1;letter-spacing:-.035em">{{ plan.title }}</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.12);border-radius:18px;overflow:hidden">
+            <sc-for list="{{ plan.stats }}" as="s" hint-placeholder-count="4">
+              <div style="background:#04140E;padding:16px 4px 16px 0;display:flex;flex-direction:column;gap:6px"><span style="font-size:clamp(24px,2.2vw,34px);font-weight:600;letter-spacing:-.04em;line-height:1;color:{{ s.c }}">{{ s.v }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9DB3A8">{{ s.k }}</span></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9DB3A8"><span>{{ plan.barL }}</span><span>{{ plan.barR }}</span></div>
+            <div style="height:14px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden"><span style="display:block;height:100%;width:{{ plan.bar }};border-radius:999px;background:#A5E85C;transition:width 1s cubic-bezier(.22,1,.36,1)"></span></div>
+          </div>
+          <p style="margin:auto 0 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:16px;line-height:1.55;color:#C6D8CE;text-wrap:pretty">{{ plan.idea }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="loss" data-screen-label="04a Цена лишнего метра" style="padding:clamp(72px,9vw,140px) clamp(16px,3vw,40px) clamp(60px,7vw,110px)">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(28px,4vw,72px);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>посчитайте свой проект</p>
+        <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);font-weight:500;line-height:1;letter-spacing:-.045em;text-wrap:balance">Сколько стоит лишний коридор</h2>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#33463C;max-width:44ch;text-wrap:pretty">Введите параметры дома. Мы сравним вашу долю продаваемой площади с этажом, спроектированным на 0,84, и покажем, сколько денег остаётся в коридорах.</p>
+        <div style="display:flex;flex-direction:column;gap:18px;background:#FFFFFF;border-radius:28px;padding:clamp(20px,2.4vw,30px)">
+          <sc-for list="{{ lossInputs }}" as="s" hint-placeholder-count="4">
+            <label style="display:flex;flex-direction:column;gap:8px"><span style="display:flex;justify-content:space-between;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B6B62"><span>{{ s.k }}</span><span style="color:#04140E;font-weight:500">{{ s.show }}</span></span><input type="range" min="{{ s.min }}" max="{{ s.max }}" step="{{ s.step }}" value="{{ s.v }}" onInput="{{ s.on }}" onChange="{{ s.on }}" style="width:100%;accent-color:#04140E" /></label>
           </sc-for>
         </div>
       </div>
-      <div>
-        <p style="margin:0 0 26px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">бюро мим — сначала гипотеза рынка</p>
-        <div style="display:flex;flex-direction:column;gap:18px">
-          <sc-for list="{{ mim }}" as="m" hint-placeholder-count="4">
-            <div style="display:flex;gap:14px;align-items:flex-start">
-              <span style="width:6px;height:6px;background:#A5E85C;flex:none;margin-top:8px"></span>
-              <p style="margin:0;font-size:16px;font-weight:400;line-height:1.55;color:#F2F8F4">{{ m }}</p>
+      <div style="position:relative;border-radius:40px;background:#04140E;color:#FFFFFF;padding:clamp(28px,4vw,56px);overflow:hidden;isolation:isolate;min-height:clamp(420px,40vw,560px);display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+        <span aria-hidden="true" style="position:absolute;right:-20%;top:-30%;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(232,161,92,.22),transparent 65%);z-index:-1"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9DB3A8">остаётся в местах общего пользования</span>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:clamp(56px,7.4vw,124px);font-weight:600;line-height:.9;letter-spacing:-.06em;color:{{ lossColor }}">{{ lossMoney }}</span>
+          <span style="font-size:clamp(18px,1.6vw,24px);font-weight:600;letter-spacing:-.02em;color:#E4EEE8">{{ lossLine }}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14)">
+          <sc-for list="{{ lossStats }}" as="s" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:clamp(22px,2vw,30px);font-weight:600;letter-spacing:-.04em">{{ s.v }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9DB3A8">{{ s.k }}</span></div></sc-for>
+        </div>
+        <a href="#contact" style="align-self:flex-start;display:inline-flex;align-items:center;gap:12px;padding:14px 14px 14px 22px;border-radius:999px;background:#A5E85C;color:#04140E;font-size:15px;font-weight:700" style-hover="background:#FFFFFF">Проверить мои планировки <span style="width:30px;height:30px;border-radius:50%;background:#04140E;color:#A5E85C;display:flex;align-items:center;justify-content:center">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="massing" data-screen-label="04b Массинг вживую" style="padding:clamp(12px,2vw,24px) clamp(12px,2vw,24px) 0">
+    <div style="position:relative;max-width:1440px;margin:0 auto;border-radius:40px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 50% 60% at 80% 0%,rgba(165,232,92,.16),transparent 70%),#04140E;color:#FFFFFF;padding:clamp(28px,4vw,56px) clamp(16px,4vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px 64px;align-items:end;margin-bottom:clamp(28px,3vw,40px)">
+        <div>
+          <p style="margin:0 0 16px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A9BDB3"><span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span>массинг вживую · участок 4,5 га</p>
+          <h2 style="margin:0;font-size:clamp(36px,4.6vw,72px);font-weight:500;line-height:1;letter-spacing:-.045em;text-wrap:balance">Двигаете объём — меняются деньги</h2>
+        </div>
+        <p style="margin:0;font-size:17px;line-height:1.55;color:#C6D8CE;max-width:46ch;text-wrap:pretty">Так мы ищем решение: каждый вариант застройки сразу проверяется ограничениями участка и экономикой. Попробуйте сами.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px;align-items:stretch">
+        <div style="position:relative;border-radius:28px;background:linear-gradient(180deg,#0B2219,#12301F);height:clamp(380px,36vw,520px);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 24px 0">
+          <span style="position:absolute;left:24px;right:24px;bottom:{{ capLine }};border-top:1.5px dashed rgba(255,255,255,.4);pointer-events:none;transition:bottom .4s"></span>
+          <span style="position:absolute;right:24px;bottom:{{ capLine }};transform:translateY(-100%);padding:0 0 6px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C6D8CE;transition:bottom .4s">предел высотности ПЗЗ · 18 эт.</span>
+          <div style="display:flex;align-items:flex-end;gap:{{ mGap }};flex:1 1 auto;min-height:0;position:relative;transition:gap .4s">
+            <sc-for list="{{ towers }}" as="t" hint-placeholder-count="6">
+              <span style="flex:1 1 0;height:{{ t.h }};background:{{ t.bg }};border-radius:6px 6px 0 0;box-shadow:{{ t.glow }};background-image:repeating-linear-gradient(180deg,transparent 0 10px,rgba(4,20,14,.18) 10px 11px);transition:height .5s cubic-bezier(.22,1,.36,1),background-color .4s"></span>
+            </sc-for>
+          </div>
+          <span style="display:block;height:20px;margin:0 -24px;background:#1F3B2E"></span>
+        </div>
+        <div style="border-radius:28px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:22px">
+          <label style="display:flex;flex-direction:column;gap:10px"><span style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9DB3A8"><span>этажность</span><span style="color:#FFFFFF">{{ floors }} эт.</span></span><input type="range" min="4" max="25" value="{{ floors }}" onInput="{{ onFloors }}" onChange="{{ onFloors }}" style="width:100%;accent-color:#A5E85C" /></label>
+          <label style="display:flex;flex-direction:column;gap:10px"><span style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9DB3A8"><span>плотность застройки</span><span style="color:#FFFFFF">{{ cover }}%</span></span><input type="range" min="12" max="40" value="{{ cover }}" onInput="{{ onCover }}" onChange="{{ onCover }}" style="width:100%;accent-color:#A5E85C" /></label>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.12);border-radius:18px;overflow:hidden">
+            <sc-for list="{{ tep }}" as="s" hint-placeholder-count="4">
+              <div style="background:#0A1D15;padding:16px 16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:clamp(22px,2vw,30px);font-weight:600;letter-spacing:-.04em;line-height:1;color:{{ s.c }}">{{ s.v }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9DB3A8">{{ s.k }}</span></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:16px;background:{{ verdictBg }};color:{{ verdictFg }};transition:background .4s,color .4s"><span style="flex:none;width:10px;height:10px;border-radius:50%;background:{{ verdictDot }}"></span><span style="font-size:15px;font-weight:700;line-height:1.35">{{ verdict }}</span></div>
+          <span style="margin-top:auto;font-size:12px;color:#7F978B">Демонстрационная модель с усреднёнными допущениями. В проекте считаем по вашему участку.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" data-screen-label="05 Метод" style="padding:clamp(72px,9vw,140px) clamp(16px,3vw,40px)">
+    <div style="max-width:1440px;margin:0 auto">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(40px,5vw,72px)">
+        <h2 style="margin:0;font-size:clamp(40px,5.6vw,88px);font-weight:500;line-height:1.02;letter-spacing:-.05em;text-wrap:balance">Пять шагов.<br /><span style="color:#8A988F">Две проверки в каждом.</span></h2>
+      </div>
+      <ol data-g="method" style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px">
+        <sc-for list="{{ method }}" as="m" hint-placeholder-count="5">
+          <li style="background:#FFFFFF;border-radius:28px;padding:clamp(20px,2vw,28px);display:flex;flex-direction:column;gap:14px;min-height:300px">
+            <span style="font-size:clamp(44px,4vw,64px);font-weight:600;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1.5px #04140E">{{ m.n }}</span>
+            <span style="margin-top:auto;font-size:22px;font-weight:700;letter-spacing:-.02em">{{ m.title }}</span>
+            <span style="display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid #E3E9E1">
+              <span style="display:flex;gap:10px;align-items:baseline;font-size:14px;line-height:1.4;color:#33463C"><span style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8A988F;width:52px">образ</span>{{ m.a }}</span>
+              <span style="display:flex;gap:10px;align-items:baseline;font-size:14px;line-height:1.4;color:#04140E;font-weight:600"><span style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:400;color:#2E6B1E;width:52px">цифра</span>{{ m.b }}</span>
+            </span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <section id="index" data-screen-label="06 Индекс проектов" style="padding:0 clamp(12px,2vw,24px)">
+    <div onMouseMove="{{ idxMove }}" style="position:relative;max-width:1440px;margin:0 auto;background:#04140E;color:#FFFFFF;border-radius:40px;padding:clamp(28px,4vw,56px) clamp(16px,4vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 40px;margin-bottom:clamp(24px,3vw,40px)">
+        <h2 style="margin:0;font-size:clamp(40px,5.6vw,88px);font-weight:500;line-height:1;letter-spacing:-.05em">Все проекты</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5"><button type="button" onClick="{{ f.pick }}" style="border:1px solid {{ f.bd }};cursor:pointer;padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;background:{{ f.bg }};color:{{ f.fg }};display:flex;gap:8px;align-items:baseline;transition:background .3s,color .3s">{{ f.label }}<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.7">{{ f.count }}</span></button></sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px minmax(0,2.2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,.8fr) 32px;gap:16px;padding:0 0 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7F978B;border-bottom:1px solid rgba(255,255,255,.16)"><span>год</span><span>проект</span><span>город</span><span>тип</span><span>масштаб</span><span></span></div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+        <div onMouseEnter="{{ r.enter }}" onMouseLeave="{{ r.leave }}" onClick="{{ r.open }}" style="display:grid;grid-template-columns:64px minmax(0,2.2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,.8fr) 32px;gap:16px;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;color:{{ r.fg }};transition:color .3s,padding .4s cubic-bezier(.22,1,.36,1);padding-left:{{ r.pad }}">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7F978B">{{ r.year }}</span>
+          <span style="font-size:clamp(17px,1.6vw,24px);font-weight:600;letter-spacing:-.02em;min-width:0">{{ r.name }}</span>
+          <span style="font-size:14px;min-width:0">{{ r.city }}</span>
+          <span style="font-size:14px;min-width:0">{{ r.type }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ r.area }}</span>
+          <span style="color:#A5E85C;opacity:{{ r.arrow }};transition:opacity .3s">↗</span>
+        </div>
+      </sc-for>
+      <div aria-hidden="true" style="position:absolute;left:{{ pvX }};top:{{ pvY }};width:300px;aspect-ratio:4/3;border-radius:20px;overflow:hidden;pointer-events:none;opacity:{{ pvOp }};transform:translate(-50%,-110%) scale({{ pvS }});transition:opacity .3s,transform .4s cubic-bezier(.22,1,.36,1),left .25s ease-out,top .25s ease-out;box-shadow:0 30px 60px rgba(0,0,0,.5);z-index:3;background:#0B2219">
+        <img src="{{ pvImg }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+      </div>
+    </div>
+  </section>
+
+  <section id="route" data-screen-label="06b Маршрут для вашего участка" style="padding:clamp(72px,9vw,140px) clamp(12px,2vw,24px) 0">
+    <div style="max-width:1440px;margin:0 auto">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(28px,3vw,44px)">
+        <h2 style="margin:0;font-size:clamp(40px,5.6vw,88px);font-weight:500;line-height:1.02;letter-spacing:-.05em;text-wrap:balance">Три ответа —<br /><span style="color:#8A988F">план работ по вашему участку.</span></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:12px;align-items:stretch">
+        <div style="background:#FFFFFF;border-radius:36px;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:28px">
+          <sc-for list="{{ quiz }}" as="q" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;letter-spacing:-.01em"><span style="width:28px;height:28px;border-radius:50%;background:{{ q.numBg }};color:{{ q.numFg }};display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;transition:background .3s">{{ q.n }}</span>{{ q.title }}</span>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ q.opts }}" as="o" hint-placeholder-count="4"><button type="button" onClick="{{ o.pick }}" style="border:1px solid {{ o.bd }};cursor:pointer;padding:12px 18px;border-radius:999px;font-size:15px;font-weight:600;background:{{ o.bg }};color:{{ o.fg }};transition:background .3s,color .3s,border-color .3s">{{ o.label }}</button></sc-for>
+              </div>
             </div>
           </sc-for>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="scope" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
-    <h2 style="margin:0 0 clamp(44px,6vw,88px);font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF">Что делает бюро</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(24px,3vw,44px)">
-      <sc-for list="{{ scope }}" as="s" hint-placeholder-count="8">
-        <div style="border-top:1px solid rgba(165,232,92,.22);padding-top:22px">
-          <p style="margin:0 0 16px;font-size:clamp(22px,2.2vw,30px);font-weight:400;line-height:1;letter-spacing:-.04em;color:#A5E85C;font-variant-numeric:tabular-nums">{{ s.n }}</p>
-          <h3 style="margin:0 0 12px;font-size:clamp(19px,1.9vw,24px);font-weight:400;line-height:1.15;letter-spacing:-.025em;color:#FFFFFF">{{ s.title }}</h3>
-          <p style="margin:0;font-size:15px;font-weight:300;line-height:1.6;color:#8FA69C">{{ s.text }}</p>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <section id="process" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px)">
-    <h2 style="margin:0 0 clamp(44px,6vw,88px);font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:18ch">От сценария — к ДНК проекта</h2>
-    <div style="display:flex;flex-direction:column;gap:clamp(32px,4.5vw,56px)">
-      <sc-for list="{{ process }}" as="p" hint-placeholder-count="5">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(16px,3vw,48px);align-items:baseline">
-          <div style="display:flex;gap:18px;align-items:baseline">
-            <span style="font-size:clamp(20px,2.2vw,30px);font-weight:400;color:#A5E85C;font-variant-numeric:tabular-nums">{{ p.n }}</span>
-            <h3 style="margin:0;font-size:clamp(24px,3vw,42px);font-weight:400;line-height:1.08;letter-spacing:-.035em;color:#FFFFFF">{{ p.title }}</h3>
-          </div>
-          <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">{{ p.text }}</p>
-          <div>
-            <p style="margin:0 0 6px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">результат</p>
-            <p style="margin:0;font-size:17px;font-weight:400;color:#A5E85C">{{ p.result }}</p>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <section id="cases" style="max-width:1440px;margin:0 auto;padding:clamp(60px,9vw,120px) clamp(28px,4.2vw,56px) clamp(30px,4vw,56px)">
-    <h2 style="margin:0 0 20px;font-size:clamp(30px,4.6vw,78px);font-weight:400;line-height:1.04;letter-spacing:-.04em;color:#FFFFFF;max-width:20ch">Проекты, где архитектура изменила экономику</h2>
-    <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#8FA69C;max-width:48ch">Часть проектов раскрывается без названий — по условиям соглашений с заказчиками.</p>
-  </section>
-
-  <section style="position:relative;overflow:hidden;min-height:min(92vh,820px);display:flex;align-items:flex-end;background-image:linear-gradient(to top,rgba(4,20,14,.96) 14%,rgba(4,20,14,.5) 66%),url('assets/renders/case-nsk.jpg');background-size:cover;background-position:center">
-    <div style="max-width:1440px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(72px,12vw,180px) clamp(28px,4.2vw,56px) clamp(40px,6vw,72px)">
-      <p style="margin:0 0 20px;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#A5E85C">кейс 01 · Новосибирск · 4,5 га</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(28px,4vw,56px);align-items:end">
-        <div>
-          <p style="margin:0;font-size:clamp(44px,6vw,104px);font-weight:400;line-height:1;letter-spacing:-.05em;color:#A5E85C;font-variant-numeric:tabular-nums">+1,2 млрд ₽</p>
-          <p style="margin:16px 0 0;font-size:15px;font-weight:300;line-height:1.55;color:#C6D8CE;max-width:28ch">улучшение финансового результата на участке площадью 4,5 га</p>
-        </div>
-        <p style="margin:0;font-size:17px;font-weight:300;line-height:1.65;color:#F2F8F4;max-width:46ch">Продуктовые и архитектурные параметры пересобраны вместе с моделью: другой баланс застройки — другой финансовый результат.</p>
-      </div>
-      <p style="margin:clamp(32px,4vw,48px) 0 0;font-size:12px;font-weight:300;color:#6E8479">Данные приведены для примера расчёта и не являются инвестиционной рекомендацией.</p>
-    </div>
-  </section>
-
-  <section style="max-width:1440px;margin:0 auto;padding:0 clamp(28px,4.2vw,56px) clamp(60px,9vw,120px)">
-    <div style="border-top:1px solid rgba(165,232,92,.3);padding-top:26px;max-width:62ch">
-      <p style="margin:0 0 12px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#A5E85C">нужен факт · заполняется заказчиком</p>
-      <p style="margin:0;font-size:17px;font-weight:300;line-height:1.65;color:#8FA69C">Ещё 2 кейса бюро. По каждому: локация, площадь участка или GBA, задача заказчика, что именно сделало бюро, измеримый результат, 2–3 визуализации или фото. Можно обезличенно.</p>
-    </div>
-  </section>
-
-  <section id="talk" style="position:relative;overflow:hidden;background-image:linear-gradient(to bottom,rgba(4,20,14,.8),rgba(4,20,14,.94)),url('assets/renders/plot-aerial.jpg');background-size:cover;background-position:center">
-    <div style="max-width:1440px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(56px,8vw,120px) clamp(28px,4.2vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(36px,5vw,72px)">
-      <div>
-        <h2 style="margin:0 0 24px;font-size:clamp(30px,4.4vw,72px);font-weight:400;line-height:1.03;letter-spacing:-.045em;color:#FFFFFF;max-width:16ch">Концепция готова. Дальше — документация</h2>
-        <p style="margin:0 0 36px;font-size:18px;font-weight:300;line-height:1.6;color:#C6D8CE;max-width:42ch">Расскажите про участок и выбранный сценарий — обсудим, что бюро может сделать на вашей стадии.</p>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <a href="priroda.dc.html" style="font-size:clamp(18px,2vw,26px);font-weight:400;letter-spacing:-.025em;color:#F2F8F4" style-hover="color:#A5E85C">Дальше: «Природа проектирования» →</a>
-          <a href="calculator.dc.html" style="font-size:16px;font-weight:300;color:#8FA69C" style-hover="color:#A5E85C">← Калькулятор девелопера</a>
+        <div style="position:relative;border-radius:36px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse 60% 60% at 100% 0%,rgba(165,232,92,.18),transparent 70%),#04140E;color:#FFFFFF;padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:22px;min-height:460px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">ваш маршрут</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9DB3A8">{{ quizDone }} из 3</span></div>
+          <sc-if value="{{ quizEmpty }}" hint-placeholder-val="{{ true }}"><p style="margin:auto 0;font-size:clamp(24px,2.4vw,36px);font-weight:600;line-height:1.1;letter-spacing:-.03em;color:#6F857A;max-width:16ch">Выберите ответы слева — маршрут соберётся здесь</p></sc-if>
+          <ol data-g="routeList" style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+            <sc-for list="{{ routeSteps }}" as="r" hint-placeholder-count="0">
+              <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;padding:16px 0;border-top:1px solid rgba(255,255,255,.12)"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C;padding-top:4px">{{ r.n }}</span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:clamp(18px,1.5vw,22px);font-weight:700;letter-spacing:-.02em">{{ r.t }}</span><span style="font-size:14px;line-height:1.5;color:#C6D8CE">{{ r.d }}</span></span></li>
+            </sc-for>
+          </ol>
+          <sc-if value="{{ quizFull }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ sendRoute }}" style="margin-top:auto;align-self:flex-start;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:12px;padding:14px 14px 14px 22px;border-radius:999px;background:#A5E85C;color:#04140E;font-size:15px;font-weight:700" style-hover="background:#FFFFFF">Обсудить этот маршрут <span style="width:30px;height:30px;border-radius:50%;background:#04140E;color:#A5E85C;display:flex;align-items:center;justify-content:center">↓</span></button></sc-if>
         </div>
       </div>
-      <div style="max-width:460px">
-        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-          <div>
-            <p style="margin:0 0 12px;font-size:clamp(22px,2.6vw,34px);font-weight:400;line-height:1.15;letter-spacing:-.03em;color:#A5E85C">Заявка отправлена</p>
-            <p style="margin:0;font-size:17px;font-weight:300;line-height:1.6;color:#C6D8CE">Перезвоним в течение рабочего дня.</p>
-          </div>
-        </sc-if>
-        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;flex-direction:column;gap:22px">
-            <div>
-              <label for="m-name" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">имя</label>
-              <input id="m-name" type="text" placeholder="Как к вам обращаться" value="{{ name }}" onChange="{{ onName }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
-            </div>
-            <div>
-              <label for="m-phone" style="display:block;margin-bottom:10px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#6E8479">телефон</label>
-              <input id="m-phone" type="tel" placeholder="+7 900 000-00-00" value="{{ phone }}" onChange="{{ onPhone }}" style="width:100%;box-sizing:border-box;background:rgba(242,248,244,.05);border:1px solid rgba(242,248,244,.18);border-radius:4px;padding:16px 18px;font-size:16px;font-weight:400;color:#F2F8F4;outline:none" style-focus="border-color:#A5E85C" />
-            </div>
-            <label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer">
-              <input type="checkbox" checked="{{ agree }}" onChange="{{ onAgree }}" style="width:20px;height:20px;margin:2px 0 0;accent-color:#A5E85C;flex:none" />
-              <span style="font-size:14px;font-weight:300;line-height:1.5;color:#8FA69C">Согласен на обработку персональных данных — <a href="legal.dc.html#consent" style="color:#A5E85C">согласие</a> и <a href="legal.dc.html#privacy" style="color:#A5E85C">политика</a></span>
-            </label>
-            <button type="button" onClick="{{ submit }}" disabled="{{ disabled }}" style="background:#A5E85C;color:#04140E;border:none;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:18px 24px;border-radius:4px;cursor:pointer;opacity:{{ btnOpacity }}" style-hover="background:#C7F291">{{ btnLabel }}</button>
-          </div>
-        </sc-if>
-      </div>
     </div>
   </section>
 
-  <footer style="max-width:1440px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(28px,4.2vw,56px) clamp(48px,7vw,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:28px;border-top:1px solid rgba(165,232,92,.12)">
-    <div>
-      <p style="margin:0 0 10px;display:flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:#F2F8F4"><img src="assets/logo/culture-light.png" alt="культура девелопмента" style="height:28px;width:auto;display:block" /></p>
-      <p style="margin:0;font-size:13px;font-weight:300;line-height:1.6;color:#6E8479">ООО «Природа проектирования», ИНН —</p>
+  <section id="contact" data-screen-label="07 Заявка" style="padding:clamp(12px,2vw,24px) clamp(12px,2vw,24px)">
+    <div data-g="contact" style="max-width:1440px;margin:0 auto;background:radial-gradient(ellipse 60% 80% at 0% 0%,#F2FAE6 0%,rgba(242,250,230,0) 70%),#E2F2CC;border-radius:40px;padding:clamp(24px,3.6vw,52px) clamp(16px,3.6vw,52px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(24px,4vw,64px);align-items:start">
+      <div style="display:flex;flex-direction:column">
+        <h2 style="margin:0 0 16px;font-size:clamp(32px,3.6vw,54px);font-weight:500;line-height:1;letter-spacing:-.04em">Обсудим ваш проект</h2>
+        <p style="margin:0 0 clamp(24px,2.6vw,36px);font-size:16px;line-height:1.55;color:#2A3D24;max-width:46ch;text-wrap:pretty">Расскажите про участок и задачу — покажем, какие решения уже работали в похожих проектах.</p>
+        <div style="display:flex;flex-direction:column;border-bottom:1px solid rgba(4,20,14,.1)">
+          <a href="tel:+79128268070" style="display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:12px;padding:14px 4px;border-top:1px solid rgba(4,20,14,.1);color:#04140E" style-hover="color:#2E6B1E"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4C6142">телефон</span><span style="font-size:clamp(16px,1.3vw,19px);font-weight:600">+7 912 826-80-70</span><span aria-hidden="true" style="font-size:14px;color:#4C6142">↗</span></a>
+          <a href="mailto:468070@mail.ru" style="display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:12px;padding:14px 4px;border-top:1px solid rgba(4,20,14,.1);color:#04140E" style-hover="color:#2E6B1E"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4C6142">почта</span><span style="font-size:clamp(16px,1.3vw,19px);font-weight:600">468070@mail.ru</span><span aria-hidden="true" style="font-size:14px;color:#4C6142">↗</span></a>
+          <a href="https://t.me/Al_8070" target="_blank" rel="noopener" style="display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:12px;padding:14px 4px;border-top:1px solid rgba(4,20,14,.1);color:#04140E" style-hover="color:#2E6B1E"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4C6142">telegram</span><span style="font-size:clamp(16px,1.3vw,19px);font-weight:600">@Al_8070</span><span aria-hidden="true" style="font-size:14px;color:#4C6142">↗</span></a>
+          <a href="https://yandex.ru/maps/?text=Киров, Молодой Гвардии, 82" target="_blank" rel="noopener" style="display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:12px;padding:14px 4px;border-top:1px solid rgba(4,20,14,.1);color:#04140E" style-hover="color:#2E6B1E"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4C6142">офис</span><span style="font-size:clamp(16px,1.3vw,19px);font-weight:600">Киров, ул. Молодой Гвардии, 82, оф. 418</span><span aria-hidden="true" style="font-size:14px;color:#4C6142">↗</span></a>
+        </div>
+      </div>
+      <form onSubmit="{{ submit }}" style="background:#FFFFFF;border-radius:28px;padding:clamp(16px,2.2vw,26px);display:flex;flex-direction:column;gap:8px;box-shadow:0 30px 60px -40px rgba(4,20,14,.3)">
+        <label style="display:flex;flex-direction:column;gap:4px;background:#F1F4EE;border-radius:16px;padding:11px 16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">имя</span><input value="{{ name }}" onChange="{{ onName }}" autocomplete="name" style="background:transparent;border:none;font-size:16px;outline:none;color:#04140E" /></label>
+        <label style="display:flex;flex-direction:column;gap:4px;background:#F1F4EE;border-radius:16px;padding:11px 16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">телефон или почта</span><input value="{{ contact }}" onChange="{{ onContact }}" autocomplete="tel" style="background:transparent;border:none;font-size:16px;outline:none;color:#04140E" /></label>
+        <label style="display:flex;flex-direction:column;gap:4px;background:#F1F4EE;border-radius:16px;padding:11px 16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">участок и задача</span><textarea value="{{ docs }}" onChange="{{ onDocs }}" rows="3" placeholder="Где участок, что планируете, на какой вы стадии" style="background:transparent;border:none;font-size:16px;outline:none;resize:vertical;color:#04140E"></textarea></label>
+        <button type="submit" disabled="{{ disabled }}" style="margin-top:6px;background:#04140E;color:#FFFFFF;border:none;border-radius:999px;padding:15px 22px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center" style-hover="background:#1C3A2C">{{ buttonLabel }} <span style="width:10px;height:10px;border-radius:50%;background:#A5E85C"></span></button>
+        <sc-if value="{{ statusText }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;font-weight:600;color:#2E6B12">{{ statusText }}</p></sc-if>
+        <p style="margin:4px 0 0;font-size:12px;line-height:1.5;color:#5B6B62">Нажимая кнопку, вы соглашаетесь с <a href="legal.dc.html" style="text-decoration:underline" style-hover="color:#04140E">политикой обработки персональных данных</a>.</p>
+      </form>
     </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <a href="home.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Главная</a>
-      <a href="calculator.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Калькулятор девелопера</a>
-      <a href="priroda.dc.html" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">Природа проектирования</a>
+  </section>
+
+  <section data-screen-label="08 Дальше" style="padding:0 clamp(12px,2vw,24px)">
+    <div style="max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px">
+      <a href="calculator.dc.html" style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#FFFFFF;border-radius:28px;padding:22px 24px;color:#04140E" style-hover="background:#EEF2EC"><span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">← этап 01 · оценка</span><img src="assets/logo/calc-ink.png" alt="Калькулятор девелопера" style="height:34px;width:auto;display:block;filter:brightness(0)" /></span><span style="flex:none;width:40px;height:40px;border-radius:50%;background:#EEF2EC;display:flex;align-items:center;justify-content:center">←</span></a>
+      <a href="priroda.dc.html" style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#04140E;border-radius:28px;padding:22px 24px;color:#FFFFFF" style-hover="background:#1C3A2C"><span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#A5E85C">этап 03 · проектирование →</span><img src="assets/logo/priroda-light.png" alt="Природа проектирования" style="height:34px;width:auto;display:block" /></span><span style="flex:none;width:40px;height:40px;border-radius:50%;background:#A5E85C;color:#04140E;display:flex;align-items:center;justify-content:center">→</span></a>
     </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <a href="tel:+79128268070" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">+7 912 826-80-70</a>
-      <a href="mailto:468070@mail.ru" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">468070@mail.ru</a>
-      <a href="https://t.me/Al_8070" target="_blank" rel="noopener" style="font-size:14px;color:#8FA69C" style-hover="color:#A5E85C">@Al_8070</a>
+  </section>
+
+  <footer style="padding:clamp(12px,2vw,24px) clamp(12px,2vw,24px) 0;margin-top:clamp(12px,2vw,24px)">
+    <div style="max-width:1200px;margin:0 auto;padding:28px clamp(4px,1vw,12px) 24px;color:#4E5E55">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:28px 24px;padding-bottom:24px">
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-size:12px;font-weight:600;color:#04140E">Направления</span><a href="home.dc.html" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Главная</a><a href="calculator.dc.html" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Калькулятор девелопера</a><a href="mim.dc.html" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">МиМ · архитектура</a><a href="priroda.dc.html" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Природа проектирования</a></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-size:12px;font-weight:600;color:#04140E">Бюро</span><a href="#works" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Проекты</a><a href="#plans" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Планировки</a><a href="#method" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Метод</a><a href="#index" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Все проекты</a></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-size:12px;font-weight:600;color:#04140E">Связаться</span><a href="tel:+79128268070" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">+7 912 826-80-70</a><a href="mailto:468070@mail.ru" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">468070@mail.ru</a><a href="https://t.me/Al_8070" target="_blank" rel="noopener" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Telegram @Al_8070</a></div>
+        <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span style="font-size:12px;font-weight:600;color:#04140E">Документы</span><a href="legal.dc.html" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Политика обработки данных</a><a href="legal.dc.html#consent" style="font-size:12px;color:#4E5E55" style-hover="color:#04140E;text-decoration:underline">Согласие на обработку</a></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:16px;border-top:1px solid #D9DED6;font-size:12px;color:#6B7A71">
+        <span style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px"><img src="assets/logo/culture-light.png" alt="Культура девелопмента" style="height:18px;width:auto;filter:brightness(0);opacity:.85" /><span>© 2026 ООО «Природа проектирования». Все права защищены.</span></span>
+        <span>Киров · проекты по России</span>
+      </div>
     </div>
   </footer>
+
+  <sc-if value="{{ caseOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-g="caseView" role="dialog" aria-modal="true" aria-label="{{ cv.name }}" style="position:fixed;inset:0;z-index:100;background:#04140E;color:#FFFFFF;overflow-y:auto;overscroll-behavior:contain">
+      <div style="position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(16px,3vw,40px);background:rgba(4,20,14,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)">
+        <span style="display:flex;align-items:center;gap:14px;min-width:0"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">{{ cv.n }} / {{ total }}</span><span style="font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ cv.name }}</span></span>
+        <span style="display:flex;gap:6px;flex:none">
+          <button type="button" onClick="{{ casePrev }}" aria-label="Предыдущий кейс" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;cursor:pointer;font-size:16px" style-hover="background:rgba(255,255,255,.1)">←</button>
+          <button type="button" onClick="{{ caseNext }}" aria-label="Следующий кейс" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;cursor:pointer;font-size:16px" style-hover="background:rgba(255,255,255,.1)">→</button>
+          <button type="button" onClick="{{ caseClose }}" aria-label="Закрыть" style="width:44px;height:44px;border-radius:50%;border:0;background:#A5E85C;color:#04140E;cursor:pointer;font-size:18px;font-weight:700">×</button>
+        </span>
+      </div>
+      <div style="position:relative;height:min(78vh,760px);background:#0B2219;isolation:isolate">
+        <img src="{{ cv.img }}" alt="{{ cv.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1" />
+        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#04140E 100%)"></span>
+        <div style="position:absolute;left:0;right:0;bottom:0;max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,40px) clamp(24px,3vw,40px)">
+          <p style="margin:0 0 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C7F291">{{ cv.type }} · {{ cv.city }} · {{ cv.year }}</p>
+          <h3 style="margin:0;font-size:clamp(44px,7vw,120px);font-weight:500;line-height:.92;letter-spacing:-.055em;max-width:14ch;text-wrap:balance">{{ cv.name }}</h3>
+        </div>
+      </div>
+      <div style="max-width:1440px;margin:0 auto;padding:clamp(28px,4vw,56px) clamp(16px,3vw,40px) clamp(48px,6vw,96px);display:flex;flex-direction:column;gap:clamp(40px,5vw,72px)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+          <sc-for list="{{ cv.facts }}" as="f" hint-placeholder-count="4"><div style="padding:18px 0 0;border-top:1px solid {{ f.bd }};display:flex;flex-direction:column;gap:8px"><span style="font-size:clamp(28px,3vw,44px);font-weight:600;letter-spacing:-.045em;line-height:1;color:{{ f.c }}">{{ f.v }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9DB3A8">{{ f.k }}</span></div></sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px clamp(24px,3vw,48px)">
+          <div><p style="margin:0 0 12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">задача</p><p style="margin:0;font-size:17px;line-height:1.6;color:#E4EEE8;text-wrap:pretty">{{ cv.task }}</p></div>
+          <div><p style="margin:0 0 12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">решение</p><p style="margin:0;font-size:17px;line-height:1.6;color:#E4EEE8;text-wrap:pretty">{{ cv.solution }}</p></div>
+          <div><p style="margin:0 0 12px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A5E85C">результат</p><p style="margin:0;font-size:17px;line-height:1.6;color:#E4EEE8;text-wrap:pretty">{{ cv.outcome }}</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:12px">
+          <div style="border-radius:28px;background-color:#F4F5EF;background-image:linear-gradient(rgba(4,20,14,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(4,20,14,.05) 1px,transparent 1px);background-size:24px 24px;padding:clamp(24px,3vw,48px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-height:420px;color:#04140E">
+            <div style="position:relative;width:100%;max-width:{{ cv.plan.maxW }};aspect-ratio:{{ cv.plan.ratio }};border:3px solid #04140E;background:#FFFFFF">
+              <sc-for list="{{ cv.plan.rooms }}" as="r" hint-placeholder-count="5">
+                <div style="position:absolute;left:{{ r.x }};top:{{ r.y }};width:{{ r.w }};height:{{ r.h }};border:1.5px solid #04140E;background:{{ r.bg }};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3px"><span style="font-size:12px;font-weight:700;line-height:1.1">{{ r.l }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#33463C">{{ r.a }}</span></div>
+              </sc-for>
+            </div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5B6B62">{{ cv.plan.code }} · схема</span>
+          </div>
+          <div style="display:grid;grid-template-rows:1fr 1fr;gap:12px;min-height:420px">
+            <div style="position:relative;border-radius:28px;overflow:hidden;background:#0B2219"><image-slot id="mim-case-{{ cv.n }}-g1" shape="rect" fit="cover" placeholder="Кейс {{ cv.n }} · двор или фасад"></image-slot></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div style="position:relative;border-radius:28px;overflow:hidden;background:#0B2219"><image-slot id="mim-case-{{ cv.n }}-g2" shape="rect" fit="cover" placeholder="Деталь"></image-slot></div>
+              <div style="position:relative;border-radius:28px;overflow:hidden;background:#0B2219"><image-slot id="mim-case-{{ cv.n }}-g3" shape="rect" fit="cover" placeholder="Интерьер или план"></image-slot></div>
+            </div>
+          </div>
+        </div>
+        <button type="button" onClick="{{ caseNext }}" style="border:0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(20px,2.4vw,32px);border-radius:28px;background:#A5E85C;color:#04140E;text-align:left"><span style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">следующий кейс</span><span style="font-size:clamp(24px,2.6vw,40px);font-weight:600;letter-spacing:-.04em">{{ cvNext }}</span></span><span style="flex:none;width:56px;height:56px;border-radius:50%;background:#04140E;color:#A5E85C;display:flex;align-items:center;justify-content:center;font-size:20px">→</span></button>
+      </div>
+    </div>
+  </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{}">
+<script type="text/x-dc" data-dc-script>
+const R = "assets/renders/";
+const WORKS = [
+  ["01", "2024", "Квартал у реки", "Новосибирск", "Жильё", "4,5 га", "+1,2 млрд ₽", "case-nsk.jpg"],
+  ["02", "2025", "Мастер-план района", "Киров", "Мастер-план", "38 га", "3 очереди", "masterplan-aerial.jpg"],
+  ["03", "2025", "Квартал средней этажности", "Екатеринбург", "Жильё", "62 000 м²", "КПП 0,84", "hero-quarter.png"],
+  ["04", "2024", "Реновация промзоны", "Пермь", "Реновация", "12 га", "смена ВРИ", "sit-03.png"],
+  ["05", "2024", "Клубный дом", "Казань", "Жильё", "18 000 м²", "премиум", "stage-03-project.png"],
+  ["06", "2023", "Посёлок у леса", "Кировская обл.", "Посёлок", "24 га", "180 домов", "plot-aerial.jpg"],
+  ["07", "2025", "Общественный центр", "Тюмень", "Общественные", "9 400 м²", "МФЦ", "sit-01.png"],
+  ["08", "2023", "Комплексное развитие территории", "Ижевск", "Мастер-план", "56 га", "КРТ", "hero-aerial.jpg"],
+  ["09", "2024", "Надстройка бизнес-центра", "Киров", "Реновация", "7 200 м²", "+3 этажа", "sit-02.png"],
+  ["10", "2025", "Жилой квартал с парком", "Уфа", "Жильё", "3,2 га", "двор без машин", "stage-02-quarter.png"],
+  ["11", "2023", "Торговый квартал", "Сыктывкар", "Общественные", "14 000 м²", "стрит-ритейл", "sit-04.png"],
+  ["12", "2024", "Береговая линия", "Новосибирск", "Мастер-план", "21 га", "набережная", "contacts-aerial.png"]
+].map(w => ({ n: w[0], year: w[1], name: w[2], city: w[3], type: w[4], area: w[5], result: w[6], img: R + w[7] }));
+const STORY = {
+  "01": { task: "Проверить, раскрывает ли исходная концепция потенциал участка 4,5 га, и найти более эффективную конфигурацию.", solution: "Пересобрали продукт и архитектуру вместе с моделью: пять сценариев посадки, новая квартирография, планировки с контролем полезной площади.", outcome: "Выбран сценарий, где архитектура работает на экономику: более 1,2 млрд ₽ к финансовому результату.", plan: 4, facts: [["4,5 га", "участок"], ["5", "сценариев застройки"], ["0,84", "КПП этажа"], ["+1,2 млрд ₽", "к результату", 1]] },
+  "03": { task: "Квартал средней этажности в плотной застройке: нужен узнаваемый образ без роста себестоимости.", solution: "Секции с ядром в центре и квартирами на два фасада. Евро-форматы вместо классических однушек — та же площадь продаётся как полноценная двушка.", outcome: "Квартирография под спрос района и рост доли продаваемой площади на типовом этаже.", plan: 2, facts: [["62 000 м²", "ГНС"], ["9", "этажей"], ["2Е", "ключевой формат"], ["КПП 0,84", "типовой этаж", 1]] },
+  "10": { task: "Квартал рядом с парком: связать дворы с зеленью и сохранить плотность, нужную для экономики.", solution: "Двор без машин, раскрытый к парку. Угловые трёхкомнатные квартиры с видом на зелень — самый дорогой продукт квартала.", outcome: "Премия к цене за видовые квартиры и сценарии жизни, которых нет у соседей.", plan: 3, facts: [["3,2 га", "участок"], ["двор", "без машин"], ["3Е", "видовые угловые"], ["премия", "к цене", 1]] }
+};
+const story = w => STORY[w.n] || { task: "Найти решение, которое раскрывает потенциал участка и проходит проверку экономикой.", solution: "Несколько вариантов объёма и планировок, каждый пересчитан в модели. Выбран тот, где образ и цифры совпадают.", outcome: w.result + " — ключевой результат проекта.", plan: (+w.n) % 5, facts: [[w.area, "масштаб"], [w.type, "тип"], [w.year, "год"], [w.result, "результат", 1]] };
+const FEAT = [[0, "7 1 520px", "clamp(420px,44vw,640px)"], [1, "5 1 380px", "clamp(420px,44vw,640px)"], [2, "5 1 380px", "clamp(380px,36vw,520px)"], [3, "7 1 520px", "clamp(380px,36vw,520px)"], [9, "1 1 100%", "clamp(420px,46vw,680px)"]];
+const room = (x, y, w, h, l, a, mop) => ({ x: x + "%", y: y + "%", w: w + "%", h: h + "%", l, a: a ? a + " м²" : "", mop: !!mop });
+const PLANS = [
+  { label: "Студия", code: "тип С · 25,4 м²", title: "Студия, которая читается как комната", ratio: "4 / 5", maxW: "340px",
+    rooms: [room(0, 0, 100, 56, "Жилая зона", "14,2"), room(0, 56, 56, 44, "Кухня", "5,6"), room(56, 56, 44, 24, "С/У", "3,4"), room(56, 80, 44, 20, "Прихожая", "2,2")],
+    stats: [["25,4 м²", "общая площадь"], ["56%", "жилая зона"], ["3,6 м", "по фасаду"], ["0 м²", "коридоров"]], bar: "100%", barL: "полезная площадь", barR: "100%",
+    idea: "Кухня у окна, санузел в глубине. Узкий фасад — больше квартир на этаже при той же комфортности." },
+  { label: "1Е", code: "тип 1Е · 37,8 м²", title: "Евро-однушка без потерянных метров", ratio: "6 / 5", maxW: "440px",
+    rooms: [room(0, 0, 56, 58, "Кухня-гостиная", "16,4"), room(56, 0, 44, 58, "Спальня", "11,2"), room(0, 58, 38, 42, "Прихожая", "4,6"), room(38, 58, 30, 42, "С/У", "3,8"), room(68, 58, 32, 42, "Гардероб", "1,8")],
+    stats: [["37,8 м²", "общая площадь"], ["73%", "жилые комнаты"], ["6,6 м", "по фасаду"], ["4,6 м²", "прихожая"]], bar: "88%", barL: "комнаты и хранение", barR: "88%",
+    idea: "Две комнаты на фасад, хранение — в глубине корпуса. Евро-формат продаётся как полноценная двушка." },
+  { label: "2Е", code: "тип 2Е · 54,6 м²", title: "Семейная квартира с разделением зон", ratio: "7 / 5", maxW: "520px",
+    rooms: [room(0, 0, 44, 60, "Кухня-гостиная", "20,2"), room(44, 0, 28, 60, "Спальня", "12,1"), room(72, 0, 28, 60, "Детская", "10,8"), room(0, 60, 22, 40, "С/У", "4,1"), room(22, 60, 50, 40, "Прихожая", "5,6"), room(72, 60, 28, 40, "Гардероб", "1,8")],
+    stats: [["54,6 м²", "общая площадь"], ["79%", "жилые комнаты"], ["9,6 м", "по фасаду"], ["3", "окна на фасад"]], bar: "86%", barL: "комнаты и хранение", barR: "86%",
+    idea: "Общая зона отделена от спален прихожей. Все три комнаты с окнами на одну сторону — секция остаётся компактной." },
+  { label: "3Е", code: "тип 3Е · 74,8 м²", title: "Три спальни на компактном фронте", ratio: "8 / 5", maxW: "580px",
+    rooms: [room(0, 0, 38, 62, "Кухня-гостиная", "24,6"), room(38, 0, 30, 62, "Спальня", "14,2"), room(68, 0, 32, 62, "Детская", "11,4"), room(0, 62, 18, 38, "С/У", "4,2"), room(18, 62, 32, 38, "Прихожая", "7,0"), room(50, 62, 16, 38, "С/У", "3,6"), room(66, 62, 34, 38, "Детская", "9,8")],
+    stats: [["74,8 м²", "общая площадь"], ["80%", "жилые комнаты"], ["11,8 м", "по фасаду"], ["2", "санузла"]], bar: "85%", barL: "комнаты и хранение", barR: "85%",
+    idea: "Вторая детская уходит в торец — квартира на три спальни занимает фронт обычной двушки с запасом." },
+  { label: "Этаж секции", code: "типовой этаж · 8 квартир", title: "Этаж, где продаётся почти всё", ratio: "2 / 1", maxW: "640px",
+    rooms: [room(0, 0, 24, 42, "1Е", "37,8"), room(24, 0, 32, 42, "2Е", "54,6"), room(56, 0, 16, 42, "С", "25,4"), room(72, 0, 28, 42, "3Е", "74,8"), room(0, 42, 100, 16, "МОП · коридор и ядро", "", true), room(0, 58, 32, 42, "2Е", "54,6"), room(32, 58, 16, 42, "С", "25,4"), room(48, 58, 24, 42, "1Е", "37,8"), room(72, 58, 28, 42, "2Е", "54,6")],
+    stats: [["8", "квартир на этаже"], ["0,84", "КПП этажа"], ["11%", "МОП"], ["5%", "стены"]], bar: "84%", barL: "продаваемая площадь", barR: "84%",
+    idea: "Ядро в центре, квартиры на два фасада. Продаваемая площадь растёт без изменения пятна застройки." }
+];
 class Component extends DCLogic {
-  state = { name: "", phone: "", agree: false, status: "idle" };
-
-  submit = async () => {
-    if (!this.state.name.trim() || !this.state.phone.trim() || !this.state.agree) return;
+  state = { name: "", contact: "", docs: "", status: "", plan: 0, flt: "Все", row: -1, wk: -1, room: -1, pv: { x: 0, y: 0 } };
+  componentDidMount() { this.onResize = () => { const ok = window.innerWidth >= 1000 && window.innerHeight >= 760; if (ok !== this.state.stickyOk) this.setState({ stickyOk: ok }); }; this.onResize(); window.addEventListener("resize", this.onResize); this.initMotion(); this.onKey = e => { if ((this.state.caseI ?? -1) < 0) return; if (e.key === "Escape") this.closeCase(); if (e.key === "ArrowRight") this.openCase((this.state.caseI + 1) % WORKS.length); if (e.key === "ArrowLeft") this.openCase((this.state.caseI + WORKS.length - 1) % WORKS.length); }; window.addEventListener("keydown", this.onKey); }
+  componentWillUnmount() { if (this.gctx) this.gctx.revert(); window.removeEventListener("keydown", this.onKey); window.removeEventListener("resize", this.onResize); document.body.style.overflow = ""; }
+  openCase(i) {
+    const was = (this.state.caseI ?? -1) >= 0;
+    document.body.style.overflow = "hidden";
+    this.setState({ caseI: i }, () => requestAnimationFrame(() => { const v = document.querySelector('[data-g="caseView"]'); if (!v) return; v.scrollTop = 0; const g = window.gsap; if (!g) return;
+      if (!was) g.fromTo(v, { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: .9, ease: "expo.inOut" });
+      g.from(v.querySelectorAll("h3, [data-g='caseView'] > div:last-child > *"), { y: 40, opacity: 0, duration: .9, ease: "expo.out", stagger: .08, delay: was ? 0 : .4 }); }));
+  }
+  closeCase() {
+    const v = document.querySelector('[data-g="caseView"]'), g = window.gsap;
+    const done = () => { document.body.style.overflow = ""; this.setState({ caseI: -1 }); };
+    if (v && g) g.to(v, { clipPath: "inset(0 0 100% 0)", duration: .7, ease: "expo.inOut", onComplete: done }); else done();
+  }
+  componentDidUpdate(pp, ps) {
+    const prev = this._lastPlan; this._lastPlan = this.state.plan;
+    if (prev !== undefined && prev !== this.state.plan && window.gsap) { const p = document.querySelector('[data-g="plan"]'); if (p) window.gsap.fromTo(p.children, { opacity: 0, scale: .92 }, { opacity: 1, scale: 1, duration: .6, ease: "expo.out", stagger: .04 }); }
+  }
+  initMotion(tries = 0) {
+    const g = window.gsap, ST = window.ScrollTrigger, SP = window.SplitText;
+    if (!g || !ST) { if (tries < 40) setTimeout(() => this.initMotion(tries + 1), 150); return; }
+    g.registerPlugin(ST); if (SP) g.registerPlugin(SP);
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const st = (t, s) => ({ trigger: t, start: s || "top 82%", once: true });
+    const q = s => document.querySelector('[data-g="' + s + '"]');
+    this.gctx = g.context(() => {
+      const ht = q("heroTitle"); if (ht) g.from(ht.children, { yPercent: 60, opacity: 0, duration: 1.4, ease: "expo.out", stagger: .12, delay: .1 });
+      document.querySelectorAll("section h2").forEach(el => {
+        if (SP) { g.set(el, { autoAlpha: 0 }); document.fonts.ready.then(() => this.gctx && this.gctx.add(() => { g.set(el, { autoAlpha: 1 }); const sp = SP.create(el, { type: "lines", mask: "lines" }); g.from(sp.lines, { yPercent: 110, duration: 1.1, ease: "expo.out", stagger: .09, scrollTrigger: st(el, "top 88%") }); ST.refresh(); })); }
+        else g.from(el, { y: 24, opacity: 0, duration: .9, scrollTrigger: st(el, "top 88%") });
+      });
+      ["duo", "works", "method"].forEach(k => { const el = q(k); if (el) g.from(el.children, { y: 70, opacity: 0, duration: 1.1, ease: "expo.out", stagger: .1, scrollTrigger: st(el, "top 82%") }); });
+      const p = q("plan"); if (p) g.from(p.children, { opacity: 0, scale: .9, duration: .8, ease: "expo.out", stagger: .06, scrollTrigger: st(p, "top 80%") });
+      const cards = [...document.querySelectorAll('[data-g="stackCard"]')];
+      if (window.innerWidth >= 1000 && window.innerHeight >= 760) cards.forEach((c, i) => { const nx = cards[i + 1]; if (nx) g.to(c, { scale: .93, opacity: .6, ease: "none", scrollTrigger: { trigger: nx, start: "top bottom", end: "top 120px", scrub: true } }); });
+      const ct = q("contact"); if (ct) g.from(ct, { y: 60, opacity: 0, scale: .97, duration: 1.3, ease: "expo.out", scrollTrigger: st(ct, "top 90%") });
+    });
+    setTimeout(() => ST.refresh(), 600);
+  }
+  async send(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const s = this.state;
+    if (!s.name.trim() || !s.contact.trim()) { this.setState({ status: "error-empty" }); return; }
     this.setState({ status: "sending" });
     try {
-      const r = await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: this.state.name, phone: this.state.phone, page: document.title || location.pathname }) });
+      const r = await fetch("/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: s.name, phone: s.contact, docs: s.docs, page: "МиМ" }) });
       if (!r.ok) throw new Error(String(r.status));
-      this.setState({ status: "sent" });
-    } catch (e) { this.setState({ status: "error" }); }
-  };
-
+      this.setState({ status: "sent", name: "", contact: "", docs: "" });
+    } catch (err) { this.setState({ status: "error" }); }
+  }
   renderVals() {
-    const s = this.state;
-    const ready = s.name.trim() && s.phone.trim() && s.agree;
+    const S = this.state, st = S.status;
+    const set = k => e => this.setState({ [k]: e.target.value, status: st === "sent" ? "" : st });
+    const texts = { "error-empty": "Укажите имя и телефон или почту.", sent: "Заявка у нас. Свяжемся в течение рабочего дня.", error: "Не отправилось. Напишите в Telegram: @Al_8070" };
+    const P = PLANS[S.plan];
+    const types = ["Все", "Жильё", "Мастер-план", "Реновация", "Общественные", "Посёлок"];
+    const list = WORKS.filter(w => S.flt === "Все" || w.type === S.flt);
+    const hovered = S.row >= 0 ? WORKS.find(w => w.n === S.row) : null;
+    const ba = S.ba ?? 50, fl = S.floors ?? 12, cv = S.cover ?? 24;
+    const gba = 45000 * cv / 100 * fl, sell = gba * 0.68, flats = Math.round(sell / 48), rev = sell * 130000 / 1e9, cost = gba * 62000 / 1e9 + 0.6, prof = rev - cost;
+    const overH = fl > 18, overI = cv > 30 && fl > 12, weak = prof / rev < 0.12;
+    const fmt = (n, d) => n.toFixed(d).replace(".", ",");
+    const verdict = overH ? "Выше предела ПЗЗ — такой проект не согласуют" : overI ? "Инсоляция дворов под угрозой — нужна другая посадка" : weak ? "Проект проходит, но маржа ниже 12% — ищем дальше" : "Рабочий вариант: укладывается в ПЗЗ и даёт маржу";
+    const ok = !overH && !overI && !weak;
+    const mult = [.7, 1, .85, 1, .6, .9];
+    const extra = {
+      ba, baPos: ba + "%", baClip: (100 - ba) + "%", onBa: e => this.setState({ ba: +e.target.value }),
+      baStats: [{ k: "баланс застройки", a: "1 сценарий", b: "5 сценариев", c: "#04140E" }, { k: "продаваемая площадь", a: "КПП 0,76", b: "КПП 0,84", c: "#04140E" }, { k: "квартирография", a: "по аналогам", b: "по спросу", c: "#04140E" }, { k: "финансовый результат", a: "базовый", b: "+1,2 млрд ₽", c: "#2E6B1E" }],
+      floors: fl, cover: cv, onFloors: e => this.setState({ floors: +e.target.value }), onCover: e => this.setState({ cover: +e.target.value }),
+      capLine: "calc(20px + (100% - 44px) * " + (18 / 25).toFixed(3) + ")", mGap: Math.round(40 - cv) + "px",
+      towers: mult.map(m => { const f = Math.max(3, Math.round(fl * m)), hi = f > 18; return { h: "calc((100% - 0px) * " + (f / 25).toFixed(3) + ")", bg: hi ? "#E8A15C" : (ok ? "#A5E85C" : "#C7D9CD"), glow: ok ? "0 0 30px rgba(165,232,92,.25)" : "none" }; }),
+      tep: [{ k: "ГНС, м²", v: Math.round(gba).toLocaleString("ru-RU"), c: "#FFFFFF" }, { k: "квартир", v: flats.toLocaleString("ru-RU"), c: "#FFFFFF" }, { k: "выручка, млрд ₽", v: fmt(rev, 1), c: "#FFFFFF" }, { k: "прибыль, млрд ₽", v: fmt(prof, 1), c: ok ? "#A5E85C" : "#E8A15C" }],
+      verdict, verdictBg: ok ? "#A5E85C" : "rgba(232,161,92,.14)", verdictFg: ok ? "#04140E" : "#F3C9A0", verdictDot: ok ? "#04140E" : "#E8A15C"
+    };
+    const open = i => () => this.openCase(i);
+    const mkPlan = idx => { const p = PLANS[idx]; return { ...p, rooms: p.rooms.map(r => ({ ...r, bg: r.mop ? "repeating-linear-gradient(135deg,rgba(4,20,14,.1) 0 6px,transparent 6px 12px)" : "#FFFFFF" })) }; };
+    const mkFacts = st => st.facts.map(f => ({ v: f[0], k: f[1], c: f[2] ? "#A5E85C" : "#FFFFFF", bd: f[2] ? "#A5E85C" : "rgba(255,255,255,.16)" }));
+    const ci = S.caseI ?? -1;
+    if (ci >= 0) { const w = WORKS[ci], s = story(w); extra.cv = { ...w, ...s, plan: mkPlan(s.plan), facts: mkFacts(s) }; extra.cvNext = WORKS[(ci + 1) % WORKS.length].name; }
+    else { extra.cv = { plan: mkPlan(0), facts: [] }; extra.cvNext = ""; }
+    extra.caseOpen = ci >= 0;
+    extra.caseClose = () => this.closeCase();
+    extra.caseNext = () => this.openCase((ci + 1) % WORKS.length);
+    extra.casePrev = () => this.openCase((ci + WORKS.length - 1) % WORKS.length);
+    extra.stack = [0, 2, 9].map((i, k) => { const w = WORKS[i], s = story(w); return { ...w, pos: S.stickyOk ? "sticky" : "relative", top: S.stickyOk ? (88 + k * 24) + "px" : "auto", solution: s.solution, plan: mkPlan(s.plan), facts: s.facts.slice(1, 4).map(f => ({ v: f[0], k: f[1], c: f[2] ? "#2E6B1E" : "#04140E", bd: f[2] ? "#A5E85C" : "#E3E9E1" })), open: open(i) }; });
+    const L = { fa: S.lFa ?? 800, fl: S.lFl ?? 14, kp: S.lKp ?? 74, pr: S.lPr ?? 130 };
+    const lostM2 = Math.max(0, L.fa * L.fl * (0.84 - L.kp / 100)), lostRub = lostM2 * L.pr * 1000;
+    const money = lostRub >= 1e9 ? fmt(lostRub / 1e9, 2) + " млрд ₽" : Math.round(lostRub / 1e6) + " млн ₽";
+    extra.lossInputs = [
+      { k: "площадь этажа", show: L.fa + " м²", min: 400, max: 1600, step: 20, v: L.fa, on: e => this.setState({ lFa: +e.target.value }) },
+      { k: "этажей", show: L.fl, min: 5, max: 30, step: 1, v: L.fl, on: e => this.setState({ lFl: +e.target.value }) },
+      { k: "доля продаваемой площади сейчас", show: fmt(L.kp / 100, 2), min: 65, max: 84, step: 1, v: L.kp, on: e => this.setState({ lKp: +e.target.value }) },
+      { k: "цена продажи", show: L.pr + " тыс ₽/м²", min: 60, max: 400, step: 5, v: L.pr, on: e => this.setState({ lPr: +e.target.value }) }
+    ];
+    extra.lossMoney = lostM2 > 0 ? money : "0 ₽";
+    extra.lossColor = lostM2 > 0 ? "#E8A15C" : "#A5E85C";
+    extra.lossLine = lostM2 > 0 ? "выручки строится, но не продаётся" : "Этаж уже работает на максимум";
+    extra.lossStats = [{ k: "м² в коридорах", v: Math.round(lostM2).toLocaleString("ru-RU") }, { k: "квартир по 48 м²", v: Math.round(lostM2 / 48).toLocaleString("ru-RU") }, { k: "м² на каждом этаже", v: Math.round(lostM2 / L.fl).toLocaleString("ru-RU") }];
+    const Q = [
+      { title: "Что за участок", key: "qa", opts: ["Пустой участок", "Промзона", "Есть концепция", "Действующее здание"] },
+      { title: "Масштаб", key: "qb", opts: ["до 1 га", "1–5 га", "5–20 га", "больше 20 га"] },
+      { title: "Что хотите", key: "qc", opts: ["Продать дороже", "Построить своё", "Проверить концепцию"] }
+    ];
+    extra.quiz = Q.map((q, i) => { const val = S[q.key]; return { n: "0" + (i + 1), title: q.title, numBg: val ? "#A5E85C" : "#EEF2EC", numFg: "#04140E",
+      opts: q.opts.map(o => { const on = val === o; return { label: o, bg: on ? "#04140E" : "#FFFFFF", fg: on ? "#FFFFFF" : "#04140E", bd: on ? "#04140E" : "#D3DCD5", pick: () => this.setState({ [q.key]: o }) }; }) }; });
+    const A = {
+      "Пустой участок": [["Исследование рынка", "Спрос, конкуренты и цены вокруг — гипотеза продукта."], ["Массинг 3–5 вариантов", "Каждый проверен ПЗЗ, инсоляцией и моделью."]],
+      "Промзона": [["Градостроительный анализ", "Смена назначения, охранные зоны, сроки перевода."], ["Массинг под новое назначение", "Варианты, при которых перевод окупается."]],
+      "Есть концепция": [["Аудит концепции", "Доля продаваемой площади, квартирография, себестоимость — где теряются деньги."], ["Пересборка планировок", "Тот же объём, больше продаваемых метров."]],
+      "Действующее здание": [["Анализ здания", "Конструкции, надстройка, смена функции."], ["Сценарии реновации", "Что выгоднее: реконструкция, надстройка или снос."]]
+    };
+    const B = { "5–20 га": ["Мастер-план с очередями", "Территория делится на этапы — финансирование идёт по очередям."], "больше 20 га": ["Мастер-план и КРТ", "Очереди, инфраструктура, переговоры с городом."] };
+    const C = { "Продать дороже": ["Пакет для покупателя", "Концепция и ТЭП — участок продаётся как проект, а не как земля."], "Построить своё": ["Концепция для банка и города", "Дальше — проектирование в «Природе проектирования»."], "Проверить концепцию": ["Заключение с цифрами", "Что менять и сколько это даст проекту."] };
+    const steps = [...(A[S.qa] || []), ...(B[S.qb] ? [B[S.qb]] : []), ...(C[S.qc] ? [C[S.qc]] : [])];
+    extra.routeSteps = steps.map((s, i) => ({ n: "0" + (i + 1), t: s[0], d: s[1] }));
+    const done = ["qa", "qb", "qc"].filter(k => S[k]).length;
+    extra.quizDone = done; extra.quizEmpty = steps.length === 0; extra.quizFull = done === 3;
+    extra.sendRoute = () => { this.setState({ docs: "Участок: " + S.qa + ", " + S.qb + ". Цель: " + S.qc + ". Маршрут: " + steps.map(s => s[0]).join(" → ") }); const c = document.querySelector("#contact"); if (c) window.scrollTo({ top: c.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" }); };
     return {
-      name: s.name, phone: s.phone, agree: s.agree,
-      onName: (e) => this.setState({ name: e.target.value }),
-      onPhone: (e) => this.setState({ phone: e.target.value }),
-      onAgree: (e) => this.setState({ agree: e.target.checked }),
-      submit: this.submit,
-      sent: s.status === "sent",
-      showForm: s.status !== "sent",
-      disabled: !ready || s.status === "sending",
-      btnOpacity: ready && s.status !== "sending" ? 1 : 0.5,
-      btnLabel: s.status === "sending" ? "Отправляем…" : s.status === "error" ? "Не отправилось — ещё раз" : "Обсудить концепцию",
-      specs: [
-        { label: "роль в маршруте", value: "второй этап, предпроектная стадия" },
-        { label: "вход", value: "сценарий и экономика из калькулятора" },
-        { label: "выход", value: "мастер-план и архитектурная концепция" }
+      ...extra,
+      total: WORKS.length,
+      checks: [{ k: "Баланс территории", v: "ТЭП" }, { k: "Продаваемая площадь", v: "КПП" }, { k: "Квартирография", v: "спрос" }, { k: "Себестоимость", v: "₽/м²" }, { k: "Выручка и сроки", v: "модель" }],
+      featured: FEAT.map(([i, span, h]) => { const w = WORKS[i], o = S.wk === i; return { ...w, span, h, open: () => this.openCase(i), btnS: o ? "scale(1.12) rotate(45deg)" : "scale(1)", zoom: o ? "scale(1.05)" : "scale(1)", metaOp: o ? 1 : 0, metaY: o ? "translateY(0)" : "translateY(10px)", enter: () => this.setState({ wk: i }), leave: () => this.setState({ wk: -1 }) }; }),
+      planTabs: PLANS.map((p, i) => ({ label: p.label, bg: S.plan === i ? "#04140E" : "transparent", fg: S.plan === i ? "#FFFFFF" : "#33463C", pick: () => this.setState({ plan: i, room: -1 }) })),
+      plan: { ...P, stats: P.stats.map((s, i) => ({ v: s[0], k: s[1], c: i === 1 ? "#A5E85C" : "#FFFFFF" })),
+        rooms: P.rooms.map((r, i) => ({ ...r, bg: r.mop ? "repeating-linear-gradient(135deg,rgba(4,20,14,.08) 0 6px,transparent 6px 12px)" : (S.room === i ? "#A5E85C" : "#FFFFFF"), enter: () => this.setState({ room: i }), leave: () => this.setState({ room: -1 }) })) },
+      method: [
+        { n: "01", title: "Исследование", a: "характер места и аудитории", b: "спрос, конкуренты, цены" },
+        { n: "02", title: "Массинг", a: "силуэт и посадка на участок", b: "ТЭП и плотность" },
+        { n: "03", title: "Мастер-план", a: "улицы, дворы, сценарии", b: "очереди и баланс" },
+        { n: "04", title: "Планировки", a: "свет, виды, удобство", b: "КПП и квартирография" },
+        { n: "05", title: "Концепция", a: "фасады, материалы, детали", b: "себестоимость и выручка" }
       ],
-      usual: [
-        "Концепция рождается из портфолио и вкуса",
-        "ТЭП подгоняются под картинку",
-        "Экономику считает кто-то другой и позже",
-        "Изменение бюджета означает перерисовку почти с нуля"
-      ],
-      mim: [
-        "Исследование спроса и конкурентов до первой линии",
-        "Массинг проверяется балансом территории и ТЭП",
-        "Архитектура и модель пересчитываются вместе",
-        "Концепция сразу готова к защите перед банком и городом"
-      ],
-      scope: [
-        { n: "01", title: "Исследование рынка", text: "Спрос, конкуренты, ценовые коридоры, поглощение, позиционирование." },
-        { n: "02", title: "Градостроительный анализ", text: "ПЗЗ, ГПЗУ, высотность, охранные зоны, ограничения и возможности." },
-        { n: "03", title: "Массинг и ТЭП", text: "Объёмно-пространственные варианты, плотность, баланс территории, посадка на рельеф." },
-        { n: "04", title: "Мастер-план", text: "Кварталы, улично-дорожная сеть, этапность освоения, социальная и коммерческая инфраструктура." },
-        { n: "05", title: "Продукт и квартирография", text: "Форматы жилья, площади, наполнение первых этажей, сценарии жизни." },
-        { n: "06", title: "Архитектурная концепция", text: "Образ, фасадные решения, материалы, детали, узнаваемость проекта." },
-        { n: "07", title: "Благоустройство и среда", text: "Дворы, общественные пространства, связь проекта с городом." },
-        { n: "08", title: "Материалы для защиты", text: "Визуализации, буклет проекта, аргументация для инвестора, банка и градсовета." }
-      ],
-      process: [
-        { n: "01", title: "Исследование", text: "Рынок, конкуренты, аудитория, ограничения участка.", result: "гипотеза продукта" },
-        { n: "02", title: "Массинг", text: "Варианты застройки и балансы, проверенные ТЭП и моделью.", result: "объём и плотность" },
-        { n: "03", title: "Мастер-план", text: "Структура территории, этапность, инфраструктура.", result: "планировочное решение" },
-        { n: "04", title: "Концепция", text: "Архитектурный образ, фасады, среда, детали.", result: "облик проекта" },
-        { n: "05", title: "Защита", text: "Материалы для инвестора, банка, города и отдела продаж.", result: "ДНК проекта" }
-      ]
+      filters: types.map(t => { const on = S.flt === t; return { label: t, count: t === "Все" ? WORKS.length : WORKS.filter(w => w.type === t).length, bg: on ? "#A5E85C" : "transparent", fg: on ? "#04140E" : "#C6D8CE", bd: on ? "#A5E85C" : "rgba(255,255,255,.2)", pick: () => this.setState({ flt: t }) }; }),
+      rows: list.map(w => { const o = S.row === w.n; return { ...w, fg: o ? "#A5E85C" : "#FFFFFF", pad: o ? "14px" : "0px", arrow: o ? 1 : 0, enter: () => this.setState({ row: w.n }), leave: () => this.setState({ row: -1 }), open: () => this.openCase(WORKS.indexOf(w)) }; }),
+      idxMove: e => { const r = e.currentTarget.getBoundingClientRect(); this.setState({ pv: { x: e.clientX - r.left, y: e.clientY - r.top } }); },
+      pvX: S.pv.x + "px", pvY: S.pv.y + "px", pvOp: hovered ? 1 : 0, pvS: hovered ? 1 : 0.85, pvImg: hovered ? hovered.img : WORKS[0].img,
+      name: S.name, contact: S.contact, docs: S.docs,
+      onName: set("name"), onContact: set("contact"), onDocs: set("docs"),
+      submit: e => this.send(e), disabled: st === "sending",
+      buttonLabel: st === "sending" ? "Отправляем…" : "Отправить заявку",
+      statusText: texts[st] || ""
     };
   }
 }
