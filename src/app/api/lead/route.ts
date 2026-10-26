@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { isBot, validateLead } from '@/lib/lead';
 import { readSmtpConfig, sendLeadEmail } from '@/lib/mailer';
 import { appendLeadToSheet, readSheetsConfig, verifySheetsAccess } from '@/lib/sheets';
+import { readBitrixConfig, sendLeadToBitrix } from '@/lib/bitrix';
 
 /** nodemailer и подпись JWT требуют Node — Edge-рантайм здесь не подходит. */
 export const runtime = 'nodejs';
@@ -13,7 +14,11 @@ export const dynamic = 'force-dynamic';
  * деплоя за секунду понять, доехали ли переменные окружения.
  */
 export async function GET(request: Request) {
-  const channels = { email: Boolean(readSmtpConfig()), sheets: Boolean(readSheetsConfig()) };
+  const channels = {
+    email: Boolean(readSmtpConfig()),
+    sheets: Boolean(readSheetsConfig()),
+    bitrix: Boolean(readBitrixConfig()),
+  };
 
   // ?check=1 — дополнительно дёргаем Google и показываем, почему отказ.
   if (new URL(request.url).searchParams.has('check')) {
@@ -44,6 +49,7 @@ export async function POST(request: Request) {
   const channels: { name: string; run: () => Promise<void> }[] = [];
   if (readSmtpConfig()) channels.push({ name: 'почта', run: () => sendLeadEmail(lead) });
   if (readSheetsConfig()) channels.push({ name: 'таблица', run: () => appendLeadToSheet(lead) });
+  if (readBitrixConfig()) channels.push({ name: 'Битрикс24', run: () => sendLeadToBitrix(lead) });
 
   if (channels.length === 0) {
     console.error('[lead] нет ни одного настроенного канала доставки', {
