@@ -2,34 +2,14 @@
   "framework": null,
   "buildCommand": "echo static-site",
   "outputDirectory": ".",
-  "cleanUrls": false,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/home.dc.html"
-    },
-    {
-      "source": "/calculator",
-      "destination": "/calculator.dc.html"
-    },
-    {
-      "source": "/mim",
-      "destination": "/mim.dc.html"
-    },
-    {
-      "source": "/priroda",
-      "destination": "/priroda.dc.html"
-    },
-    {
-      "source": "/legal",
-      "destination": "/legal.dc.html"
-    }
-  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/home-v1-archive.dc.html",
-      "destination": "/",
-      "permanent": false
-    }
+    { "source": "/home.dc", "destination": "/", "permanent": false },
+    { "source": "/home-v1-archive.dc", "destination": "/", "permanent": false },
+    { "source": "/calculator.dc", "destination": "/calculator", "permanent": false },
+    { "source": "/mim.dc", "destination": "/mim", "permanent": false },
+    { "source": "/priroda.dc", "destination": "/priroda", "permanent": false },
+    { "source": "/legal.dc", "destination": "/legal", "permanent": false }
   ]
 }
