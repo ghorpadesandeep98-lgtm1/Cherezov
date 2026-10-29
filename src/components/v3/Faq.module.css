@@ -84,7 +84,40 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+}
+
+/* Ответ, факты и оговорка лежат в DOM всегда (см. Faq.tsx): разметка FAQPage
+   обещает поиску ответ на каждый вопрос, и он обязан быть в HTML страницы.
+   Закрытый пункт прячет их стилем — для человека поведение то же, что было
+   у аккордеона с условным рендером. */
+.collapse,
+.collapseOpen {
+  display: flex;
+  flex-direction: column;
   gap: 6px;
+  transition: opacity 0.25s;
+}
+
+.collapse {
+  /* Нулевая высота плюс overflow: содержимое остаётся в HTML, но не занимает
+     места и не торчит из строки. */
+  max-height: 0;
+  padding-top: 0;
+  overflow: hidden;
+  opacity: 0;
+  /* visibility убирает скрытый текст из дерева доступности и из поиска
+     по странице, оставляя его в разметке. */
+  visibility: hidden;
+}
+
+.collapseOpen {
+  /* Открытый ответ высотой не ограничен намеренно: любой предел в em обрезал бы
+     самый длинный ответ на узком экране, а анимации высоты здесь и не было —
+     до этой правки ответ появлялся в DOM мгновенно. */
+  max-height: none;
+  padding-top: 6px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .question,
@@ -136,4 +169,42 @@
   background: var(--kd-salad);
   color: var(--kd-ink);
   transform: rotate(-90deg);
+}
+
+/* Факты для цитирования: короткие строки под прямым ответом. Их берут
+   нейропоиск и человек, который проверяет ответ глазами. */
+.facts {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 72ch;
+}
+
+.fact {
+  position: relative;
+  padding-left: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(234, 246, 240, 0.75);
+}
+
+.fact::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--kd-salad);
+}
+
+.note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(234, 246, 240, 0.55);
+  max-width: 72ch;
 }

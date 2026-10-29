@@ -39,7 +39,9 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <Link href="/#form" className={styles.cta}>
+          {/* Ссылка относительная: и на «/», и на «/calculator» есть свой блок
+              контактов, и человек не должен уезжать со страницы к форме главной. */}
+          <Link href="#form" className={styles.cta}>
             Разобрать участок <span className={styles.ctaArrow}>↗</span>
           </Link>
           <button
@@ -70,7 +72,7 @@ export function Header() {
                 <span className={styles.menuArrow}>↗</span>
               </Link>
             ))}
-            <Link href="/#form" className={styles.menuCta} onClick={() => setOpen(false)}>
+            <Link href="#form" className={styles.menuCta} onClick={() => setOpen(false)}>
               Разобрать участок ↗
             </Link>
           </div>

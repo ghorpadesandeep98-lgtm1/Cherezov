@@ -119,12 +119,18 @@ export function OneScreen() {
                 {atEnd ? '←' : '→'}
               </button>
 
-              {/* Рамка макбука — часть иллюстрации, поэтому обычный img поверх сцены. */}
+              {/* Рамка макбука — часть иллюстрации, поэтому обычный img поверх сцены.
+                  loading="lazy" обязателен: без него React отдаёт на картинку
+                  <link rel="preload" as="image"> в <head>, и 165 КБ PNG конкурируют
+                  за канал с героем — на мобильном вдобавок впустую, там .macbook
+                  скрыт через display:none (OneScreen.module.css, <=819px). */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/assets/v3/macbook.png"
                 alt="MacBook с интерфейсом калькулятора"
                 className={styles.macbook}
+                loading="lazy"
+                decoding="async"
               />
 
               <div ref={boxRef} className={styles.screen} onScroll={onScroll}>
@@ -188,12 +194,26 @@ export function OneScreen() {
           </span>
 
           <div className={styles.ctas}>
-            <a href="#form" className={styles.ctaPrimary}>
-              Показать демо на моём участке
-            </a>
-            <a href="#form" className={styles.ctaGhost}>
-              Скачать пример итогового отчёта
-            </a>
+            <div className={styles.ctaCol}>
+              <a href="#form" className={styles.ctaPrimary}>
+                Разобрать участок
+              </a>
+              {/* Кнопка потеряла слово «демо», подпись возвращает смысл: считаем
+                  по вводным человека, а не по демонстрационному участку. */}
+              <span className={styles.ctaNote}>
+                Посчитаем на ваших вводных, а не на демонстрационном участке.
+              </span>
+            </div>
+            <div className={styles.ctaColGhost}>
+              {/* Файла с примером отчёта нет (блокер 8б), поэтому кнопка обещает
+                  то, что отдел действительно делает, — отвечает и показывает состав. */}
+              <a href="#form" className={styles.ctaGhost}>
+                Запросить пример отчёта
+              </a>
+              <span className={styles.ctaNote}>
+                Ответим и покажем, из чего состоит разбор.
+              </span>
+            </div>
           </div>
         </div>
       </div>

@@ -350,6 +350,25 @@
   margin-top: clamp(6px, 0.8vw, 12px);
 }
 
+.ctaCol,
+.ctaColGhost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 40ch;
+}
+
+/* Подписи под кнопками: кнопки стали сквозными, а смысл, который они несли
+   в своём тексте, переехал сюда. */
+.ctaNote {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(234, 246, 240, 0.5);
+  text-align: center;
+}
+
 .ctaPrimary,
 .ctaGhost {
   display: inline-flex;
@@ -419,7 +438,8 @@
 }
 
 @media (max-width: 719px) {
-  .ctaGhost {
+  /* Прячем всю колонку, а не одну кнопку: иначе от неё осталась бы подпись. */
+  .ctaColGhost {
     display: none;
   }
 }

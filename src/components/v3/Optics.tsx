@@ -135,7 +135,7 @@ export function Optics() {
             <b className={styles.closingAccent}>Решение о том, что делать дальше.</b>
           </span>
           <a href="#form" className={styles.cta}>
-            Показать потенциал проекта
+            Разобрать участок
           </a>
         </div>
       </div>
