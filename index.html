@@ -1,17 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ольга Пегушина — бренд-стратег, маркетолог, дизайнер</title>
-<meta name="description" content="Бренды со смыслом: стратегия, нейминг, логотипы, брендбуки, сайты и мерч. 13 лет в маркетинге, экс-руководитель маркетинга «Железно».">
-<meta name="theme-color" content="#EDE9E4">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ольга Пегушина — бренд-стратег, маркетолог, дизайнер">
-<meta property="og:description" content="Портфолио и резюме: бренды, логотипы, сайты, мерч.">
-<meta property="og:image" content="/img/gori/01.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23E8591E'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://unpkg.com" crossorigin="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -212,6 +203,9 @@ a:hover{color:var(--acc)}
                 <sc-if value="{{ c.hasLink }}">
                   <a href="{{ c.linkHref }}" target="_blank" rel="noopener" style="align-self:flex-start;font-size:15px;font-weight:500">Сайт: {{ c.linkLabel }} ↗</a>
                 </sc-if>
+                <sc-if value="{{ c.hasDemo }}">
+                  <a href="{{ c.demoHref }}" target="_blank" rel="noopener" style="align-self:flex-start;padding:12px 18px;border-radius:14px;background:var(--acc);color:#fff;text-decoration:none;font-size:15px;font-weight:500">{{ c.demoLabel }} ↗</a>
+                </sc-if>
               </div>
             </div>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px">
@@ -233,6 +227,13 @@ a:hover{color:var(--acc)}
                   </figure>
                 </sc-for>
               </div>
+            </sc-if>
+
+            <sc-if value="{{ c.isVideo }}">
+              <div style="padding:clamp(12px,2vw,24px);border-radius:clamp(16px,2vw,28px);background:#F5EBD4;border:1px solid var(--line)">
+                <iframe src="mascot/index.html" title="Гори и Ясна — интерактивная 3D-анимация" loading="lazy" style="display:block;width:100%;height:{{ mascotH }};border:0;border-radius:14px;background:#F5EBD4"></iframe>
+              </div>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mute)">Переключайте действия и эмоции, меняйте темп, вращайте сцену мышью или пальцем</span>
             </sc-if>
 
             <sc-if value="{{ c.isLogo }}">
@@ -594,11 +595,16 @@ const CASES = [
    lead:'Бренд команды, которая считает потенциал земельного участка до покупки. Спокойная бумажная палитра, знак «К» с точкой и один яркий лаймовый цвет. Сайт собран так, что «вся логика продукта помещается на один экран».',
    did:['логобук','знак','палитра','паттерны','носители и мерч','лендинг'],colors:['#B8D83C','#1A3225','#F3EFE9','#9B9E7E'],
    caps:['Логотип на обложке','Логобук','Знак «К»','Фирменные цвета','Паттерны','Калькулятор девелопера','Носители и мерч','Сайт: первый экран','Сайт: вся логика на одном экране','Сайт: цифры и результат']},
-  {id:'gori',dir:'gori',f:['bb'],name:'Гори Ясно',sphere:'Лагерь для взрослых',
+  {id:'gori',dir:'gori',f:['bb','mascot'],name:'Гори Ясно',sphere:'Лагерь для взрослых',
    lead:'Брендбук от инсайта до фотостиля. Всё выросло из одной фразы гостя: «Мне не нужен ещё один отпуск. Мне нужно, чтобы пару дней за меня всё решили, а рядом были хорошие люди». Отсюда позиционирование «не турбаза, не ретрит, не тимбилдинг», слоган «У нас по-семейному», пара маскотов-искр и графика из одного круга.',
    did:['бренд-платформа','позиционирование','тон голоса','слоган','маскоты','графика и паттерны','фотостиль','носители'],
    note:'Логотип разработан не мной. Платформа, тон, маскоты, графика и правила — мои.',colors:['#DC3C0A','#504614','#28280A','#F0DCB4'],
    caps:['«Взрослым тоже нужно лето»','Инсайт','Позиционирование','Слоган «У нас по-семейному»','Маскоты','Маскот Гори','Маскот Ясна','Графика: всё из одного круга','Паттерны','Элементы в деле','Фотостиль','Фото и графика','Примеры носителей']},
+  {id:'mascot',f:['mascot'],name:'Гори и Ясна в 3D',sphere:'Маскоты в движении',
+   lead:'Маскоты-искры лагеря «Гори Ясно» из брендбука выше ожили в объёме. Шесть сцен по 8 секунд: оглядываются, машут, радуются, грустят и пьют чай из эмалированных кружек с надписью «Гори Ясно». Мягкая стойка, сгибы локтей и коленей, запаздывание кистей, моргание и слезинки: характер виден в каждом жесте.',
+   did:['3D-модель персонажей','6 анимационных сцен','мимика и эмоции','жесты и пальцы','интерактивная сцена','GLB для Blender'],colors:['#E8662A','#C9C76A','#393D22','#F0E9DE'],
+   demo:['Открыть на весь экран','mascot/index.html'],
+   videos:[['06','Разговор за чаем'],['01','Поворот и оглядка'],['02','Приветствие'],['03','Радость и искры'],['05','Грусть и слезинка']]},
   {id:'svoboda',dir:'svoboda',f:['bb','web'],name:'Свобода Слова',sphere:'Онлайн-обучение живой речи',
    lead:'Дизайн-система сайта на 22 страницы. Концепция «Не курс. Личный маршрут»: сайт ведёт человека от сомнения к понятному следующему шагу. Логотип-диалог из двух облаков, тёмно-синий и винный, сетка на 8 px и все компоненты интерфейса, от кнопок до шапки.',
    did:['логотип','концепция','цвет и типографика','сетка desktop и mobile','UI-компоненты','иконки и стикеры','3D-графика'],colors:['#000A1E','#780A28','#78B4DC','#F0F0F0'],
@@ -633,7 +639,7 @@ const CASES = [
    did:['логотипы','нейминг','мини-гайды'],colors:['#C0E03D','#0B0B0B','#000A1E','#F82104'],
    logos:[['Культура девелопмента','консалтинг для девелоперов','#C0E03D'],['Калькулятор девелопера','цифровой сервис','#FFFFFF'],['Джек Танкер','маркет напитков','#0E0D0C'],['Цепрэкс','ИТ-консалтинг','#FFFFFF'],['Petarion','уход за питомцами','#071D35'],['Природа проектирования','проектная компания','#FFFFFF'],['М и М','архитектурное бюро','#F7F6F5'],['Аура','декор для дома','#B0D1C8'],['Команда КО','театральная студия','#F0EDE8'],['Kind Stories','видеопродакшен','#050507'],['Свобода Слова','онлайн-обучение живой речи','#FFFFFF'],['Рисуйте','изостудия для детей','#F82104'],['Ладоушки','массаж ручной работы','#66899F'],['Форма','декор для дома','#E8E4D8'],['Красим','покраска стен','#EEE9E3']]}
 ];
-const FILTERS = [['all','Все'],['bb','Брендбуки'],['web','Сайты'],['merch','Мерч'],['logo','Логотипы'],['com','Коммерческая стратегия'],['cmm','Коммуникационные стратегии']];
+const FILTERS = [['all','Все'],['bb','Брендбуки'],['web','Сайты'],['merch','Мерч'],['logo','Логотипы'],['mascot','Маскоты'],['com','Коммерческая стратегия'],['cmm','Коммуникационные стратегии']];
 const HELP = [
   {kicker:'Стратегический маркетинг',title:'Запускаю и перезапускаю маркетинг',sub:'Опыт руководителя отдела маркетинга девелопера: от анализа рынка до плана, бюджета и команды.',
    items:[['Запуск маркетинга проекта',' с нуля: исследование, позиционирование, стратегия запуска, план продвижения'],['Перезапуск маркетинга',', когда текущий перестал работать: аудит, новые цели, каналы и приоритеты'],['Коммерческая стратегия',': продукт, УТП, отстройка от конкурентов, воронка продаж'],['Коммуникационная стратегия',': что, кому и где говорить, медиастратегия'],['Маркетинговая стратегия',' на год и квартал, медиаплан и бюджет'],['Выход в новый регион',': анализ спроса, адаптация бренда, быстрый старт маркетинга']]},
@@ -720,6 +726,7 @@ function lum(hex){const h=hex.replace('#','');const [r,g,b]=[0,2,4].map(i=>parse
 class Component extends DCLogic {
   state = { tab: 'portfolio', filter: 'all', lb: null, copied: null, vw: typeof window !== 'undefined' ? window.innerWidth : 1280 };
   videoRef = React.createRef();
+  mascotRef = React.createRef();
   reduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   componentDidMount() {
@@ -737,11 +744,13 @@ class Component extends DCLogic {
     window.addEventListener('hashchange', this.onHash);
     this.onScroll = () => { const t = window.scrollY > 700; if (t !== !!this.state.showTop) this.setState({ showTop: t }); };
     window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onMsg = e => { const h = e.data && e.data.mascotH; if (h && Math.abs(h - (this.state.mascotH || 0)) > 2) this.setState({ mascotH: h }); };
+    window.addEventListener('message', this.onMsg);
     this.playVideo();
   }
   componentDidUpdate() { this.playVideo(); }
-  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); }
-  playVideo() { const v = this.videoRef.current; if (v && !this.reduced && v.paused && !v._tried) { v._tried = true; v.play().catch(() => {}); } }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); window.removeEventListener('hashchange', this.onHash); window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('message', this.onMsg); }
+  playVideo() { [this.videoRef.current, this.mascotRef.current].forEach(v => { if (v && !this.reduced && v.paused && !v._tried) { v._tried = true; v.play().catch(() => {}); } }); }
 
   setTab(tab, target) {
     this.setState({ tab }, () => {
@@ -792,7 +801,13 @@ class Component extends DCLogic {
     const cases = CASES.map((c, ci) => ({ c, num: pad(ci + 1) })).filter(({ c }) => filter === 'all' || c.f.includes(filter)).map(({ c, num }) => {
       const out = { num, anchor: 'case-' + c.id, name: c.name, sphere: c.sphere, lead: c.lead, did: c.did, hasNote: !!c.note, note: c.note || '',
         hasLink: !!c.link, linkLabel: c.link ? c.link[0] : '', linkHref: c.link ? c.link[1] : '',
-        swatches: c.colors.map(hex => ({ hex, fg: lum(hex) > 0.4 ? '#16130F' : '#F6F4F1' })), isLogo: !!c.logos, isGallery: !c.logos, hasExtra: !!c.extra };
+        swatches: c.colors.map(hex => ({ hex, fg: lum(hex) > 0.4 ? '#16130F' : '#F6F4F1' })), isLogo: !!c.logos, isGallery: !c.logos && !c.videos, isVideo: !!c.videos, hasExtra: !!c.extra,
+        hasDemo: !!c.demo, demoLabel: c.demo ? c.demo[0] : '', demoHref: c.demo ? c.demo[1] : '' };
+      if (c.videos) {
+        const v = c.videos.map(([n, cap], i) => ({ src: `img/mascot/${n}.mp4`, poster: `img/mascot/${n}.jpg`, cap, n: pad(i + 1), hover: e => { if (!this.reduced) e.currentTarget.play().catch(() => {}); }, leave: e => e.currentTarget.pause() }));
+        out.vCover = v[0]; out.vRest = v.slice(1);
+        return out;
+      }
       if (c.logos) {
         const items = c.logos.map((l, i) => ({ src: `img/logos/${pad(i + 1)}.jpg`, t: `img/logos/t/${pad(i + 1)}.webp`, cap: `${l[0]} — ${l[1]}` }));
         out.tiles = c.logos.map((l, i) => ({ src: items[i].t, cap: items[i].cap, name: l[0], sphere: l[1], bg: l[2], open: () => this.openLb(items, i, c.name) }));
@@ -828,7 +843,7 @@ class Component extends DCLogic {
       filters: FILTERS.map(([k, label]) => ({ label, ...(filter === k ? active : idle), onClick: () => this.setState({ filter: k }) })),
       cases, visibleCount: cases.length + (filter === 'all' ? STRAT_DOCS.length : ['com','cmm'].includes(filter) ? 1 : 0),
       thumbMin: density === 'Крупная' ? '420px' : density === 'Плотная' ? '200px' : '280px',
-      videoRef: this.videoRef, videoControls: this.reduced,
+      videoRef: this.videoRef, videoControls: this.reduced, mascotH: (this.state.mascotH || Math.round(Math.min(this.state.vw, 1320) * 0.5625 + 200)) + 'px',
       sites: SITES.map((s, i) => ({ ...s, n: pad(i + 1), host: s.href.replace(/^https?:\/\//, '').replace(/\/$/, ''), shot: `https://s.wordpress.com/mshots/v1/${encodeURIComponent(s.href)}?w=1200&h=750` })),
       steps: STEPS.map((s, i) => ({ n: pad(i + 1), t: s[0], d: s[1] })),
       ladder: LADDER, duties: DUTIES, strategies: STRATEGIES.map(s => ({ ...s, shot: SHOT(s.url) })),
